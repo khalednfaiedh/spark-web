@@ -1,0 +1,233 @@
+<nb-card>
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="Informations générales">
+      <form #clientForm=ngForm>
+        <div class="col-md-12 col-lg-12" style="width:1250px; height: 650px">
+          <div class="row">
+            <div class="col-lg-12" style="width:600px; height: 300px">
+              <nb-card>
+                <nb-card-body><br>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Raison sociale :</label>
+                      <input type="text" name="nameC" placeholder="Raison sociale" class="form-control"
+                        [(ngModel)]="client.nameC" [ngModelOptions]="{standalone: true}" required #nameC="ngModel"
+                        required />
+
+
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Nature :</label>
+
+                      <ng-select name="nature" placeholder="Nature" bindLabel="Nature" style="width:100%;"
+                        [(ngModel)]="client.nature">
+                        <ng-option value="Aucun">Aucun</ng-option>
+                        <ng-option value='Société totalement exportatrice'>Société totalement exportatrice</ng-option>
+                        <ng-option value='Société partiellement exportatrice'>Société partiellement exportatrice
+                        </ng-option>
+                      </ng-select>
+
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Forme Juridique :</label>
+
+                      <ng-select name="formeJuridique" placeholder="Forme Juridique" [appendTo]="'body'"
+                        [items]="formeJuridiques" bindLabel="nom" style="width:100%;"
+                        [(ngModel)]="client.formeJuridique">
+                      </ng-select>
+
+                    </div>
+
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Catégorie :</label>
+                      <ng-select hero placeholder="Catégorie" name="categorie" [appendTo]="'body'" [items]="categories"
+                        bindLabel="name" status="info" size="xsmall" required [(ngModel)]="client.categorieClient"
+                        [ngModelOptions]="{standalone: true}" groupBy="nameCatMere"
+                        (change)="getGrilleTarifsByCategorie()">
+
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Type :</label>
+
+                      <ng-select name="typeC" required placeholder="Type" style="width:100%;"
+                        [(ngModel)]="client.typeC">
+                        <ng-option value='Actif'>Actif</ng-option>
+                        <ng-option value='Bloqué'>Bloqué
+                        </ng-option>
+                      </ng-select>
+
+                    </div>
+                  </div>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Téléphone :</label>
+                      <input type="number" placeholder="Téléphone " class="form-control" [(ngModel)]="client.tlfC"
+                        [ngModelOptions]="{standalone: true}" required name="tlfC" #tlfC="ngModel" />
+
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Fax :</label>
+                      <input type="number" placeholder="Fax" class="form-control" [(ngModel)]="client.faxC"
+                        [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Email :</label>
+                      <input type="email" placeholder="Email" class="form-control" [(ngModel)]="client.emailC"
+                        [ngModelOptions]="{standalone: true}" required #emailC="ngModel" />
+
+                    </div>
+
+                  </div>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+
+                      <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="client.adresseC"
+                        [ngModelOptions]="{standalone: true}" required name="adresseC" #adresseC="ngModel" />
+
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Code Postal :</label>
+                      <input type="number" name="codePostal" placeholder="Code postal" class="form-control"
+                        [(ngModel)]="client.codepostaleC" [ngModelOptions]="{standalone: true}" required
+                        #codePostal="ngModel" />
+
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Ville :</label>
+                      <input type="text" placeholder="Ville" class="form-control" [(ngModel)]="client.villeC"
+                        [ngModelOptions]="{standalone: true}" required name="villeC" #villeC="ngModel" />
+
+                    </div>
+
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Pays :</label>
+                      <ng-select [items]="payes" name="payes" [(ngModel)]="client.paysC" [appendTo]="'body'"
+                        style="width:100%" required #paysC="ngModel">
+                      </ng-select>
+
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Code d'immatriculation fiscale :</label>
+                      <input type="text" placeholder="Code d'immatriculation fiscale" class="form-control"
+                        [(ngModel)]="client.codeImmatriculation" required [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Registre de commerce :</label>
+                      <input type="text" placeholder="Registre de commerce" class="form-control"
+                        [(ngModel)]="client.registreCommerce" required [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Exonération de TVA :</label>
+                      <ng-select hero placeholder="Exonération de tva" name=exonerationTva status="info" size="xsmall"
+                        [(ngModel)]="client.exonerationTva" [ngModelOptions]="{standalone: true}">
+                        <ng-option value='Soumis à la TVA'>Soumis à la TVA</ng-option>
+                        <ng-option value='Exonéré de la TVA'>Exonéré de la TVA</ng-option>
+
+                      </ng-select>
+                    </div>
+
+                  </div>
+                  <div *ngIf="client.exonerationTva=='Exonéré de la TVA'">
+                    <div [hidden]='false'>
+
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date début de certificat d'exonération TVA:</label>
+                          <input type="date" placeholder="Date début de certificat d'exonération " class="form-control"
+                            [(ngModel)]="client.date_debutExonerationTva" [ngModelOptions]="{standalone: true}" />
+                        </div>
+
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date fin de certificat d'exonération TVA :</label>
+                          <input type="date" placeholder="Date fin de certificat d'exonération  " class="form-control"
+                            [(ngModel)]="client.date_finExonerationTva" [ngModelOptions]="{standalone: true}" />
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label"> Grille de tarif :</label>
+                      <ng-select type="text" name="grilleTarifs" placeholder="Grille de tarif" required
+                        [(ngModel)]="client.grilleTarifs" [items]="grilleTarifs" bindLabel="designation">
+                      </ng-select>
+
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label"> Type De Paiment :</label>
+                      <ng-select name="status" placeholder=" Status de paiement" [appendTo]="'body'" required
+                        style="width:100%;" [(ngModel)]="client.typePiament">
+                        <ng-option value="Date fixe"> Date fixe</ng-option>
+                        <ng-option value="Par période">Par période</ng-option>
+                      </ng-select>
+                    </div>
+
+                  </div>
+
+
+                  <div *ngIf="client.typePiament=='Par période'">
+                    <div [hidden]="false">
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label"> Mode de paiment :</label>
+                          <ng-select name="modes" placeholder="Mode De Paiment" [appendTo]="'body'" [items]="modes"
+                            style="width:100%;" bindLabel="typePaiement" required [(ngModel)]="client.modeDepaiement">
+                          </ng-select>
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label"> Stratégie de paiement :</label>
+                          <ng-select placeholder="Stratégie de paiement" [(ngModel)]="starategiePaiement"
+                            (change)="getListConditionPaiementParStragie()" [ngModelOptions]="{standalone: true}">
+                            <ng-option value="Fixation en pourcentage">Fixation en pourcentage</ng-option>
+                            <ng-option value="Fixation en jours">Fixation en jours</ng-option>
+                          </ng-select>
+                        </div>
+                        <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label"> Condition de paiment :</label>
+                          <ng-select placeholder="Condtion de Paiment" style="width:100%;" required
+                            [(ngModel)]="client.conditionsDePaiements" [items]="condtion" bindLabel="listCondition"
+                            [ngModelOptions]="{standalone: true}">
+                          </ng-select>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div style="text-align:right;">
+                    <button nbButton size="xsmall" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                      (click)="onAddRCM()" status="success" [disabled]="!clientForm.valid">
+                      {{ARCP}}</button>
+                    <button size="xsmall" (click)="onclose()" nbButton status="danger"
+                      style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-tab>
+    <nb-tab tabTitle="Coordonnées bancaires">
+      <ngx-modal-coordonne-bancaire-client></ngx-modal-coordonne-bancaire-client>
+    </nb-tab>
+    <nb-tab tabTitle="Contacts">
+      <ngx-contact-client></ngx-contact-client>
+    </nb-tab>
+    <nb-tab tabTitle="Adresses de livraison">
+      <ngx-adresse-livraison-client></ngx-adresse-livraison-client>
+    </nb-tab>
+
+
+  </nb-tabset>
+</nb-card>

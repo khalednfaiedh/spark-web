@@ -1,0 +1,51 @@
+<div class="col-md-12 col-lg-12" style="width:580px; height: 280px">
+  <nb-card>
+    <nb-card-body>
+  <form class="form-group"   autocomplete="off" #gaForm=ngForm>
+   
+        <div class="row full-name-inputs label">
+          
+          <div class="input-group col-md-6   input-group-sm">
+            <label class="text-label" i18n="@@CompteName">Compte</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <label class="text-label" i18n="@@CompteName"> Nature</label>
+          </div>
+         
+        </div>
+        
+        <!-- njghgjhjgfghl -->
+        
+        <div class="row full-name-inputs">
+            <div class="input-group col-md-6   input-group-sm">
+                <ng-select 
+                [items]="plans"
+                bindLabel="nameCode"
+                name="compte"
+                [(ngModel)]="tva.plan"
+                style="width:100%;"
+                required>
+           </ng-select>
+              </div>
+           
+          <div class="input-group col-md-6   input-group-sm">
+            <ng-select 
+                [items]="types"
+                name="types"
+                [(ngModel)]="tva.nature"
+                style="width:100%;"
+                required>
+           </ng-select>
+          </div>
+        </div>
+    
+    <div style="text-align:right; margin-top: 10%;">
+      <button nbButton hero status="success" class="submit"  (click)="addParametre()" [disabled]=!gaForm.valid>Enregistrer</button>
+      <button nbButton hero status="danger" #reset (click)="gaForm.reset();"
+        style="margin-left: 30px;">Réinitialiser</button>
+    </div>
+  </form>
+
+</nb-card-body>
+</nb-card>
+</div>

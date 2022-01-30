@@ -1,0 +1,56 @@
+<nb-accordion [hidden]='eLength < 1' style="margin-bottom: 10px;">
+      <nb-accordion-item>
+            <nb-accordion-item-header>
+                  Achat - bon livraison en attente de magasinage &nbsp;&nbsp;
+                  <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ eLength }} </span>
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+                  <ng2-smart-table class="full-width text-center" [settings]="settingsBL" [source]="entrees"
+                        (custom)="onCustomBl($event)">
+                  </ng2-smart-table>
+            </nb-accordion-item-body>
+      </nb-accordion-item>
+</nb-accordion>
+
+<nb-accordion [hidden]='rLength < 1' style="margin-bottom: 10px;">
+      <nb-accordion-item>
+            <nb-accordion-item-header>
+                  Vente - retour marchandise &nbsp;&nbsp;
+                  <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ rLength }}</span>
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+                  <ng2-smart-table class="full-width text-center" 
+                        [settings]="settingsRec" [source]="reclamation"
+                        (custom)="onCustomRec($event)">
+                  </ng2-smart-table>
+            </nb-accordion-item-body>
+      </nb-accordion-item>
+</nb-accordion>
+
+<nb-accordion [hidden]='prodLength < 1' style="margin-bottom: 10px;">
+      <nb-accordion-item>
+            <nb-accordion-item-header>
+                  GPAO - Bon de livraison production &nbsp;&nbsp;
+                  <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ prodLength }}</span>
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+                  <ng2-smart-table class="full-width text-center" 
+                        [settings]="settingsProd" [source]="blProd"
+                        (custom)="onCustomProd($event)">
+                  </ng2-smart-table>
+            </nb-accordion-item-body>
+      </nb-accordion-item>
+</nb-accordion>
+
+
+<nb-card>
+    <nb-card-header>
+         Liste des entrées en stock
+     </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table class="full-width text-center"
+           (custom)="onCustom($event)" [settings]="settings"
+            [source]="mvt" (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+</nb-card>

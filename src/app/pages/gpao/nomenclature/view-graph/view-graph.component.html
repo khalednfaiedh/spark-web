@@ -1,0 +1,32 @@
+
+
+ 
+ 
+   
+ 
+  
+    
+      <nb-card>
+
+        <nb-card-header style="text-align: center">
+
+         <h3>  List des composants d'une nomenclature     {{nomenclature.designation}}  sous forme hiérarchie </h3>
+        </nb-card-header>
+        <nb-card-body>
+
+
+
+            <button   nbButton status="success"  size="small" (click)="collapseAll()">  Mois Détails </button>&nbsp; <button  size="small"  nbButton status="success"  (click)="expandAll()">     plus Détails </button>
+            <p></p>
+            <db-angular-tree-grid    style="width: 100%"
+
+            
+                      #angularGrid [data]="composants" 
+                      [configs]="configs">
+             </db-angular-tree-grid>
+
+
+          </nb-card-body>
+          </nb-card>
+         
+

@@ -1,0 +1,106 @@
+<div class="popup">
+  <nb-accordion style="margin-bottom: 10px;">
+    <nb-accordion-item >
+          <nb-accordion-item-header>
+            Détails réclamation
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>       
+            <div class="row">
+              <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                <label class="label">Référence :</label>
+                <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="rec.id" disabled />
+              </div> 
+              <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                <label class="label">Client :</label>
+                <ng-select disabled [items]="clients" bindValue="code_clt" bindLabel="nameC" appendTo="body" 
+                placeholder="Choisir.." [(ngModel)]="rec.idClient" fullWidth>
+                </ng-select> 
+              </div>
+              <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                <label class="label">Statut :</label>
+                <input type="text" placeholder="Statut" class="form-control" [(ngModel)]="rec.status" disabled/>
+              </div>
+              <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label class="label">Date réclamation:</label>
+              <input nbInput placeholder="Date réclamation" class="form-control" [nbDatepicker]="dateDeDebut"
+                  [(ngModel)]="rec.dateReclamation" disabled />
+                 <nb-datepicker #dateDeDebut></nb-datepicker> 
+              </div>      
+                      
+            <div class="col-md-12 col-lg-12 input-group-sm">
+              <label  class="label">Observation :</label>
+              <input disabled type="text" placeholder="Observation" class="form-control" [(ngModel)]="rec.observation" />
+            </div> 
+            </div>
+          </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+
+  <nb-accordion #item style="margin-bottom: 10px;" >
+    <nb-accordion-item collapsed="false">
+          <nb-accordion-item-header>
+            Liste des produits
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>   
+            <ng2-smart-table 
+              class="full-width text-center"
+              [settings]="settings"
+              [source]="produits"
+              (editConfirm)="onSaveConfirm($event)"
+              >
+            </ng2-smart-table>
+          </nb-accordion-item-body>
+    </nb-accordion-item>
+  </nb-accordion>
+  
+  <nb-card [hidden]='show'>
+     <nb-card-body>
+       <h5>Détails entree en stock</h5>
+       <hr>
+       <div class="row">
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label  class="label">Référence :</label>
+          <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="mvt.reference"/>
+        </div> 
+        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label  class="label">Désignation :</label>
+          <input type="text" placeholder="Désignation" class="form-control" [(ngModel)]="mvt.designation" />
+        </div> 
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label class="label">Magasin:</label>
+          <ng-select [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin" appendTo="body" 
+          placeholder="Choisir.." [(ngModel)]="mvt.idMagasin" fullWidth>
+          </ng-select>  
+        </div>
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label class="label">Date entrée en stock:</label>
+          <input name="date4" #date4  [(ngModel)]="mvt.dateOperation" class="form-control" [nbDatepicker]="date4" />
+          <nb-datepicker #date4 ></nb-datepicker>       
+        </div>
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label class="label">Date preemption:</label>
+          <input name="date1" #date1  [(ngModel)]="mvt.datePreemption" class="form-control" [nbDatepicker]="date1" />
+          <nb-datepicker #date1 ></nb-datepicker>       
+        </div> 
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label  class="label">Contrôle Qualité :</label>
+          <ng-select name="condition " placeholder="Contrôle Qualité" [(ngModel)]="mvt.qualite">
+            <ng-option value="Réalisé">Réalisé</ng-option>
+            <ng-option value="Non réalisé">Non réalisé</ng-option>
+          </ng-select> 
+         </div>    
+        <div class="from-group col-md-12 col-lg-12 input-group-sm">
+          <label>Commentaire</label>
+          <textarea rows="2" placeholder="Commentaire" class="form-control"
+            [(ngModel)]="mvt.commentaire"></textarea>
+        </div>
+       </div>
+     </nb-card-body>
+  </nb-card>
+  <div style="text-align:right; margin-bottom: 10px;">
+    <button nbButton status="success"(click)="save()" [hidden]='show || show2'
+      style="cursor: pointer;align-content: center;">{{ btn }}</button> &nbsp;
+    <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+      (click)="close()">Annuler</button>
+  </div>
+</div>

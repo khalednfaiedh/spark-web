@@ -1,0 +1,32 @@
+<div class="col-md-12 col-lg-12" style="width:750px; height: 150px">
+  <div class="row">
+ 
+            <div class="row full-name-inputs">    
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm" >
+                    <label>Sélectionner employé:  </label>   
+                        <ng-select hero [items]="employesMin" 
+                                  placeholder="Employé"
+                                  bindLabel="matriculeNomPrenom" 
+                                  bindValue="matricule"
+                                  [(ngModel)]="matricule"
+                                  [appendTo]="'body'"                
+                                  style="width:100%; " 
+                                  size="xsmall"
+                                  (change)="getInformations(matricule)"
+                                  >
+                          </ng-select>
+                  </div>
+                   <div class="input-group col-md-3 col-lg-3 input-group-sm" >
+                        <label>Nombre de jours:  </label>
+                        <input type="number"[(ngModel)]="nbrJour" placeholder="Nombre de jours" style="width:100%; " class="form-control"/>
+                  </div>
+                  <div class="input-group col-md-3 col-lg-3 input-group-sm" >
+                    <label>Solde congé:  </label>
+                    <input type="number"[(ngModel)]="nbrJourMax" placeholder="Solde congé" disabled style="width:100%; " class="form-control"/> 
+                 </div>
+             </div>
+             <div style="margin-top: 2rem;margin-left: 40rem;" >
+              <button nbButton status="success" style="width: 13.6rem; cursor: pointer;"(click)="versementSoldeConge()" >Générer</button> 
+           </div>    
+  </div>
+</div>

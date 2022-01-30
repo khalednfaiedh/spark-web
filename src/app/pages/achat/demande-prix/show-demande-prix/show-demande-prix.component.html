@@ -1,0 +1,109 @@
+<nb-accordion>
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      <div style="display: flex;">
+      <p (click)="back()">
+      <i class="icon nb-arrow-thin-left"></i></p>
+      <p class="title"> Demande de prix détails</p>
+    </div>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-2 col-lg-2 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Référence :</label>
+          <input disabled placeholder="Référence" [(ngModel)]="demande.reference" class="form-control">
+        </div>
+        <div class="form-group col-md-5 col-lg-5 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Désignation :</label>
+          <input disabled placeholder="Désignation" [(ngModel)]="demande.designation" class="form-control">
+        </div>
+        <div class="form-group col-md-5 col-lg-5 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Proposition :</label>
+          <input disabled placeholder="Proposition" [(ngModel)]="proposition.reference" class="form-control">
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Emise par :</label>
+          <input disabled placeholder="Emise par " [(ngModel)]="demande.creePar" class="form-control">
+          <label style="margin-top: 13px;" class="label">Date demande :</label>
+          <input placeholder="Date demande" name="date" #startdate [(ngModel)]="demande.dateDmp"
+            class="form-control" [nbDatepicker]="dateLivraison" i18n="@@startdate" required>
+          <nb-datepicker #dateLivraison></nb-datepicker>
+        </div>
+        <div class="form-group col-md-8 col-lg-8 input-group-sm">
+          <label class="label">Commentaire :</label>
+          <textarea type="text" placeholder="Commentaire" class="form-control" rows="5" disabled
+            [(ngModel)]="demande.descriptionDP"></textarea>
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-12 col-lg-12 input-group-sm">
+        </div>
+      </div>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+<nb-card style="margin-top: 15px;">
+  <nb-card-header>Fournisseurs de demande de prix </nb-card-header>
+  <nb-card-body>   
+    <ng2-smart-table 
+    class="full-width text-center" 
+    [settings]="settings" 
+    (custom)="onCustom($event)"
+    [source]="source"
+    (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+
+<div style="text-align:right;">
+  <button status="danger" size="xsmall" nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="delete()">Supprimer</button>
+</div>
+
+<!-- without nb-accordion -->
+<!-- <nb-card>
+  <nb-card-header>
+    Détails demande de prix
+  </nb-card-header>
+  <nb-card-body>
+    
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-2 col-lg-2 input-group-sm" style="margin-bottom: 20px;">
+        <label class="label">N° demande :</label>
+        <input disabled placeholder="Désignation" [(ngModel)]="demande.iddp" class="form-control">
+      </div>
+      <div class="form-group col-md-5 col-lg-5 input-group-sm" style="margin-bottom: 20px;">
+        <label class="label">Désignation :</label>
+        <input disabled placeholder="Désignation" [(ngModel)]="demande.name" class="form-control">
+      </div>
+      <div class="form-group col-md-5 col-lg-5 input-group-sm" style="margin-bottom: 20px;">
+        <label class="label">Proposition :</label>
+        <input disabled placeholder="Désignation" [(ngModel)]="proposition.designation" class="form-control">
+      </div>
+    </div>
+      <div class="row full-name-inputs">
+      <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+        <label class="label">Emise par :</label>
+        <input disabled placeholder="Emise par " [(ngModel)]="demande.creePar" class="form-control">
+        <label style="margin-top: 13px;" class="label">Date demande :</label>
+        <input disabled placeholder="Date demande" name="date" #startdate [(ngModel)]="demande.dateDmp" class="form-control"
+          [nbDatepicker]="dateLivraison" i18n="@@startdate" required>
+        <nb-datepicker #dateLivraison></nb-datepicker>
+      </div>
+    <div class="form-group col-md-8 col-lg-8 input-group-sm">
+      <label class="label">Commentaire :</label>
+      <textarea type="text" placeholder="Commentaire" class="form-control"
+      rows="5" [(ngModel)]="demande.descriptionDP"></textarea>
+    </div>
+
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-12 col-lg-12 input-group-sm">
+      
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card> -->

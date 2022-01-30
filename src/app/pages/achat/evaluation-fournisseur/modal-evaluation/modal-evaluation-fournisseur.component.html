@@ -1,0 +1,22 @@
+<div  class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px; height: 300px">
+      <div *ngFor="let ep of evaluationPercentage" >
+        <h3 >Note {{ep.name}} : ({{(ep.rate * ep.percentage)/100 }})</h3> 
+        <ngb-rating  [(rate)]="ep.rate" (rateChange)="valider($event,ep.percentage)">
+          <ng-template let-fill="fill" let-index="index">
+            <span  class="star" [class.filled]="fill === 100" [class.bad]="index<3" [class.nice]="index>6">&#9733;</span>
+          </ng-template>
+        </ngb-rating>
+      </div>
+      
+      <hr>
+    <h2>Note : {{note}}</h2>
+
+      <div style="text-align:right;">
+          <button size="xsmall" status="success" nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="addEvaluation()" >valider</button>
+          <button size="xsmall" status="danger" nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()" >Fermer</button>
+        </div>
+    </div>
+  </div>
+</div>

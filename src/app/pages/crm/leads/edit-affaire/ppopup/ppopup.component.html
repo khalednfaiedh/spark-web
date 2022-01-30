@@ -1,0 +1,39 @@
+<div style="width:50vw;">
+  <div class="row full-name-inputs">
+  
+    <div class="form-group col-md-4 input-group-sm">
+      <label class="label" for="designation">Désignation</label>
+      <ng-select [items]="produits" bindLabel="designation" name="designation" [appendTo]="'body'"
+          [(ngModel)]="produitSelected" style="width:100%" (change)="changeProduit(produitSelected)"
+          [clearable]="false">
+        </ng-select>
+   </div>
+   <div class="form-group col-md-4 input-group-sm">
+    <label class="label" for="c">Référence</label>
+    <input disabled type="text" name="c" id="c" #c [(ngModel)]="produit.code" class="form-control">
+  </div>
+    <div class="form-group col-md-4 input-group-sm">
+      <label class="label" for="p">Prix</label>
+      <input disabled type="number" name="p" id="p" [(ngModel)]="produit.prixPropose" class="form-control">
+    </div>
+  </div>
+
+  <div class="row full-name-inputs">
+    <div class="form-group col-md-6 input-group-sm">
+      <label class="label" for="stk">Quantité en stock</label>
+      <input disabled type="number" name="d" id="d" 
+      [(ngModel)]="produit.quantityStock" class="form-control">
+    </div>
+    <div class="form-group col-md-6 input-group-sm">
+      <label class="label" for="cmd">Quantité prévu</label>
+      <input type="number" name="cmd" id="cmd" 
+      [(ngModel)]="produit.quantityCmd" class="form-control">
+    </div>
+  </div>
+  <div style="text-align:right;">
+    <button nbButton hero status="success" (click)="add()">{{btn}}</button>
+    <button nbButton hero status="danger" (click)="close()"
+      style="margin-left: 3px;">Fermer</button>
+  </div>
+
+</div>

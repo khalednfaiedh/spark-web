@@ -1,0 +1,9 @@
+<div style="width: 75vw;">
+  <ng2-smart-table class="full-width text-center" 
+      [settings]="settings"
+      [source]="source"
+      (editConfirm)="onSaveConfirm($event)"
+      (createConfirm)="onCreateConfirm($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+</ng2-smart-table>
+</div>

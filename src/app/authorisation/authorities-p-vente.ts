@@ -1,0 +1,9 @@
+export class AuthoritiesEvaluationPVente {
+
+    static EVALUATION_P_VENTE_LIST: string = "EVALUATION_P_VENTE";
+    static EVALUATION_P_VENTE_VALUE: string = "EVALUATION_P_VENTE";
+    static EVALUATION_P_VENTE_ADD_VALUE: string = "EVALUATION_P_VENTE";
+    static EVALUATION_P_VENTE_UPDATE_VALUE: string = "EVALUATION_P_VENTE";
+    static EVALUATION_P_VENTE_DELETE_VALUE: string = "EVALUATION_P_VENTE";
+
+}

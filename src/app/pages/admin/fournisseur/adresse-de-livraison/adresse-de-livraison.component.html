@@ -1,0 +1,13 @@
+<div style="width:90vw; height: 80vh">
+
+  <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+    (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+    (deleteConfirm)="onDeleteConfirm($event)">
+  </ng2-smart-table>
+
+</div>
+<div style="text-align:right;">
+
+  <button (click)="onclose()" nbButton status="danger" size="xsmall"
+    style="cursor: pointer;margin: 0.5rem;align-content: center ;">Terminer</button>
+</div>

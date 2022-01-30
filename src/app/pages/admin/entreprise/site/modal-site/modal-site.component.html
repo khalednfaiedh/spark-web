@@ -1,0 +1,104 @@
+<div class="col-md-12 col-lg-12" style="width: 50vw; height: 40vh">
+
+
+  <form #monFormulaire1=ngForm>
+
+
+
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Réference :</label>
+        <input [disabled]="disabled" type="text" name="name" placeholder="Réference" class="form-control" required
+          [(ngModel)]="site.code" />
+
+      </div>
+
+
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Désignation :</label>
+        <input [disabled]="disabled" type="text" name="des" placeholder=" Désignation  " class="form-control" required
+          [(ngModel)]="site.designation" />
+      </div>
+
+    </div>
+
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Date Création:</label>
+        <input placeholder="  Date Création  " nbInput class="form-control" value="bonjor" [nbDatepicker]="dateDebut"
+          [(ngModel)]="site.dateCreation" name="date" [disabled]="disabled" />
+        <nb-datepicker #dateDebut></nb-datepicker>
+      </div>
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Address :</label>
+        <input [disabled]="disabled" type="text" name="add" placeholder="Address  " class="form-control" required
+          [(ngModel)]="site.address" />
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Code Postal :</label>
+        <input [disabled]="disabled" type="text" name="codePostale" placeholder="Code Postal   " class="form-control"
+          required [(ngModel)]="site.codePostal" />
+
+      </div>
+
+
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Télephone :</label>
+        <input [disabled]="disabled" type="text" name="telephone" placeholder="Télephone  " class="form-control"
+          required [(ngModel)]="site.telephone" />
+      </div>
+
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Faxe :</label>
+        <input [disabled]="disabled" type="text" name="faxe" placeholder="Faxe  " class="form-control" required
+          [(ngModel)]="site.fax" />
+      </div>
+
+    </div>
+
+    <div class="row full-name-inputs">
+
+
+
+
+
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Premier responsable :</label>
+        <ng-select name="chef" placeholder="choisir .......  " [appendTo]="'body'" [clearable]="true"
+          [items]="employees" bindLabel="nom" [multiple]="false" required [disabled]=disabled
+          [(ngModel)]="site.premierResponsable" style="width:100%;">
+        </ng-select>
+      </div>
+
+
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Deuxième responsable :</label>
+        <ng-select name="dusie" placeholder="choisir .......  " [appendTo]="'body'" [clearable]="true"
+          [items]="employees" bindLabel="nom" [multiple]="false" required [disabled]=disabled
+          [(ngModel)]="site.deuxiemeResponsable" style="width:100%;">
+        </ng-select>
+      </div>
+    </div>
+
+    <div style="text-align:right;" [hidden]="disabled">
+      <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+        [disabled]=!monFormulaire1.valid (click)="addSite()"> {{message}}</button>
+      <button (click)="onclose()" nbButton status="danger"
+        style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+    </div>
+
+
+  </form>
+</div>

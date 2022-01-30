@@ -1,0 +1,19 @@
+<nb-card>
+    <nb-card-header>
+      Profits par Utilisateur
+        </nb-card-header>
+        <nb-card-body>
+            <ngx-charts-bar-vertical
+            [scheme]="colorScheme"
+            [results]="result"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            >
+          </ngx-charts-bar-vertical>
+        </nb-card-body>
+    </nb-card>

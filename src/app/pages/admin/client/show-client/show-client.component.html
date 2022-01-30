@@ -1,0 +1,254 @@
+<nb-card>
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="Informations générales">
+      <form #clientForm="ngForm">
+        <div class="col-md-12 col-lg-12" style="width:1250px; height: 500px">
+          <div class="row">
+            <div class="col-lg-12" style="width:600px; height: 300px">
+              <nb-card>
+                <nb-card-body><br>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+
+                      <label _ngcontent-udb-c31="" class="label">Raison sociale :</label>
+
+                      <input type="text" placeholder="Raison sociale" class="form-control" [(ngModel)]="client.nameC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Nature :</label>
+
+                      <ng-select name="nature" placeholder="Nature" bindLabel="Nature" style="width:100%;"
+                        [(ngModel)]="client.nature" disabled>
+                        <ng-option value='Société totalement exportatrice'>Société totalement exportatrice</ng-option>
+                        <ng-option value='Société partiellement exportatrice'>Société partiellement exportatrice
+                        </ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Forme Juridique :</label>
+
+                      <ng-select name="formeJuridique" placeholder="Forme Juridique" [appendTo]="'body'"
+                        [items]="formeJuridiques" bindLabel="nom" style="width:100%;"
+                        [(ngModel)]="client.formeJuridique" disabled>
+                      </ng-select>
+
+                    </div>
+
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Catégorie :</label>
+                      <ng-select hero placeholder="Catégorie" name="categorie" [appendTo]="'body'" [items]="categories"
+                        bindLabel="name" status="info" size="xsmall" [(ngModel)]="client.categorieClient"
+                        [ngModelOptions]="{standalone: true}">
+
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Type :</label>
+                      <ng-select hero placeholder="Catégorie" name="categorie" [(ngModel)]="client.typeC"
+                        [ngModelOptions]="{standalone: true}">
+                        <ng-option value='Société totalement exportatrice'>Société totalement exportatrice</ng-option>
+                        <ng-option value='Société partiellement exportatrice'>Société partiellement exportatrice
+                        </ng-option>
+                      </ng-select>
+                    </div>
+
+                  </div>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Téléphone :</label>
+                      <input type="number" placeholder="Téléphone " class="form-control" [(ngModel)]="client.tlfC"
+                        [ngModelOptions]="{standalone: true}" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Fax :</label>
+                      <input type="number" placeholder="Fax" class="form-control" [(ngModel)]="client.faxC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Email :</label>
+                      <input type="text" placeholder="Email" class="form-control" [(ngModel)]="client.emailC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+
+                  </div>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+
+                      <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="client.adresseC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Code Postal :</label>
+                      <input type="number" placeholder="Code postal" class="form-control"
+                        [(ngModel)]="client.codepostaleC" [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Ville :</label>
+                      <input type="text" placeholder="Ville" class="form-control" [(ngModel)]="client.villeC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Pays :</label>
+                      <input type="text" placeholder="Pays" class="form-control" [(ngModel)]="client.paysC"
+                        [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+
+                  </div>
+
+
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Code d'immatriculation fiscale :</label>
+                      <input type="text" placeholder="Code d'immatriculation fiscale" class="form-control"
+                        [(ngModel)]="client.codeImmatriculation" [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Registre de commerce :</label>
+                      <input type="text" placeholder="Registre de commerce" class="form-control"
+                        [(ngModel)]="client.registreCommerce" [ngModelOptions]="{standalone: true}" disabled />
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Exonération de TVA :</label>
+                      <ng-select hero placeholder="Exonération de tva" name=exonerationTva status="info" size="xsmall"
+                        [(ngModel)]="client.exonerationTva" [ngModelOptions]="{standalone: true}" disabled>
+                        <ng-option value='Soumis à la TVA'>Soumis à la TVA</ng-option>
+                        <ng-option value='Exonéré de la TVA'>Exonéré de la TVA</ng-option>
+
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Retenue à la source :</label>
+                      <ng-select hero placeholder="Retenue à la source" name="retenueSource" status="info" size="xsmall"
+                        [(ngModel)]="client.retenueSource" [ngModelOptions]="{standalone: true}" disabled>
+                        <ng-option value='Soumis à la retenue de la source '>Soumis à la retenue de la source
+                        </ng-option>
+                        <ng-option value='Exonéré à la retenue de la source'>Exonéré de la retenue de la source
+                        </ng-option>
+
+                      </ng-select>
+                    </div>
+                  </div>
+                  <div *ngIf="client.exonerationTva=='Exonéré de la TVA'">
+                    <div [hidden]='false'>
+
+                      <!-- <ngx-modal-file (nom)="onAddRCP($event)"></ngx-modal-file>-->
+
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date début de certificat d'exonération TVA:</label>
+                          <input type="date" placeholder="Date début de certificat d'exonération " class="form-control"
+                            [(ngModel)]="client.date_debutExonerationTva" [ngModelOptions]="{standalone: true}"
+                            disabled />
+                        </div>
+
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date fin de certificat d'exonération TVA :</label>
+                          <input type="date" placeholder="Date fin de certificat d'exonération  " class="form-control"
+                            [(ngModel)]="client.date_finExonerationTva" [ngModelOptions]="{standalone: true}"
+                            disabled />
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                  <div *ngIf="client.retenueSource=='Exonéré à la retenue de la source'">
+                    <div [hidden]='false'>
+
+
+
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date début de certificat d'exonération de retenue à
+                            la
+                            source :</label>
+                          <input type="date" placeholder="Date début de certificat d'exonération " class="form-control"
+                            [(ngModel)]="client.date_debutExonerationRetenue" [ngModelOptions]="{standalone: true}"
+                            disabled />
+                        </div>
+
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date fin de certificat d'exonération de retenue à
+                            la
+                            source :</label>
+                          <input type="date" placeholder="Date fin de certificat d'exonération " class="form-control"
+                            [(ngModel)]="client.date_finExonerationRetenue" [ngModelOptions]="{standalone: true}"
+                            disabled />
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                  </div>
+
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label"> Grille de tarif :</label>
+                      <ng-select type="text" name="grilleTarifs" placeholder="Grille de tarif" required
+                        [(ngModel)]="client.grilleTarifs" [items]="grilleTarifs" bindLabel="designation" disabled>
+                      </ng-select>
+
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label"> Type De Paiment :</label>
+                      <ng-select name="status" placeholder=" Status de paiement" [appendTo]="'body'" required
+                        style="width:100%;" [(ngModel)]="client.typePiament" disabled>
+                        <ng-option value="Date fixe"> Date fixe</ng-option>
+                        <ng-option value="Par période">Par période</ng-option>
+                      </ng-select>
+                    </div>
+
+                  </div>
+
+
+                  <div *ngIf="client.typePiament=='Par période'">
+                    <div [hidden]="false">
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label"> Mode de paiment :</label>
+                          <ng-select name="modes" placeholder="Mode De Paiment" [appendTo]="'body'" [items]="modes"
+                            style="width:100%;" bindLabel="typePaiement" required [(ngModel)]="client.modeDepaiement"
+                            disabled>
+                          </ng-select>
+                        </div>
+                        <div class="form-group col-md-9 col-lg-9 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label"> Condition de paiment :</label>
+                          <ng-select placeholder="Condtion de Paiment" style="width:100%;" required
+                            [(ngModel)]="client.conditionsDePaiements" [items]="condtion" bindLabel="listCondition"
+                            [ngModelOptions]="{standalone: true}" disabled>
+                          </ng-select>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="text-align:right;">
+
+                    <button (click)="close()" nbButton size="xsmall" status="danger"
+                      style="cursor: pointer;margin: 0.5rem;align-content: center;">Fermer</button>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+            </div>
+          </div>
+        </div>
+      </form>
+    </nb-tab>
+    <nb-tab tabTitle="Contacts">
+      <ngx-show-contact-client></ngx-show-contact-client>
+    </nb-tab>
+    <nb-tab tabTitle="Adresses de livraison">
+      <ngx-show-adresse-livraison-client></ngx-show-adresse-livraison-client>>
+    </nb-tab>
+    <nb-tab tabTitle="Coordonnées bancaires">
+      <ngx-show-coordonnes-bancaire-client></ngx-show-coordonnes-bancaire-client>
+    </nb-tab>
+
+  </nb-tabset>
+</nb-card>

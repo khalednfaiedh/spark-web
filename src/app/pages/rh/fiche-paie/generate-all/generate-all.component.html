@@ -1,0 +1,43 @@
+<div class="col-md-12 col-lg-12" style="width:500px; height: 100px">
+  <div class="row">
+    
+         <div>
+           <p>Êtes-vous sûr de générer toutes les fiches de paie du
+            <label *ngIf="fiche.moisFiche == 13"> <b>13éme</b> </label> 
+            <label *ngIf="fiche.moisFiche == 14"> <b>14éme</b> </label> 
+            <label *ngIf="fiche.moisFiche == 15"> <b>15éme</b> </label> 
+            <label *ngIf="fiche.moisFiche == 16"> <b>16éme</b> </label> 
+            mois
+            <label *ngIf="fiche.moisFiche == 1"> <b> Janvier &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 2"> <b> Février &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 3"> <b> Mars &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 4"> <b> Avril &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 5"> <b> Mai &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 6"> <b> Juin &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 7"> <b> Juillet &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 8"> <b> Aoùt &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 9"> <b> Septembre &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 10"> <b> Octobre &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 11"> <b> Novembre &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 12"> <b> Décembre &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 13"> <b>  &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 14"> <b>  &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 15"> <b>  &nbsp;{{fiche.anneeFiche}}</b> </label>
+            <label *ngIf="fiche.moisFiche == 16"> <b>  &nbsp;{{fiche.anneeFiche}}</b> </label>
+          </p>
+         </div>
+
+       
+            <div style="display: flex;margin-top: 1rem;margin-left: 50%;">
+              <!-- <button nbButton status="success" style="cursor: pointer;margin-top: 2rem;align-content: center;"
+              (click)="versementFinAnnee()"[disabled]="fiche.moisFiche != '12'"  title="Active seulement pour le mois de décembre">Solde congé</button>  -->
+
+              <button nbButton status="success" style="cursor: pointer;align-content: center;"
+              (click)="onAddM()">Confirmer</button> 
+              <button nbButton status="danger" style="cursor: pointer;margin-left: 1%;align-content: center;"
+              (click)="onClose()">Annuler</button> 
+            </div> 
+
+       
+  </div>
+</div>

@@ -1,0 +1,131 @@
+<nb-tabset fullWidth style="width:85vw;height: 65vh;">
+  <nb-tab tabTitle="Details">
+      <form class="form-group" autocomplete="off" #monFormulaire=ngForm>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label" for="name">Intitulé</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label">Planning de recherche</label>
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <label for="rating">Note</label>
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <label for="typeProspect">Type</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <input  disabled type="text" name="name" #name [(ngModel)]="prospect.prospectName" class="form-control">
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <ng-select disabled [items]="plannings" name="planning" bindLabel="designation" [(ngModel)]="prospect.planning"
+              style="width:100%">
+            </ng-select>
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <input disabled type="text" name="rating" #rating [(ngModel)]="prospect.prospectRating" class="form-control" required
+              i18n="@@rating">
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <ng-select disabled [items]="prospectType" bindLabel="title" bindValue="value" name="typeProspect"
+              [(ngModel)]="prospect.prospectType" style="width:100%">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-6   input-group-sm">
+            <label for="startdate">Date de Création</label>
+          </div>
+          <div class="input-group col-md-6 input-group-sm">
+            <label for="addedBy">Ajouté par</label>
+          </div>
+          
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-6   input-group-sm">
+            <input name="startdate" #startdate [(ngModel)]="prospect.dateCreation" class="form-control"
+              [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled>
+            <nb-datepicker #sdatepicker></nb-datepicker>
+
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" name="user" #addedBy [(ngModel)]="prospect.createdBy" maxlength="50" class="form-control"
+              required i18n="@@socialReason" disabled>
+          </div>
+         
+
+        </div>
+
+        <div class="row full-name-inputs label">
+
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="adress">Adresse</label>
+          </div>
+          <div class="input-group col-md-3 input-group-sm">
+            <label for="town">Pays</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="country">Ville</label>
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <label for="postalCode">Code postal</label>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+
+          <div class="input-group col-md-4   input-group-sm">
+            <input class="form-control" name="address" #address [(ngModel)]="prospect.prospectAddress"
+              placeholder="Adresse" shape="round" disabled>
+            <!-- <input type="email" name="email" #email   [(ngModel)]="placeholdervar" class="form-control"/> -->
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input disabled [(ngModel)]="prospect.prospectCountry" name="paye" #paye class="form-control" />
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input name="country" #country [(ngModel)]="prospect.prospectTown" class="form-control" i18n="@@country"
+              disabled>
+          </div>
+          <div class="input-group col-md-2   input-group-sm">
+            <input name="postalCode" #postalCode [(ngModel)]="prospect.prosectPostalCode" class="form-control"
+              i18n="@@postalCode" disabled>
+          </div>
+        </div>
+      <div class="row full-name-inputs label">
+
+        <div class="input-group col-md-8   input-group-sm">
+          <label for="comment">Commentaire</label>
+        </div>
+        <div class="input-group col-md-4  input-group-sm" *ngIf="ancienClient">
+          <label for="bank">Nom Banque</label>
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+        <div class="input-group col-md-8   input-group-sm">
+          <textarea class="form-control" name="comment" #comment rows="4" cols="60"
+            [(ngModel)]="prospect.prospectComment" placeholder="Text Area" rows="5" shape="round"></textarea>
+        </div>
+        <div class="input-group col-md-4   input-group-sm" *ngIf="ancienClient">
+          <input name="bank" #bank [(ngModel)]="prospect.prospectBank" class="form-control " i18n="@@bank"
+            style="width:100%;height:30%">
+          <label for="bankCode">Numèro Compte</label>
+          <input name="bankCode" #bankCode [(ngModel)]="prospect.prospectAccount" class="form-control" i18n="@@code"
+            style="width:100%;height:40%">
+        </div>
+      </div>
+    </form>
+  </nb-tab>
+  <nb-tab tabTitle="Affaires">
+    <ng2-smart-table style="text-transform: capitalize;" [settings]="leadSettings" [source]="leads">
+    </ng2-smart-table>
+  </nb-tab>
+
+  <nb-tab tabTitle="Actions">
+    <ng2-smart-table [settings]="actionSettings" [source]="actionSource" style="text-transform: capitalize;">
+    </ng2-smart-table>
+  </nb-tab>
+
+</nb-tabset>

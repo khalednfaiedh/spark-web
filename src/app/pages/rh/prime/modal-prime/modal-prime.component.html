@@ -1,0 +1,35 @@
+<div class="col-md-12 col-lg-12" style="width:600px; height: 150px">
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-4 col-lg-4 input-group-sm">
+              <ng-select hero [items]="typePrimes" 
+                 placeholder="Type De primes"
+                bindLabel="nom" 
+                (change)="changeValue()"
+                 [(ngModel)]="prime.typePrime"
+                 [appendTo]="'body'"  
+                 style="width:100%; " 
+                 size="xsmall">
+              </ng-select>
+            </div>
+            <div class="input-group col-md-4 col-lg-4 input-group-sm">
+              <ng-select hero [items]="natures" 
+                 placeholder="Nature prime"
+               
+               
+                 [(ngModel)]="prime.nature"
+                 [appendTo]="'body'"  
+                 style="width:100%; " 
+                 size="xsmall">
+              </ng-select>
+            </div>
+           
+             <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                  <input placeholder="Montant" class="form-control" [(ngModel)]="value" />
+            </div>
+  </div>
+  <div style="text-align:right;margin-top: 3rem; ">
+    <button nbButton status="success" style="cursor: pointer;margin-right: 0.5rem;align-content: center;"
+      (click)="onAddM()">{{A}}</button>
+    <button nbButton status="danger" (click)="close()" style="cursor: pointer;align-content: center;">Annuler</button>
+  </div>
+</div>

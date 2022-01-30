@@ -1,0 +1,17 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="form-group col-md-12 col-lg-12 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label">Etape :</label>
+        <ng-select name="etapeCommande" [items]="etapeCommandes" bindLabel="nom" placeholder="Etape de la Commande"
+          [(ngModel)]="bonCommande.etapeCommande" [appendTo]="'body'" style="width:100%;">
+        </ng-select>
+      </div>
+    </div>
+      <div style="text-align:right;">
+        <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="modifierBC()">Modifier</button>
+        <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()">Fermer</button>
+      </div>
+  </nb-card-body>
+</nb-card>

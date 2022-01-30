@@ -1,0 +1,28 @@
+<div class="example-container">
+  <h2>Confirmé</h2>
+
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="confirmer"
+    [cdkDropListConnectedTo]="[doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div  class="example-box" *ngFor="let item of confirmer" (click)="openCommande(item.idBC)" cdkDrag>BC{{item.idBC}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Annulé</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="annuler"
+    [cdkDropListConnectedTo]="[todoList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of annuler" (click)="openCommande(item.idBC)" cdkDrag>BC{{item.idBC}}</div>
+  </div>
+</div>
+

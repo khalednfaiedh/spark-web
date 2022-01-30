@@ -1,0 +1,20 @@
+<nb-card>
+  <nb-card-body>
+<nb-card>
+  <nb-card-header class="text-center">
+   Planning de prospection
+    <button (click)="openWindow()" nbButton status="success" size="xsmall"
+     style="width: 100px;" [hidden] =false ><i class="fas fa-plus"></i>
+    </button>
+  </nb-card-header>
+  <nb-card-body >
+    <ng2-smart-table class="full-width text-center"
+                     [settings]="settings"
+                     [source]="source"
+                     (deleteConfirm)="onDeleteConfirm($event)"
+                     (custom)="onCustom($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+  </nb-card-body>
+</nb-card>

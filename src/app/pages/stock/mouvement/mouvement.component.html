@@ -1,0 +1,11 @@
+<nb-card>
+  <nb-card-header>
+       Liste des tous les mouvements de stock
+   </nb-card-header>
+    <nb-card-body>
+      <ng2-smart-table class="full-width text-center"
+         (custom)="onCustom($event)" [settings]="settings"
+          [source]="mvt">
+      </ng2-smart-table>
+    </nb-card-body>
+</nb-card>

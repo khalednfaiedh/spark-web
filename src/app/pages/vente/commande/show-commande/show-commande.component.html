@@ -1,0 +1,287 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height:600px">
+  <div class="row">
+    <div class="col-lg-12" style="width:1000px; height:1500px">
+      <div id="contentToConvert">
+        <header class="clearfix">
+          <div id="logo">
+          </div>
+          <h1>Commande : CMD{{commande.code_cmd}}</h1>
+          <div id="company" class="clearfix">
+
+            <input type="text" autofocus="autofocus" tabindex="1" placeholder="Nom societé">
+            <input type="text" autofocus="autofocus" tabindex="1" placeholder="Adresse">
+            <input type="text" autofocus="autofocus" tabindex="1" placeholder="Email">
+            <input type="text" autofocus="autofocus" tabindex="1" placeholder="Téléphone">
+
+          </div>
+        </header>
+        <div class="d-flex justify-content-between">
+          <nb-card style="width:400px; height:220px">
+            <nb-card-header style="background-color:rgb(194, 190, 190)">Destinataire</nb-card-header>
+            <nb-card-body>
+              <div class="col-lg-12">
+                <table cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <th>Client :</th>
+                      <td>{{client.nameC}}</td>
+                    </tr><br>
+                    <tr>
+                      <th>Addresse :</th>
+                      <td>{{client.adresseC}}</td>
+                    </tr><br>
+                    <tr>
+                      <th>Email :</th>
+                      <td>{{client.emailC}}</td>
+                    </tr><br>
+                    <tr>
+                      <th>Téléphone :</th>
+                      <td>{{client.tlfC}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+              </div>
+            </nb-card-body>
+          </nb-card>
+
+          <nb-card style="width:500px; min-height:220px; ">
+            <nb-card-header style="background-color:rgb(194, 190, 190)">Bon de commande</nb-card-header>
+            <nb-card-body>
+              <div class="col-lg-12">
+                <table cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <th>Date de commande :</th>
+                      <td>{{commande.date_cmd}}</td>
+                    </tr><br>
+
+                    <tr>
+                      <th>Date de livaison :</th>
+                      <td>{{commande.date_liv}}</td>
+                    </tr><br>
+                    <tr>
+                      <th>Adresse de livraison :</th>
+                      <td>
+                        <div *ngFor="let list of adresses">
+                          *{{list.adresse}}-{{list.ville}}-{{list.codePostal}}-{{list.pays}}<br>
+                        </div>
+                      </td>
+                    </tr><br>
+                  </tbody>
+                </table>
+
+              </div>
+
+            </nb-card-body>
+          </nb-card>
+
+
+        </div>
+        <nb-card>
+          <nb-card-header style="background-color:rgb(194, 190, 190)">Mode &amp; Echeance de paiement
+          </nb-card-header>
+
+          <div *ngIf="deviseePaiement=='Date fixe'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                  <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                    [(ngModel)]="modePaiement.typePaiement" disabled />
+                </div>
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                  <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                    [(ngModel)]="devis.typePaiement" disabled />
+                </div>
+
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                  <input name="datePaiement" placeholder="Date de paiement" class="form-control"
+                    [(ngModel)]="devis.datePaiement" type="date" disabled />
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div *ngIf="devis.typePaiement=='Par période'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                  <input type="text" placeholder="Mode de paiement" class="form-control"
+                    [(ngModel)]="modePaiement.typePaiement" disabled />
+                </div>
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                  <input type="text" placeholder="Type de paiement" class="form-control"
+                    [(ngModel)]="devis.typePaiement" disabled />
+                </div>
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Echéance de paiement :</label>
+                  <input class="form-control" [(ngModel)]="conditionPaiement.designation" disabled>
+
+                </div>
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Délais de paiements
+                    :</label>
+                  <input disabled placeholder="Délais de paiement" [(ngModel)]="echeancePaiement.option"
+                    class="form-control">
+
+                </div>
+
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Période de paiement(Mois) :</label>
+                  <input diasbled type="text" [(ngModel)]="echeancePaiement.nbrmois" class="form-control" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </nb-card>
+        <section id="items">
+
+          <table cellpadding="0" cellspacing="0">
+
+            <tbody>
+              <tr>
+                <th>Code Produit</th>
+                <!-- Dummy cell for the row number and row commands -->
+                <th>Désignation</th>
+                <th>Emballage</th>
+                <th>Quantité</th>
+                <th>Prix unitaire</th>
+                <th>Prix totale</th>
+                <th>Taxe</th>
+              </tr>
+
+              <tr data-iterate="item" *ngFor="let q of quantityProductModel">
+                <td>{{q.code}}
+                </td>
+                <td><span>{{q.designation}}</span> </td>
+                <td *ngFor="let c of q.productConditionnementEmballages">
+                  <span>{{c.conditionnementEmballage.typeConditionnement}}</span>
+                </td>
+                <td><span>{{q.quantitytot}}</span> </td>
+                <td><span>{{q.prix_unitaire}}</span></td>
+                <td><span>{{q.prix_tot}}</span>
+                </td>
+                <div *ngFor="let t of q.productsTaxe">
+                  <td *ngIf="t.taxe.type=='Pourcentage'">
+                    <span>{{t.taxe.name}}={{t.taxe.pourcentage}}%</span> </td>
+                  <td *ngIf="t.taxe.type=='Montant fixe'">
+                    <span>{{t.taxe.name}}={{t.taxe.pourcentage}}{{t.taxe.devise}}</span> </td>
+                </div>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </section>
+        <section id="sums">
+
+          <table cellpadding="0" cellspacing="0">
+            <tbody>
+              <div *ngIf="devis.remise!=null">
+                <div [hidden]="false">
+                  <tr>
+                    <th>Prix HT:</th>
+                    <td>{{devis.sommeTotaleHt}}</td>
+                  </tr>
+                  <tr>
+                    <th>Remise(%):</th>
+                    <td>{{devis.remise}}</td>
+                  </tr>
+                </div>
+              </div>
+            </tbody>
+          </table>
+        </section>
+        <section id="sums">
+
+          <table cellpadding="0" cellspacing="0">
+            <tbody>
+
+              <tr class="amount-total">
+                <th>Prix net HT:</th>
+                <td>{{devis.sommeRemise}}</td>
+              </tr>
+
+              <tr data-iterate="tax">
+                <th>Taxe:</th>
+                <td>{{devis.sommeTVA}}</td>
+              </tr>
+
+              <tr class="amount-total">
+                <th>TTC:</th>
+                <td>{{devis.sommeTotaleavecTVA}}</td>
+              </tr>
+
+              <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
+                 For example Invoicebus doesn't need amount paid and amount due on quotes  -->
+              <tr>
+                <th>Frais:</th>
+                <td>
+                  <span>{{devis.fraislivraison}}</span>
+                </td>
+              </tr>
+
+              <tr class="amount-total">
+                <th>Montant total:</th>
+                <td>
+                  <span>{{devis.sommeFinale}} {{devis.devise}}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Avance:</th>
+                <td>
+                  <span>{{commande.montantpayer}} {{devis.devise}}</span>
+                </td>
+              </tr>
+              <tr>
+                <th>Montant reste:</th>
+                <td>
+                  <span>{{commande.montantReste}} {{devis.devise}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <section id="sums" style="margin-left:0%;">
+          <table cellpadding="0" cellspacing="0">
+            <tbody>
+              <tr>
+                <th style="width:30%;">Montant rester en lettre:</th>
+                <td style="width: 90%;">
+                  <span>{{commande.montantResteLettre}} {{devis.devise}}</span>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </section><br>
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"><u>Observations:</u></label>
+            <span>{{commande.commentaire}}</span>
+          </div>
+        </div><br>
+        <div style="margin-left: 75%;">
+          <span style="font-style: oblique;  font-weight:bold">Signature :</span>
+        </div>
+
+      </div>
+      <div style=" margin-top: 10px">
+        <div style="text-align:right;">
+
+          <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+            (click)="captureScreen()">Télécharger</button>
+          <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="danger"
+            (click)="close()">Fermer</button>
+        </div>
+      </div>
+    </div>

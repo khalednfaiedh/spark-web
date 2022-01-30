@@ -1,0 +1,221 @@
+<div class="col-md-12 col-lg-12" style="width:1250px; height: 700px">
+  <div class="row">
+    <div class="col-lg-12" style="width:1250px; height: 650px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Emise par :</label>
+              <input type="text" placeholder="Emise par" class="form-control" [(ngModel)]="demandePrix.emisepar" />
+            </div>
+
+            <!--  <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Validité demande prix (Jours) :</label>
+              <input type="number" name="finValidite" placeholder="Validité demande prix" class="form-control"
+                [(ngModel)]="demandePrix.validite_list" />
+
+            </div>-->
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Reférence client:</label>
+              <input disabled type="text" placeholder="reference" class="form-control" value="{{referenceclient}}" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Nom client:</label>
+              <input disabled type="text" placeholder="Nom" class="form-control" [(ngModel)]="client.nameC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Catégorie de Client :</label>
+              <input disabled type="text" placeholder="Catégorie de Client" class="form-control"
+                [(ngModel)]="typeClient" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Email :</label>
+              <input disabled type="email" placeholder="reference" class="form-control" [(ngModel)]="client.emailC" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+              <input disabled type="text" placeholder="Adresse" class="form-control" [(ngModel)]="client.adresseC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Téléphone :</label>
+              <input disabled type="number" placeholder="Téléphone" class="form-control" [(ngModel)]="client.tlfC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Unité de transaction :</label>
+              <ng-select name="uniteTransaction" placeholder="Unité de transactiont" [appendTo]="'body'"
+                [items]="unitesTransaction" bindValue="idT" style="width:100%;" bindLabel="sigle"
+                [(ngModel)]="demandePrix.idUniteTransaction">
+              </ng-select>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Mode de paiement :</label>
+              <ng-select name="modesPaiements" placeholder="Mode de paiement" [appendTo]="'body'"
+                [items]="modesPaiements" style="width:100%;" bindLabel="typePaiement" [(ngModel)]="modesPaiement">
+              </ng-select>
+            </div>
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Type de paiements :</label>
+              <ng-select name="condition " placeholder="Type de paiement" [(ngModel)]="demandePrix.typePaiement">
+                <ng-option value="Date fixe"> Date fixe</ng-option>
+                <ng-option value="Par période">Par période</ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-8 col-lg-8 input-group-sm">
+              <!-- <div *ngIf="e=='3'">-->
+              <label _ngcontent-udb-c31="" class="label">Adresses des livraisons :</label>
+              <ng-select name="adressesC" placeholder="Adresses des livraisons" [appendTo]="'body'" [items]="adressesC"
+                style="width:100%;" [multiple]=true bindLabel="fullNameAdresse"
+                [(ngModel)]="demandePrix.demandePrixAdresseDeLivraison" [formControl]="demandeLivraisonID"
+                [closeOnSelect]="false">
+                <ng-template ng-option-tmp let-item="item" let-index="index" let-item$="item$">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" [ngModel]="item$.selected" class="custom-control-input"
+                      [ngModelOptions]="{standalone: true}" />
+                    <label class="form-check-label ml-2 custom-control-label">{{item.fullNameAdresse}}</label>
+                  </div>
+                </ng-template>
+              </ng-select>
+              <!--  </div>
+              <div *ngIf="e=='1'">
+                <label _ngcontent-udb-c31="" class="label">Adresses des livraisons :</label>
+                <ng-select placeholder="Adresses des livraisons" [appendTo]="'body'" style="width:100%;" [multiple]=true
+                  [items]="adresses" bindLabel="fullNameAdresse">
+                  <!--<ng-option [(value)]="list" *ngFor="let list of adresses">
+                    {{list.adresse}}-{{list.ville}}-{{list.codePostal}}-{{list.pays}}
+                  </ng-option>-->
+              <!--   </ng-select>
+            </div>-->
+            </div>
+
+
+          </div>
+
+
+
+          <div *ngIf="demandePrix.typePaiement=='Date fixe'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                  <input name="datePaiement" type="date" placeholder="Date de paiement" class="form-control"
+                    [(ngModel)]="demandePrix.datePaiement" />
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="demandePrix.typePaiement=='Par période'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Startégie de paiement :</label>
+                  <ng-select name="typeMontant" placeholder="Startégie de paiement"
+                    [(ngModel)]="conditionPaiement.strategie" (change)="changeConditionPaiement()">
+                    <ng-option value="Fixation en pourcentage">Fixation en pourcentage</ng-option>
+                    <ng-option value="Fixation en jours">Fixation en jours</ng-option>
+                  </ng-select>
+                </div>
+                <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label"> Condition de paiement :</label>
+                  <ng-select name="conditionPaiements" placeholder="Condition de paiement" [appendTo]="'body'"
+                    style="width:100%;" [(ngModel)]="client.conditionsDePaiements" [items]="conditionPaiements"
+                    bindLabel="listCondition">
+                  </ng-select>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+          <nb-card>
+            <nb-card-body>
+              <!--   <ng2-smart-table (custom)="onCustom($event)" [settings]="settings" [source]="source"
+                (editConfirm)="show($event)">
+              </ng2-smart-table>-->
+              <div ng-repeat="let listProductForm of listProductForm" id="main-form-content1">
+                <form [formGroup]="listProductForm">
+                  <div class="row full-name-inputs">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="pull-right" style="float: right;">
+                        <button type="button" class="btn btn-sm btn-success" style="width: 70px;" title="Add More"
+                          (click)="addItem()">+</button>
+                      </div><br><br>
+                    </div><br>
+                    <div class="col-md-12 col-lg-12">
+                      <div formArrayName="listeProduct">
+                        <div *ngFor="let item1 of listeProductArray.controls; let j = index;">
+                          <div [formGroupName]="j">
+                            <div class="row full-name-inputs label">
+                              <div class="input-group col-md-4   input-group-sm">
+                                <label for="idProduct">Produit :</label>
+                              </div>
+
+                              <div class="input-group col-md-4   input-group-sm">
+                                <label for="idUnite">Unité de mesure :</label>
+                              </div>
+
+                              <div class="input-group col-md-4 input-group-sm">
+                                <label for="quantity">Quantité :</label>
+                              </div>
+
+                            </div>
+                            <div class="row full-name-inputs">
+
+                              <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                                <ng-select name="idProduct" placeholder="Produit'" [items]="products"
+                                  style="width:100%;" formControlName="idProduct" bindValue="idProduct"
+                                  bindLabel="designation">
+
+                                </ng-select>
+                                <div class="help-block"></div>
+                              </div>
+
+
+                              <div class="form-group col-md-4 col-lg-4 input-group-sm">
+
+                                <ng-select name="idUnite" [items]="unitiesMesureProduct" placeholder="Unité de mesure"
+                                  formControlName="idUnite" (focus)="changeUniteMesureParProduct(j)" bindValue="idUnite"
+                                  bindLabel="unite" style="width:100%;">
+                                </ng-select>
+                              </div>
+                              <div class="input-group col-md-3 col-lg-3 input-group-sm">
+
+                                <input type="number" placeholder="Quantité" name="quantity" class="form-control"
+                                  formControlName="quantity" />
+                              </div>
+                              <div class="remove col-md-1 col-lg-1 " *ngIf=" j!=0 ">
+                                <button title="Remove" (click)="removeItem(j)" nbButton status="danger" size="xsmall"
+                                  style="height: 2.25rem;padding: 0px 5px 0px 5px;margin-top: 0.125rem;"> <i
+                                    class="fas fa-trash-alt"></i></button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+          (click)="onAddRCM(listProductForm.value) ">{{ARCM}}</button>
+        <button (click)="onclose()" nbButton status="danger"
+          style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

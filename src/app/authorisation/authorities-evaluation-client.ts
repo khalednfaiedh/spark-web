@@ -1,0 +1,9 @@
+export class AuthoritiesEvaluationClient {
+
+    static EVALUATION_CLIENT_LIST_VALUE: string = "EVALUATION_CLIENT";
+    static EVALUATION_CLIENT_VALUE: string = "EVALUATION_CLIENT";
+    static EVALUATION_CLIENT_ADD_VALUE: string = "EVALUATION_CLIENT";
+    static EVALUATION_CLIENT_UPDATE_VALUE: string = "EVALUATION_CLIENT";
+    static EVALUATION_CLIENT_DELETE_VALUE: string = "EVALUATION_CLIENT";
+
+}

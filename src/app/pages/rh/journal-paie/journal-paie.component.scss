@@ -1,0 +1,26 @@
+.headerStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .searshStyle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  th ,td {
+    text-align: center;
+   
+}
+
+.button-imprim{
+   padding: 7px 4px;
+   border-radius: 4px;
+}
+i.fa.fa-print{
+   margin-right: 5px;
+}
+nb-card{
+  font-family: initial;
+}
+

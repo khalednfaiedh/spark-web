@@ -1,0 +1,187 @@
+<nb-card>
+  <nb-card-body>
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <button nbButton status="primary" (click)="openFichePaie()"><i class="fas fa-angle-double-left"></i> Fiche de
+          paie </button>
+      </div>
+      <div>
+        <h4 style="text-align: center;">Mois: {{mois}}-{{annee}} &nbsp;
+          <button nbButton (click)="downloadPDF2()" size="small" status="warning"><i class="fa fa-print"
+              aria-hidden="true"></i>&nbsp; Imprimer</button> &nbsp;
+          <button (click)="exportJournamToExcel()" nbButton size="small" status="info"><i class="fa fa-download"
+              aria-hidden="true"></i>&nbsp; Excel</button>
+        </h4>
+      </div>
+      <div>
+        <button nbButton status="primary" [hidden]="!authoritiesViewCNSS" (click)="openDecCNSS()">Déclaration CNSS <i
+            class="fas fa-angle-double-right"></i> </button>
+      </div>
+    </div>
+
+    <nb-card style="margin-top: 0.5rem;">
+      <nb-card-header class="text-center">
+      <h3> Journal de paie  </h3>  
+      </nb-card-header>
+      <nb-card-body>
+        <div>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col" class="td-style">Matricule</th>
+                <th scope="col" class="td-style">Nom </th>
+                <th scope="col" class="td-style">Prénom </th>
+                <th scope="col" class="td-style">Salaire Brut</th>
+                <th scope="col" class="td-style">R.CNSS</th>
+                <th scope="col" class="td-style">Imposable</th>
+                <th scope="col" class="td-style">IRPP</th>
+                <th scope="col" class="td-style">Contribution sociale</th>
+                <th scope="col" class="td-style">Salaire net</th>
+                <th scope="col" class="td-style">Avance</th>
+                <th scope="col" class="td-style">Echéance(prêt)</th>
+                <th scope="col" class="td-style">Net à payer </th>
+                <th scope="col" *ngIf='authoritiesViewPaiement || authoritiesAddPaiement'>
+                  <button [hidden]="!authoritiesViewPaiement" (click)='open()' nbButton
+                    style="padding: 0.3rem 1rem;">Suivi Paiement <i class="fas fa-angle-double-right"></i> </button>
+                  <br>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let  item  of journal.fichePaie;">
+                <td class="td-style">{{item.matricule}}</td>
+                <td class="td-style">{{item.nom}} </td>
+                <td class="td-style">{{item.prenom}} </td>
+                <td class="td-style">{{item.salaireBrut | number : '0.3-3' }}</td>
+                <td class="td-style">{{item.cnss| number : '0.3-3'}}</td>
+                <td class="td-style">{{item.netSocialMensuel | number : '0.3-3'}}</td>
+                <td class="td-style">{{item.irpp | number : '0.3-3'}}</td>
+                <td class="td-style">{{item.impotMensuelle | number : '0.3-3'}}</td>
+                <td class="td-style">{{item.net | number : '0.3-3'}}</td>
+                <td class="td-style">{{item.avanceMens| number : '0.3-3'}}</td>
+                <td class="td-style">{{item.echeance| number : '0.3-3'}}</td>
+                <td class="td-style">{{item.netFinal| number : '0.3-3'}}</td>
+                <td *ngIf='authoritiesViewPaiement || authoritiesAddPaiement'>
+                  <input [hidden]="!authoritiesAddPaiement" type="checkbox" [checked]="getSelection(item)"
+                    (change)="changeHandler(item,$event)" [disabled]="item.checked">
+                  <!-- [disabled]="Paiement.etat == 2"     [disabled]="chekPayed(item)" -->
+                </td>
+                <!-- <td> <button (click)="chekPayed(item)">test</button></td> -->
+              </tr>
+            </tbody>
+            <tr style="background-color:#ebeff5 ;">
+              <th colspan="3">Total</th>
+              <th>{{journal.totalBrut | number:'0.3-3':'fr' }}</th>
+              <th>{{journal.totalCNSS | number : '0.3-3'}}</th>
+              <th>{{journal.totalImposable | number : '0.3-3'}}</th>
+              <th>{{journal.totalIRPP | number : '0.3-3'}}</th>
+              <th>{{journal.totalContributionSocial | number : '0.3-3'}}</th>
+              <th>{{journal.totalNet | number : '0.3-3'}}</th>
+              <th>{{journal.totalAvanceMens | number : '0.3-3'}}</th>
+              <th>{{journal.totalEcheance | number : '0.3-3'}}</th>
+              <th>{{journal.totalNetFinal | number : '0.3-3'}}</th>
+              <td style=" padding: 0.25rem;" *ngIf='authoritiesViewPaiement || authoritiesAddPaiement'>
+                <div [hidden]="!authoritiesAddPaiement">
+                  <input type="checkbox" [disabled]="check_all" [(ngModel)]="select_all" (change)="onSelectAll($event)">
+                  Sélectionner tout <br>
+                  <button [disabled]="size == 0" type="submit" (click)="payer()" nbButton status="success"
+                    style="padding: 0.1rem 3rem;">Payer <i class="fa fa-check" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </table>
+        
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>
+
+<!-- <nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-10 col-lg-10 searshStyle">
+        <ng-select
+        placeholder="Mois"
+        [items]="mois"
+        name="mois"
+        [appendTo]="'body'"  
+       [(ngModel)]="moisCourant" >
+      </ng-select>
+     <ng-select
+     placeholder="Année"
+     [items]="annee"
+     name="annee"
+     [appendTo]="'body'"  
+    [(ngModel)]="anneeCourante" >
+   </ng-select>
+   <button nbButton status="info" (click)="afficherJournal()" [disabled]="!(moisCourant && anneeCourante)" 
+   style="padding: 0.5rem 1rem;">
+     Chercher
+   </button>
+  </div>
+  <div class="col-md-2">
+    <div class="imprimStyle">
+      <button (click)="downloadPDF2()" class="button-imprim"><i class="fa fa-print" aria-hidden="true">&nbsp; Imprimer</i></button>
+    </div>
+   </div>
+    </div>
+    <div  id="contentJournal">
+    <nb-card>
+      <nb-card-header class="headerStyle">
+       JOURNALE DE PAIE :  {{moisCourant}}/{{anneeCourante}}
+      </nb-card-header>
+      <nb-card-body>
+        <table class="table table-bordered table-hover" >
+          <thead>
+            <tr>
+              <th scope="col" class="td-style">Matricule</th>
+              <th scope="col" class="td-style">Nom </th>
+              <th scope="col" class="td-style">Prenom </th>
+              <th scope="col"class="td-style">Salaire Brut</th>
+              <th scope="col" class="td-style">R.CNSS</th>
+              <th scope="col" class="td-style">Imposable</th>
+              <th scope="col" class="td-style">IRPP</th>
+              <th scope="col" class="td-style">Contribution sociale</th>
+              <th scope="col" class="td-style">Salaire net</th>
+              <th scope="col" class="td-style">Avance</th>
+              <th scope="col" class="td-style">Echéance(pret)</th>
+              <th scope="col" class="td-style">Net à payer </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let  item  of journal.fichePaie;" >
+              <td class="td-style">{{item.matricule}}</td>
+              <td class="td-style">{{item.nom}} </td>
+              <td class="td-style">{{item.prenom}}  </td>
+              <td class="td-style">{{item.salaireBrut}}</td>
+              <td class="td-style">{{item.cnss}}</td>
+              <td class="td-style">{{item.netSocialMensuel}}</td>
+              <td class="td-style">{{item.irpp}}</td>
+              <td class="td-style">{{item.impotMensuelle}}</td>
+              <td class="td-style">{{item.net}}</td>
+              <td class="td-style">{{item.avanceMens}}</td>
+              <td class="td-style">{{item.echeance}}</td>
+              <td class="td-style">{{item.netFinal}}</td>
+            </tr>
+          </tbody>
+          <tr style="background-color:#ebeff5 ;">
+            <th colspan="3">Total</th>
+            <th>{{journal.totalBrut}}</th>
+            <th>{{journal.totalCNSS}}</th>
+            <th>{{journal.totalImposable}}</th>
+            <th>{{journal.totalIRPP}}</th>
+            <th>{{journal.totalContributionSocial}}</th>
+            <th>{{journal.totalNet}}</th>
+            <th>{{journal.totalAvanceMens}}</th>
+            <th>{{journal.totalEcheance}}</th>
+            <th>{{journal.totalNetFinal}}</th>
+          </tr>
+        </table>   
+          </nb-card-body>
+    </nb-card>
+    
+  </div>
+  </nb-card-body>
+</nb-card> -->

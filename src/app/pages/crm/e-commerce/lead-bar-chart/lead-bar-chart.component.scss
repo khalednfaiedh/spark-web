@@ -1,0 +1,7 @@
+@import '../../../../@theme/styles/themes';
+@import '~@nebular/theme/styles/global/typography/typography';
+@include nb-install-component() {
+    display: flex;
+    flex-direction: column;
+    flex: 0.1;
+}

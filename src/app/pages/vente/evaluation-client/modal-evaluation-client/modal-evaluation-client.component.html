@@ -1,0 +1,86 @@
+
+      <div class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+        <div class="row">
+          <div class="col-lg-12" style="width:600px; height: 300px">
+
+            <h2 style="text-align: center;">Evaluation CMD{{idCMD}} : {{note}}/10</h2><br><br><br>
+            <form action="" style="width:100%;" [formGroup]="critereForm">
+              <div class="col">
+                <div class="row" formArrayName="critere">
+                  <div class="col-md-12 col-lg-12" *ngFor="let group of critereArray.controls; let i = index;"
+                    [formGroupName]="i">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col-8">
+                            <h3>Critére {{i+1}} :</h3>
+                          </div>
+                          <div class="col-4 control-buttons">
+                            <img src="/assets/images/add.svg" alt="" (click)="addCritere()">
+                            <img src="/assets/images/remove.svg" alt="" width="24" height="24"
+                              (click)="removeCritere(i)">
+                          </div>
+                        </div>
+                        <hr>
+                      </div>
+                      <!--({{(ep.rate * ep.percentage)/100 }}) [(rate)]="ep.rate"-->
+
+                      <div class="col-12">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <ng-select type="text" formControlName="name" [items]="criteres" class="{'form-control': true,
+                           'is-invalid': group.controls.name.invalid && group.controls.name.touched,
+                           'is-valid': group.controls.name.valid}" id="name" placeholder="Critére" [appendTo]="'body'"
+                                bindLabel="designation">
+                              </ng-select>
+                            </div>
+                          </div>
+
+                          <div class="col">
+                            <div class="form-group">
+                              <ngb-rating formControlName="percentage">
+                                <ng-template let-fill="fill" let-index="index">
+                                  <span class="star" [class.filled]="fill === 100" [class.bad]="index<3"
+                                    [class.nice]="index>6">&#9733;</span>
+                                </ng-template>
+                              </ngb-rating>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Note :</label>
+                              {{group.controls.percentage.value}} /10
+                            </div>
+                          </div>
+
+                          <div class="col">
+                            <div class="form-group">
+                              <button class="btn btn-sm btn-outline-primary mr-2"
+                                (click)="group.controls.percentage.setValue(null)">Clear</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <hr>
+                  </div>
+                </div>
+                <div style="text-align:right;">
+                  <button nbButton [disabled]="critereForm.invalid"
+                    style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="valider()">Evaluer</button>
+                  <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                    (click)="addEvaluation()">valider</button>
+
+                  <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                    (click)="close()">Fermer</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>

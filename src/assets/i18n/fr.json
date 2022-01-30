@@ -1,0 +1,54 @@
+{
+    "bilan": {
+        "list": "Liste des Bilans"
+    },
+    "datatable": {
+        "noDataMessage": "Aucune Donnée"
+    },
+    "taxe":{
+        "list": "Liste des taxes"
+    },
+    "categoryM": {
+        "list": "Liste des catégories machines",
+        "list2":"liste des sous catégories machines",
+        "nom1": "Nom : ",
+        "nom2": "Nom de catégorie ",
+        "mere1":" Mère :",
+        "mere2":"Nom de catégorie mère:",
+        
+        "add":"Ajouter une catégorie",
+        "edit":"Modifier la catégorie",
+        "show":"Afficher une catégorie",
+        "delete":"Vous êtes sûr(e) de vouloir supprimer cette catégorie?"       
+    },
+    "machine":{
+        "list":"Liste des machines ",
+        "cat":"Catégorie",
+        "code":"Code",
+        "marque":"Marque",
+        "modele":"Modèle",
+        "sn":"Numero de Serie",
+        "fn":"Fonction",
+        "date1":"Date de fabrication",
+        "date2":"Date première mise en circulation",
+        "date3":"Date d'achat",
+        "prix":"prix d'achat",
+        "unite":"Monnaie",
+        "etat":"Etat",
+        "dur":"Durée Amortissement",
+        "dur1":"Durée Amortissement",
+        "cout":" % Coût d’amortissement",
+        "val":"Valeur de cadence",
+        "cad":"Unité de cadence",
+        "hor":"Unité Horaire de cadence",
+        "desc":"Description",
+        "util":"Coût d'utilisation",
+        "util1":"Prix Achat * %Cout d'Amortissement par periode",
+        "cadence":"Cadence",
+        "add":"Ajouter une machine",
+        "edit":"Modifier la machine",
+        "show":"Afficher une machine",
+        "delete":"Vous êtes sûr(e) de vouloir supprimer cette machine?"   
+
+    }
+}

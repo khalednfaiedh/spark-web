@@ -1,0 +1,7 @@
+export class AuthoritiesDeclarationCNSS {
+    static DECLARATION_CNSS_LIST_VALUE: string = "DECLARATION_CNSS";
+    static DECLARATION_CNSS_VALUE: string = "DECLARATION_CNSS";
+    static DECLARATION_CNSS_ADD_VALUE: string = "DECLARATION_CNSS";
+    static DECLARATION_CNSS_UPDATE_VALUE: string = "DECLARATION_CNSS";
+    static DECLARATION_CNSS_DELETE_VALUE: string = "DECLARATION_CNSS";
+}

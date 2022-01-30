@@ -1,0 +1,63 @@
+
+<nb-accordion [hidden]='blLength < 1' style="margin-bottom: 10px;">
+  <nb-accordion-item>
+        <nb-accordion-item-header>
+              Vente - bon(s) livraison non livré &nbsp;&nbsp;
+              <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ blLength }} </span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+              <ng2-smart-table class="full-width text-center"
+               [settings]="settingsBl"
+               [source]="blListe"
+               (custom)="onCustomBl($event)">
+              </ng2-smart-table>
+        </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+ <nb-accordion [hidden]='dLength < 1' style="margin-bottom: 10px;">
+  <nb-accordion-item>
+        <nb-accordion-item-header>
+              GPAO - demande(s) produits &nbsp;&nbsp;
+              <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ dLength }}</span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+              <ng2-smart-table class="full-width text-center" 
+                    [settings]="settingsDem"
+                    [source]="demandeListe"
+                    (custom)="onCustomDem($event)">
+              </ng2-smart-table>
+        </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+<!--
+<nb-accordion [hidden]='prodLength < 1' style="margin-bottom: 10px;">
+  <nb-accordion-item>
+        <nb-accordion-item-header>
+              GPAO - Bon de livraison production &nbsp;&nbsp;
+              <span class="badge badge-warning" style="padding: 0.5rem 0.5rem;"> {{ prodLength }}</span>
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>
+              <ng2-smart-table class="full-width text-center" 
+                    [settings]="settingsProd" [source]="blProd"
+                    (custom)="onCustomProd($event)">
+              </ng2-smart-table>
+        </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion> -->
+
+
+<nb-card>
+<nb-card-header>
+  Liste des soties de stock
+ </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table
+    class="full-width text-center"
+    [settings]="settings" 
+    [source]="source"
+    (custom)="onCustom($event)" 
+    (deleteConfirm)="onDeleteConfirm($event)">
+   </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

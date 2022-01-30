@@ -1,0 +1,84 @@
+<div class="col-md-12 col-lg-12" style="width:750; height: 500">
+  <div class="row">
+    <div class="col-lg-12" style="width:750; height: 400">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Facture :</label>
+              <input disabled type="text" placeholder="Facture" class="form-control" value={{referenceFacture}} />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Montant à payer :</label>
+              <input disabled type="text" placeholder="Facture" class="form-control"
+                [(ngModel)]="suiviPaiement.montantPayer" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Montant rester :</label>
+              <input disabled type="text" placeholder="Facture" class="form-control"
+                [(ngModel)]="suiviPaiement.montantReste" (click)="montantReste()" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Statut de paiement :</label>
+              <input type="text" placeholder="Statut de paiement" class="form-control" disabled
+                [(ngModel)]="suiviPaiement.statutPaiement" (click)="changeStatutPaiement()" />
+            </div>
+          </div>
+
+
+          <div *ngIf="suiviPaiement.typePaiememnt=='Date fixe'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Mode de paiement :</label>
+                  <input type="text" placeholder="Mode de paiement" class="form-control" disabled
+                    [(ngModel)]="suiviPaiement.modePaiement" />
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                  <input type="text" placeholder="Date de paiement" class="form-control" disabled
+                    [(ngModel)]="suiviPaiement.datePaiement" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="suiviPaiement.typePaiement=='Par période'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Mode de paiement :</label>
+                  <input type="text" placeholder="Mode de paiement" class="form-control" disabled
+                    [(ngModel)]="suiviPaiement.modePaiement" />
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Echéance de paiement :</label>
+                  <input disabled type="text" placeholder="Echéance de paiement" class="form-control"
+                    [(ngModel)]="suiviPaiement.designation" />
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Période de paiement :</label>
+                  <input disabled type="text" placeholder="Période de paiement " class="form-control"
+                    [(ngModel)]="suiviPaiement.option" />
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Sur(Nombre de mois ) :</label>
+                  <input disabled type="text" placeholder="Nombre de mois" class="form-control"
+                    [(ngModel)]="suiviPaiement.nbrmois" />
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+
+        <button (click)="onclose()" nbButton size="xsmall" status="danger"
+          style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+      </div>
+    </div>
+  </div>

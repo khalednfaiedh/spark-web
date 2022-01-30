@@ -1,0 +1,60 @@
+<div class="col-md-12 col-lg-12" style="width:950px;height: 500px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Bon de commande:</label>
+              <ng-select name="bonDeCommande" [items]="commandes" bindLabel="reference"
+                placeholder="Bon de commande" [(ngModel)]="bonDeLivraisonAchat.commande"
+                (change)="onChargeBC($event, documentGrp.value)" [appendTo]="'body'" disabled style="width:100%;">
+              </ng-select>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Fournisseur:</label>
+              <ng-select name="fournisseurs" [items]="fournisseurs" bindValue="id" bindLabel="nameF"
+                placeholder="Fournisseur" [(ngModel)]="bonDeLivraisonAchat.idFournisseur" disabled [appendTo]="'body'" style="width:100%;">
+              </ng-select>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date de bon de commande:</label>
+              <input placeholder="Date de bon de commande" name="dateCommande"
+                [(ngModel)]="bonDeLivraisonAchat.dateCommande" class="form-control" [nbDatepicker]="dateCommande"
+                i18n="@@dateCommande" disabled>
+              <nb-datepicker #dateCommande></nb-datepicker>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date de livraison:</label>
+              <input placeholder="Date de livraison" name="dateLivraison"
+                [(ngModel)]="bonDeLivraisonAchat.dateLivraison" class="form-control" [nbDatepicker]="dateLivraison"
+                i18n="@@dateLivraison" disabled>
+              <nb-datepicker #dateLivraison></nb-datepicker>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Magasin :</label>
+              <ng-select name="magasin" [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin"
+                placeholder="Magasin" [(ngModel)]="bonDeLivraisonAchat.idMagasin" (change)="onChargeAdresse($event)"
+                [appendTo]="'body'" style="width:100%;" disabled>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse de livraison:</label>
+              <input placeholder="Date Livraison" name="dateLivraison" [(ngModel)]="bonDeLivraisonAchat.lieuLivraison"
+                class="form-control" i18n="@@startdate" disabled>
+            </div>
+          </div>
+          <h5 style="text-align: center;">Liste des produits</h5>
+          <div class="row">
+            <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source">
+              </ng2-smart-table>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

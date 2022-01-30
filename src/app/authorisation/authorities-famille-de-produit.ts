@@ -1,0 +1,9 @@
+export class AuthoritiesFamilleDeProduit {
+
+    static FAMILLE_DE_PRODUIT_LIST_VALUE: string = "FAMILLE_DE_PRODUIT";
+    static FAMILLE_DE_PRODUIT_VALUE: string = "FAMILLE_DE_PRODUIT";
+    static FAMILLE_DE_PRODUIT_ADD_VALUE: string = "FAMILLE_DE_PRODUIT";
+    static FAMILLE_DE_PRODUIT_UPDATE_VALUE: string = "FAMILLE_DE_PRODUIT";
+    static FAMILLE_DE_PRODUIT_DELETE_VALUE: string = "FAMILLE_DE_PRODUIT";
+
+}

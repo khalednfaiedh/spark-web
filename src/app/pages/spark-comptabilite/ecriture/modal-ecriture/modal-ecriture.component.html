@@ -1,0 +1,234 @@
+ <div class="card-row">
+
+
+ <nb-card >
+<nb-card-header>
+
+  <div>
+    <div style=" text-align:   left;" >
+    <button nbButton  (click)="previousState()"  status="info"><span>&#x2190;</span></button>
+    </div>
+  <div style=" text-align:  right;" >
+    <button  size="small" nbButton hero status="danger" (click)="ouvrirModeleEcriture()" class="submit"
+    >ouvrir Modéle</button>&nbsp;
+    <button size="small" nbButton class="btn btn-hero-success input-group-text"    (click)=onClick2()> Journaux </button>  
+  </div>
+</div>
+  <h4 class="text-center">
+      Exercice:   {{exercice.designation}}-{{exercice.annee}}&nbsp;&nbsp; /&nbsp;&nbsp; Journal:
+ 
+{{journal.designation}}-Mois:{{journal.mois}}({{exercice.annee}})
+</h4>
+</nb-card-header>
+
+
+<nb-card-body>
+  <div  class="row" >
+    <div  class="col-md-3"  >  <h3 > TOTAL DÉBIT:{{getTotalDebit() | transformeNumber }} {{money}}</h3></div>
+    <div   class="col-md-3 offset-md-2"  > <h3>TOTAL CRÉDIT:{{getTotalCredit() | transformeNumber}} {{money}}</h3> </div>
+    <div    class="col-md-2 offset-md-2">  <h3>ÉCART:{{getEcartDebitCredit() | transformeNumber}} {{money}}</h3></div>
+  
+     <!-- <pre>{{orderForm.value.items | json }}</pre>  -->
+  </div>
+
+ <hr>
+  
+    
+        <form [formGroup]='orderForm' #monFormulaire1=ngForm  > 
+   
+          <br>
+          <div class="row full-name-inputs label">
+              
+           <div class="input-group col-md-12">
+              <div class="input-group col-md-1   input-group-sm">
+                  <label for="tradeCode"> Numéro  Ecriture</label>
+                </div>
+            <div class="input-group col-md-1   input-group-sm">
+              <label for="tradeCode"> Numéro Pièce</label>
+            </div>
+            <div class="input-group col-md-3 input-group-sm">
+              <label for="jurform" i18n="@@jurform"> Date </label>
+            </div>
+            <div class="input-group col-md-7 input-group-sm">
+              <label for="nature" i18n="@@nature"> Libellé </label>
+            </div>
+          </div>
+  
+          </div>
+   
+          <div class="row full-name-inputs">
+              
+        <div class="input-group col-md-12">
+             
+            <div class="input-group col-md-1  input-group-sm">
+                <input type="number"  name="numeroEcriture"  formControlName="numeroEcriture"      class="form-control" required> 
+              </div>  
+  
+            <div class="input-group col-md-1  input-group-sm">
+              <input type="number"  name="numeroPiece"  formControlName="numeroPiece"       class="form-control" required> 
+            </div> 
+  
+            <div class="input-group col-md-3 col-lg-3 input-group-sm">
+              <input nbInput class="form-control" [nbDatepicker]="date" formControlName="date"     name="date" />
+              <nb-datepicker #date></nb-datepicker> 
+            </div> 
+  
+            <div class="input-group col-md-7   input-group-sm">
+                <input type="text" name="libelle" formControlName="libelle"   class="form-control" /> 
+            </div>
+      </div>   
+          </div>
+          <br>
+      
+         
+          <!-- <div formArrayName="items" *ngFor="let item of formData.controls; let i = index; let c = count">
+            <div class="line" [formGroupName]="i">
+             [textMask]="mask2"    -->
+    
+  
+           
+              <div class="row full-name-inputs label">
+  
+          
+               
+                <div class="input-group col-md-5   input-group-sm">
+                  <label for="tradeCode">  <h5> Compte Générale</h5></label>
+                </div>
+                  
+  
+                <div class="input-group col-md-4  input-group-sm">
+                  <label for="matriCode"><h5>Compte Tiers </h5></label>
+                </div>
+                
+                
+               
+                <div class="input-group col-md-1  input-group-sm">
+                  <label for="nature" i18n="@@nature"> <h5>Débit </h5></label>
+                </div>
+             
+  
+               <div class="input-group col-md-1   input-group-sm">
+                  <label for="nature" i18n="@@nature"><h5> Crédit </h5></label>
+                </div>
+               
+              
+            </div>   
+              <br>
+   
+   <div formArrayName="items" *ngFor="let item of formData.controls; let i = index; let c = count">
+      <div class="margin-botn" [formGroupName]="i">       
+              <div class="row full-name-inputs label">
+                 
+                <div class="input-group col-md-3 col-lg-5 input-group-sm">
+                     <ng-select placeholder="Choisir..."
+                     [items]="comptesGeneral" 
+                     bindLabel="nameCode" 
+                     [clearable]=true   
+                     #Compte style="width: 100%"
+                     (change)="getIndex(i)"  
+                    formControlName="compteGeneral">
+                    </ng-select> 
+                  </div>
+  
+              <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <ng-select 
+                    placeholder="Choisir..."
+                    [items]="comptesTiers"
+                    bindLabel="nameCode"
+                    formControlName="compteTiers" 
+                    (focus)="refreshCompteTiers(item)"
+                     (change)="getIndex(i)"  
+                    [clearable]=true
+                     #Compte 
+                     style="width: 90%;">
+                    </ng-select> 
+                      <span class="input-group-append">
+                      <button (click)="openWindowCompteTiers()" class="btn btn-hero-primary input-group-text" style=" height:80%;width: 10%;">
+                        +
+                      </button>
+                    </span>  
+        </div>
+  
+  
+         <div class="input-group col-md-1 col-lg-1 input-group-sm">
+                    <input    name="debit"  onclick="this.select();" formControlName="debit"  class="form-control" style="height: 90%"
+               (change)="changeDebit2(i)"         />
+                </div> 
+                
+                <!-- (blur)="updateTotalDebit(i)" -->
+                <div class="input-group col-md-1 col-lg-1 input-group-sm">
+                  
+                    <input    name="credit" id="id" onclick="this.select();" formControlName="credit"   class="form-control" style="height: 90%"
+                    (change)="changeCredit(i)"   />
+              
+   
+                </div>
+                
+                <div class="input-group col-md-1 col-lg-1 input-group-sm">
+                    <button  nbButton status="danger" type="btn" title="Supprimer la ligne" *ngIf="c > 1" (click)="deleteItemLine($event, i)" style="height: 90%">
+                        <i  style="font-size: 1.3rem;" class="nb-trash"></i></button>  
+                       
+                      
+                  </div> 
+                   
+  
+  
+              </div>
+            </div>
+  
+          </div>
+   
+      
+  
+     
+  
+  
+         
+  
+        </form>
+  
+  
+  
+        <div>
+          
+          <!-- <button type="button" (click)="addItem($event)">Ajouter une ligne</button> -->
+        </div>
+  
+        <!-- <div *ngFor="let input of inputs; let i = index">
+        <input [placeholder]="'Input ' + i" type="number" #numInput (keydown)="numberInput($event, numInput.value)" >
+      </div> -->
+        <!-- <input type="text" class="form-control" (input)="onSearchChange($event.target.value)"> 
+        <input type="text" [ngModel]="mymodel" (ngModelChange)="valuechange($event)" />
+    {{mymodel}} -->
+  
+        <!-- <table>
+        <tr *ngFor="let x of names;let i = index;">
+          <td>{{ i+ 1 }}</td>
+          <td><input [(ngModel)]="names[i].Name">{{x.Name}}</td>
+        </tr>
+     </table>  -->
+  
+      
+  
+
+
+  <div style="text-align: right;" >
+    <button class="btn" nbButton status="success"  [disabled]="!monFormulaire1.valid ||  validForm() "   (click)="submitForm(orderForm.value)"> {{A}}</button>&nbsp;
+    <button class="btn" nbButton status="warning"  (click)="addItem($event)" > Ajouter 4 lignes </button>
+  
+  
+  </div>
+</nb-card-body>
+
+ </nb-card>
+ 
+</div>
+
+ 
+ 
+
+<!-- fin içi -->
+
+   
+ 
+  

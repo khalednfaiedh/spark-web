@@ -1,0 +1,215 @@
+<div style="width:1100px; height: 90vh;">
+      <div id="contentToConvertRecap">
+      <nb-card >
+        <nb-card-body>
+          <div>
+          <img src="../../../../../assets/images/cnss.png" alt="cnss-logo" width="100%"> 
+           <h1>  ‫‫كشف‬ ‫إجمالي ‬‫للأجور‫المصرح‬‫ بها ‬</h1>
+           <h1>Etat Récapitulatif des Salaires Déclarés</h1>
+          </div>
+          <div class="row">
+             <div class="col-md-6">
+              <div  style="display: flex;">
+              <table class="table table-bordered"style="width: 55%;">
+                <tr>
+                  <td>Numéro Employeur <br>
+                   ‫رقم ‫انخراط‬  المؤجر   ‬ 
+                  
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{entreprise.numCNSS}} </td>
+                </tr>
+              </table>
+
+              <table style=" margin-left: 3%; width: 40%;" class="table table-bordered">
+                <tr>
+                  <td>Bureau <br>
+                   ‫‫المكتب‬   ‬ 
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                </tr>
+              </table>
+            </div>
+            <div style="display: flex;">
+              <table class="table table-bordered"style="width: 55%;">
+                <tr>
+                  <td>Triméstre<br>
+                    ‫الثلاثية‬
+                  </td>
+                  <td>Année <br>
+                    ‫‫السنـة‬ ‬ 
+                   </td>
+                </tr>
+                <tr>
+                  <td>0{{trimestre}}</td>
+                  <td>{{annee}}</td>
+                </tr>
+              </table>
+
+              <table style=" margin-left: 3%; width: 40%;" class="table table-bordered">
+                <tr>
+                  <td>Code d’exploitation <br>
+                     ‫رمز‬‫‫ الاستغلال‬    ‬ 
+                  </td>
+                </tr>
+                <tr>
+                  <td>{{codeExpl}}</td>
+                </tr>
+              </table>
+
+            </div>
+             </div> 
+             <div class="col-md-6">
+              <div class=" row description-employeur">
+                <div class="col-md-12" style="display: flex;height: 0rem;">
+                <p style="text-align: left;font-family: initial;margin-top: 1rem;">NOM ET ADRESSE DE L'EMPLOEUR</p>
+                <p style= "margin-left: 180px;font-family: initial;margin-top: 1rem;"> ‫‫اسم وعنوان‬ المؤجر‬ </p>
+              </div>
+                <div class="col-md-12">
+                  <p style="margin: 0rem 1rem;" >
+                    <strong> {{entreprise.socialReason}} </strong> <br>
+                  {{entreprise.officeAddress}}</p>
+                </div>
+              </div>  
+            </div> 
+          </div>
+          <div>
+            <table style=" border: 0 ;margin-top: 5% ;" class="table table-bordered">
+              <tr >
+                <td rowspan="2"> <strong>  ‫ الأجور‬ ‫المصرح‬ ‫بها‬ ‬<br>
+                  Salaires déclarés  </strong>
+                </td>
+                <td colspan="3" > Cotisations  ‫الاشتراكات‬ </td>
+               
+              </tr>
+              <tr>
+                <td>Régime ‫النظـام‬</td>
+                <td>Taux ‫النسبة‬</td>
+                <td>Montant ‫المبلغ‬</td>
+              </tr>
+              <tr>
+                <td rowspan="2"><strong>{{soldeFinal | number:'0.3-3'}}</strong> </td>
+                <td>Sécurité Sociale  ‫الضمـان‬‫ ‫الاجتماعـي‬</td>
+               <td>{{CATEGORIE.pourcentageSecuriteSoc}} %</td>
+               <td>{{totSecuriteSoc | number:'0.3-3'}} </td>
+              </tr>
+              <tr>
+                <td>   ‫حـوادث‬‫ الشغـل‬ ‫واألمـراض‬‫  ‫المهنيـة‬  <br>
+                  Accidents du Travail et Maladies Professionnelles
+                </td>
+                <td>{{CATEGORIE.pourcentageAccident}} %</td>
+                <td>{{totAccidentTrav | number:'0.3-3'}} </td>
+                
+              </tr>
+             <tr style=" border: 0">
+               <td style=" border: 0"></td>
+               <td style=" border: 0"></td> 
+               <td>‫الجملة‬ <br>Total</td>
+               <td>{{totFinal| number:'0.3-3'}}</td> 
+             </tr>
+            </table>
+          </div>
+          <div>
+            <table style=" margin-left: 3%;width: 70%; margin-left: 30%;" class="table table-bordered">
+              <tr>
+                <td>  ‫عدد‫ أيام‬  ‫التأخير‬ <br>Nombre de jours de retard
+                </td>
+              
+                <td style="width: 10%;"></td>
+                <td>  ‫مبلغ‬‫ ‫خطايا‬ ‫التأخير‬ <br>Montant des pénalités de retard </td>
+                <td style="width: 23%;"></td>
+              </tr>
+
+            </table>
+          </div>
+          <div>
+            <table style=" margin-top: 5px;width: 60%;  margin-left: 40%;" class="table table-bordered">
+              <tr>
+                <td> <strong> ‫مبلغ‬‫ ‫خطايا‬ ‫التأخير‬ <br>Montant à payer </strong> </td>
+                <td style="width: 27%;"></td>
+               
+              </tr>
+            </table>
+          </div>
+<!--   ecran laptop
+    <div class="row">
+  <div class="col-md-7">
+    <p style="font-size: 15px;font-family: initial;">
+      La présente déclaration de salaires certifiée sincère et <br>
+conforme à nos documents comptables est arrêtée à la <br>
+somme de : </p>
+  </div>
+  <div class="col-md-5"  >
+<p style="font-size: 15px;font-family: initial;" align="right">
+    أوقـف‬‫ ‫هـذا‬ ‫التصريـح‬ ‫باألجـور‬ ‫الذي‬  
+‫<br>‫نشهد‬‫‫ بصدقه‬ ‫ومطابقته‬‫  ‫لوثائقنا‬ ‫ المحاسبيـة‬ 
+ ‫<br> :‫بمبلـغ‬
+    </p>
+  </div>
+</div>
+<div class="row">
+  <p style="margin-left: 20px;font-size: 15px;"> 
+    ........................................................................................................................................................................................................................................................................................................................................................... <br>
+    ........................................................................................................................................................................................................................................................................................................................................................... <br>
+    ...........................................................................................................................................................................................................................................................................................................................................................
+  </p>
+</div>
+<div class="row" style="margin-bottom:2rem; " >
+  <div class="col-md-6">
+    <strong>
+  <p> 
+    Fait à .................................................... le &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...................................................................................
+  </p> 
+</strong>
+</div>
+<div class="col-md-6">
+  <strong >
+ <p> حرر‬‫بـ‬................................................................‫في‬‫  
+ </p>
+</strong>
+  </div>
+</div>
+<div style="margin-bottom:5rem;text-align:right ">
+  Signature et cachet de l'employeur  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;                   ‫إمضـاء‬‫‫‫ وختم ‬المؤجر‬ 
+</div> -->
+
+<div class="row">
+  <div class="col-md-7">
+    <p style="font-size: 15px;font-family: initial;">
+      La présente déclaration de salaires certifiée sincère et <br>
+conforme à nos documents comptables est arrêtée à la <br>
+somme de : </p>
+  </div>
+  <div class="col-md-5"  >
+<p style="font-size: 15px;font-family: initial;" align="right">
+    أوقـف‬‫ ‫هـذا‬ ‫التصريـح‬ ‫بالأجـور‬ ‫الذي‬  
+‫<br>‫نشهد‬‫‫بصدقه‬ ‫ومطابقته‬‫  ‫لوثائقنا‬ ‫ المحاسبيـة‬ 
+ ‫<br>:‫بمبلـغ‬
+    </p>
+  </div>
+</div>
+<div class="row">
+  <p style="margin-left: 20px;font-size: 15px;"> ............................................................................................................................................................................................................................................................................ <br>
+    ............................................................................................................................................................................................................................................................................ <br>
+    ............................................................................................................................................................................................................................................................................
+  </p>
+</div>
+<div style="text-align: center; margin-bottom:15%; " >
+<strong style="display: flex;"><p> 
+    Fait à .................................................... le....................................</p>
+ <p>   حرر‬‫بـ‬................................................................‫في‬.................................................................................‫  <br><br>
+Signature et cachet de l'employeur  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;                 ‫ختم‬ و ‫إمضـاء‬‫ ‫المؤجر‬ </p></strong>  
+  </div>
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+
+      <button nbButton (click)="downloadPDF()" style="margin: 0rem 0rem 3rem 70rem;"
+      status="warning"><i class="fa fa-print" aria-hidden="true">
+      </i>&nbsp; Imprimer</button>
+   
+</div>

@@ -1,0 +1,20 @@
+<nb-card>
+  <nb-card-body>
+    <nb-tabset fullWidth style="min-height: 630px;">
+      <nb-tab tabTitle="Liste des transfert" style="padding: 1rem;">
+        <ng2-smart-table class="full-width text-center"
+        (custom)="mvtOnCustom($event)" [settings]="mvtSettings"
+         [source]="mvt">
+     </ng2-smart-table>
+      </nb-tab>
+      <nb-tab tabTitle="Effectuer un transfert" style="padding: 1rem;">       
+            <ng2-smart-table class="full-width text-center"
+            (custom)="onCustom($event)"
+            [settings]="settings"
+            [source]="source">
+            </ng2-smart-table>
+      </nb-tab>
+    </nb-tabset>
+  </nb-card-body>
+</nb-card>
+

@@ -1,0 +1,97 @@
+<nb-card>
+  <nb-card-header>
+  <form>
+        <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+        <label for="startDate"> {{ 'ratio.date1' | translate}}</label>
+        </div>
+        <div class="row full-name-inputs">
+        <div class="input-group col-md-5   input-group-sm">
+        <input nbInput style="width:200px;"  class="form-control" [(ngModel)]="ratioDto.startDate" [nbDatepicker]="startDate"  name="startDate" required/>
+        <nb-datepicker #startDate ></nb-datepicker>
+        </div>
+        </div>
+        
+        
+        <div class="input-group col-md-2  input-group-sm">
+        <label class="text-label">{{ 'ratio.nb' | translate}}</label>
+        </div>
+        <div class="input-group col-md-2  input-group-sm">
+        <input style="width:300px;" type="number" name="nbDiv" class="form-control" [(ngModel)]="ratioDto.NbDiv1" required />
+        </div>
+        </div>
+        <br>
+  
+        <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+        <label for="endDate"> {{ 'ratio.date2' | translate}}</label>
+        </div>
+        <div class="row full-name-inputs">
+        <div class="input-group col-md-5   input-group-sm">
+        <input nbInput style="width:180px; height:35px;" class="form-control" [nbDatepicker]="endDate"  [(ngModel)]="ratioDto.endDate" name="endDate" required/>
+        <nb-datepicker #endDate ></nb-datepicker>
+        </div>
+        </div>
+        
+  
+        <div class="input-group col-md-2  input-group-sm">
+        <label class="text-label" style="margin-left: 20px;">{{ 'ratio.rationame' | translate}}</label>
+        </div> 
+        <div class="form-group">
+              <!-- <select type="checkbox" class="form-control" style="width:165px; height:35px; margin-left: 35px;" id="sel1" [(ngModel)]="ratioDto.ratioName" name="ratioName" required >
+                   -->
+                    <ng-select 
+                    [items]="listName2"
+                    bindLabel="name"
+                    bindValue="id"
+                    name="name"
+                    [multiple]="true"
+                    [(ngModel)]="ratioDto.ratioNames"
+                    style="width:300px; height:35px; margin-left:35px;"
+                    required>
+                   </ng-select>
+              </div>
+        </div>
+                 
+        <div class="addbtn">
+        <button nbButton hero status="info" (click)="CalculRatioEquilibreFinancierSansSave()" name="calculRatioEquilibreFinancierSansSave" style="margin-left: 1080px;">{{ 'ratio.button1' | translate}}<i height="40" width="40"></i>
+        </button>
+        </div>
+  </form>
+  </nb-card-header>
+  </nb-card>
+  
+  
+  <nb-card> 
+  <nb-card-body>
+  <div [hidden]='!testValid' *ngIf="testValid">
+    <table class="table table-bordered"  style="column-width: 30px;" *ngFor="let item of ratioSortie;">  
+       <thead>
+                    <tr style="background-color:rgb(190, 225, 226);" class="text-center">
+                       <td class="td_largeur"><B>{{item.ratioName}}</B></td>
+                       <td *ngFor="let item1 of item.ratioDyn;" class="td_largeur">{{ 'ratio.du' | translate}} {{item1.startDate | date}} {{ 'ratio.au' | translate}} {{item1.endDate| date}}</td>
+                    </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let it of item.libelles; let j=index;" class="table table-bordered" class="text-center">  
+            <td >{{it}}</td>
+            <td *ngFor="let m of item.ratioDyn;">{{m.montants[j]}}</td>
+        </tr>
+
+        <tr class="table table-bordered" class="text-center"> 
+              <td>{{item.ratioName}}</td>
+              <td *ngFor="let item2 of item.ratioDyn;">{{item2.resultat}}</td>
+        </tr>
+</tbody>      
+    </table>
+
+  <div class="addbtn2">
+        <button nbButton hero status="success" (click)="CalculRatio()" name="CalculRatio" style="margin-left: 550px;">{{ 'ratio.button2' | translate}}<i height="40" width="40"></i>
+        </button>
+
+        <button nbButton hero status="warning" (click)="ArchiverRatio()" name="ArchiverRatio">{{ 'ratio.button3' | translate}}<i height="40" width="40"></i>
+        </button>
+        </div>
+  </div>
+  </nb-card-body>
+</nb-card> 

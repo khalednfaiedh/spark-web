@@ -1,0 +1,50 @@
+<div class="col-md-12 col-lg-12" style="width: 30vw; height: 15vh">
+
+
+  <form #monFormulaire1=ngForm>
+
+
+   
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">   Nom :</label>
+            <input [disabled]="disabled" type="text" name="name" placeholder="Réference" class="form-control"  required  [(ngModel)]="cat.name" />
+
+          </div>
+
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">          Catégorie Parent      :</label>
+          <ng-select 
+            name="chef" 
+            placeholder="choisir ..  "
+             [appendTo]="'body'" 
+             [clearable]="true"
+            [items]="categories" 
+            bindLabel="name"  
+           
+            [multiple]="false"  
+             
+            [disabled]=disabled
+            [(ngModel)]="cat.categorieFournisseur"
+             style="width:100%;"
+            >
+          </ng-select>
+
+        </div>
+
+        </div>
+
+ 
+           
+ 
+    <div style="text-align:right;" [hidden]="disabled" >
+      <button  nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+        [disabled]=!monFormulaire1.valid (click)="save()"> {{message}}</button>
+      <button  (click)="onclose()" nbButton status="danger"
+        style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+    </div>
+
+
+  </form>
+</div>

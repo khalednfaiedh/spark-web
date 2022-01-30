@@ -1,0 +1,14 @@
+<nb-card>
+  <nb-card-body>
+    <nb-card>
+      <nb-card-header class="text-center">
+        Liste des Factures
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table style="width:80%" class="full-width text-center" [settings]="settings" [source]="source"
+          (custom)="onCustom($event)" (editConfirm)="onSaveConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

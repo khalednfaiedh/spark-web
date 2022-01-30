@@ -1,0 +1,64 @@
+<div class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+    <div class="row">
+      <div class="col-lg-12" style="width:600px; height: 300px">
+        <nb-card>
+          <nb-card-body>
+                
+                
+                <div class="row full-name-inputs">
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <h5>Code Product :</h5>
+                    <br>
+                    <nb-select style="width: 50%; margin-bottom: 20px" placeholder="Code.." filled status="info" [(ngModel)]="bilan.code">
+                        <nb-option  *ngFor="let code of codeProducts" value="{{code}}">
+                          {{code}} 
+                        </nb-option>
+                    </nb-select>
+                  </div>
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <h5>Référence bon de commande : </h5>
+                    <br>
+                    <label _ngcontent-udb-c31="" class="text-primary label">{{refBC}} </label>
+                  </div>
+                </div>
+  
+                <div>
+                    <h5>Etat : </h5>
+                    <nb-select style="width: 50%; margin-bottom: 20px" placeholder="Etat.." filled status="info" [(ngModel)]="bilan.accept">
+                        <nb-option value="yes">Validé</nb-option>
+                        <nb-option value="no">Non Validé </nb-option>
+                    </nb-select>
+                </div>
+                
+  
+                <div *ngIf="bilan.accept=='no'">
+                  <h5>Rapport : </h5>
+                  <textarea [(ngModel)]="bilan.rapport" rows="4" cols="100">{{bilan.rapport}}</textarea>
+                </div>
+                
+                    
+  
+  
+                
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+          </nb-card-body>
+        </nb-card>
+        <div style="text-align:right;">
+          <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="ajouter()" >Ajouter</button>
+          <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()" >Fermer</button>
+        </div>
+  
+  
+      </div>
+    </div>
+  </div>
+  

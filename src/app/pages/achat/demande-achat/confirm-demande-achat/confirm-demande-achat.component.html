@@ -1,0 +1,14 @@
+<div style="width: 32vw;">
+  <p *ngIf="!view"> Êtes-vous sûr de vouloir <b>{{ motif }} </b> cette proposition ?</p>
+  <p *ngIf="view"> Vous voulez confirmer ou annuler cette proposition ?
+    
+    <nb-radio-group [(ngModel)]="option" style="margin-left: 10px;">
+      <nb-radio value="Confirmer">Confirmer</nb-radio>
+      <nb-radio value="Annuler">Annuler</nb-radio>
+    </nb-radio-group>
+  </p>
+  <div style="text-align:right;">
+  <button size="xsmall" nbButton status='success' style="cursor: pointer;align-content: center;"
+    (click)="save()" [disabled]="view && !option " >{{ btn }}</button>
+</div>
+</div>

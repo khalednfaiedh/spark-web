@@ -1,0 +1,8 @@
+<form (ngSubmit)="upload()" enctype="multipart/form-data"  #form="ngForm">
+	<div style="text-align:center">
+		<label>
+			<input type="file" (change)="selectFile($event)">
+		</label>
+		<button type="submit">upload</button>
+	</div>
+</form>

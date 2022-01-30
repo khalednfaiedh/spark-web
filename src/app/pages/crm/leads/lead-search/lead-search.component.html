@@ -1,0 +1,60 @@
+<nb-accordion>
+<nb-accordion-item #item>
+    <nb-accordion-item-header>
+      Recherche Avancée
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+        <div class ="row full-name-inputs">
+            <div class="form-group col-md-4 input-group-sm">
+                <label class="text-label" for="code">Denomination:</label>
+                <input class="form-control" type="text" name="code" id="code" [(ngModel)]=leadsearch.leadName>
+            </div>
+            <div class="form-group col-md-4 input-group-sm">
+                <label class="text-label" for="name" >Chiffre d'affaire estimé:</label>
+                <input class="form-control" type="text" id="name" [(ngModel)]=leadsearch.leadValue>
+            </div>
+       
+              <div class="form-group col-md-4 input-group-sm">
+                  <label class="text-label" for="type">Responsable:</label>
+                  <ng-select [items]="users"
+                  bindLabel="userName"
+                  bindValue="userID"
+                  name="leadUser"
+                  [(ngModel)]="tempUser.userID"
+                  [appendTo]="'body'"
+                  style="width:100%">
+                  </ng-select>
+                 <!--  <input class="form-control" type="text"  name="type" id="type"> [(ngModel)]=leadsearch.user.name> -->
+              </div>
+            </div>
+            <div class ="row full-name-inputs">
+              <div class="form-group col-md-4 input-group-sm">
+                  <label class="text-label" for="category">Date Création:</label>
+                  <input name="startdate" #startdate [(ngModel)]="leadsearch.leadDateCreation" class="form-control"
+                  [nbDatepicker]="sdatepicker" i18n="@@startdate" required>
+                <nb-datepicker #sdatepicker></nb-datepicker>
+    
+                </div>
+      
+              <div class="form-group col-md-4 input-group-sm">
+                  <label class="text-label" for="origin">Etape:</label>
+                  <ng-select [items]="steps"
+                  bindLabel="stepName"
+                  bindValue="stepID"
+                  name="leadStep"
+                  [(ngModel)]="stepID"
+                  [appendTo]="'body'"
+                  style="width:100%">
+                  </ng-select>
+              </div>
+               <div class="form-group col-md-4 input-group-sm">
+                  <label class="text-label" for="unit">Etat:</label>
+                  <input class="form-control" type="text"  name="unit" id="unit" [(ngModel)]=leadsearch.leadStatus>
+              </div>
+          </div>
+       <div style="text-align: right;">
+        <button nbButton status="warning" (click)="search()">Rechercher</button>
+    </div>
+    </nb-accordion-item-body>
+</nb-accordion-item>
+</nb-accordion> 

@@ -1,0 +1,25 @@
+ 
+ 
+  <nb-card  >
+        <nb-card-header class="text-center" i18n="@@listFolder"> 
+            <div style=" text-align:   left;" >
+                <button nbButton  (click)="previousState()"  status="info"><span>&#x2190;</span></button>
+                </div>
+
+          <div style="margin: 0 auto;">
+              Liste des modèles écritures  &nbsp;
+           <button (click)="addModele()" nbButton size="xsmall" status="success" style="width: 100px">
+             <i class="fa fa-plus" aria-hidden="true"></i>
+           </button>
+       </div>
+        </nb-card-header> 
+      <nb-card-body>
+          <ng2-smart-table #smartTable 
+          class="full-width" 
+          [settings]="settings" 
+          [source]="source" 
+          (deleteConfirm)="onDeleteConfirm($event)" 
+          (custom)="onCustom($event)">
+          </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>

@@ -1,0 +1,58 @@
+<div class="col-md-12 col-lg-12" style="width:80vw; height: 60vh">
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <nb-card>
+        <nb-card-body>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Identifiant:</label>
+              <input type="text" placeholder="Aa" class="form-control" [(ngModel)]="emplacement.nameEmplacement"
+                disabled />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Largeur :</label>
+              <input type="number" placeholder="73..." class="form-control" [(ngModel)]="emplacement.largeurEmplacement"
+                disabled/>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Longeur :</label>
+              <input type="number" placeholder="73..." class="form-control" [(ngModel)]="emplacement.longeurEmplacement"
+                disabled/>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Hauteur :</label>
+              <input type="number" placeholder="73..." class="form-control" [(ngModel)]="emplacement.hauteurEmplacement"
+                disabled/>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Surface :</label>
+              <input type="number" placeholder="Aa" class="form-control" [(ngModel)]="emplacement.surfaceEmplacement"
+                disabled/>
+            </div>
+
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Volume :</label>
+              <input type="number" placeholder="Aa" class="form-control" [(ngModel)]="emplacement.volumeEmplacement"
+                disabled />
+            </div>
+          </div>
+          
+          <nb-card>
+            <nb-card-header class="text-center">
+              Liste des sous-emplacements
+            </nb-card-header>
+            <nb-card-body>
+              <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source">
+              </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

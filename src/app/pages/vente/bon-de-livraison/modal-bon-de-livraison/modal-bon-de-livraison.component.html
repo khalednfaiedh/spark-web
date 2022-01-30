@@ -1,0 +1,212 @@
+<div class="col-md-12 col-lg-12" style="width:1350px; height: 600px">
+  <div class="row">
+    <div class="col-lg-12" style="width:1350px; height: 550px">
+      <nb-card>
+        <nb-card-body>
+          <nb-card-body>
+            <div class="d-flex justify-content-between">
+              <nb-card status="info" style="width: 450px; ">
+                <nb-card-header>Client </nb-card-header>
+                <nb-card-body>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Reférence client :</label>
+                      <input disabled type="text" placeholder="Reférence client" class="form-control"
+                        value="{{referenceclient}}" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Client :</label>
+                      <input disabled type="text" class="form-control" [(ngModel)]="client.nameC" />
+                    </div>
+
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Téléphone :</label>
+                      <input disabled type="text" placeholder="Téléphone" class="form-control"
+                        [(ngModel)]="client.tlfC" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Email :</label>
+                      <input disabled type="text" placeholder="Email" class="form-control"
+                        [(ngModel)]="client.emailC" />
+                    </div>
+                    <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+                      <input disabled type="text" placeholder="Adresse" class="form-control"
+                        [(ngModel)]="client.adresseC" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Code postal :</label>
+                      <input disabled type="text" placeholder="Code postal" class="form-control"
+                        [(ngModel)]="client.codepostaleC" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Ville :</label>
+                      <input disabled type="text" placeholder="Ville" class="form-control"
+                        [(ngModel)]="client.villeC" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Pays :</label>
+                      <input disabled type="text" placeholder="Pays" class="form-control" [(ngModel)]="client.paysC" />
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+              <nb-card style="width: 450px; ">
+                <nb-card-header style="background-color: orange;">Méthode de paiement </nb-card-header>
+                <nb-card-body>
+                  <div *ngIf="devis.typePaiement=='Date fixe'">
+                    <div [hidden]="false">
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                          <input disabled name="modePaiement" placeholder="Mode de paiement" class="form-control"
+                            [(ngModel)]="modeDePaiementDevis.typePaiement">
+
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                          <input disabled name="datePaiement" placeholder="Date de paiement" class="form-control"
+                            [(ngModel)]="devis.datePaiement" type="date" />
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div *ngIf="devis.typePaiement=='Par période'">
+                    <div [hidden]="false">
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                          <input disabled name="modePaiement" placeholder="Mode de paiement" class="form-control"
+                            [(ngModel)]="modeDePaiementDevis.typePaiement">
+
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Echéance de paiement :</label>
+                          <input disabled name="conditionPaiementDevis" placeholder="Echéance de paiement"
+                            class="form-control" [(ngModel)]="conditonPaiementDevis.designation" />
+
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Délais de paiements
+                            :</label>
+                          <input disabled name="option2 " placeholder="Délais de paiement" class="form-control"
+                            [(ngModel)]="echeancePaiementDevis.option">
+
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Avance({{devis.devise}}) :</label>
+                          <input disabled type="number" name="montant" placeholder="Echéance de paiement"
+                            class="form-control" [(ngModel)]="echeancePaiementDevis.montant">
+                        </div>
+                        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">Période de paiement(Mois) :</label>
+                          <input disabled type="number" name="nbrmois" placeholder="Echéance de paiement"
+                            class="form-control" [(ngModel)]="echeancePaiementDevis.nbrmois">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+
+              <nb-card status="success" style="width: 450px; ">
+                <nb-card-header>Bon de livraison </nb-card-header>
+                <nb-card-body>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Reférence commande :</label>
+                      <input disabled type="text" placeholder="Reférence commande" class="form-control"
+                        value="{{referencecommande}}" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Reférence facture :</label>
+                      <input disabled type="text" class="form-control" value="{{referencefacture}}" />
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Degré d'urgent :</label>
+                      <ng-select placeholder="Degré d'urgent" [(ngModel)]="bonLivraison.degreUrgent">
+                        <ng-option value="Prioritaire">Prioritaire</ng-option>
+                        <ng-option value="Urgent">Urgent</ng-option>
+                        <ng-option value="Trés urgent">Trés urgent</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Date de livraison :</label>
+                      <input name="dateLivraison" class="form-control" placeholder="Date de livraison"
+                        [(ngModel)]="bonLivraison.dateLivraison" [nbDatepicker]="dateLivraison" />
+                      <nb-datepicker #dateLivraison></nb-datepicker>
+                    </div>
+                    <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Adresse livraison :</label>
+                      <ng-select placeholder="Adresse de livraison " [multiple]=true [(ngModel)]="adresses">
+                        <ng-option *ngFor=" let list of adresses">
+                          {{list.adresse}}-{{list.codePostal}}-{{list.ville}}-{{list.pays}}</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Contact :</label>
+                      <ng-select placeholder="Contact">
+                        <ng-option *ngFor="let list of contactClient">
+                          {{list.nom}} {{list.prenom}}: {{list.fonction}}</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Date de départ :</label>
+                      <input name="dateDepart" class="form-control" placeholder="Date de livraison"
+                        [(ngModel)]="bonLivraison.date_depart" [nbDatepicker]="dateDepart" />
+                      <nb-datepicker #dateDepart></nb-datepicker>
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Date d'arrivage :</label>
+                      <input name="dateArrivage" class="form-control" placeholder="Date de livraison"
+                        [(ngModel)]="bonLivraison.date_arrivage" [nbDatepicker]="dateArrivage" />
+                      <nb-datepicker #dateArrivage></nb-datepicker>
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Etat :</label>
+                      <ng-select placeholder="Etat">
+                        <ng-option value="En stock">En Stock</ng-option>
+                        <ng-option value="En route">En route</ng-option>
+                        <ng-option value="Livré">Livré</ng-option>
+                      </ng-select>
+                    </div>
+                  </div>
+
+                </nb-card-body>
+              </nb-card>
+
+            </div>
+
+
+            <nb-card>
+              <nb-card-body>
+                <ng2-smart-table (custom)="onCustom($event)" [settings]="settings" [source]="source"
+                  (editConfirm)="show($event)" (deleteConfirm)="onDeleteConfirm($event)">
+                </ng2-smart-table><br><br><br><br>
+                <div class="row full-name-inputs">
+                  <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">Commentaire:</label>
+                    <textarea name="modePaiement" placeholder="Commentaire" class="form-control"
+                      [(ngModel)]="bonLivraison.commentaire"></textarea>
+
+                  </div>
+                </div>
+              </nb-card-body>
+
+            </nb-card>
+          </nb-card-body>
+          <div style="text-align:right;">
+            <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="addBonLivraison() ">Ajouter</button>
+            <button (click)="onclose()" nbButton
+              style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+          </div>
+        </nb-card-body>
+
+      </nb-card>
+
+    </div>
+  </div>
+</div>

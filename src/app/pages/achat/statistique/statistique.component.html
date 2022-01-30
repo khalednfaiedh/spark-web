@@ -1,0 +1,6 @@
+<nb-select  style="width: 30%; margin-bottom: 20px" placeholder="Product.."  filled status="info" >
+    <nb-option   *ngFor="let product of products" value="{{product.code}}" (click)="change(product.code)">
+      {{product.code}} 
+    </nb-option>
+</nb-select>
+<div style="width: 60%;margin-left: 20%" id="container"></div>  

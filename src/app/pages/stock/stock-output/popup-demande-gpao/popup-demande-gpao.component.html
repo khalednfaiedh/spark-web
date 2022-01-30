@@ -1,0 +1,152 @@
+<div class="popup">
+  <div class="row">
+    <div class="col-md-6">
+      <nb-accordion style="margin-bottom: 10px;">
+        <nb-accordion-item collapsed=false>
+              <nb-accordion-item-header>
+                 Demande détails
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>       
+                <div class="row">
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">Référence :</label>
+                    <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="demande.reference" disabled />
+                  </div> 
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label class="label">Désignation :</label>
+                    <input type="text" placeholder="Désignation" class="form-control" [(ngModel)]="demande.designation" disabled/>
+                  </div>
+       
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label class="label">Date demande:</label>
+                    <input name="date1" #date1  [(ngModel)]="demande.dateDemande" class="form-control" [nbDatepicker]="date1" disabled/>
+                    <nb-datepicker #date1 ></nb-datepicker>       
+                    </div>
+
+                  <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label class="label">Date livraison:</label>
+                    <input name="date0" #date0  [(ngModel)]="demande.dateLiv" class="form-control" [nbDatepicker]="date0" disabled/>
+                    <nb-datepicker #date0 ></nb-datepicker>       
+                  </div>
+                 
+                 
+                <div class="col-md-12 col-lg-12 input-group-sm">
+                  <label  class="label">Commentaire :</label>
+                  <input disabled type="text" placeholder="commentaire" class="form-control" [(ngModel)]="demande.commentaire" />
+                </div> 
+                </div>
+              </nb-accordion-item-body>
+        </nb-accordion-item>
+      </nb-accordion>
+    </div>
+    <div class="col-md-6">
+        <nb-accordion style="margin-bottom: 10px;">
+          <nb-accordion-item  collapsed=false>
+                <nb-accordion-item-header>
+                  Demande produits
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>   
+                  <div style="height: 196px;">
+                      <ng2-smart-table 
+                        class="full-width text-center"
+                        [settings]="settings"
+                        [source]="produits"
+                        (editConfirm)="onSaveConfirm($event)">
+                      </ng2-smart-table>
+                    </div>
+                </nb-accordion-item-body>
+          </nb-accordion-item>
+        </nb-accordion> 
+    </div>
+  </div>
+
+  <nb-card [hidden]='edit2 || show2'>
+    <nb-card-header>
+      Stock disponible
+    </nb-card-header>
+     <nb-card-body>
+    <div class="row">
+    <div class="col-md-6" *ngFor="let stock of stocks">
+    <p class="header">Produit : {{stock[0].reference}} - {{stock[0].nameProduit}}</p> 
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th style="width: 30%;">Magasin</th>
+            <th style="width: 30%;">N° lot</th>
+            <th style="width: 20%;">Qte Dispo</th>
+            <th style="width: 20%;">Qte à livrer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of stock">
+            <td>{{c.nameMagasin}}</td>
+            <td>{{c.lot}}</td>
+            <td>{{c.quantity}}</td>
+            <td> <input type="text" [disabled]='!edit' [(ngModel)]="c.quantiteDeSortie" style="height: 22px;" class="form-control"/>
+              <p *ngIf="c.quantiteDeSortie > c.quantity" style="color: red;margin-bottom: 0;">Hors stock</p>
+            </td>
+          </tr>      
+          </tbody>
+      </table> 
+       <p style="color: red;"></p>  
+    </div>
+  </div>
+     </nb-card-body>
+  </nb-card>
+
+<nb-card [hidden]='show'>
+  <nb-card-header>
+     Sortie de stock détails
+   </nb-card-header>
+   <nb-card-body>    
+       <div class="row">
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label  class="label">Référence :</label>
+          <input [disabled]="show2" type="text" placeholder="Référence" class="form-control" [(ngModel)]="mvt.reference"/>
+        </div> 
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label  class="label">Désignation :</label>
+          <input [disabled]="show2" type="text" placeholder="Désignation" class="form-control" [(ngModel)]="mvt.designation" />
+        </div> 
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Date sortie stock:</label>
+          <input [disabled]="show2" name="date4" #date4  [(ngModel)]="mvt.dateOperation" class="form-control" [nbDatepicker]="date4" />
+          <nb-datepicker #date4 ></nb-datepicker>       
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label  class="label">Contrôle Qualité :</label>
+          <ng-select [disabled]="show2" name="condition " placeholder="Contrôle Qualité" [(ngModel)]="mvt.qualite">
+            <ng-option value="Réalisé">Réalisé</ng-option>
+            <ng-option value="Non réalisé">Non réalisé</ng-option>
+          </ng-select> 
+         </div>   
+        <div class="from-group col-md-12 col-lg-12 input-group-sm">
+          <label for="">Commentaire</label>
+          <textarea [disabled]="show2" rows="2" placeholder="Commentaire" class="form-control"
+            [(ngModel)]="mvt.commentaire"></textarea>
+        </div>  
+      </div>
+     </nb-card-body>
+</nb-card>
+<nb-accordion [hidden]='edit || show' style="margin-bottom: 10px;">
+  <nb-accordion-item  collapsed=false>
+        <nb-accordion-item-header>
+          Sortie de stock produits
+        </nb-accordion-item-header>
+        <nb-accordion-item-body>   
+          <ng2-smart-table 
+            class="full-width text-center"
+            [settings]="pSettings"
+            [source]="mvt.mouvementProduit"
+            (editConfirm)="onSaveConfirm($event)">
+          </ng2-smart-table>
+        </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+  <div style="text-align:right;padding-bottom: 10px;">
+    <button nbButton status="success"(click)="save()" [hidden]='show || show2'
+      style="cursor: pointer;align-content: center;">{{ btn }}</button> &nbsp;
+    <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+      (click)="close()">Annuler</button>
+  </div>
+</div>

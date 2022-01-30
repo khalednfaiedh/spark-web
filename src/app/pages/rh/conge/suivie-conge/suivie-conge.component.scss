@@ -1,0 +1,105 @@
+.table-title{
+  text-align: center;
+  font-size: 16px;
+  margin-top: 0.5rem;
+}
+
+.td-style{
+    text-align: center;
+}
+// .m-button-success {
+//   background-color: #4CAF50; /* Green */
+//   border: none;
+//   color: white;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   margin: 0px 5px 5px 0px;
+//   cursor: pointer;
+//   padding: 4px 7px;
+//   border-radius: 2px;
+// //  width: 50%;
+// }
+.small-button-success {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0px 5px 5px 0px;
+    cursor: pointer;
+    padding: 4px 7px;
+    border-radius: 7px;
+  //  width: 50%;
+  }
+
+  .small-button-danger {
+    background-color:#f44336 ; /* red */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0px 5px 5px 0px;
+    cursor: pointer;
+    padding: 4px 7px;
+    border-radius: 7px;
+   // width: 50%;
+  }
+  .small-button-dark{
+    background-color:#595959 ; /* */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0px 0px 5px 0px;
+    cursor: pointer;
+    padding: 4px 7px;
+    border-radius: 7px;
+  }
+  .small-button-light{
+    background-color:white ; /* red */
+    border: none;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0px 5px 5px 0px;
+    cursor: pointer;
+    padding: 4px 7px;
+    border-radius: 7px;
+  }
+  .action-style{
+    display: flex; 
+   justify-content: center;
+  }
+
+  .table td {
+    padding: 0.35rem;
+    margin-top: -0.1rem ;
+  }
+  .td-warning {
+    background-color:#ffc107; 
+    color: white;
+    border-radius: 10px;
+     margin: 5px 0px;
+  }
+  .td-danger {
+    background-color:#f44336; 
+    color: white;
+    border-radius: 10px;
+     margin: 5px 0px;
+  }
+  .td-success {
+    background-color:#4CAF50; 
+    color: white;
+    border-radius: 10px;
+     margin: 5px 0px;
+  }

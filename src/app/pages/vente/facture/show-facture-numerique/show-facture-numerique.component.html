@@ -1,0 +1,368 @@
+<div class="col-md-12 col-lg-12" style="width:1500px;height:650px">
+  <div class="row">
+    <div class="col-lg-12" style="width:1300px;height:650px">
+      <nb-card>
+        <nb-card-body>
+          <nb-card-body>
+            <div class=" d-flex justify-content-between">
+              <nb-card status="info" style="width: 1000px">
+                <nb-card-header>Information géneral</nb-card-header>
+                <nb-card-body>
+                  <div *ngIf="commande.typeCommande=='Devis'">
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence client:</label>
+                        <input disabled type="text" placeholder="Reférence client" class="form-control"
+                          value="{{referenceclient}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Client:</label>
+                        <input disabled type="text" class="form-control" [(ngModel)]="client.nameC" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence demande prix:</label>
+                        <input disabled type="text" placeholder="Reférence demande prix" class="form-control"
+                          value="{{referencedemandePrix}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Date demande prix:</label>
+                        <input disabled type="text" placeholder="Date demande prix" class="form-control"
+                          [(ngModel)]="demandeprix.date_list" />
+                      </div>
+
+                    </div>
+
+
+
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence devis :</label>
+                        <input disabled type="text" placeholder="Reférence devis" class="form-control"
+                          value="{{referencedevis}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Date devis:</label>
+                        <input disabled placeholder="Date devis" class="form-control" [(ngModel)]="devis.date_devis" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence commande:</label>
+                        <input disabled type="text" placeholder="Reférence commande" class="form-control"
+                          value="{{referencecommande}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Date commande:</label>
+                        <input disabled placeholder="Date commande" class="form-control"
+                          [(ngModel)]="commande.date_cmd" />
+                      </div>
+                    </div>
+
+                    <div *ngIf="devis.typePaiement=='Date fixe'">
+                      <div [hidden]="false">
+                        <div class="row full-name-inputs">
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                            <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                              [(ngModel)]="modePaiement.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                            <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                              [(ngModel)]="devis.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Date de paiement:</label>
+                            <input name="datePaiement" placeholder="Date de paiement" class="form-control"
+                              [(ngModel)]="devis.datePaiement" />
+
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="devis.typePaiement=='Par période'">
+                      <div [hidden]="false">
+                        <div class="row full-name-inputs">
+                          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                            <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                              [(ngModel)]="modePaiement.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                            <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                              [(ngModel)]="devis.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Echeance de paiement:</label>
+                            <input disabled type="text" class="form-control"
+                              [(ngModel)]="conditionPaiement.listCondition" />
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="commande.typeCommande=='Contrat'">
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence client:</label>
+                        <input disabled type="text" placeholder="Reférence client" class="form-control"
+                          value="{{referenceclient}}" />
+                      </div>
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Client:</label>
+                        <input disabled type="text" class="form-control" [(ngModel)]="client.nameC" />
+                      </div>
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence de contrat:</label>
+                        <input disabled type="text" placeholder="Reférence de contrat" class="form-control"
+                          value="{{referenceContrat}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Reférence commande:</label>
+                        <input disabled type="text" placeholder="Reférence commande" class="form-control"
+                          value="{{referencecommande}}" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Date commande:</label>
+                        <input disabled placeholder="Date commande" class="form-control"
+                          [(ngModel)]="commande.date_cmd" />
+                      </div>
+
+                    </div>
+                    <div *ngIf="contrat.typePaiement=='Date fixe'">
+                      <div [hidden]="false">
+                        <div class="row full-name-inputs">
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                            <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                              [(ngModel)]="modePaiement.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                            <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                              [(ngModel)]="contrat.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Date de paiement:</label>
+                            <input name="datePaiement" placeholder="Date de paiement" class="form-control"
+                              [(ngModel)]="contrat.datePaiement" />
+
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="contrat.typePaiement=='Par période'">
+                      <div [hidden]="false">
+                        <div class="row full-name-inputs">
+                          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                            <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                              [(ngModel)]="modePaiement.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                            <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                              [(ngModel)]="contrat.typePaiement" />
+                          </div>
+                          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">Echeance de paiement:</label>
+                            <input disabled type="text" class="form-control"
+                              [(ngModel)]="conditionPaiement.listCondition" />
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+              <nb-card status="success" style="width: 430px">
+                <nb-card-header>Facture</nb-card-header>
+                <nb-card-body>
+                  <div class="row full-name-inputs">
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Statut facture :</label>
+                      <ng-select placeholder="Statut" disabled [(ngModel)]="facture.statut">
+                        <ng-option value='Non réglée'>Non réglée</ng-option>
+                        <ng-option value='En cours de règlement'>En cours de règlement</ng-option>
+                        <ng-option value='Réglée'>Réglée</ng-option>
+                        <ng-option value='En contentieux'>En contentieux</ng-option>
+                      </ng-select>
+                    </div>
+                    <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Emise par :</label>
+                      <input placeholder="Emise par" class="form-control" disabled [(ngModel)]="facture.emisepar" />
+                    </div>
+                  </div>
+                </nb-card-body>
+              </nb-card>
+
+            </div>
+          </nb-card-body>
+
+
+
+
+          <nb-card>
+            <nb-card-body>
+              <ng2-smart-table [settings]="settings" [source]="source">
+              </ng2-smart-table>
+            </nb-card-body>
+            <nb-card-body>
+
+
+              <div class="row full-name-inputs" style=" margin-left:60%">
+
+                <div class="form-group col-md-7 col-lg-7 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Prix HT :</label>
+                  <input disabled type="text" name="sommeTotaleHt" placeholder="Prix HT" class="form-control"
+                    [(ngModel)]="commande.sommeTotaleHt" currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" />
+                </div>
+                <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Remise(%) :</label>
+
+                  <input disabled type="number" name="remise" placeholder="Remise" class="form-control"
+                    [(ngModel)]="commande.remise" disabled />
+                </div>
+              </div>
+
+
+              <div class="row full-name-inputs" style=" margin-left:60%">
+                <div class="form-group col-md-7 col-lg-7 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Prix net HT :</label>
+                  <input type="text" name="sommeRemise" placeholder="Prix net HT" class="form-control"
+                    [(ngModel)]="commande.sommeRemise" currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}"
+                    disabled />
+                </div>
+                <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Prix TVA :</label>
+                  <input type="text" placeholder="Prix TVA" class="form-control" name="sommeTVA"
+                    [(ngModel)]="devis.sommeTVA" disabled currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" />
+                </div>
+
+
+              </div>
+              <div class=" row full-name-inputs" style=" margin-left:60%">
+                <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Taxe de facture :</label>
+                  <ng-select name="taxes" placeholder="Taxe" disabled [appendTo]="'body'" [(ngModel)]="facture.idTaxe"
+                    bindValue="idT" style="width:100%;">
+
+                    <ng-option [value]="list" *ngFor="let list of taxes">
+                      {{list.name}} = {{list.pourcentage}}
+                    </ng-option>
+
+                  </ng-select>
+                </div>
+                <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Prix TTC :</label>
+                  <input type="text" name="sommeTotaleavecTVA" placeholder="Prix TTC" class="form-control"
+                    [(ngModel)]="facture.sommeTotaleavecTVA" disabled currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" />
+                </div>
+
+              </div>
+
+              <div class="row full-name-inputs" style=" margin-left:60%">
+                <div class="form-group col-md-7 col-lg-7 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Frais livraison :</label>
+
+                  <input type="text" name="fraislivraison" placeholder="Frais livraison " class="form-control"
+                    [(ngModel)]="commande.fraislivraison" disabled currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}"
+                    disabled />
+                </div>
+                <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Autre frais :</label>
+
+                  <input type="text" name="autrefrais" placeholder="Autre frais" class="form-control"
+                    [(ngModel)]="commande.autrefrais" disabled currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}"
+                    disabled />
+                </div>
+              </div>
+              <div class="row full-name-inputs" style=" margin-left:60%">
+                <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Montant à payer :</label>
+                  <input type="text" name="sommeFinale" placeholder="Montant à payer" class="form-control"
+                    [(ngModel)]="facture.sommeFinale" disabled currencyMask
+                    [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" />
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Monnaie :</label>
+
+                  <input disabled name="devise" placeholder="Monnaie" class="form-control" value="{{devis.devise}}" />
+                </div>
+              </div>
+
+              <div class="row full-name-inputs" style=" margin-left:60%">
+                <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Montant à payer en lettre :</label>
+                  <input type="text" name="sommeFinale" placeholder="Montant à payer en lettre" class="form-control"
+                    [(ngModel)]="facture.sommeFinaleLettre" disabled />
+                </div>
+
+              </div>
+              <div class="d-flex justify-content-between">
+                <nb-card-body>
+                  <div class="row full-name-inputs">
+                    <label _ngcontent-udb-c31="" class="label"> Observations :</label>
+                    <div class="form-group col-md-10 col-lg-10 input-group-sm">
+                      <textarea class="form-control" style="min-height:250%;" disabled
+                        [(ngModel)]="commande.commentaire" disabled></textarea>
+                    </div>
+                  </div>
+                </nb-card-body>
+                <nb-card-body>
+                  <div class="row full-name-inputs" style=" margin-left:18%">
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Avance :</label>
+                      <input type="text" name="montantReste" class="form-control" placeholder="Montant rester"
+                        [(ngModel)]="facture.montantpayer" currencyMask
+                        [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}"
+                        disabled />
+                    </div>
+                    <div class=" form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Montant rester :</label>
+                      <input type="text" name="montantReste" class="form-control" placeholder="Montant rester"
+                        [(ngModel)]="facture.montantReste" currencyMask disabled
+                        [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Monnaie :</label>
+
+                      <input disabled name="devise" placeholder="Monnaie" class="form-control"
+                        value="{{devis.devise}}" />
+                    </div>
+                  </div>
+                  <div class="row full-name-inputs" style=" margin-left:18%">
+                    <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Montant rester en lettre :</label>
+                      <input type="text" name="montantReste" placeholder="Montant rester en lettre" class="form-control"
+                        [(ngModel)]="facture.montantResteLettre" disabled />
+                    </div>
+                    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">Monnaie :</label>
+
+                      <input name="devise" placeholder="Monnaie" class="form-control" value="{{devis.devise}}" />
+                    </div>
+                  </div>
+                </nb-card-body>
+              </div>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button size="xsmall" (click)="onclose()" nbButton status="danger"
+          style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+      </div>
+    </div>
+  </div>

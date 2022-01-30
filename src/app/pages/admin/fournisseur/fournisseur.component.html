@@ -1,0 +1,15 @@
+<nb-card>
+  <nb-card-header class="text-center">
+    Liste des fournisseurs &nbsp;
+    <button (click)="openWindow()" nbButton size="xsmall" [hidden]=add status="success" style="width: 100px">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table class="full-width text-center"
+       [settings]="settings" [source]="source"
+       (deleteConfirm)="onDeleteConfirm($event)"
+       (custom)="onCustom($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

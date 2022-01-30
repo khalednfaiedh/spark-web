@@ -1,0 +1,66 @@
+<nb-accordion>
+  <nb-accordion-item #item>
+      <nb-accordion-item-header>
+        Recherche Avancée
+      </nb-accordion-item-header>
+      <nb-accordion-item-body>
+          <div class ="row full-name-inputs">
+              <div class="form-group col-md-3 input-group-sm">
+                  <label class="text-label" for="name">Denomination:</label>
+                  <input class="form-control" type="text" name="name" id="name" [(ngModel)]=prospectsearch.prospectName>
+              </div>
+              <div class="form-group col-md-3 input-group-sm">
+                  <label class="text-label" for="name" >Type:</label>
+                  <ng-select [items]="types"
+                  bindLabel="value"
+                  bindValue="title"
+                  name="actionType"
+                  [appendTo]="'body'"
+                  [(ngModel)]="prospectsearch.prospectType"
+                  style="width:100%">
+                  </ng-select>
+              </div>
+
+                <div class="form-group col-md-3 input-group-sm">
+                    <label class="text-label" for="user">Responsable:</label>
+                    <ng-select [items]="users"
+                    bindLabel="userName"
+                    bindValue="userID"
+                    name="user"
+                    [appendTo]="'body'"
+                    [(ngModel)]="prospectsearch.createdBy.userID"
+                    style="width:100%">
+                    </ng-select>
+                </div>
+                <div class="form-group col-md-3 input-group-sm">
+                    <label class="text-label" for="note">Note:</label>
+                    <input class="form-control" type="text" name="note" id="note" [(ngModel)]=prospectsearch.prospectRating>
+
+                    <!--              
+                       <label class="text-label" for="category">Date creation:</label>     
+       <input name="startdate" #startdate [(ngModel)]="prospectsearch.dateCreation" class="form-control" [nbDatepicker]="sdatepicker" i18n="@@startdate" >
+                    <nb-datepicker #sdatepicker></nb-datepicker> -->
+                </div>
+            </div>
+            <div class ="row full-name-inputs">
+                <div class="form-group col-md-4 input-group-sm">
+                    <label class="text-label" for="country">Pays:</label>
+                  <input class="form-control" type="text" name="country" id="country" [(ngModel)]=prospectsearch.prospectCountry>
+                </div>
+                 <div class="form-group col-md-4 input-group-sm">
+                    <label class="text-label" for="town">Ville:</label>
+                  <input class="form-control" type="text" name="town" id="town" [(ngModel)]=prospectsearch.prospectTown>
+                </div>
+  
+                <div class="form-group col-md-4 input-group-sm">
+                    <label class="text-label" for="email">Email:</label>
+                  <input class="form-control" type="text" name="email" id="email" [(ngModel)]=prospectsearch.prospectEmail>
+                </div>
+
+            </div>
+            <div style="text-align: right;" >
+              <button size="xsmall" nbButton (click)="search()" status="warning" >Rechercher</button>
+            </div>
+      </nb-accordion-item-body>
+  </nb-accordion-item>
+  </nb-accordion> 

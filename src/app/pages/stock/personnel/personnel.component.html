@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-body>
+
+    <nb-card>
+      <nb-card-header class="text-center">
+        Liste des personnels
+        <button [hidden]=add (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+          <i class="fa fa-plus" aria-hidden="true"></i></button>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-9 col-lg-9 input-group-sm"></div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">Entreprise:</label>
+            <ng-select name="entreprise" [items]="entreprises" bindValue="enterpriseId" bindLabel="socialReason"
+              placeholder="Entreprise" [(ngModel)]="idEntreprise" (change)="onChargeentreprise($event)"
+              [appendTo]="'body'" style="width:100%;">
+            </ng-select>
+          </div>
+        </div>
+        <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+          (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

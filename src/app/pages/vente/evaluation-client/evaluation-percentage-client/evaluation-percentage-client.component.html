@@ -1,0 +1,53 @@
+<nb-card>
+  <div class="col-md-12 col-lg-12" style="width:1000px; min-height: 450px">
+    <div class="row">
+      <div class="col-lg-12" style="width:1000px; min-height: 300px">
+        <h2 style="text-align: center;">Evaluation CMD{{evaluation.code_cmd}} : {{note}}/10</h2><br><br><br>
+        <div class="col-12">
+          <div class="row">
+            <div *ngFor="let list of evaluationPercentage">
+              <nb-card-body>
+                <div class="card" style="width:300px;">
+                  <div class="card-header" style="font-weight: bold;">
+                    <div class="col-12">
+                      <div class="row">
+                        <div class="col-7">
+                          {{list.name}}
+                        </div>
+                        <div class="col-5 control-buttons">
+                          <img src="/assets/images/add.svg" alt="" (click)="changeStatut(list.idEP)">
+                          <img src="/assets/images/remove.svg" alt="" width="24" height="24"
+                            (click)="delete(list.idEP)">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+
+
+                    <ngb-rating style="text-align: center;" [(rate)]="list.percentage" [readonly]="read"
+                      (click)="modifier()" [formControl]="per">
+
+                      <ng-template let-fill="fill">
+                        <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3"
+                          [class.nice]="index>6">&#9733;</span>
+                      </ng-template>
+                    </ngb-rating>
+                  </div>
+                  <p class="card-text" style="text-align: center;font-weight: bold;">{{list.percentage}}/10</p>
+                </div>
+              </nb-card-body>
+
+            </div>
+
+          </div><br>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:right;">
+      <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+        (click)="evaluer()">Evaluer</button>
+      <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()">Annuler</button>
+    </div>
+  </div>
+</nb-card>

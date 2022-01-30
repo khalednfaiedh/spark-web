@@ -1,0 +1,252 @@
+<div style="width:980px; height: 420px">
+  <div class="row">
+    <div class="col-lg-7" >
+      <nb-card>
+        <nb-card-body>
+         <!--  <div class="demo-radio col-sm-4">
+            <table>
+              <tr>
+                <td>
+            <label>Genre</label>
+                  </td><td>
+            <label class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" name="customRadio">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Homme</span>
+            </label>
+              </td>
+                <td>
+            <label class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" name="customRadio">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Femme</span>
+            </label>
+                </td>
+              </tr>
+              </table>
+          </div> -->
+            <div class="row full-name-inputs">
+              <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                <!-- <label _ngcontent-udb-c31="" class="label">Gender :</label> -->
+                <ng-select name="gender" placeholder="Genre" [(ngModel)]="employe.civilite" [appendTo]="'body'"
+                  style="width:100%; ">
+                  <ng-option value="Masculin">Masculin</ng-option>
+                  <ng-option value="Feminin">Feminin</ng-option>
+                </ng-select>
+              </div>
+            </div>
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <input type="text" placeholder="Nom" class="form-control" [(ngModel)]="employe.nom" />
+              </div>
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <input type="text" placeholder="Prénom" class="form-control" [(ngModel)]="employe.prenom" />
+              </div>
+            </div>
+
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                <input type="text" placeholder="CIN" class="form-control" [(ngModel)]="employe.cin" />
+              </div>
+              <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                <ng-select bindLabel="leadName" name="actionLead" placeholder="Lieu"
+                  [(ngModel)]="employe.lieuDelivrableCin" [appendTo]="'body'" style="width:100%; " size="xsmall">
+                  <ng-option value="ariana">Ariana</ng-option>
+                  <ng-option value="beja">Beja</ng-option>
+                  <ng-option value="bizerte">Bizerte</ng-option>
+                  <ng-option value="gabes">Gabes</ng-option>
+                  <ng-option value="jendouba">Jendouba</ng-option>
+                  <ng-option value="kairouan">Kairouan</ng-option>
+                  <ng-option value="kbeli">Kbeli</ng-option>
+                  <ng-option value="manouba">Manouba</ng-option>
+                  <ng-option value="kef">Kef</ng-option>
+                  <ng-option value="mahdia">Mahdia</ng-option>
+                  <ng-option value="mednine">Mednine</ng-option>
+                  <ng-option value="monastir">Monastir</ng-option>
+                  <ng-option value="nabeul">Nabeul</ng-option>
+                  <ng-option value="sfax">Sfax</ng-option>
+                  <ng-option value="sidiBouzid">Sidi Bouzid</ng-option>
+                  <ng-option value="siliana">Siliana</ng-option>
+                  <ng-option value="sousse">Sousse</ng-option>
+                  <ng-option value="tataouine">Tataouine</ng-option>
+                  <ng-option value="tozeur">Tozeur</ng-option>
+                  <ng-option value="tunis">Tunis</ng-option>
+                  <ng-option value="zaghouan">Zaghouan</ng-option>
+                </ng-select>
+              </div>
+              <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                <input nbInput placeholder="Délivrée le" class="form-control" [nbDatepicker]="formpicker1"
+                  [(ngModel)]="employe.dateDelivranceCin" />
+                <nb-datepicker #formpicker1></nb-datepicker>
+              </div>
+            </div>
+
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <input nbInput placeholder="Date de naissance" class="form-control" [nbDatepicker]="formpicker"
+                  [(ngModel)]="employe.dateNaissance" />
+                <nb-datepicker #formpicker></nb-datepicker>
+              </div>
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+
+                <ng-select bindLabel="leadName" name="actionLead" placeholder="Etat civil"
+                  [(ngModel)]="employe.situationFamiliale" [appendTo]="'body'" style="width:100%; " size="xsmall">
+                  <ng-option value="celibataire">Célibataire</ng-option>
+                  <ng-option value="marie">Marié(e)</ng-option>
+                  <ng-option value="divorce">Divorcé(e)</ng-option>
+                  <ng-option value="veuf">Veuf(ve)</ng-option>
+                </ng-select>
+
+
+              </div>
+            </div>
+
+            <!-- <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <input type="number" placeholder="Nombre enfants" class="form-control" [(ngModel)]="employe.nbEnfants"/>
+              </div>-->
+
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-12 col-lg-12 input-group-sm">
+                <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="employe.adresse" />
+              </div>
+            </div>
+
+            <div class="row full-name-inputs">
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                <ng-select bindLabel="leadName" name="actionLead" placeholder="Ville" [(ngModel)]="employe.ville"
+                  [appendTo]="'body'" style="width:100%; " size="xsmall">
+                  <ng-option value="ariana">Ariana</ng-option>
+                  <ng-option value="beja">Beja</ng-option>
+                  <ng-option value="bizerte">Bizerte</ng-option>
+                  <ng-option value="gabes">Gabes</ng-option>
+                  <ng-option value="jendouba">Jendouba</ng-option>
+                  <ng-option value="kairouan">Kairouan</ng-option>
+                  <ng-option value="kbeli">Kbeli</ng-option>
+                  <ng-option value="manouba">Manouba</ng-option>
+                  <ng-option value="kef">Kef</ng-option>
+                  <ng-option value="mahdia">Mahdia</ng-option>
+                  <ng-option value="mednine">Mednine</ng-option>
+                  <ng-option value="monastir">Monastir</ng-option>
+                  <ng-option value="nabeul">Nabeul</ng-option>
+                  <ng-option value="sfax">Sfax</ng-option>
+                  <ng-option value="sidiBouzid">Sidi Bouzid</ng-option>
+                  <ng-option value="siliana">Siliana</ng-option>
+                  <ng-option value="sousse">Sousse</ng-option>
+                  <ng-option value="tataouine">Tataouine</ng-option>
+                  <ng-option value="tozeur">Tozeur</ng-option>
+                  <ng-option value="tunis">Tunis</ng-option>
+                  <ng-option value="zaghouan">Zaghouan</ng-option>
+                </ng-select>
+              </div>
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <input type="number" placeholder="Code Postal" class="form-control" [(ngModel)]="employe.codePostal" />
+              </div>
+              <!-- <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                <input type="text" placeholder="Région" class="form-control" [(ngModel)]="employe.region"/>
+              </div> -->
+            </div>
+
+            <!-- <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6">
+            <ng-select
+            bindLabel="leadName"
+            name="actionLead"
+            placeholder="Situation Familiale"
+            [(ngModel)]="employe.situationFamiliale"
+            [appendTo]="'body'"
+            style="width:100%; "
+             size="xsmall">
+            <ng-option value="celibataire">Célibataire</ng-option>
+            <ng-option value="marie">Marié</ng-option>
+            <ng-option value="divorce">Divorcé</ng-option>
+            <ng-option value="veuf">Veuf</ng-option>
+          </ng-select>
+        </div>
+      </div> -->
+
+
+        </nb-card-body>
+      </nb-card>
+
+
+      <!-- <div *ngIf="employe.situationFamiliale ==='marie'">   
+                                <ngx-employe-enfant></ngx-employe-enfant>
+                              </div>
+                            <div *ngIf="employe.situationFamiliale ==='divorce'">   
+                                  <ngx-employe-enfant></ngx-employe-enfant>
+                            </div> 
+                          <div *ngIf="employe.situationFamiliale ==='veuf'">   
+                                <ngx-employe-enfant></ngx-employe-enfant>
+                          </div>  -->
+    </div>
+    <div class="col-lg-5">
+      <nb-card style="min-height: 330px;">
+        <nb-card-body>
+
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-12 col-lg-12 input-group-sm">
+              <input type="text" placeholder="N° CNSS" class="form-control" [(ngModel)]="employe.numCnss" />
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-7 col-lg-7">
+              <ng-select bindLabel="leadName" name="actionLead" placeholder="Type Permis"
+                [(ngModel)]="employe.typePermis" [appendTo]="'body'" style="width:100%; " size="xsmall">
+                <ng-option value="permisA1">Permis A1 (Motocyclette légère)</ng-option>
+                <ng-option value="permisA">Permis A (Toutes motos)</ng-option>
+                <ng-option value="permisB">Permis B (Voitures particulières)</ng-option>
+                <ng-option value="permisBE">Permis B+E (Voitures particulières avec remorque > 750 kg)</ng-option>
+                <ng-option value="permisC">Permis C (Poids lourds de plus 3,5 tonnes)</ng-option>
+                <ng-option value="permisCE">Permis C+E (Poids lourds de plus de 3,5 tonnes avec remorque > 750 kg)
+                </ng-option>
+                <ng-option value="permisD">Permis D (Autobus)</ng-option>
+                <ng-option value="permisDE">Permis D+E (Autobus articulés)</ng-option>
+                <ng-option value="permisD1">Permis D1 (Taxis et voitures de louage)</ng-option>
+                <ng-option value="permisH">Permis H (Véhicules et appareils agricoles)</ng-option>
+              </ng-select>
+            </div>
+            <div class="input-group col-md-5 col-lg-5 input-group-sm">
+              <input type="text" placeholder="N° Permis" class="form-control" [(ngModel)]="employe.numPermis" />
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-12 col-lg-12 input-group-sm">
+              <input type="text" placeholder="RIB" class="form-control" [(ngModel)]="employe.rib" />
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-6 col-lg-6 input-group-sm">
+              <input type="text" placeholder="Banque" class="form-control" [(ngModel)]="employe.nomBanque" />
+            </div>
+            <div class="input-group col-md-6 col-lg-6 input-group-sm">
+              <input type="text" placeholder="Agence" class="form-control" [(ngModel)]="employe.agence" />
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-6 input-group-sm">
+              <input type="number" placeholder="Téléphone" class="form-control" [(ngModel)]="employe.tel" />
+            </div>
+            <div class="input-group col-md-6 input-group-sm">
+              <input type="number" placeholder="Fax" class="form-control" [(ngModel)]="employe.fax" />
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-12 input-group-sm">
+              <input type="email" placeholder="E-Mail" class="form-control" [(ngModel)]="employe.mail" />
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+  <div style="text-align:right; margin-bottom: 10px;">
+    <button status="success" nbButton style="cursor: pointer;;align-content: center;"
+      (click)="onAdd()">{{ A }}</button>  &nbsp;
+    <button status="danger" nbButton style="cursor: pointer;align-content: center;"
+      (click)="close()">Annuler</button>
+  </div>
+</div>

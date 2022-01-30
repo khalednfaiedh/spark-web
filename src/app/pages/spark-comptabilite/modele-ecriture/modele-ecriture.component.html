@@ -1,0 +1,285 @@
+<nb-card>
+  <nb-card-body>
+    <ngx-title></ngx-title>
+  </nb-card-body>
+</nb-card>
+
+<form  autocomplete="off"  #monFormulaire=ngForm > 
+ 
+
+
+<div class="row full-name-inputs">
+  <div class="input-group col-md-6 ">
+    <nb-card style="
+width: 100%;">
+      <nb-card-header>
+        <label i18n="@@planC"> Modéle de saisies:</label>
+      </nb-card-header>
+      <nb-card-body>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3  input-group-sm">
+            <label for="matriCode"> Intitulé: </label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input [disabled]="disabled" type=" number" name="int" [(ngModel)]="modelEcriture.intitule" class="form-control" required />
+          </div>
+
+        </div>
+
+
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3  input-group-sm">
+            <label for="matriCode"> Type:</label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+
+            <ng-select placeholder="Choisir..."   [disabled]="disabled" [items]="types" autofocus style="width: 150%"
+              [(ngModel)]="modelEcriture.type" name="type" required>
+            </ng-select>
+
+          </div>
+
+        </div>
+
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode"> Code Journal:</label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <ng-select [items]="journals"  [disabled]="disabled"  bindLabel="code" name="cod" [(ngModel)]="ecriture.journal"
+              style="width:100%;" required>
+            </ng-select>
+
+          </div>
+
+        </div>
+      </nb-card-body>
+    </nb-card>
+
+  </div>
+
+
+  <div class="input-group col-md-6   input-group-sm">
+    <nb-card style="
+width: 100%;
+">
+
+      <nb-card-body>
+
+          <div class="row full-name-inputs label nvForm" style="margin-top: 5%" [hidden]="bool">
+              <div class="input-group col-md-3  input-group-sm">
+                <label for="matriCode"> Numéro Jour: </label>
+              </div>
+    
+              <div class="input-group col-md-6   input-group-sm">
+                <input type=" number"   [disabled]="disabled" name="jour" [(ngModel)]="ecriture.jour" class="form-control"
+                    />
+              </div>
+    
+            </div>
+    
+         
+
+        <div class="row full-name-inputs label nvForm" >
+          <div class="input-group col-md-3  input-group-sm">
+            <label for="matriCode"> Numéro Écriture: </label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input type=" number"  [disabled]="disabled"  name="num" [(ngModel)]="ecriture.numeroEcriture" class="form-control"
+                />
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3  input-group-sm">
+            <label for="matriCode"> Numéro Pièce: </label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input   [disabled]="disabled" type=" number" name="numeroPiece" [(ngModel)]="ecriture.numeroPiece" class="form-control"   />
+          </div>
+
+        </div>
+
+        <!-- <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3  input-group-sm">
+            <label for="matriCode"> Date: </label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input nbInput class="form-control" [nbDatepicker]="date" [(ngModel)]="ecriture.date" name="date" />
+            <nb-datepicker #date></nb-datepicker>
+          </div>
+
+        </div> -->
+
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3  input-group-sm">
+            <label    for="matriCode"> Libilleé </label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input  [disabled]="disabled"  type=" number" name="libelle" [(ngModel)]="ecriture.libelle" class="form-control" required />
+          </div>
+
+        </div>
+
+        
+
+      </nb-card-body>
+    </nb-card>
+
+
+  </div>
+</div>
+
+
+</form>
+
+
+
+
+<!-- (ngSubmit)='submitForm(orderForm.value)' -->
+
+<nb-card>
+  <nb-card-body>
+  
+
+
+
+
+
+
+
+
+
+
+    <!-- <div formArrayName="items" *ngFor="let item of formData.controls; let i = index; let c = count">
+        <div class="line" [formGroupName]="i">
+         [textMask]="mask2"    -->
+
+
+<form [formGroup]='orderForm' #monFormulaire1=ngForm  >  
+    <div class="row full-name-inputs label">
+
+
+
+      <div class="input-group col-md-3   input-group-sm">
+        <label for="tradeCode">
+          <h5> Compte Génerale</h5>
+        </label>
+      </div>
+
+
+      <div class="input-group col-md-4  input-group-sm">
+        <label for="matriCode">
+          <h5>Compte Tiers </h5>
+        </label>
+      </div>
+
+
+
+      <div class="input-group col-md-2  input-group-sm">
+        <label for="nature" i18n="@@nature">
+          <h5>Débit </h5>
+        </label>
+      </div>
+
+
+      <div class="input-group col-md-2   input-group-sm">
+        <label for="nature" i18n="@@nature">
+          <h5> Crédit </h5>
+        </label>
+      </div>
+
+
+    </div>
+    <br>
+
+    <div formArrayName="items" *ngFor="let item of formData.controls; let i = index; let c = count">
+      <div class="margin-botn" [formGroupName]="i">
+        <div class="row full-name-inputs label">
+
+          <div class="input-group col-md-3 col-lg-3 input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="comptesGeneral" bindLabel="nameCode" [clearable]=true #Compte
+              style="width: 100%"  formControlName="compteGeneral">
+            </ng-select>
+          </div>
+          <!-- (change)="getIndex(i)"  -->
+          <div class="input-group col-md-4 col-lg-4 input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="comptesTiers" bindLabel="nameCode"
+              formControlName="compteTiers" (focus)="refreshCompteTiers(item)"   [clearable]=true
+              #Compte style="width:90%">
+            </ng-select>
+            <span class="input-group-append">
+              <button [hidden]="disabled" (click)="openWindowCompteTiers()" class="btn btn-hero-primary input-group-text"
+                style=" height:80% ; width: 10%">
+                +
+              </button>
+            </span>
+          </div>
+
+
+          <div class="input-group col-md-2 col-lg-2 input-group-sm">
+            <input name="debit" onclick="this.select();" formControlName="debit" class="form-control"
+              style="height: 90%" (change)="changeDebit2(i)" mask="separator.3" />
+          </div>
+
+          <!-- (blur)="updateTotalDebit(i)" -->
+          <div class="input-group col-md-2 col-lg-2 input-group-sm">
+
+            <input name="credit" id="id" onclick="this.select();" formControlName="credit" class="form-control"
+              style="height: 90%" (change)="changeCredit(i)" mask="separator.3" />
+
+
+          </div>
+
+          <div class="input-group col-md-1 col-lg-1 input-group-sm">
+            <button  [hidden]="disabled" nbButton status="danger" type="btn" title="Supprimer la ligne" *ngIf="c > 1"
+              (click)="deleteItemLine($event, i)" style="height: 90%">
+              -</button>
+
+
+          </div>
+          <br><br>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+ 
+
+  </form>
+    <!-- <div style="text-align:right;">
+      <button nbButton hero status="success" class="btn" [disabled]="!monFormulaire1.valid"   style="margin-right: 20%" (click)="submitForm(orderForm.value)" > ok</button>
+      <button class="btn" nbButton status="warning" (click)="addItem($event)"> Ajouter 4 lignes </button>
+    </div> -->
+
+    <!-- // (click)="save(orderForm.value)" -->
+    <div   [hidden]="disabled" style="text-align:right;">
+      <button nbButton hero status="success" class="submit"   (click)="save(orderForm.value)"  [disabled]="!monFormulaire.valid ||  validForm()"> Enregistrer</button>
+      <button nbButton hero status="warning" #reset  (click)="addItem($event)"
+        style="margin-left: 30px;"> AJouter 4 lignes</button>
+    </div>
+
+
+
+
+
+
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,20 @@
+<nb-card>
+  <nb-card-body>
+   
+
+    <nb-card>
+      <nb-card-header class="text-center">
+        Parametrer les poucentages d'évaluations
+      </nb-card-header>
+      <nb-card-body >
+        <ng2-smart-table class="full-width text-center"
+                         [settings]="settings"
+                         [source]="source"
+                         (createConfirm)="addEP($event)"
+                         (deleteConfirm)="onDeleteConfirm($event)"
+                         (editConfirm)="updateEP($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

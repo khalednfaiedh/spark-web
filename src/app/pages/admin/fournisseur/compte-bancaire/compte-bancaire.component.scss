@@ -1,0 +1,27 @@
+:host /deep/ ng2-st-tbody-edit-delete {display: inline-block !important;
+    height: 0 !important;
+  }
+  
+  :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline;
+    width: 30%;
+    text-align: center;
+  }
+  
+  :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+    color: #5dcfe3;
+  }
+
+  :host /deep/ .cell_right {
+    width:100%;
+    height: 100%;
+    text-align: right;
+    background: rgba(243, 69, 69, 0.5);
+    }
+
+  // :host /deep/ tr.solved {
+  //   background: rgba(86, 241, 86, 0.5);
+  //   }
+  //   :host /deep/ tr.aborted {
+  //   background: rgba(243, 69, 69, 0.5);
+  //   }

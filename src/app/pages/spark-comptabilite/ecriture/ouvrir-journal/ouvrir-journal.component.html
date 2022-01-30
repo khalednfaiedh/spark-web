@@ -1,0 +1,51 @@
+<div class="col-md-12 col-lg-12" style="width:580px; height: 180px">
+
+  <form class="form-group"   autocomplete="off" #gaForm=ngForm>
+    <nb-card   >
+      <nb-card-body>
+       
+        <!-- njghgjhjgfghl -->
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-6   input-group-sm">
+            <label class="text-label" i18n="@@CompteCode">  Journal  </label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <label class="text-label" i18n="@@CompteName">  Mois</label>
+          </div>
+           
+         
+        </div>
+        <div class="row full-name-inputs">
+            <div class="input-group col-md-6   input-group-sm">
+                <ng-select 
+                [items]="journals"
+                bindLabel="code"
+                bindValue="code"
+                name="cod"
+                [(ngModel)]="codJournal"
+                style="width:100%;"
+                required>
+           </ng-select>
+              </div>
+           
+          <div class="input-group col-md-6   input-group-sm">
+            <ng-select 
+                [items]="Listmois"
+                bindLabel="name"
+                bindValue="id"
+                name="mois"
+                [(ngModel)]="mois"
+                style="width:100%;"
+                required>
+           </ng-select>
+          </div>
+         
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton hero status="success" (click)="getJournal()" class="submit" [disabled]=!gaForm.valid>Envoyer</button>
+      <button nbButton hero status="danger" #reset (click)="gaForm.reset();"
+        style="margin-left: 30px;">Réinitialiser</button>
+    </div>
+  </form>

@@ -1,0 +1,59 @@
+<div class="col-md-12 col-lg-12" style="width: 25vw; height: 12vh">
+
+
+  <form #monFormulaire1=ngForm>
+
+
+   
+
+        
+
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-8 col-lg-8  ">
+            <label _ngcontent-udb-c31="" class="label">   Journal      :</label>
+        <ng-select 
+          name="chef" 
+          placeholder="choisir ..  "
+          [appendTo]="'body'" 
+          [clearable]="true"
+          [items]="journals" 
+          bindLabel="code"  
+          bindValue="idJournal"
+          [multiple]="false"  
+          
+          [(ngModel)]="id"
+           style="width:100%;"
+          >
+        </ng-select>
+          </div>
+          <div style="margin-top: 3%;" class="form-group col-md-4 col-lg-4  ">
+            <button  nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+            [disabled]=!monFormulaire1.valid (click)="ouvrirJournal()"> Ouvrir</button>
+  
+          </div>
+
+         
+        
+        </div>
+
+           
+
+
+
+
+        
+
+         
+
+
+
+
+
+
+
+  
+
+
+  </form>
+</div>

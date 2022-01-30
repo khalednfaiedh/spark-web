@@ -1,0 +1,81 @@
+<div class="col-md-12 col-lg-12" style="width: 50vw; height: 30vh">
+
+
+  <form #monFormulaire1=ngForm>
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Nom catégorie :</label>
+        <input [disabled]="disabled" type="text" name="name" placeholder="Nom catégorie" class="form-control" required
+          [(ngModel)]="categorieClient.name" />
+
+      </div>
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label">Catégorie de client mère :</label>
+        <ng-select name="idFamilleDeProduitParent" [items]="categoriesClient" bindValue="id" bindLabel="name"
+          size="xsmall" placeholder="Catégorie de client mére" [(ngModel)]="categorieClient.idCategorieClientParent"
+          [appendTo]="'body'">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Grille de tarif :</label>
+        <ng-select [disabled]="disabled" type="text" name="grilleTarifs" placeholder="Grille de tarif" required
+          [(ngModel)]="categorieClient.grilleTarifs" [items]="grilleTarifs" bindLabel="designation">
+        </ng-select>
+
+      </div>
+
+      <!-- <div class="form-group col-md-6 col-lg-6 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Type De Paiment :</label>
+        <ng-select [disabled]="disabled" name="status" placeholder=" Status de paiement" [appendTo]="'body'" required
+          style="width:100%;" [(ngModel)]="categorieClient.typePiament">
+          <ng-option value="Date fixe"> Date fixe</ng-option>
+          <ng-option value="Par période">Par période</ng-option>
+        </ng-select>
+      </div>
+
+    </div>
+
+    <div *ngIf="categorieClient.typePiament=='Date fixe'">
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label"> Mode de paiment :</label>
+          <ng-select name="modes" [disabled]="disabled" placeholder="Mode De Paiment" [appendTo]="'body'"
+            [items]="modes" style="width:100%;" bindLabel="typePaiement" required
+            [(ngModel)]="categorieClient.modeDepaiement">
+          </ng-select>
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <input [disabled]="disabled" class="form-control" type="text" name="datePaiement"
+              placeholder="Date de paiement" class="form-control" required />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="categorieClient.typePiament=='Par période'">
+      <div [hidden]="false">
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Mode de paiment :</label>
+            <ng-select name="modes" [disabled]="disabled" placeholder="Mode De Paiment" [appendTo]="'body'"
+              [items]="modes" style="width:100%;" bindLabel="typePaiement" required
+              [(ngModel)]="categorieClient.modeDepaiement">
+            </ng-select>
+          </div>
+          <div class="form-group col-md-9 col-lg-9 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Condition de paiment :</label>
+            <ng-select [disabled]="disabled" placeholder="Condtion de Paiment" style="width:100%;" required
+              [(ngModel)]="categorieClient.conditionsDePaiements" [items]="condtion" bindLabel="listCondition"
+              [ngModelOptions]="{standalone: true}">
+            </ng-select>
+          </div>
+
+        </div>
+      </div>-->
+    </div>
+    <div style="text-align:right;" [hidden]="disabled">
+      <button nbButton size="xsmall" style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+        [disabled]=!monFormulaire1.valid (click)="addCategorieClient()"> {{message}}</button>
+      <button size="xsmall" (click)="onclose()" nbButton status="danger"
+        style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+    </div>
+  </form>
+</div>

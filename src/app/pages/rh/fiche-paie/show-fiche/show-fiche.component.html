@@ -1,0 +1,314 @@
+<div  class="col-md-12 col-lg-12" style="width:980px;height:600px;" >
+  <div style="margin-left: 48rem;">
+    <button size="small" (click)="downloadPDF()" nbButton status="warning"><i class="fa fa-print" aria-hidden="true">&nbsp; Imprimer</i></button>&nbsp;
+    <button (click)="exportFicheToExcel()" nbButton size="small" status="info" ><i class="fa fa-download" aria-hidden="true"></i>&nbsp; Excel</button>
+  </div>
+  <div class="row" id="contentToConvert">
+      <div style="width:980px;">
+        <nb-card>
+          <nb-card-body>
+            <div style="margin-bottom: 3rem;">
+                <h3>{{entreprise.socialReason}}</h3>
+                <p>{{entreprise.officeAddress}}</p>
+            </div>
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm"></div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm" style="text-align: center;">
+                  <strong *ngIf="fiche.soldeTtCmpt == 0">BULLETIN DE PAIE</strong> 
+                  <strong *ngIf="fiche.soldeTtCmpt == 1">SOLDE DE TOUT COMPTE</strong> 
+                </div>
+                <div class="form-group col-md-10 col-lg-10 input-group-sm"></div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                    <label *ngIf="fiche.moisFiche == 1"> <b> Janvier &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 2"> <b> Février &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 3"> <b> Mars &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 4"> <b> Avril &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 5"> <b> Mai &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 6"> <b> Juin &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 7"> <b> Juillet &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 8"> <b> Aout &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 9"> <b> Séptembre &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 10"> <b> Octobre &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 11"> <b> Novembre &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 12"> <b> Décembre &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 13"> <b> 13éme &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 14"> <b> 14éme &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 15"> <b> 15éme &nbsp; {{fiche.anneeFiche}}</b> </label>
+                    <label *ngIf="fiche.moisFiche == 16"> <b> 16éme &nbsp; {{fiche.anneeFiche}}</b> </label>
+                </div>
+              </div>
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-1 col-lg-1 input-group-sm">
+                <label> <b>Matricule:</b> </label>
+              </div>
+              <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                  <label> {{fiche.matricule}} </label>
+                </div>
+  
+                <div class="form-group col-md-1 col-lg-1 input-group-sm">
+                      <label> <b>N°CNSS:</b></label>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                    <label> {{fiche.numCNSS}}</label>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                    <label> <b>Nom & Prénom :</b>  </label>
+              </div>
+              <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label>{{fiche.nom}} {{fiche.prenom}} </label>
+              </div>
+            </div>
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-1 col-lg-1">
+                        <label> <b>Fonction:</b></label>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label> {{fiche.fonction}} </label>
+                </div>
+                <div class="form-group col-md-1 col-lg-1 input-group-sm">
+                    <label><b>N°CIN:</b></label>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                    <label>{{fiche.cin}} </label>
+                </div>
+                <div class="form-group col-md-2 col-lg-2 input-group-sm"> 
+                    <label> <b>Chef de famille: </b> </label>
+                </div>
+                <div class="row form-group col-md-4 col-lg-4 input-group-sm">
+                <label> {{fiche.chefFamille}} </label>
+                <div *ngIf="fiche.nombreEnfant > 1">, {{fiche.nombreEnfant}} enfants</div>
+                <div *ngIf="fiche.nombreEnfant == 1">, {{fiche.nombreEnfant}} enfant</div>
+              </div>
+              </div>
+  
+            <div class="row full-name-inputs">
+  
+                <div class="form-group col-md-1 col-lg-1">
+                    <label> <b>Categorie:</b></label>
+               </div>
+               <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                  <label> {{fiche.categorie}} </label>
+               </div>
+            </div>
+
+            <table class="table table-bordered table-striped table-sm" style="width:100%">
+              <thead>
+                  <tr>
+                    <th>Désignation</th>
+                    <th>nombre de jour travaillés</th>
+                    <th>Salaire / Primes</th>
+                    <th>Retenue</th>
+                  </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="fiche.mois < 13">
+                <td *ngIf="fiche.regime == 'Mensuelle'">Nombre de jours de présence</td>
+                <td *ngIf="fiche.regime == 'Par heure'">Nombre des heures travaillées</td>
+                <td>{{fiche.present}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Salaire de base</td>
+                <td><p *ngIf="fiche.moisFiche < 13">{{fiche.present}}</p> </td>
+                <td>{{fiche.salaireBase | number : '0.3-3' }}</td>
+                <td></td>
+              </tr>
+              <tr *ngIf="fiche.nbrtaux1 > 0">
+                <td>Heures supplémentaires {{fiche.pourc1 }}%</td>
+                <td>{{ fiche.nbrtaux1 }}</td>
+                <td>{{fiche.valTaux1 | number : '0.3-3' }}</td>
+                <td></td> 
+             </tr>
+             <tr *ngIf="fiche.nbrtaux2 > 0">
+              <td>Heures supplémentaires {{fiche.pourc2 }}%</td>
+              <td>{{ fiche.nbrtaux2 }}</td>
+              <td>{{fiche.valTaux2 | number : '0.3-3' }}</td>
+              <td></td> 
+           </tr>
+              <tr *ngFor="let i of fiche.primeArchive">
+                  <td>{{i.nomPrime}}</td>
+                  <!-- <td><p *ngIf="fiche.moisFiche == !13 || !14 || !15 || !16">{{fiche.present}}</p> </td> -->
+                  <!-- <td><p *ngIf="fiche.moisFiche !== 13 || fiche.moisFiche !== 14 ||fiche.moisFiche !== 15 || fiche.moisFiche !== 16">{{fiche.present}}</p> </td> -->
+                  <td><p *ngIf="fiche.moisFiche < 13 ">{{fiche.present}}</p> </td>
+
+                  <td>{{i.valeurPrime | number : '0.3-3' }}</td>
+                  <td></td>
+              </tr>
+              <tr *ngIf="fiche.soldeConge > 0 "  >
+                <td>Indemnités congés payés</td>
+                <td>{{fiche.soldeConge}}</td>
+                <td>{{fiche.indemnite | number : '0.3-3' }} </td>
+                <td></td>
+              </tr>
+              <tr>
+                  <td>Salaire brut</td>
+                  <td><p *ngIf="fiche.moisFiche < 13">{{fiche.present}}</p> </td>
+                  <td>{{fiche.salaireBrut | number : '0.3-3' }}</td>
+                  <td></td>
+               </tr>
+               <tr>
+                  <td>Retenue CNSS</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{fiche.cnss | number : '0.3-3' }}</td>
+               </tr>
+
+                <!-- <tr><td>netSocialMensuel</td> <td></td> <td>{{fiche.netSocialMensuel | number : '0.3-3' }}</td><td></td> </tr>
+                <tr><td>netSocialAnnuel</td> <td></td> <td>{{fiche.netSocialAnnuel | number : '0.3-3' }}</td><td></td> </tr>
+
+                <tr> <td>IRPP Annuel</td><td></td> <td></td><td>{{fiche.irppannuel | number : '0.3-3' }}</td></tr> -->
+                <tr>
+                  <td>Salaire brut imposable</td>
+                  <td></td>
+                  <td>{{fiche.netSocialMensuel | number : '0.3-3' }}</td>
+                  <td></td> 
+               </tr>
+               <tr>
+                  <td>Retenue à la source IRPP</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{fiche.irpp | number : '0.3-3' }}</td>
+               </tr>
+               <tr>
+                  <td>Contribution sociale de solidarité</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{fiche.impotMensuelle | number : '0.3-3' }}</td>
+               </tr>
+               <tr *ngIf="fiche.avanceMens !== 0 || fiche.echeance !== 0 ">
+                  <td>Solde net</td>
+                  <td></td>
+                  <td>{{fiche.net | number : '0.3-3' }}</td>
+                  <td></td>
+               </tr>
+               <tr *ngIf="fiche.avanceMens !== 0">
+                <td>Avance</td>
+                <td></td>
+                <td></td>
+                <td>{{fiche.avanceMens | number : '0.3-3' }}</td>
+             </tr>
+             <tr *ngIf="fiche.echeance !== 0">
+              <td>Pret</td>
+              <td></td>
+              <td></td>
+              <td>{{fiche.echeance | number : '0.3-3' }}</td>
+           </tr>
+             <tr>
+              <td><strong>Net à payer</strong></td>
+              <td></td>
+              <td><strong>{{fiche.netFinal | number : '0.3-3' }}</strong></td>
+              <td></td>
+           </tr>
+              </tbody>
+            </table>
+
+              <!-- <table class="table table-bordered table-striped table-sm" style="width:100%">
+                  <thead>
+                      <tr>
+                        <th>Désignation</th>
+                        <th>Nombre</th>
+                        <th>Salaire / Primes</th>
+                        <th>Retenue</th>
+                      </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td *ngIf="fiche.regime == 'Mensuelle'">Nombre de jours de présence</td>
+                    <td *ngIf="fiche.regime == 'Par heure'">Nombre des heures travaillées</td>
+                    <td>{{fiche.present}}</td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>Salaire de base</td>
+                    <td>{{fiche.present}}</td>
+                    <td>{{fiche.salaireBase | number : '0.3-3' }}</td>
+                    <td></td>
+                  </tr>
+  
+                  <tr *ngFor="let i of fiche.primeArchive">
+                      <td>{{i.nomPrime}}</td>
+                      <td>{{fiche.present}}</td>
+                      <td>{{i.valeurPrime | number : '0.3-3' }}</td>
+                      <td></td>
+                  </tr>
+                  <tr *ngIf="fiche.soldeConge > 0 "  >
+                    <td>indemnités congés payés</td>
+                    <td>{{fiche.soldeConge}}</td>
+                    <td>{{fiche.indemnite | number : '0.3-3' }} </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                      <td>Salaire brut</td>
+                      <td>{{fiche.present}}</td>
+                      <td>{{fiche.salaireBrut | number : '0.3-3' }}</td>
+                      <td></td>
+                   </tr>
+                   <tr>
+                      <td>Retenue CNSS</td>
+                      <td></td>
+                      <td></td>
+                      <td>{{fiche.cnss | number : '0.3-3' }}</td>
+                   </tr>
+                   <tr>
+                      <td>Salaire brut imposable</td>
+                      <td></td>
+                      <td>{{fiche.netSocialMensuel | number : '0.3-3' }}</td>
+                      <td></td>
+                     
+                   </tr>
+                   <tr>
+                      <td>Retenue à la source IRPP</td>
+                      <td></td>
+                      <td></td>
+                      <td>{{fiche.irpp | number : '0.3-3' }}</td>
+                   </tr>
+                   <tr>
+                      <td>Contribution sociale de solidarité</td>
+                      <td></td>
+                      <td></td>
+                      <td>{{fiche.impotMensuelle | number : '0.3-3' }}</td>
+                   </tr>
+                   <tr *ngIf="fiche.avanceMens !== 0 || fiche.echeance !== 0 ">
+                      <td>Solde net</td>
+                      <td></td>
+                      <td>{{fiche.net | number : '0.3-3' }}</td>
+                      <td></td>
+                   </tr>
+                   <tr *ngIf="fiche.avanceMens !== 0">
+                    <td>Avance</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{fiche.avanceMens | number : '0.3-3' }}</td>
+                 </tr>
+                 <tr *ngIf="fiche.echeance !== 0">
+                  <td>Pret</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{fiche.echeance | number : '0.3-3' }}</td>
+               </tr>
+                 <tr>
+                  <td><strong>Net à payer</strong></td>
+                  <td></td>
+                  <td><strong>{{fiche.netFinal | number : '0.3-3' }}</strong></td>
+                  <td></td>
+               </tr>
+                  </tbody>
+                </table>  -->
+
+
+
+
+  <div style="padding-bottom: 2rem;">
+      <div style="text-align: center;"> <strong>Signature </strong></div> 
+        <div class="row">
+          <div class="col-md-10">Direction</div>
+          <div class="col-md-2">Employé</div>
+        </div>
+ </div>
+    </nb-card-body>
+    </nb-card>
+      </div>
+    </div>
+</div>

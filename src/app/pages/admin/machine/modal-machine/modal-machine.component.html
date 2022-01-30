@@ -1,0 +1,244 @@
+
+<div class="col-md-12 col-lg-12" style="width: 70vw; height: 50vh">
+  <form #monFormulaire1=ngForm>
+  <nb-card>
+
+
+    <nb-tabset>
+      <nb-tab tabTitle="Technique" style="margin-top: 1%;" >
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Réference :</label>
+            <input [disabled]="disabled" type="text" name="name" placeholder="Réference" class="form-control"
+              [(ngModel)]="machine.reference" required />
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Désignation :</label>
+            <input [disabled]="disabled" type="text" name="designation" placeholder="Réference" class="form-control"
+              [(ngModel)]="machine.designation" required />
+
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Marque :</label>
+            <input type="text" name="Marque" class="form-control" [(ngModel)]="machine.marque" required />
+
+
+
+          </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="row full-name-inputs">
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Numéro Serie :</label>
+            <input type="text" name="numSerie" class="form-control" [(ngModel)]="machine.numSerie" required />
+
+          </div>
+
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Fonction :</label>
+            <input type="text" name="fonction" class="form-control" [(ngModel)]="machine.fonction" required />
+
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Modele :</label>
+            <input type="text" class="form-control" name="modele" [(ngModel)]="machine.modele" required />
+
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Catégorie Machine :</label>
+            <ng-select 
+            name="cat" 
+            placeholder=" Catégorie Machine  ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="categories" 
+            bindLabel="nom"  
+            required 
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="machine.categorieMachine"
+            style="width:100%;"
+            >
+          </ng-select>
+
+          </div>
+
+          
+
+
+
+
+        </div>
+
+
+        <div class="row full-name-inputs">
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date de fabrication :</label>
+            <input nbInput name="datefbarication" class="form-control" [nbDatepicker]="formpicker1"
+              [(ngModel)]="machine.dateFabrication" required />
+            <nb-datepicker #formpicker1></nb-datepicker>
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date première mise en circulation :</label>
+            <input name="date2" class="form-control" nbInput [nbDatepicker]="formpicker2" [(ngModel)]="machine.dateMEC"
+              required />
+            <nb-datepicker #formpicker2></nb-datepicker>
+
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date d'achat :</label>
+            <input name="date3" class="form-control" nbInput [nbDatepicker]="formpicker3"
+              [(ngModel)]="machine.dateAchat" required />
+            <nb-datepicker #formpicker3></nb-datepicker>
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </nb-tab>
+      <nb-tab tabTitle="Financier" style="padding: 20px;">
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Valeur D'Achat :</label>
+            <input [disabled]="disabled" type="text" name="Prix" placeholder="Prix D'Achat" class="form-control"
+              required [(ngModel)]="machine.valeurAchat" />
+
+          </div>
+
+
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Monnaie:</label>
+
+            <ng-select name="Monnaie" [(ngModel)]="machine.monnaie" [items]="unite" required>
+            </ng-select>
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Durée Amortissement (ans) :</label>
+            <input type="number" class="form-control" name="dureeAmortissement" [(ngModel)]="machine.dureeAmortissement" required />
+
+
+          </div>
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Etat :</label>
+            <ng-select   [(ngModel)]="machine.etatMachine" [items]="etats" name="etat" required>
+            </ng-select>
+
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Capacitée Machine :</label>
+            <input [disabled]="disabled" type="number" name="capacite" placeholder="Capacitée Machine"
+              class="form-control" [(ngModel)]="machine.capaciteMachine" required />
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Unite de Production:</label>
+
+            <ng-select name="uniteProdution" [(ngModel)]="machine.uniteProduction"  [appendTo]="'body'"  [items]="uniteproductions"
+              bindLabel="nom" name="categories" required>
+            </ng-select>
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Unite de Mesure:</label>
+
+            <ng-select 
+            name="unite" 
+            placeholder="choisir ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="uniteMesure" 
+            bindLabel="unite"  
+            required 
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="machine.uniteMesure"
+            style="width:100%;"
+            >
+          </ng-select>
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais maintenance (Heure) :</label>
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais maintenance"
+            [(ngModel)]="machine.fraisMaitenence"  class="form-control" required />
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais Démmarage (Heure) :</label>
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais Démmarage"
+            [(ngModel)]="machine.fraisDemmarage"     class="form-control" required />
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais rébut (Heure):</label>
+
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais rébut"
+            [(ngModel)]="machine.fraisRebut"   name="FraisRebut"   class="form-control" required />
+          </div>
+
+        </div>
+
+
+
+      </nb-tab>
+    </nb-tabset>
+  </nb-card>
+    <div style="text-align:right;">
+      <button nbButton status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+      [disabled]=!monFormulaire1.valid     (click)="onAddRCM()">{{message}}</button>
+      <button nbButton status="danger" (click)="close()">Fermer</button>
+    </div>
+</form>
+</div>
+ 

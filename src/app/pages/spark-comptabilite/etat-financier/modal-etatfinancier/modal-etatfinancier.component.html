@@ -1,0 +1,46 @@
+<div class="col-md-12  " style="width:650px; height: 270px">
+  <nb-card>
+    <nb-card-body>
+      <form  autocomplete="off" #monFormulaire1=ngForm>
+        <div  class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="startDate"> {{ 'etatfinancier.list11' | translate}} </label>
+          </div>
+          <div class="input-group col-md-9   input-group-sm">
+            <input   type="date" name="startDate"  [(ngModel)]="etatFinancier.startDate" maxlength="50"
+              class="form-control" required>
+          </div>
+        </div>
+
+        <div  class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="endDate"> {{ 'etatfinancier.list12' | translate}}</label>
+          </div>
+          <div class="input-group col-md-9  input-group-sm">
+            <input   type="date" name="endDate"  [(ngModel)]="etatFinancier.endDate" maxlength="50"
+              class="form-control" required>
+          </div>
+        </div>
+
+        <div  class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="description"> {{ 'etatfinancier.list13' | translate}} </label>
+          </div>
+          <div class="input-group col-md-9   input-group-sm">
+            <input   type="text" name="description"  [(ngModel)]="etatFinancier.description" maxlength="50"
+              class="form-control" required>
+          </div>
+        </div>
+
+
+        
+        <div style="text-align:right;  margin-top: 1rem;">
+          <button nbButton hero status="success" (click)="addEtatFinancier()"
+            [disabled]=!monFormulaire1.valid>{{valider}}</button>
+          <button nbButton hero status="danger" (click)="monFormulaire1.reset( );"
+            style="margin-left: 20px;">{{ 'etatfinancier.btn1' | translate}}</button>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>

@@ -1,0 +1,50 @@
+<nb-card>
+  <nb-card-body>
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <button nbButton status="primary" (click)="openFichePresence()"><i class="fas fa-angle-double-left"></i> Fiche
+          de présence</button>
+      </div>
+      <div style="display: flex;">
+        <h4 style="text-align: center;">Mois: {{mois}}-{{annee}}</h4>
+        <button style="margin: -0.5rem 1rem 0rem; height: 34px;" nbButton size="small" status="warning"
+          (click)="openWindowCloture()" *ngIf="C == 'BROUILLON'" [disabled]="Disabled" title="Clôturer mois" [hidden]="!authoritiesDecloturer">
+          <i class="fas fa-lock"></i></button>
+        <button style="margin: -0.5rem 1rem 0rem; height: 34px;" nbButton size="small" status="warning"
+          (click)="openWindowCloture()" *ngIf="C == 'CLOTURE'" [hidden]="!authoritiesDecloturer" [disabled]="Disabled" title="Déclôturer mois"><i
+            class="fas fa-lock-open"></i></button>
+      </div>
+      <div>
+        <button nbButton status="primary" (click)="openJournalPaie()" [disabled]="Disabled">Journal de paie <i
+            class="fas fa-angle-double-right"></i></button>
+      </div>
+    </div>
+    <nb-card style="margin-top: 0.5rem;">
+      <nb-card-body>
+        <div class="row" *ngIf="C == 'BROUILLON'" [hidden]="!authoritiesAdd">
+          <div class="col-md-10 col-lg-10" *ngIf="C == 'BROUILLON'">
+            <button (click)="openWindowGenerateOne()" class="btn btn-hero-success" nbButton
+              style="width: 240px;" >Générer fiche </button>
+            <button (click)="openWindowGenerateAll()" class="btn btn-hero-success" nbButton
+              style="width: 240px;margin-left: 1%;">Générer toutes</button>
+          </div>
+          <div class="col-md-2 col-lg-2" [hidden]="!authoritiesSelect">
+            <nb-select outline status="success" name="Autre option" placeholder="Autre option" width=100%>
+              <nb-option (click)=openOption(1) [hidden]="!authoritiesGenerateSoldeToutCompte"> Solde de tout compte </nb-option>
+              <nb-option (click)=openOption(2) [hidden]="!authoritiesVersementSoldeToutCompte" [disabled]="mois != 12"> Indemnité congé payé </nb-option>
+            </nb-select>
+          </div>
+        </div>
+
+        <ng2-smart-table *ngIf="C == 'BROUILLON'" class="full-width text-center" [settings]="settings"
+          [source]="fichePaie" (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+        </ng2-smart-table>
+
+        <ng2-smart-table *ngIf="C == 'CLOTURE'" class="full-width text-center" [settings]="settings2"
+          [source]="fichePaie" (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+
+  </nb-card-body>
+</nb-card>

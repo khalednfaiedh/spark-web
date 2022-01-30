@@ -1,0 +1,102 @@
+<div class="col-md-12  " style="width:950px; height: 338px" >
+  <form class="form-group" (ngSubmit)="addJournal()" autocomplete="off" #monFormulairej = ngForm>
+<nb-card>
+<nb-card-body>
+      
+        
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">Code:  </label>
+        </div>
+
+        <div class="input-group col-md-9   input-group-sm">
+          <input type=" number" name="code"   [(ngModel)]="journal.code" class="form-control"  required  /> 
+        </div>
+         
+      </div>
+      
+     
+         
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode"> Désignation:</label>
+        </div>
+
+        <div    class="input-group col-md-9   input-group-sm">
+          <input  type="text" class="form-control"     [(ngModel)]="journal.designation"  required   name="designation" />
+           
+        </div>
+         
+      </div>
+
+
+
+         
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">   Type:</label>
+        </div>
+
+        <div class="input-group col-md-9   input-group-sm">
+          <ng-select placeholder="Choisir..."
+          [items]="types" 
+           
+         
+          style="width: 150%"
+         [(ngModel)]="journal.type"
+         name="type"
+          >
+         </ng-select>  
+        </div>
+         
+      </div>
+         
+       
+
+         
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">    Compte  Contrepartie:</label>
+        </div>
+
+        <div class="input-group col-md-9   input-group-sm">
+          <ng-select placeholder="Choisir..."
+          [items]="comptes" 
+          bindLabel="nameCode" 
+         
+          style="width: 150%"
+         [(ngModel)]="journal.plan"
+         name="plan"
+          >
+         </ng-select>  
+        </div>
+         
+      </div>
+
+      
+         
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode"> Contrepartie:</label>
+        </div>
+
+        <div   class="input-group col-md-1   input-group-sm">
+          <input  style="    margin-left: -26px;" type="checkbox" class="form-control"  [(ngModel)]="isChecked" (change)="checkValue(isChecked?'oui':'non')"   
+            name="contrepartie" />
+           
+        </div>
+         
+      </div>
+
+
+
+
+      
+</nb-card-body>
+</nb-card>
+<div style="text-align:right;">
+<button nbButton hero status="success" type="submit"  [disabled]=!monFormulairej.valid >{{valider}}</button>
+<button nbButton hero status="danger" (click)="onclose()" style="margin-left: 30px;">Fermer</button>
+</div>
+  </form>
+</div>

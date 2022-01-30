@@ -1,0 +1,34 @@
+<div class="col-md-12 col-lg-12" style="width:800px; height: 180px">
+
+  
+    <nb-card>
+      <nb-card-body>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label" i18n="@@CompteCode">Code</label></div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label" i18n="@@CompteName">Intitulé</label>
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label" i18n="@@CompteName"> Nature</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4  input-group-sm">
+            <input name="gacode" #gacode [(ngModel)]="planGeneral.codeCompte" class="form-control" maxlength="16" disabled
+              minlength="3" required>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input name="ganame" #ganame [(ngModel)]="planGeneral.nameCompte" class="form-control" maxlength="160" disabled
+              minlength="2" required>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input name="nature" #ganame [(ngModel)]="planGeneral.compteNature" class="form-control" maxlength="160" disabled
+              minlength="2" required>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+   
+  

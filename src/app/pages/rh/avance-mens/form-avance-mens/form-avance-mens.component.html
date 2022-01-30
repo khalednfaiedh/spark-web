@@ -1,0 +1,39 @@
+
+<div class="col-md-12 col-lg-12" style="width:850px; height: 130px; margin-top: 1rem; ">
+
+      <div class="row full-name-inputs">
+
+            <div class="from-group col-md-3 col-lg-3 input-group-sm">
+              <label>Montant: </label>
+              <input placeholder="Montant" class="form-control" [(ngModel)]="avanceMens.montantAvance"  />
+            </div>
+         
+            <div class="form-group col-md-5 col-lg-5 input-group-sm" >
+              <label> Date de remboursement: </label>
+              <div style="display : flex ;">
+            <ng-select
+                placeholder="Mois"
+                [items]="mois"
+                name="mois"
+                [appendTo]="'body'"  
+                style="width:35%; "
+                [(ngModel)]="avanceMens.moisRembourcement">
+            </ng-select>
+
+            <ng-select
+                placeholder="Année"
+                [items]="annee"
+                name="annee"
+                [appendTo]="'body'"  
+                style="width:50%; margin-left: 1%;"
+               [(ngModel)]="avanceMens.anneeRembourcement">
+            </ng-select>
+            </div>
+          </div>
+               
+            <div class="form-group col-md-4 col-lg-4 input-group-sm" style="text-align:right;">
+                <button nbButton status="success" style="margin-top: 1.5rem; cursor: pointer;align-content: center;width: 100%;"
+                  (click)="onAddA()">{{ Aj }}</button>   
+            </div>   
+      </div>
+</div> 

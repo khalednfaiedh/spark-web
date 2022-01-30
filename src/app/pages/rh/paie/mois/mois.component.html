@@ -1,0 +1,25 @@
+ <div style="width: 500px;">
+ <nb-card>
+   <nb-card-body>
+    <div class="card-searsh">
+    
+       <ng-select placeholder="Mois" 
+       [items]="mois" 
+        name="mois" 
+       style="width:30%;"
+       [appendTo]="'body'"
+       [(ngModel)]="moisCourant">
+      </ng-select>
+       <ng-select placeholder="Année"
+        [items]="annee"
+         name="annee"
+          style="width:50%;"
+       [appendTo]="'body'"  
+       [(ngModel)]="anneeCourante">
+      </ng-select>
+      <button  nbButton status="success" (click)="fixerMois()" style="padding: 0.5rem 1rem;"><i class="fa fa-check" aria-hidden="true"></i> Confirmer</button>
+     </div> 
+   </nb-card-body>
+ </nb-card>
+
+</div>

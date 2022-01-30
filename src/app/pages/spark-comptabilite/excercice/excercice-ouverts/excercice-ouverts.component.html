@@ -1,0 +1,12 @@
+<nb-card >  
+  <nb-card-body>
+    
+      <ng2-smart-table #smartTable 
+      class="full-width" 
+      [settings]="settings" 
+      [source]="source" 
+      (deleteConfirm)="onDeleteConfirm($event)" 
+      (custom)="onCustom($event)">
+      </ng2-smart-table>
+  </nb-card-body>
+  </nb-card>

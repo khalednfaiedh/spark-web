@@ -1,0 +1,22 @@
+<div style="width: 500px;">
+    <div class="row full-name-inputs">
+        <div class="form-group col-md-12 form-group-sm">
+            <label class="label" for="status">Status de cloture:</label>
+            <ng-select [items]="status" [appendTo]="'body'" name="status" [(ngModel)]="rapport.clotureStatus"
+                [clearable]="false" style="width:100%">
+            </ng-select>
+        </div>
+    </div>
+    <div class="row full-name-inputs">
+        <div class="form-group col-md-12 form-group-sm">
+            <label class="label" for="comment">Commentaire</label>
+            <textarea class="form-control" name="comment" [(ngModel)]="rapport.clotureComment" placeholder="Ecrire ici"
+                rows="2">
+        </textarea>
+        </div>
+    </div>
+    <div style="text-align: right; margin-top: 15px;">
+        <button status="success" style="margin-right:2px" (click)="archiver()" nbButton disabled='disabled'>Clôturer</button>
+        <button status="danger" (click)="deleteDenied()" nbButton>Annuler</button>
+    </div>
+</div>

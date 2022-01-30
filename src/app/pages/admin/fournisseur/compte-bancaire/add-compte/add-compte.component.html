@@ -1,0 +1,62 @@
+<div class="col-md-12 col-lg-12" style="width:90vw; height: 80vh">
+  <div ng-repeat="let documentGrp1 of documentGrps1" id="main-form-content1">
+    <form [formGroup]="documentGrp1">
+      <div class="row full-name-inputs">
+        <div class="col-md-12 col-lg-12">
+          <div class="pull-right" style="float: right;">
+            <button type="button" class="btn btn-sm btn-success" style="width: 70px;" title="Add More"
+              (click)="addItem()">+</button>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12">
+          <div formArrayName="itemss">
+            <div *ngFor="let item1 of itemss.controls; let j = index;">
+              <div [formGroupName]="j">
+                <div class="row full-name-inputs">
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                    <label>Banque: </label>
+                    <ng-select [items]="banques" bindLabel="nom" name="regimeDouanier" placeholder="Banque"
+                      formControlName="banque" [appendTo]="'body'" style="width:100%;">
+                    </ng-select>
+                  </div>
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                    <label>Agence: </label>
+                    <input autofocus type="text" name="Agence" style="width:100%; " class="form-control"
+                      [(ngModel)]="compte.agence" formControlName="agence">
+                  </div>
+                </div><br>
+
+                <div class="row full-name-inputs">
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label>RIB: </label>
+                    <input type="text" name="rib" style="width:100%;" class="form-control" formControlName="rib">
+                  </div>
+
+
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label>Code IBAN: </label>
+                    <input type="text" name="Code iban" style="width:100%;" class="form-control" formControlName="iban">
+                  </div>
+
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label>Code BIC: </label>
+                    <input type="text" name="Code bic" style="width:100%;" class="form-control" formControlName="bic">
+
+                  </div>
+                  <div class="remove col-md-1 col-lg-1 " *ngIf=" j!=0 ">
+                    <a title="Remove" (click)="removeItem(j)" class="fa fa-minus-square fa-lg btn-info"></a>
+                  </div>
+                </div><br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div style="text-align:right;margin-top: 1rem;">
+      <button nbButton size="xsmall" style="cursor: pointer;align-content: center;" (click)="add(documentGrp1.value)"
+        status="success">{{A}}</button>
+      <button nbButton size="xsmall" (click)="close()" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+        status="danger">Annuler</button>
+    </div>
+  </div>

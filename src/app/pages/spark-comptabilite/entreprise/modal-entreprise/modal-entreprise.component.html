@@ -1,0 +1,189 @@
+<div class="col-md-12  " style="width:950px; height: 520px">
+  <nb-card>
+    <nb-card-body>
+      <form class="form-group" autocomplete="off" #monFormulaire1=ngForm>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-5   input-group-sm">
+            <label class="text-label" for="socialReason">Raison sociale</label>
+          </div>
+
+          <div class="input-group col-md-7   input-group-sm">
+            <label for="activity">Activité</label> </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-5   input-group-sm">
+            <input autofocus type="text" name="socialReason" #socialReason [(ngModel)]="enterprise.socialReason"
+              maxlength="50" class="form-control" required i18n="@@socialReason">
+          </div>
+
+          <div class="input-group col-md-7   input-group-sm">
+            <input type="text" name="activity" #activity [(ngModel)]="enterprise.activity" class="form-control"
+              i18n="@@activity">
+          </div>
+        </div>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Code d'immatriculation fiscale</label>
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="tradeCode">Registre de commerce</label>
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <label for="jurform" i18n="@@jurform">Forme juridique</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-3   input-group-sm">
+            <input type="text" #matriCode="ngModel" name="matriCode" [(ngModel)]="enterprise.taxRegistrationCode"
+              class="form-control" required />
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="text" name="tradeCode" [(ngModel)]="enterprise.tradeRegister" class="form-control">
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="juridicForms" bindLabel="name" required name="jurform"
+              [(ngModel)]="enterprise.juridicForm">
+            </ng-select>
+            <!-- <nb-select  placeholder="choisir..." size="small" outline=true name="jurform" [(ngModel)]="enterprise.juridicForm" status="success" required>
+    <nb-option  *ngFor="let y of juridicForms" [value]="y" >{{y}}</nb-option>
+  </nb-select> -->
+            <!-- <input type="text" list="j" #jurform="ngModel" name="jurform" [(ngModel)]="enterprise.juridicForm" class="form-control" required/>
+<datalist id="j">
+  <option  *ngFor="let y of juridicForms" [value]="y" >{{y}}</option>
+</datalist> -->
+          </div>
+        </div>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="nature" i18n="@@nature">Nature de la société</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="capital" i18n="@@capital">Capital</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="manager" i18n="@@manager">Gérant</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="natures" bindLabel="nature" required name="nature"
+              [(ngModel)]="enterprise.nature">
+            </ng-select>
+            <!-- <nb-select  placeholder="choisir..." size="small" outline=true name="nature" [(ngModel)]="enterprise.nature" status="success" required>
+      <nb-option *ngFor="let nature of natures" [value]="nature" i18n="@@nature">{{nature}}</nb-option>
+    </nb-select> -->
+            <!-- <input type="text" list="f" #nature="ngModel" name="nature" [(ngModel)]="enterprise.nature" class="form-control" required/>
+<datalist id="f">
+  <option  *ngFor="let nature of natures" [value]="nature" >{{nature}}</option>
+</datalist> -->
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="number" name="capital" #capital [(ngModel)]="enterprise.capital" class="form-control"
+              required />
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="text" name="manager" #manager [(ngModel)]="enterprise.manager" class="form-control"
+              i18n="@@manager">
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+
+          <div class="input-group col-md-5   input-group-sm">
+            <label for="email" i18n="@@email">Email</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="tel" i18n="@@tel">Tel</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="country" i18n="@@country">Pays</label>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+
+          <div class="input-group col-md-5   input-group-sm">
+            <input type="email" name="email" #email [(ngModel)]="enterprise.entEmail" class="form-control" />
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="number" name="tel" #tel [(ngModel)]="enterprise.telephone" class="form-control" />
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input type="text" name="country" #country [(ngModel)]="enterprise.country" class="form-control"
+              i18n="Pays" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-9   input-group-sm">
+            <label for="address">Addresse du siège</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="zipCode">Code postal</label>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-9   input-group-sm">
+            <input type="text" name="address" #asddres [(ngModel)]="enterprise.officeAddress" class="form-control"
+              i18n="@@socialReason" />
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input type="number" name="zipCode" [(ngModel)]="enterprise.zipCode" class="form-control" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="money" i18n="@@money">Choix Monnaie</label>
+          </div>
+          <!-- <div class="input-group col-md-4    input-group-sm">
+            <label for="startdate" i18n="@@startdate" [hidden]="x">Début de l'exrcice</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="enddate" i18n="@@enddate" [hidden]="x">Fin de l'exrcice</label>
+          </div> -->
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <!-- <nb-select  placeholder="Choix Monnaie" size="small" name="money" status="info" outline=true [(ngModel)]="enterprise.money" required>
+                <nb-option *ngFor="let money of moneys" [value]="money" i18n="@@money">{{money}}</nb-option>
+              </nb-select> -->
+            <ng-select placeholder="Choisir..." [items]="moneys" bindLabel="name" name="money" required
+              [(ngModel)]="enterprise.money">
+            </ng-select>
+            <!-- <input type="text" list="m" placeholder="choisir..." status="success" #money="ngModel" name="money" [(ngModel)]="enterprise.money" class="form-control" required/>
+              <datalist id="m">
+                <option  *ngFor="let money of moneys" [value]="money" i18n="@@money">{{money}}</option>
+              </datalist> -->
+          </div>
+          <!-- <div class="input-group col-md-4   input-group-sm" >
+            <input name="startdate" #startdate [(ngModel)]="exercice.dateDebut" class="form-control"
+              [nbDatepicker]="sdatepicker" i18n="@@startdate"  >
+            <nb-datepicker #sdatepicker></nb-datepicker>
+
+          </div>
+          <div class="input-group col-md-4  input-group-sm"   >
+            <input name="enddate" #enddate [(ngModel)]="exercice.dateFin" class="form-control"
+              [nbDatepicker]="edatepicker" i18n="@@enddate" >
+            <nb-datepicker #edatepicker></nb-datepicker>
+          </div> -->
+        </div>
+        <div style="text-align:right;">
+          <button nbButton hero status="success" (click)="addEntreprise()"
+            [disabled]=!monFormulaire1.valid>{{valider}}</button>
+          <button nbButton hero status="danger" (click)="monFormulaire1.reset( );"
+            style="margin-left: 30px;">Réinitialiser</button>
+        </div>
+      </form>
+
+    </nb-card-body>
+  </nb-card>
+  <!-- </nb-tab>
+</nb-tabset> -->
+  
+
+</div>

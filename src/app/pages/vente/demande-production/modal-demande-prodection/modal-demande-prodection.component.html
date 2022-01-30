@@ -1,0 +1,53 @@
+<div  class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px; height: 300px">
+      <nb-card>
+        <nb-card-body >
+          <nb-tabset fullWidth>
+            <nb-tab  tabTitle="Demande Production" style="margin-bottom: 3%">
+              <nb-card-body>
+                <div class="row full-name-inputs">
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Reférence demande production :</label>
+                      <input disabled type="text" placeholder="Reférence" class="form-control"value="{{reference}}"/>
+                  </div>
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Reférence commande :</label>
+                    <input disabled type="text" placeholder="Reférence" class="form-control"value="{{referenceCmd}}"/>
+                  </div>
+                </div>
+    
+                <div class="row full-name-inputs">
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Date demande :</label>
+                    <input disabled placeholder="date Demande" name="dateDemande" #startdate [(ngModel)]="demandeProduction.date_dmd" class="form-control"
+                                 [nbDatepicker]="dateDemande" i18n="@@startdate" required>
+                    <nb-datepicker #dateDemande></nb-datepicker>
+                  </div>
+                </div>
+              </nb-card-body>
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table  [settings]="settings" [source]="source"  >
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+            <nb-tab tabTitle="Commande">
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table (custom)="onCustom($event)" [settings]="settingsC" [source]="sourceC"  >
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+            
+          </nb-tabset>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()" >Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

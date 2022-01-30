@@ -1,0 +1,26 @@
+  
+
+
+
+    <nb-card>
+        <nb-card-header class="text-center">
+       
+  
+          <div style="margin: 0 auto;">
+            Liste des  Catégories Client   &nbsp;
+           <button (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+             <i class="fa fa-plus" aria-hidden="true"></i>
+           </button>
+       </div>
+        </nb-card-header>
+        <nb-card-body >
+          <ng2-smart-table class="full-width text-center"
+                           [settings]="settings"
+                           [source]="source"
+                           (deleteConfirm)="onDeleteConfirm($event)"
+                           (custom)="onCustom($event)">
+          </ng2-smart-table>
+        </nb-card-body>
+      </nb-card>
+     
+  

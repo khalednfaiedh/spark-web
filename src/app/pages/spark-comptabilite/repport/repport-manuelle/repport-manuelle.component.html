@@ -1,0 +1,46 @@
+<div class="col-md-12 col-lg-12" style="width:380px; height: 100px">
+
+  <form class="form-group"   autocomplete="off" #gaForm=ngForm>
+    <!-- <nb-card> -->
+      <nb-card-body style="width:580px; height: 280px">
+        <div class="row full-name-inputs label">
+          
+          <div class="input-group col-md-6   input-group-sm">
+            <label class="text-label" i18n="@@CompteName">Code</label>
+          </div>
+          
+         
+        </div>
+       
+        <!-- njghgjhjgfghl -->
+       
+        <div class="row full-name-inputs">
+            <div class="input-group col-md-8   input-group-sm">
+                <ng-select 
+                [items]="journals"
+                bindLabel="code"
+                bindValue="code"
+                name="cod"
+                [(ngModel)]="codJournal"
+                style="width:120%;"
+                 >
+           </ng-select>
+              </div>
+           
+         
+    
+      <div class="input-group col-md-4   input-group-sm"> 
+       
+        <button    style="width:120%;" nbButton hero status="success" (click)="report()" class="submit" [disabled]=!gaForm.valid>Envoyer</button>
+       
+    </div>  
+      
+
+      
+
+
+    </div>
+      </nb-card-body>
+    <!-- </nb-card> -->
+  
+  </form>

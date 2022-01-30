@@ -1,0 +1,23 @@
+<div [nbSpinner]="loading" nbSpinnerStatus="success" nbSpinnerSize="large" nbSpinnerMessage="Patientez..">
+  <form #userForm="ngForm" (ngSubmit)="send(userForm)">
+      <div style="display: flex; width: 500px;margin-bottom: 1rem;">
+             <div style="width: 75%;">
+                <label for="email" class="label">Adresse email :</label>
+                  <input nbInput  type="email" email placeholder="E-mail" class="form-control" style="height: 35px;" 
+                        [(ngModel)]="mail" name="email" #email="ngModel" required/>
+                    <div *ngIf="email.invalid && (userForm.submitted || email.touched)">
+                      <p *ngIf="email.errors.required">
+                        Veuillez entrer une adresse e-mail.
+                      </p>
+                      <p *ngIf="email.errors.email">
+                        Adresse e-mail non valide 
+                      </p>
+                    </div>
+             </div>
+                &nbsp;
+            <div style="margin-top: 1.75rem;">
+                <button  nbButton status="success" type="submit" style="padding: 0.5rem 1rem;"><i class="fa fa-check" aria-hidden="true"></i> Confirmer</button>
+            </div> 
+    </div>
+</form>
+</div>

@@ -1,0 +1,52 @@
+ <nb-card>
+  <nb-card-body>
+ <nb-tabset fullWidth>
+  <nb-tab  tabTitle="Affaires en cours">
+  <div style="text-align: right;"> 
+          <button status="info" size="small" nbButton (click)="switchViews(1)" style="margin:5px;"> Liste</button>
+          <button status="info" size="small" nbButton (click)="switchViews(2)" style="margin:5px"> Kanban</button>
+          <!-- <button status="info" size="small" nbButton (click)="switchViews(3)" style="margin:5px"> Calendrier</button>   -->
+  </div>
+<div *ngIf="viewTab">
+<nb-card >
+  <nb-card-header class="text-center">
+    Liste des affaires en cours
+      <button  (click)="openAddWindow($event)" nbButton size="xsmall" status="success" style="width: 100px">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+  </nb-card-header>
+  <nb-card-body #target id="table"> 
+    <!-- <ngx-lead-search (searchLead)="searchLeads($event)"></ngx-lead-search>
+ -->    
+      <ng2-smart-table class="full-width text-center" 
+                       [settings]="leadSettings"
+                       [source]="datasource3"                     
+                       (custom)="onCustom($event)">
+      </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+</div>
+<div *ngIf="viewKan">
+ 
+  <ngx-lead-kanban [divided_leads]="divided_leads" 
+                   [connectedTo]="connectedTo">
+  </ngx-lead-kanban>
+
+</div>
+
+<div *ngIf="viewCal">
+<nb-card>
+  <ngx-calendar></ngx-calendar>
+</nb-card>
+</div>
+ </nb-tab>
+ <nb-tab  tabTitle="Affaires cloturés">
+        <ng2-smart-table class="full-width text-center"
+                         [settings]="archived"
+                         [source]="datasource4"                     
+                         (custom)="onCustom($event)">
+        </ng2-smart-table>
+ </nb-tab>
+ </nb-tabset>
+  </nb-card-body>
+</nb-card>

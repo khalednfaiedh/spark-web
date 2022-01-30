@@ -1,0 +1,127 @@
+
+  
+<div class="col-md-12 col-lg-12" style="width: 50vw; height: 38vh">
+ 
+   
+    <form    #form="ngForm" (ngSubmit)="save()"  > 
+    
+      
+        <nb-card   >
+          <nb-card-body>
+   
+            
+            <div class="row full-name-inputs">
+              
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                 <label _ngcontent-udb-c31="" class="label">    Numéro   </label> 
+                <input  [disabled]="disabled"  [(ngModel)]="phase.numero"  type="number" name="numero"  placeholder="Numéro" class="form-control"
+                 required  />
+                 <div [hidden]="!(form.controls.numero?.dirty && form.controls.numero?.invalid)">
+                  <small class="form-text text-danger"
+                  [hidden]="!form.controls.numero?.errors?.required"  >
+                  Ce champ est requis.
+                  </small>
+                  <small class="form-text text-danger"
+                  [hidden]="!form.controls.numero?.errors?.minlength"  >
+                  Ce champ doit contenir au moins 3 caractères.
+                  </small>
+                   
+              </div>
+              <div [hidden]="validReference">
+                <small class="form-text text-danger" >
+                  référence existe déjà
+                </small>
+  
+              </div>
+  
+              </div>
+  
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">    Priorité   </label> 
+                 <input  [disabled]="disabled"  [(ngModel)]="phase.priorite"  type="number" name="priorite"  placeholder="Priorité" class="form-control"
+                  required  />
+                
+                
+   
+               </div>
+                
+               
+               
+              
+            </div>
+  
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">    Désignation   </label> 
+                   <input required   [disabled]="disabled"   [(ngModel)]="phase.designation"  type="text" name="designation" placeholder="Désignation" class="form-control"
+               />
+                 </div>
+                 <!-- <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">    Type   </label> 
+                   
+                   <ng-select 
+                   required
+                   name="type" 
+                   placeholder="choisir..............." 
+                   [appendTo]="'body'"
+                   [items]="types"
+                   style="width:100%;" 
+                   [(ngModel)]="gamme.type"
+                   [disabled]="disabled"
+                   
+            >
+                   </ng-select>
+                 </div> -->
+                 <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">       Gamme opératoire   </label> 
+                 
+                  <ng-select 
+                  name="modes"
+                  placeholder=" choisire une Gamme" 
+                  [appendTo]="'body'"
+                  [items]="gammes"
+                  bindLabel="designation"
+                  required
+                  [(ngModel)]="phase.gammeOperatoire"
+                 >
+                </ng-select>
+               </div>
+   
+  
+  
+            </div>
+  
+            <div class="row full-name-inputs">  
+              <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">      Commentaire        :</label>
+                  <textarea   [disabled]="disabled" nbInput fullWidth placeholder="Textarea" name="commentaire"   [(ngModel)]="phase.commentaire" ></textarea>
+                </div>
+        
+          </div>
+  
+  
+  
+   
+  
+  
+            
+   
+          
+  
+            
+           
+            
+    
+          </nb-card-body>
+        </nb-card>
+        <div style="text-align:right;" [hidden]="disabled">
+            <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+            [disabled]=!form.valid     type="submit" > {{message}}</button>
+            <button (click)="onclose()" nbButton status="danger"
+              style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+          </div>
+  
+    
+    </form>
+    </div>
+  

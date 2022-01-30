@@ -1,0 +1,64 @@
+<div class="col-md-12 col-lg-12" style="width:580px; height: 280px">
+
+    <form class="form-group" (ngSubmit)="addPlanTiers()" autocomplete="off" #gaForm=ngForm>
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs label">
+            
+            <div class="input-group col-md-6   input-group-sm">
+              <label class="text-label" i18n="@@CompteName">Code</label>
+            </div>
+            <div class="input-group col-md-6   input-group-sm">
+              <label class="text-label" i18n="@@CompteName">Intitulé</label>
+            </div>
+           
+          </div>
+          <div class="row full-name-inputs">
+              
+            <div class="input-group col-md-6  input-group-sm">
+              <input name="gacode" #gacode [(ngModel)]="planTiers.codeCompte" class="form-control" maxlength="16"
+                minlength="3" disabled>
+            </div>
+            <div class="input-group col-md-6   input-group-sm">
+              <input name="ganame" #ganame [(ngModel)]="planTiers.nameCompte" class="form-control" maxlength="160"
+                minlength="2" disabled>
+            </div>
+          </div>
+          <!-- njghgjhjgfghl -->
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-6   input-group-sm">
+              <label class="text-label" i18n="@@CompteCode"> Compte Géneral</label>
+            </div>
+            <div class="input-group col-md-6   input-group-sm">
+              <label class="text-label" i18n="@@CompteName"> Type</label>
+            </div>
+             
+           
+          </div>
+          <div class="row full-name-inputs">
+              <div class="input-group col-md-6   input-group-sm">
+                  <ng-select 
+                  [items]="planGenerals"
+                  bindLabel="nameCode"
+                  name="compte"
+                  [(ngModel)]="planTiers.compteGeneral"
+                  style="width:100%;"
+                  disabled>
+             </ng-select>
+                </div>
+             
+            <div class="input-group col-md-6   input-group-sm">
+              <ng-select 
+                  [items]="types"
+               
+                  name="types"
+                  [(ngModel)]="planTiers.typecompteTier"
+                  style="width:100%;"
+                  disabled>
+             </ng-select>
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+     
+    </form>

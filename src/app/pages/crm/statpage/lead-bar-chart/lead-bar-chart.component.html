@@ -1,0 +1,21 @@
+<nb-card>
+<nb-card-header>
+    Number of Leads by Step
+    </nb-card-header>
+    <nb-card-body>
+        <ngx-charts-bar-vertical
+       
+        [scheme]="colorScheme"
+        [results]="chart"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+       
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        >
+      </ngx-charts-bar-vertical>
+    </nb-card-body>
+</nb-card>

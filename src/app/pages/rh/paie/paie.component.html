@@ -1,0 +1,42 @@
+<nb-card>
+  <nb-card-body>
+    <div style="display: flex; justify-content: space-between;">
+      <!-- <div>
+        <ng-select placeholder="Entreprise" style="width: 200px;" [(ngModel)]="entreprise" [items]="entreprises"
+          [appendTo]="'body'" bindLabel="socialReason" (change)=getimputation()>
+        </ng-select>
+      </div> -->
+      <div style="display: flex;">
+        <h4> Mois: {{mois}} - {{annee}} </h4>
+        <button style="margin-left: 0.5rem; margin-top: -0.5rem; height: 39px;" size="small" nbButton status="warning"
+          (click)="openChangeMonth()">Changer <i class="fas fa-calendar-alt"></i> </button>
+      </div>
+      <div>
+        <button nbButton status="primary" (click)="openFichePaie()" >Fiche de paie
+           <i class="fas fa-angle-double-right"></i> </button>
+      </div>
+    </div>
+    <nb-card style="margin-top:1.25rem ;">
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-9 col-lg-9">
+            <button [disabled]="mois > 12" (click)="openWindowMensuelle()" [hidden]="!authoritiesAdd" class="btn btn-hero-success" nbButton
+              style="width: 200px;"> Régime mensuel </button>
+            <button [disabled]="mois > 12" (click)="openWindowHeure()" [hidden]="!authoritiesAdd" class="btn btn-hero-success" nbButton
+              style="width: 200px;margin-left: 2%;">Régime par heure</button>
+          </div>
+        </div>
+        <ng2-smart-table class="full-width text-center" [settings]="imputationSettings" [source]="imputation"
+          (deleteConfirm)="onDeleteConfirm($event)" >
+        </ng2-smart-table>
+        <div class="note" *ngIf="mois > 12">
+          <ul>
+            <li> Les primes de fin d'année ne nécessite pas une fiche de présence. </li>
+            <li> Veuillez passez à la generation des fiches de paie.</li>
+          </ul>
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

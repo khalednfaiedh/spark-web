@@ -1,0 +1,302 @@
+<nb-tabset fullWidth class="tabset-edit">
+  <nb-tab tabTitle="Détails">
+    <nb-card style="margin-top: 3px;">
+      <nb-card-body>
+        <form class="form-group" autocomplete="off" #addLeadForm=ngForm>
+         <div *ngIf="!lead.actif" class="note note-info">
+          <div class="note-title">Affaire {{lead.rapportStatus}}</div>
+          <div class="note-body">
+            <p *ngIf="lead.rapportComment">{{lead.rapportComment}}</p>
+            <p *ngIf="!lead.rapportComment">Pas de commentaire</p>
+          </div>  
+        </div>
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="activity">Référence:</label> 
+            </div>
+            <div class="input-group col-md-5 input-group-sm">
+              <label class="text-label" for="socialReason">Dénomination</label>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="activity">Ajouter par:</label>
+            </div>
+            <div class="input-group col-md-3   input-group-sm">
+              <label for="activity">Chiffre d'affaires estimé</label>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-2   input-group-sm">
+              <input type="text" placeholder="Référence" name="ref" #ref [(ngModel)]="lead.ref" maxlength="50"
+            disabled    class="form-control" required i18n="@@ref">
+            </div>
+            <div class="input-group col-md-5 input-group-sm">
+              <input type="text" name="socialReason" #socialReason [(ngModel)]="lead.leadName" maxlength="50"
+              disabled    class="form-control" required i18n="@@socialReason">
+            </div>
+            <div class="input-group col-md-2  input-group-sm">
+              <input type="text" name="createdBy" #createdBy disabled [(ngModel)]="lead.username" class="form-control"
+                i18n="@@activity">
+            </div>
+            <div class="input-group col-md-3  input-group-sm">
+              <input type="text" name="activity" #activity [(ngModel)]="lead.leadValue" class="form-control"
+              disabled  i18n="@@activity">
+            </div>
+          </div>
+
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-4   input-group-sm">
+              <label for="tradeCode">Prospecteur</label>
+            </div>
+
+            <div class="input-group col-md-4   input-group-sm">
+              <label for="tradeCode">Prospect</label>
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <label for="tradeCode">Etape</label>
+            </div>
+
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-4   input-group-sm">
+
+              <ng-select [items]="intervenants" bindLabel="username" name="intervenant" disabled [closeOnSelect]="false"
+              disabled  [multiple]="true" [(ngModel)]="lead.intervenant" style="width:100%">
+              </ng-select>
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+
+              <ng-select [items]="prospects" bindLabel="prospectName" bindValue="prospectID" name="leadProspect"
+              disabled  [(ngModel)]="lead.prospect.prospectID" style="width:100%">
+              </ng-select>
+
+            </div>
+            <div class="input-group col-md-4  input-group-sm">
+
+              <ng-select [items]="steps" bindLabel="stepName" bindValue="stepID" name="leadStep"
+              disabled  [(ngModel)]="lead.leadStep.stepID" style="width:100%">
+              </ng-select>
+            </div>
+          </div>
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-3   input-group-sm">
+              <label for="matriCode">Date début</label>
+            </div>
+            <div class="input-group col-md-3 offset-md-1  input-group-sm">
+              <label for="capital">Date de clôture estimée</label>
+            </div>
+            <div class="input-group col-md-4 offset-md-1  input-group-sm">
+              <label for="manager2">Progrès (%)</label>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-4   input-group-sm">
+              <input name="startdate" #startdate [(ngModel)]="lead.leadDateCreation" class="form-control"
+              disabled     [nbDatepicker]="sdatepicker" i18n="@@startdate" required>
+              <nb-datepicker #sdatepicker></nb-datepicker>
+
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <input name="enddate" #enddate [(ngModel)]="lead.leadDateDeadline" class="form-control"
+              disabled   [nbDatepicker]="edatepicker" i18n="@@enddate" required>
+              <nb-datepicker #edatepicker></nb-datepicker>
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <input name="manager2" disabled #manager2 [(ngModel)]="lead.leadScore" class="form-control" i18n="@@manager">
+            </div>
+
+          </div>
+
+          <div class="row full-name-inputs label">
+
+            <div class="input-group col-md-12   input-group-sm">
+              <label for="email">Commentaire</label>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+
+            <div class="input-group col-md-12   input-group-sm">
+              <textarea class="form-control" name="startdate3" #startdate3 rows="4" cols="60"
+              disabled     [(ngModel)]="lead.leadComment" placeholder="Text Area" rows="1" shape="round"></textarea>
+            </div>
+          </div>
+        </form>
+      </nb-card-body>
+    </nb-card>
+
+  </nb-tab>
+  <nb-tab tabTitle="Prospect">
+    <nb-card style="margin-top: 3px;">
+      <div class="col-md-12" style="margin-bottom: 15px;" >
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-4   input-group-sm">
+              <label class="text-label" for="name">Intitulé</label>
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <label class="text-label">Planning de prospection</label>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="rating">Note</label>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="typeProspect">Type</label>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-4   input-group-sm">
+              <input disabled type="text" name="name" #name [(ngModel)]="prospect.prospectName" class="form-control">
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <ng-select [items]="plannings" name="planning" bindLabel="designation"
+              disabled     [(ngModel)]="prospect.planning" style="width:100%">
+              </ng-select>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <input type="text" name="rating" #rating [(ngModel)]="prospect.prospectRating" class="form-control" required
+              disabled      i18n="@@rating">
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <ng-select name="typeProspect"
+              disabled     [(ngModel)]="prospect.prospectType" style="width:100%">
+              </ng-select>
+            </div>
+          </div>
+      
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-6 input-group-sm">
+              <label for="startdate">Date de création</label>
+            </div>
+            <div class="input-group col-md-6 input-group-sm">
+              <label for="addedBy">Ajouté par</label>
+            </div>
+            
+          </div>
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-6  input-group-sm">
+              <input name="startdate" #startdate [(ngModel)]="prospect.dateCreation" class="form-control"
+              disabled [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled>
+              <nb-datepicker #sdatepicker></nb-datepicker>
+      
+            </div>
+            <div class="input-group col-md-6   input-group-sm">
+              <input type="text" name="user" #addedBy [(ngModel)]="prospect.createdBy" maxlength="50" class="form-control"
+               i18n="@@socialReason" disabled>
+            </div>
+           
+      
+          </div>
+      
+          <div class="row full-name-inputs label">
+      
+            <div class="input-group col-md-4   input-group-sm">
+              <label for="adress">Adresse</label>
+            </div>
+            <div class="input-group col-md-3 input-group-sm">
+              <label for="country">Pays</label>
+            </div>
+            <div class="input-group col-md-3   input-group-sm">
+              <label for="town">Ville</label>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="postalCode">Code postal</label>
+            </div>
+          </div>
+      
+          <div class="row full-name-inputs">
+      
+            <div class="input-group col-md-4 input-group-sm">
+              <input class="form-control" name="address" #address [(ngModel)]="prospect.prospectAddress" shape="round">
+            </div>
+            <div class="input-group col-md-3 input-group-sm">
+              <ng-select disabled [items]="payes" name="payes" [(ngModel)]="prospect.prospectCountry" style="width:100%">
+              </ng-select>
+      
+            </div>
+            <div class="input-group col-md-3   input-group-sm">
+              <input name="country" #country [(ngModel)]="prospect.prospectTown" class="form-control" i18n="@@country">
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <input disabled name="postalCode" #postalCode [(ngModel)]="prospect.prosectPostalCode" class="form-control"
+                i18n="@@postalCode">
+            </div>
+          </div>
+      
+          <div class="row full-name-inputs label">
+            <div class="input-group col-md-8   input-group-sm">
+              <label for="comment">Commentaire</label>
+            </div>
+            <div class="input-group col-md-4  input-group-sm" >
+              <label for="bank">Nom banque</label>
+      
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+      
+            <div class="input-group col-md-8   input-group-sm">
+              <textarea disabled class="form-control" name="comment" #comment rows="4" cols="60" [(ngModel)]="prospect.prospectComment"
+                rows="5" shape="round"></textarea>
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+              <input name="bank" #bank [(ngModel)]="prospect.prospectBank" class="form-control " i18n="@@bank"
+              disabled  style="width:100%;height:30%">
+              <label for="bankCode">Numèro compte</label>
+              <input name="bankCode" #bankCode [(ngModel)]="prospect.prospectAccount" class="form-control" i18n="@@code"
+              disabled style="width:100%;height:40%">
+            </div>
+          </div>
+      </div>
+    </nb-card>
+      <nb-card style="margin-top: 1px;">
+        <nb-card-header>
+         Liste des contacts
+        </nb-card-header>
+        <nb-card-body>  
+          <ng2-smart-table class="full-width text-center"
+                  [settings]="contratSettings"
+                  [source]="contacts">
+          </ng2-smart-table>
+        </nb-card-body>
+      </nb-card>
+    
+  </nb-tab>
+  <nb-tab tabTitle="Prospecteur">
+    <nb-card style="margin-top: 3px;">
+      <nb-card-body>
+        <ng2-smart-table class="full-width text-center" [settings]="iSettings" [source]="iSource">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-tab>
+  <nb-tab tabTitle="Actions">
+    <nb-card style="margin-top: 3px;">
+
+      <nb-card-body>
+        <ng2-smart-table class="full-width text-center" [settings]="aSettings" [source]="aSource">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-tab>
+
+  <nb-tab tabTitle="Produits">
+    <nb-card style="margin-top: 3px;">
+
+      <nb-card-body>
+
+        <ng2-smart-table class="full-width text-center" [settings]="pSettings" [source]="pSource">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-tab>
+
+  <nb-tab tabTitle="Notes">
+    <nb-card style="margin-top: 3px;">
+
+      <nb-card-body>
+        <ng2-smart-table class="full-width" [settings]="nSettings" [source]="nSource"
+          style="text-transform: capitalize;">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-tab>
+
+</nb-tabset>

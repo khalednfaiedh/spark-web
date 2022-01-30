@@ -1,0 +1,35 @@
+<nb-card>
+  <nb-card-body>
+<div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+  <div>
+    <button nbButton status="primary" (click)="back()"><i class="fas fa-angle-double-left"></i> Retour</button>
+  </div>
+  <div>
+    <button nbButton status="success" (click)="save()"><i class="far fa-save"></i> Enregistrer</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6" *ngFor="let  item  of cheque;">
+    <nb-card>
+      <nb-card-body>
+            <div style="display: flex; justify-content: space-between; ">
+              <h5> <!--Banque/Agence/Adresse : --></h5> 
+              <p style="text-align: end;">DATE : {{dateDeJour | date}}</p>
+          </div> 
+           <!-- <h5>Compte N° :  </h5>--> <br> 
+          <div style="display: flex; justify-content: center; ">
+              <h4 >CHEQUE N°: </h4>
+              <input type="text" class="input-group-sm" [(ngModel)]="item.numPaiement">
+          </div>
+          <p><strong>Payer contre ce chéque :</strong> {{item.net | number : '0.3-3'}} Dinar </p> 
+          <div style="display: flex; justify-content: space-between; margin-bottom: 2rem; ">
+            <p><strong>Pour :</strong> {{item.nom}} {{item.prenom}}</p>
+            <p>[ Signature ]</p>
+          </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+</nb-card-body>
+</nb-card>

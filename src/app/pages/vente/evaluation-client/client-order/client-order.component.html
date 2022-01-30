@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+     
+    </div>
+
+    <nb-card>
+      <nb-card-header class="text-center">
+        Order des clients
+      </nb-card-header>
+      <nb-card-body >
+        <ng2-smart-table class="full-width text-center"
+                         [settings]="settings"
+                         [source]="source"
+                         (deleteConfirm)="onDeleteConfirm($event)"
+                         (custom)="onCustom($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

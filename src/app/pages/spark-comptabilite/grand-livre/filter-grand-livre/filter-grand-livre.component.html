@@ -1,0 +1,36 @@
+<div class="col-md-12  " style="width:520px; height: 220px">
+  
+     
+
+        <div class="row full-name-inputs label">
+
+            <div class="input-group col-md-12">
+                <div class="input-group col-md-6   ">
+                    <label>  <h3>Exercice :</h3>  </label>    </div>
+              
+              <div class="input-group col-md-6  ">
+                
+                  <ng-select placeholder="Choisir..."
+                  [items]="exercices" 
+                  bindLabel="designation" 
+                  bindValue="id"
+                  autofocus
+                  [clearable] = false
+                 style="width: 250%;"
+                 (change)="getGrandLivre(id)"
+                 [(ngModel)]="id"
+                  >
+                 </ng-select>  
+              </div>
+            </div>
+
+
+
+          </div>
+ 
+
+
+      
+      
+      </div>
+      

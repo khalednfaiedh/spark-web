@@ -1,0 +1,41 @@
+<div class="col-md-12 col-lg-12" style="width:850px; height: 130px">
+  <div class="row">
+            <div class="from-group col-md-2 col-lg-2 input-group-sm">
+              <label>Montant: </label>
+              <input type="number" placeholder="Montant" class="form-control " [(ngModel)]="avance.montant"  />
+            </div>
+         
+            <div class="form-group col-md-4 col-lg-4 input-group-sm" >
+              <label> Date Début Remboursement: </label>
+              <div style="display : flex ;">
+            <ng-select
+                placeholder="Mois"
+                [items]="mois"
+                name="mois"
+                [appendTo]="'body'"  
+                style="width:35%; "
+              [(ngModel)]="avance.moisDebutRembourcement"
+               >
+              </ng-select>
+
+                <ng-select
+                placeholder="Année"
+                [items]="annee"
+                name="annee"
+                [appendTo]="'body'"  
+                style="width:50%; margin-left: 1%;"
+               [(ngModel)]="avance.anneeDebutRembourcement">
+              </ng-select>
+            </div>
+          </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label>Nombre des échéances: </label>
+              <input type="number" placeholder="Nombre d'écheances" class="form-control" [(ngModel)]="avance.nombreEcheance"  />
+            </div>            
+            <div class="form-group col-md-3 col-lg-3 input-group-sm" style="text-align:right;">
+                <button status="success" nbButton style="cursor: pointer;align-content: center; width: 100%; margin-top: 1rem;"
+                  (click)="onAddA()">{{ Aj }}</button>   
+            </div> 
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<div class="col-md-12 col-lg-12" style="width:750px; height: 350px">
+  <div class="row">
+      <nb-card>
+        <nb-card-body>
+            <div class="col-lg-12" style="width:710px; height: 285px; margin-top: 3%;">
+              <div >
+                 <p style=" margin-bottom: 2rem; margin-top: -1rem; text-align: center;">    Solde congé disponible :<strong> {{solde}} </strong> jours </p>
+              </div>  
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <label>Selectionner type de congé: </label>
+                <ng-select  [items]="typeConge" 
+                   placeholder="Type Congé"
+                   name="Type Congé"
+                    bindLabel="designation" 
+                   [(ngModel)]="conge.congeType"
+                   [appendTo]="'body'"  
+                   style="width:100%; " 
+                   size="xsmall">
+                </ng-select>
+              </div>
+              <div class="input-group col-md-6 col-lg-6 input-group-sm" >
+                <label>Nombre de jours authorisés: </label>
+               
+                <ng-select  [items]="typeConge" 
+               
+                 bindLabel="nombreJours" 
+                placeholder="0"
+                [(ngModel)]="conge.congeType"
+                [appendTo]="'body'"  
+                style="width:100%; " 
+                size="xsmall"
+                disabled >
+             </ng-select>
+              </div>
+            </div>
+                <br>
+              <div class="row full-name-inputs">
+                 <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                  <label>Date début de congé: </label>
+
+                  <input  nbInput placeholder="Date début de congé" class=" form-control" [nbDatepicker]="dateDeDebut"
+                    [(ngModel)]="conge.dateDebut" />
+                  <nb-datepicker #dateDeDebut></nb-datepicker> 
+                </div>
+
+                <div class="from-group col-md-5 col-lg-5 input-group-sm ">
+                  <label>Date fin de congé: </label>
+
+                  <input nbInput placeholder="Date fin de congé" class="form-control" [nbDatepicker]="dateDeFin"
+                    [(ngModel)]="conge.dateFin"[disabled]="!conge.dateDebut"/>
+                  <nb-datepicker #dateDeFin ></nb-datepicker>
+                </div> 
+                <div class="form-group col-md-2 col-lg-2 input-group-sm " >
+                 
+                  <button nbButton status="info" (click)="verif(conge.dateDebut ,conge.dateFin )" [disabled]="!(conge.dateDebut && conge.dateFin && conge.congeType)" style="margin-top: 2rem;
+                  padding: 0.3rem 1rem;">
+                    Vérifier
+                  </button>
+                </div> 
+
+                <!-- <div class="form-group col-md-2 col-lg-2 input-group-sm " *ngIf='conge.dateDebut && conge.dateFin'>
+                  <label>Jours: </label>
+                  <input class="form-control" 
+                    [(ngModel)]="conge.nombreDejourDemander" disabled/>
+                </div>  -->
+          </div>
+              <div class="row " *ngIf='nbrJours >1 '>
+                <div class="alert-success-style"> 
+                <label><Strong>{{nbrJours}}</Strong> jours de Congé </label> 
+                </div>
+              </div>
+              <div class="row " *ngIf='nbrJours == 1'>
+                <div class="alert-success-style"> 
+                <label><Strong>Un</Strong> jour de Congé </label> 
+                </div>
+              </div>
+             <div class="row " *ngIf='nbrJours == 0 '>
+                <div class="alert-danger-style"> 
+                <label>Pas de jours congé : entrer deux dates valides </label> 
+                </div>
+              </div> 
+              <div class="row " *ngIf='nbrJours < 0 ' >
+                <div class="alert-danger-style"> 
+                <label>La date de fin de congé doit étre postérieur à la date de début </label> 
+                </div>
+              </div> 
+
+          <div style="text-align:right;">
+            <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="passerDemande()" status="success" [disabled]="!conge.dateDebut || !conge.dateFin || !conge.congeType || test " [hidden]="authoritiesPasserDemande" >{{A}}</button>
+              <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="confirmer()" status="warning" [disabled]="!conge.dateDebut || !conge.dateFin || !conge.congeType || test " [hidden]="authoritiesConfirm" >Confirmation directe</button>
+            <button nbButton  (click)="close()" style="cursor: pointer;margin: 0.5rem;align-content: center;" status="danger">Annuler</button>
+          </div>
+          </div>
+        </nb-card-body>
+    
+      </nb-card>
+   
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+  <div class="row">
+      <nb-card>
+          <label class="table-title"><strong> Congé en attente </strong></label> 
+        <div class="col-lg-12" style="width:940px; height: 420px;">
+
+        <nb-card-body>
+          <table class="table table-bordered table-striped" >
+            <thead>
+              <tr>
+                <th scope="col" class="td-style">Désignation</th>
+                <th scope="col" class="td-style">Date Début Congé </th>
+                <th scope="col" class="td-style">Date Fin Congé </th>
+                <th scope="col"class="td-style">Jours</th>
+
+                <th scope="col" class="td-style">Etat</th>
+                <th scope="col" class="td-style">Date Demande Congé </th>
+
+                <!-- <th scope="col" class="td-style">Status</th> -->
+                <th scope="col" class="td-style" *ngIf='authoritiesConfirm || authoritiesDecline || authoritiesDelete' >Action</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf='congeEnAttente == "" '><td colspan="7"><div style="font-size: 15px; color: #5e5e5e;text-align: center;">Pas de congé en attente</div></td></tr>
+              <tr *ngFor="let  item  of congeEnAttente;" >
+                <td style="width: 28%">{{item.congeType.designation}}</td>
+                <td  style="width: 15%"class="td-style">{{item.dateDebut | date}} </td>
+                <td  style="width: 13%"class="td-style">{{item.dateFin | date}}  </td>
+                <td    class="td-style">{{item.nbrJours}}</td>
+                <td  style="width: 10%" class="td-style"><div class="td-warning">en attente</div> </td>
+                <td  style="width: 18%"class="td-style">{{item.dateCreation | date }}  </td>
+                <td *ngIf='authoritiesConfirm || authoritiesDecline || authoritiesDelete' class="td-style action-style"> 
+                  <!-- <a class="clickable" (click)="confirm(item.dateDebut)">Detail</a> -->
+                  <button class="small-button-success" title="Confirmer congé" [hidden]="!authoritiesConfirm" (click)="confirm(item)" ><i class="fas fa-check"></i></button>
+                  <button class="small-button-danger" title="Annuler congé" [hidden]="!authoritiesDecline" (click)="annuler(item)"><i class="fas fa-times-circle"></i></button>
+                  <!-- <button class="small-button-light" title="modifier congé" (click)="modifier(item)"><i class="fas fa-wrench"></i></button> -->
+                  <button class="small-button-dark" title="supprimer congé" [hidden]="!authoritiesDelete" (click)="supprimer(item)"><i class="fas fa-trash-alt"></i></button>
+                </td>                                          
+              </tr>
+            </tbody>
+          </table>
+        </nb-card-body>
+        </div>
+      </nb-card>
+
+      <nb-card>
+        <label class="table-title"><strong> Suivi des congés </strong></label> 
+      <div class="col-lg-12" style="width:940px; height: 320px;">
+
+      <nb-card-body>
+
+
+
+
+      <table class="table table-bordered table-striped" >
+
+          <thead>
+            <tr>
+           
+              <th scope="col" class="td-style">Désignation</th>
+              <th scope="col" class="td-style">Date Début  </th>
+              <th scope="col" class="td-style">Date Fin  </th>
+              <th scope="col"class="td-style">Jours</th>
+              <th scope="col" class="td-style">État</th>
+              <th scope="col" class="td-style">Date Demande  </th>
+              <th scope="col" class="td-style">Date Traitement Demande </th>
+           
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf='suivieConge == "" '><td colspan="7"><div style="font-size: 15px; color: #5e5e5e;text-align: center;">Pas de congé a suivre</div></td></tr>
+            <tr *ngFor="let  item  of suivieConge;" >
+              <td style="width: 28%">{{item.congeType.designation}}</td>
+              <td  style="width: 15%"class="td-style">{{item.dateDebut | date}} </td>
+              <td  style="width: 13%"class="td-style">{{item.dateFin | date}}  </td>
+              <td  class="td-style">{{item.nbrJours}}</td>
+              <td  style="width: 10%" class="td-style" *ngIf="item.etat == '0'"><div class="td-danger">annuler</div> </td>
+              <td  style="width: 10%" class="td-style" *ngIf="item.etat == '2'"><div class="td-success">confirmer</div> </td>
+              <td  style="width: 18%"class="td-style">{{item.dateCreation | date }}  </td>
+              <td  style="width: 18%"class="td-style">{{item.dateConfirmation | date }}  </td>                       
+            </tr>
+          </tbody>
+        </table> 
+      </nb-card-body>
+      </div>
+    </nb-card>
+  </div>
+</div> 

@@ -1,0 +1,51 @@
+<nb-card>
+  <nb-card-body>
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        <button nbButton status="primary" (click)="back()"><i class="fas fa-angle-double-left"></i> Retour</button>
+      </div>
+      <div>
+        <button nbButton status="success" [disabled]="num < 1000 || !num" (click)="save()"><i class="far fa-save"></i> Enregistrer</button>
+      </div>
+   </div>
+  <nb-card style="margin-top: 0.5rem;">
+    <nb-card-body>
+<br>
+    <!-- <h5>Societé :  </h5>
+    <h5>MF :  </h5>
+    <h5>RC :</h5>
+    <h5>Banque :  </h5> -->
+    <h3 style="text-align: center;">Ordre de virement : Salaires de {{mois}} - {{annee}}</h3>
+    <p style="text-align: right;" >N° ordre <input  type="text" class="input-group-sm" [(ngModel)]="num"></p>
+    <table class="table table-bordered " style="margin-top: 3rem;" >
+      <thead>
+        <tr>
+          <th scope="col" class="td-style">Matricule</th>
+          <th scope="col" class="td-style">Nom </th>
+          <th scope="col" class="td-style">Prenom </th>
+          <th scope="col" class="td-style">RIB </th>
+          <th scope="col" class="td-style">Banque </th>
+          <th scope="col" class="td-style">Agence </th>
+          <th scope="col" class="td-style">Net à payer </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let  item  of virements;" >
+          <td class="td-style">{{item.matricule}}</td>
+          <td class="td-style">{{item.nom}} </td>
+          <td class="td-style">{{item.prenom}} </td>
+          <td class="td-style">{{item.rib}}</td>
+          <td class="td-style">{{item.banque}}</td>
+          <td class="td-style">{{item.agence}}</td>
+          <td class="td-style">{{item.net| number : '0.3-3'}}</td>
+        </tr>
+      </tbody>
+      <tr style="background-color:#ebeff5 ;">
+        <th class="td-style" colspan="6">Total</th>
+        <th class="td-style">{{total | number : '0.3-3'}}</th>
+      </tr>
+    </table>  
+  </nb-card-body>
+</nb-card>
+</nb-card-body>
+</nb-card>

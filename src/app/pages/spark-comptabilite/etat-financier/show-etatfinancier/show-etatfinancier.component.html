@@ -1,0 +1,31 @@
+<div class="col-md-12  " style="width:550px; height: 220px">
+  <nb-card>
+    <nb-card-body>
+                <div class="row full-name-inputs label nvForm">
+                <div class="input-group col-md-3   input-group-sm">
+                <label for="startDate"> {{ 'etatfinancier.list11' | translate}}</label>
+                </div>
+                <div class="input-group col-md-6   input-group-sm">
+                <input type=" date" name="startDate"   [(ngModel)]="etatFinancier.startDate" class="form-control"  disabled/> 
+                </div>
+                </div>
+
+                <div class="row full-name-inputs label nvForm">
+                <div class="input-group col-md-3   input-group-sm">
+                <label for="endDate"> {{ 'etatfinancier.list12' | translate}} </label>
+                </div>
+                <div class="input-group col-md-6   input-group-sm">
+                <input type=" date" name="endDate"   [(ngModel)]="etatFinancier.endDate" class="form-control"  disabled/> 
+                </div>
+                </div>
+
+                <div class="row full-name-inputs label nvForm">
+                <div class="input-group col-md-3   input-group-sm">
+                <label for="description"> {{ 'etatfinancier.list13' | translate}} </label>
+                </div>
+                <div class="input-group col-md-6   input-group-sm">
+                <input type=" text" name="description"   [(ngModel)]="etatFinancier.description" class="form-control"  disabled/> 
+                </div>
+                </div>
+   </nb-card-body>
+</nb-card>

@@ -1,0 +1,47 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height: 180px">
+
+  <form class="form-group" (ngSubmit)="creerGAccount()" autocomplete="off" #gaForm=ngForm>
+    <nb-card>
+      <nb-card-body>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label class="text-label" i18n="@@CompteCode">Code</label></div>
+          <div class="input-group col-md-5   input-group-sm">
+            <label class="text-label" i18n="@@CompteName">Intitulé</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label class="text-label" i18n="@@CompteName"> Nature</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <input name="gacode" #gacode [(ngModel)]="planGeneral.codeCompte" class="form-control" maxlength="16"
+              minlength="3" required>
+          </div>
+          <div class="input-group col-md-5   input-group-sm">
+            <input name="ganame" #ganame [(ngModel)]="planGeneral.nameCompte" class="form-control" maxlength="160"
+              minlength="2" required>
+          </div>
+
+          <div class="input-group col-md-3   input-group-sm">
+            
+            <ng-select placeholder="Choisir..."
+            [items]="natures" 
+            style="width: 100%"
+           [(ngModel)]="planGeneral.compteNature"
+           name="nature"
+            >
+           </ng-select>  
+
+
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <div style="text-align:right;">
+      <button nbButton hero status="success" class="submit" [disabled]=!gaForm.valid>{{valider}}</button>
+      <button nbButton hero status="danger"   (click)="onclose()"
+        style="margin-left: 30px;"> Fermer</button>
+    </div>
+  </form>
+   

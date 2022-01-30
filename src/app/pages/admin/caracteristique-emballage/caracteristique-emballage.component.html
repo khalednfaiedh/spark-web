@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-body>
+    <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+      (editConfirm)="onSaveConfirm($event)" (createConfirm)="onCreateConfirm($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+  <div style="text-align:right;">
+
+    <button (click)="onclose()" nbButton size="xsmall" status="danger"
+      style="cursor: pointer;margin: 0.5rem;align-content: center ;">Fermer</button>
+  </div>
+</nb-card>

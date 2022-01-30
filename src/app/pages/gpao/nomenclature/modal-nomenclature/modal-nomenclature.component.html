@@ -1,0 +1,184 @@
+ 
+<div class="col-md-12 col-lg-12" style="width: 70vw; height: 70vh">
+ 
+   
+  <form [formGroup]='orderForm' #monFormulaire1=ngForm  > 
+  
+    
+      <nb-card  style="height: 480px">
+        <nb-card-body>
+ 
+          
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">    Produit </label>
+             
+               <ng-select 
+              required
+               name="Produit" 
+               placeholder="Produit" 
+               [appendTo]="'body'"
+               [items]="produits"
+               style="width:100%;" 
+               bindLabel="designation"
+               
+               formControlName="produit">
+               </ng-select>
+            </div>
+              
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+               <label _ngcontent-udb-c31="" class="label">   Réference   </label> 
+              <input   type="text" name="sommeFinale" placeholder="Réference" class="form-control"
+              formControlName="code"  required  />
+            </div>
+             
+             
+            
+          </div>
+
+          <div class="row full-name-inputs">
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">    Désignation   </label> 
+                 <input required  type="text" name="sommeFinale" placeholder="Désignation" class="form-control"
+                 formControlName="designation"   />
+               </div>
+               <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">    Type   </label> 
+                 
+                 <ng-select 
+                 required
+                 name="type" 
+                 placeholder="choisir..............." 
+                 [appendTo]="'body'"
+                 [items]="types"
+                 style="width:100%;" 
+                
+                 bindLabel="name"
+                 bindValue="id"
+                 formControlName="type">
+                 </ng-select>
+               </div>
+ 
+
+
+          </div>
+
+ 
+
+
+           <hr style="margin-top: 3%;"> 
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">    Produit :</label>
+                    </div>
+
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <label _ngcontent-udb-c31="" class="label">     Niveau :</label>
+                      </div>
+
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                          <label _ngcontent-udb-c31="" class="label">      Prix Unitaire :</label>
+                          </div>
+
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">    Qauntitée :</label>
+                        </div>
+                        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                            <label _ngcontent-udb-c31="" class="label">     Parent :</label>
+                            </div>
+
+                        <div class="form-group col-md-1 col-lg-1 input-group-sm">
+
+
+                            <label _ngcontent-udb-c31="" class="label">     
+                                <button    [hidden]="disabled"  size="xsmall" class="btn" nbButton status="success"  (click)="addItem($event)" >  
+                               +
+                                    
+                                  </button>
+                              </label>  
+                           
+                        </div>
+                        <!-- nouveau ligne -->
+
+            </div>
+  <div formArrayName="produitNomenclatures" *ngFor="let item of formData.controls; let i = index; let c = count">
+  <div class="margin-botn" [formGroupName]="i">   
+
+            <div class="row full-name-inputs">
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                    <!-- <label _ngcontent-udb-c31="" class="label">    Produit :</label> -->
+                    <ng-select 
+                     
+                    name="Produit" 
+                    placeholder="Produit" 
+                    [appendTo]="'body'"
+                    [items]="produits"
+                    style="width:100%;" 
+                    bindLabel="designation"
+                    formControlName="produit">
+                    </ng-select>
+                  </div>
+                  <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                    <!-- <label _ngcontent-udb-c31="" class="label">    Qauntitée :</label> -->
+                    <input       type="text" name="sommeFinale" placeholder="niveau" class="form-control"
+                    formControlName="niveau"   />
+                  </div>
+
+                  <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <!-- <label _ngcontent-udb-c31="" class="label">    Qauntitée :</label> -->
+                      <input       type="text" name="sommeFinale" placeholder="Prix Unitaire" class="form-control"
+                      formControlName="prix"   />
+                    </div>
+
+                  <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                      <!-- <label _ngcontent-udb-c31="" class="label">    Qauntitée :</label> -->
+                      <input     type="text" name="sommeFinale" placeholder="quantity" class="form-control"
+                      formControlName="quantity" 
+                         />
+                    </div>
+                    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <ng-select 
+                     
+                        name="parent" 
+                        placeholder="Parent " 
+                        [appendTo]="'body'"
+                        [items]="produits"
+                        style="width:100%;" 
+                        bindLabel="designation"
+                        formControlName="parent">
+                        </ng-select>
+                      </div>
+                    
+                    <div class="form-group col-md-1 col-lg-1 input-group-sm">
+   
+      <button  [hidden]="disabled"  nbButton status="danger"  size="xsmall" type="btn" title="Supprimer la ligne"   (click)="deleteItemLine($event, i)" >
+                             -</button>  
+                           
+                          
+                      </div> 
+                      
+                     
+                    
+
+              </div>
+          </div>
+          </div>
+            
+        
+
+          
+         
+          
+  
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;" [hidden]="disabled">
+          <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+          [disabled]=!monFormulaire1.valid   (click)="submitForm(orderForm.value)"> {{message}}</button>
+          <button (click)="onclose()" nbButton status="danger"
+            style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+        </div>
+
+  
+  </form>
+  </div>

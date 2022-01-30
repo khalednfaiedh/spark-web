@@ -1,0 +1,76 @@
+<div class="col-md-12  " style="width:1000px; height:600px">
+  <nb-card>
+    <nb-card-body>
+      
+        <br>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Numéro Écriture</label>
+          </div>
+
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="tradeCode"> Numéro Pièce</label>
+          </div>
+          <div class="input-group col-md-3 input-group-sm">
+            <label for="jurform" i18n="@@jurform"> Date </label>
+          </div>
+          <div class="input-group col-md-3 input-group-sm">
+            <label for="nature" i18n="@@nature"> Libélle </label>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+
+
+          <div class="input-group col-md-3  input-group-sm">
+            <input type="number" name="numeroEcriture" [(ngModel)]="ecriture.numeroEcriture " class="form-control" disabled>
+          </div>
+
+          <div class="input-group col-md-3  input-group-sm">
+            <input type="number" name="numeroPiece" [(ngModel)]="ecriture.numeroPiece" class="form-control" disabled>
+          </div>
+
+          <div class="input-group col-md-3 col-lg-3 input-group-sm">
+            <input nbInput class="form-control" [nbDatepicker]="date" [(ngModel)]="ecriture.date" name="date" disabled />
+            <nb-datepicker #date></nb-datepicker>
+          </div>
+
+          <div class="input-group col-md-3   input-group-sm">
+            <input type="text" name="libelle" [(ngModel)]="ecriture.libelle" class="form-control" disabled />
+          </div>
+
+        </div>
+        <br>
+
+         
+        <nb-card  >
+           <nb-card-header >
+         <p style="text-align: center">  Liste des opérations</p>
+           </nb-card-header>
+          <nb-card-body>
+            <ng2-smart-table #smartTable 
+            class="full-width" 
+            [settings]="settings" 
+            [source]="operation" 
+            (deleteConfirm)="onDeleteConfirm($event)" 
+            (custom)="onCustom($event)">
+            </ng2-smart-table>
+        
+        </nb-card-body>
+      
+      </nb-card>
+         
+         
+ 
+ 
+
+        
+        
+
+     
+
+    </nb-card-body>
+  </nb-card>
+  <!-- </nb-tab>
+</nb-tabset> -->
+</div>

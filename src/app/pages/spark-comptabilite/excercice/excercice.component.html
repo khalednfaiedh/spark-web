@@ -1,0 +1,24 @@
+<!-- <ngx-active-exercice></ngx-active-exercice> -->
+ 
+
+ 
+<nb-card>
+   
+    <nb-card-header class="text-center">
+   Liste des   Exercices comptables<button (click)="creerExercice()" class="btn btn-hero-success" nbButton style="padding: 0.4rem 1.5rem; margin-left: 1%;" > +
+      </button>
+    </nb-card-header>
+    <nb-card-body>
+                <nb-tabset fullWidth>
+                        <nb-tab tabTitle="Exercices ouverts" i18n="@@fyOpened">
+                          
+                          <ngx-excercice-ouverts></ngx-excercice-ouverts>
+                        </nb-tab>
+                        <!-- <nb-tab tabTitle="Exercices clôturés" i18n="@@fyClosed">
+                             
+                          <ngx-excercice-clotures></ngx-excercice-clotures>
+                        </nb-tab> -->
+                    </nb-tabset>
+ 
+    </nb-card-body>
+  </nb-card>

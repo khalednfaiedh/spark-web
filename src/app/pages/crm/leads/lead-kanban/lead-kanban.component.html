@@ -1,0 +1,21 @@
+<div class="cdk-virtual-scroll-data-source-example" style="background-color: #e9edf3;padding:10px;max-width: calc(100% - 10px);;">
+  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="10" class="example-viewport" style="width:100%; padding-top:10px;">
+    <div  *ngFor="let divider of divided_leads">
+      <div  [ngStyle]="{'width': x+'vw'}" class="drag-container">
+          <nb-card >
+            <nb-card-header style="padding-bottom: 0rem;" class="text-center">
+            <p status="info"> {{divider.id}}</p>
+            </nb-card-header>
+          <nb-card-body cdkDropList id="{{divider.id}}" 
+                        [cdkDropListData]="divider.leads"
+                        [cdkDropListConnectedTo]="connectedTo" 
+                        (cdkDropListDropped)="drop($event)">
+            <nb-alert  outline="info" *ngFor="let lead of divider.leads" cdkDrag>
+              <h5>{{lead.leadName}}</h5>
+            </nb-alert>
+           </nb-card-body>
+          </nb-card>
+        </div>
+      </div>
+  </cdk-virtual-scroll-viewport>
+</div>

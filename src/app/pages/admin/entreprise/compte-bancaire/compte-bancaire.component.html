@@ -1,0 +1,29 @@
+<nb-card>
+  <nb-card-body>
+<nb-card>
+  <nb-card-header>
+    <div style="display: flex;">
+      <div>
+          <button (click)="goback()" class="btn btn-hero-info" size="xsmall"  nbButton>  <i class="fas fa-arrow-left"></i></button>
+      </div>
+      <div style="margin: 0 auto;">
+          Liste des comptes bancaires  &nbsp;
+          <button (click)="addCompte()" nbButton size="xsmall" status="success" style="width: 100px">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+      </div>     
+    </div>  
+    </nb-card-header>
+<nb-card-body>
+
+    <ng2-smart-table 
+    class="full-width text-center" 
+    [settings]="settings" 
+    [source]="comptes" 
+    (deleteConfirm)="onDeleteConfirm($event)" 
+    (custom)="onCustom($event)">
+    </ng2-smart-table>
+</nb-card-body>
+</nb-card>
+</nb-card-body>
+</nb-card>

@@ -1,0 +1,22 @@
+<nb-card>
+    <nb-card-header class="text-center">
+     
+
+        <div style="margin: 0 auto;">
+            List des   Reclamations   &nbsp;
+          
+     </div>
+      </nb-card-header>
+  <nb-card-body>
+     
+
+   
+        <ng2-smart-table class="full-width text-center"
+         [settings]="settings" 
+         [source]="source"
+        (deleteConfirm)="onDeleteConfirm($event)"
+        (custom)="onCustom($event)">
+        </ng2-smart-table>
+      
+  </nb-card-body>
+</nb-card>

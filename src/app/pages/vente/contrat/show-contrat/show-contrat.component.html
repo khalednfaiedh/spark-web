@@ -1,0 +1,234 @@
+<div class="col-md-12 col-lg-12" style="width:1400px; height: 650px">
+  <div>
+
+
+    <nb-card>
+      <nb-card-body>
+        <nb-tabset fullWidth>
+          <nb-tab tabTitle="{{ 'contrat.infoGeneral'  }}">
+            <nb-card>
+              <nb-card-body>
+
+                <div class="row full-name-inputs">
+
+
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label class="text-label">{{ 'contrat.code'  }} :</label>
+                    <input type="text" name="code" style="width: 100%;" [(ngModel)]="contrat.code" class="form-control"
+                      i18n="@@code" />
+                  </div>
+
+
+
+
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label>{{ 'contrat.dateDebut'  }} :</label>
+                    <input nbInput placeholder="Date de début du contrat" style="width: 100%;" class="form-control"
+                      [nbDatepicker]="dateDeDebut" [(ngModel)]="contrat.dateDebut" />
+                    <nb-datepicker #dateDeDebut></nb-datepicker>
+                  </div>
+
+                  <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                    <label>{{ 'contrat.dateFin' }} :</label>
+                    <input nbInput placeholder="Date de fin du contrat" style="width: 100%;" class="form-control"
+                      [nbDatepicker]="dateDeFin" [(ngModel)]="contrat.dateFin" />
+                    <nb-datepicker #dateDeFin></nb-datepicker>
+                  </div>
+
+
+                  <div class="input-group col-md-2 col-lg-2 input-group-sm">
+                    <label>{{ 'contrat.prix' }} :</label>
+                    <input type="text" name="prix" style="width: 100%;" [(ngModel)]="contrat.prix" class="form-control"
+                      i18n="@@prix" />
+                  </div>
+
+                  <div class="input-group col-md-1 col-lg-1  input-group-sm">
+                    <label>{{ 'contrat.devise'  }} :</label>
+                    <ng-select placeholder="Monnaille" [appendTo]="'body'" style="width:100%; " size="xsmall"
+                      [(ngModel)]="contrat.devise">
+                      <ng-option value="TND">TND</ng-option>
+                      <ng-option value="EUR">EUR</ng-option>
+                      <ng-option value="USD">USD</ng-option>
+                      <ng-option value="SAR">SAR</ng-option>
+                      <ng-option value="KWD">KWD</ng-option>
+                      <ng-option value="QAR">QAR</ng-option>
+                      <ng-option value="SEK">SEK</ng-option>
+                      <ng-option value="NOK">NOK</ng-option>
+                      <ng-option value="GBP">GBP</ng-option>
+                      <ng-option value="AED">AED</ng-option>
+                      <ng-option value="CHF">CHF</ng-option>
+                      <ng-option value="CAD">CAD</ng-option>
+                    </ng-select>
+                  </div>
+
+                  <div class="input-group col-md-2 col-lg-2  input-group-sm">
+                    <label>{{ 'contrat.moyenPaiement' }} :</label>
+                    <ng-select placeholder="Type de Paiement" [appendTo]="'body'" style="width:100%; " size="xsmall"
+                      [(ngModel)]="contrat.moyenPaiement">
+                      <ng-option value="En Espéce">En Espéce</ng-option>
+                      <ng-option value="Par Chéque">Par Chéque</ng-option>
+                      <ng-option value="Par Virement Banquaire">Par Virement Banquaire</ng-option>
+                    </ng-select>
+                  </div>
+
+                  <div class="input-group col-md-2  col-lg-2  input-group-sm">
+                    <label>{{ 'contrat.modalitePaiement'  }} :</label>
+                    <input type="text" name="modalitePaiement" style="width: 100%;"
+                      [(ngModel)]="contrat.modalitePaiement" class="form-control" i18n="@@modalitePaiement" />
+                  </div>
+                  <div class="input-group col-md-2 col-lg-2  input-group-sm">
+                    <label class="text-label">{{ 'contrat.capaciteProduction'  }} :</label>
+                    <input type="text" name="capaciteProduction" style="width: 100%;"
+                      [(ngModel)]="contrat.capaciteProduction" class="form-control" i18n="@@capaciteProduction" />
+
+                  </div>
+                  <div class="input-group col-md-3 col-lg-3  input-group-sm">
+                    <label>{{ 'contrat.nombreHeureTravailleParJour' }} :</label>
+                    <ng-select bindLabel="leadName" name="actionLead" [appendTo]="'body'"
+                      placeholder="Nombre d'heures travaillées par jour" [appendTo]="'body'" style="width:100%; "
+                      size="xsmall" [(ngModel)]="contrat.nombreHeureTravailleParJour">
+                      <ng-option value="une équipe(8heures par jours)">une équipe(8heures par jour)</ng-option>
+                      <ng-option value="deux équipes(16 heures par jour)">deux équipes(16 heures par jour)</ng-option>
+                      <ng-option value="trois équipes(24 heures par jour)">trois équipes(24 heures par jour)</ng-option>
+                    </ng-select>
+                  </div>
+
+
+
+
+                  <!-- <div class="input-group col-md-4 col-lg-4  input-group-sm">
+                    <label>{{ 'contrat.delaiLivraison' | translate }} :</label>
+                    <input nbInput placeholder="Delai de Livraison " style="width: 100%;" class="form-control"
+                      [nbDatepicker]="delaiLivraison" [(ngModel)]="contrat.delaiLivraison" />
+                    <nb-datepicker #delaiLivraison></nb-datepicker>
+                  </div>
+                  <div class="input-group col-md-4 col-lg-4  input-group-sm">
+                    <label>{{ 'contrat.lieuLivraison' | translate }} :</label>
+                    <input type="text" name="lieuLivraison" style="width: 100%;" [(ngModel)]="contrat.lieuLivraison"
+                      class="form-control" i18n="@@lieuLivraison" />
+                  </div> -->
+
+                  <div class="input-group col-md-6 col-lg-6  input-group-sm">
+                    <label>{{ 'contrat.transport' }} :</label>
+                    <ng-select bindLabel="leadName" name="actionLead" [appendTo]="'body'" placeholder="transport"
+                      [appendTo]="'body'" style="width:100%; " size="xsmall" [(ngModel)]="contrat.transport">
+                      <ng-option value="Nos soins">Nos soins</ng-option>
+                      <ng-option value="Les soins de sous-traitant">Les soins de sous-traitant</ng-option>
+                    </ng-select>
+                  </div>
+
+                  <div class="input-group col-md-6 col-lg-6  input-group-sm">
+                    <label>{{ 'contrat.emballage'  }} :</label>
+                    <ng-select bindLabel="leadName" name="actionLead" [appendTo]="'body'" placeholder="emballage"
+                      [appendTo]="'body'" style="width:100%; " size="xsmall" [(ngModel)]="contrat.emballage">
+                      <ng-option value="Nos soins">Nos soins</ng-option>
+                      <ng-option value="Les soins de sous-traitant">Les soins de sous-traitant</ng-option>
+                    </ng-select>
+                  </div>
+
+
+                  <div class="input-group col-md-12 col-lg-12  input-group-sm">
+                    <label>{{ 'contrat.cadenceLivraison' }} :</label>
+                    <input type="text" name="cadenceLivraison" style="width: 100%;"
+                      [(ngModel)]="contrat.cadenceLivraison" class="form-control" i18n="@@cadenceLivraison" />
+                  </div>
+
+
+                  <div class="input-group col-md-6 col-lg-6  input-group-sm">
+                    <label>{{ 'contrat.clauseIndexation' }} :</label>
+                    <input type="text" name="clauseIndexation" style="width: 100%;"
+                      [(ngModel)]="contrat.clauseIndexation" class="form-control" i18n="@@clauseIndexation" />
+                  </div>
+
+                  <div class="input-group col-md-6 col-lg-6  input-group-sm">
+                    <label>{{ 'contrat.penaliteRetard' }} :</label>
+                    <input type="text" name="penaliteRetard" style="width: 100%;" [(ngModel)]="contrat.penaliteRetard"
+                      class="form-control" i18n="@@penaliteRetard" />
+                  </div>
+
+                  <div class="input-group col-md-4 col-lg-4  input-group-sm">
+                    <label>{{ 'contrat.garanties'  }} :</label>
+                    <ng-select bindLabel="leadName" name="actionLead" [appendTo]="'body'" placeholder="Garanties"
+                      [appendTo]="'body'" style="width:100%; " size="xsmall" [(ngModel)]="contrat.garanties">
+                      <ng-option value="Oui">Oui</ng-option>
+                      <ng-option value="Non">Non</ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="input-group col-md-4 col-lg-4  input-group-sm" *ngIf="contrat.garanties== 'Oui'">
+                    <label>{{ 'contrat.objetGarantie'  }} :</label>
+                    <input type="text" name="dureeGaranties" style="width: 100%;" [(ngModel)]="contrat.objetGaranties"
+                      class="form-control" i18n="@@dureeGaranties" />
+                  </div>
+
+                  <div class="input-group col-md-2 col-lg-2 input-group-sm" *ngIf="contrat.garanties== 'Oui'">
+                    <label>{{ 'contrat.dateDebutGarantie'  }} :</label>
+                    <input nbInput placeholder="Date de début du contrat" style="width: 100%;" class="form-control"
+                      [nbDatepicker]="dateDeDebut" [(ngModel)]="contrat.dateDebutGarantie" />
+                    <nb-datepicker #dateDeDebut></nb-datepicker>
+                  </div>
+
+                  <div class="input-group col-md-2 col-lg-2 input-group-sm " *ngIf="contrat.garanties== 'Oui'">
+                    <label>{{ 'contrat.dateFinGarantie' }} :</label>
+                    <input nbInput placeholder="Date de fin du contrat" style="width: 100%;" class="form-control"
+                      [nbDatepicker]="dateDeFin" [(ngModel)]="contrat.dateFinGarantie" />
+                    <nb-datepicker #dateDeFin></nb-datepicker>
+                  </div>
+
+                  <div class="input-group col-md-12 col-lg-12  input-group-sm">
+                    <label for="droitApplicable">{{ 'contrat.droitApplicable' }} :</label>
+                    <input type="text" name="droitApplicable" style="width: 100%;" [(ngModel)]="contrat.droitApplicable"
+                      class="form-control" i18n="@@droitApplicable" />
+                  </div>
+
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </nb-tab>
+
+          <nb-tab tabTitle="{{ 'contrat.produit' }}">
+            <nb-card>
+              <nb-card-body>
+                <ng2-smart-table class="full-width text-center" [settings]="settingsProduit" [source]="sourceCPr"
+                  (createConfirm)="onCreateConfirmProduit($event)" (deleteConfirm)="onDeleteConfirmProduit($event)"
+                  (editConfirm)="onSaveConfirmProduit($event)">
+                </ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+          </nb-tab>
+          <nb-tab tabTitle="{{ 'contrat.machine'  }}">
+            <nb-card>
+              <nb-card-body>
+                <ng2-smart-table class="full-width text-center" [settings]="settingsMachine" [source]="sourceCM"
+                  (createConfirm)="onCreateConfirmMachine($event)" (deleteConfirm)="onDeleteConfirmMachine($event)"
+                  (editConfirm)="onSaveConfirmMachine($event)">
+                </ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+          </nb-tab>
+          <nb-tab tabTitle="{{ 'contrat.employe' }}">
+            <nb-card>
+              <nb-card-body>
+                <ng2-smart-table class="full-width text-center" [settings]="settingsEmployes" [source]="sourceCP"
+                  (deleteConfirm)="onDeleteConfirmPersonnel($event)" (createConfirm)="onCreateConfirmEmploye($event)"
+                  (editConfirm)="onSaveConfirmEmploye($event)">
+                </ng2-smart-table>
+              </nb-card-body>
+            </nb-card>
+            <div style="margin-left: 75rem;">
+              <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center; background-color: green;"
+                (click)="onAddTM()">
+                {{ATM}}</button>
+              <button (click)="onclose()" nbButton
+                style="cursor: pointer;margin: 0.5rem;align-content: center; background-color: red;">{{ 'annuler'  }}</button>
+            </div>
+          </nb-tab>
+
+        </nb-tabset>
+
+      </nb-card-body>
+    </nb-card>
+
+
+
+  </div>
+</div>

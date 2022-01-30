@@ -1,0 +1,171 @@
+<nb-card [hidden]="!exerciceBoolean">
+  <nb-card-body>
+    <div class="note note-info"    >
+      <div class="note-title">Note</div>
+      <div class="note-body">
+        <ul>
+          <li>
+            Données non trouvées
+          </li>
+          <li>
+            acune  opération écriture  à affichée .
+          </li>
+          <li>
+            s'il vous plaît ouvrire un exercice.
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nb-card-body>
+</nb-card>
+ 
+<nb-card [hidden]="exerciceBoolean">
+
+<nb-card-header>
+
+    <ngx-titre-exercice></ngx-titre-exercice>
+
+ 
+</nb-card-header> 
+<nb-card-body  >
+
+
+
+    <div class="row">
+        <div class="col-sm-3">
+
+            <ng-select placeholder="Choisir un compte"
+            [items]="comptes" 
+            bindLabel="nameCode" 
+            bindValue="id"
+            [(ngModel)]="id"
+            autofocus
+           
+            (change)="getOperationByIdCompteGeneraleAndAnnee()"
+            name="compte"
+            >
+           </ng-select>
+           
+          </div>
+
+          <div class="col-sm-6">
+
+
+            </div>
+
+            <div class="col-sm-3">
+                <ng-select  [items]="filtre"   
+                bindLabel="name" 
+                bindValue="idName"
+                [(ngModel)]="idName"
+                (change)="filtreEcriture(idName)"
+                style="width: 100% ;  "
+                name="filtre"
+                >
+               </ng-select>
+              
+              </div>
+
+    </div>
+
+     
+
+      <div class="note note-info"  *ngIf="boolean"  style="margin-top: 2%" >
+        <div class="note-title">Note</div>
+        <div class="note-body">
+          <ul>
+            <li>
+              Données non trouvées
+            </li>
+            <li>
+              acune  opération écriture  à afficher . SVP    sélectionner un compte générale !
+            </li>
+          </ul>
+        </div>
+      </div>
+
+   <div  *ngIf="!boolean"  style="margin-top: 2%"> 
+    <div class="btn-group" role="group" aria-label="Button group with nested dropdown" style="width: 100%">
+        <button type="button"  (click)="delletrageTous()" class="btn btn-danger  btn-sm">Délettrer  TOUT</button>
+        <button type="button" (click)="save()"   class="btn btn-success  btn-sm">Lettrer TOUT</button>
+        <input  type="text" class="form-control"  style="width: 10%"      [(ngModel)]="modalLettrage.lettre"       name="lettre" />
+        <button type="button" (click)="save()"   class="btn btn-success  btn-sm">Lettrer</button>
+      
+       
+        <!-- <button type="button" class="btn btn-secondary">2</button> -->
+        <input  type="text" style="width: 10%"  class="form-control"   [(ngModel)]="modaLettragePost.lettre1"       name="lettre1" />
+        <input  type="text" class="form-control"  style="width: 10%"      [(ngModel)]="modaLettragePost.lettre2"       name="lettre2" />
+        <button type="button"   (click)="delletrageByTwoLettre()"  class="btn btn-danger  btn-sm"> Délettrer</button>
+        <button type="button" (click)="DeletreChecked()"   class="btn btn-info  btn-sm">Délettrer selectioner</button>
+       
+         
+      </div>
+   
+     
+  <table class="table table-striped table-bordered "   style="margin-top: 2%">
+      <thead    >
+        <tr>
+          <th ></th>
+          <th scope="col"> Cod JRL</th>
+          <th scope="col"> Date</th>
+          <th scope="col">N°Pièce</th>
+          <th scope="col">N° Compte Tiers</th>
+          <th scope="col">N°écriture/libellé</th>
+          <th scope="col">Letttrage montant</th>
+          <th scope="col">Débit</th>
+          <th scope="col">Crédit</th>
+           
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let  operation of lettrage; let i = index; let c = count" >
+      <td>  
+        
+        
+            <input type="checkbox" [checked]="getSelection(operation)" (change)="changeHandler(operation,$event)">
+            
+          
+          
+      </td>
+          <td  style="width: 15%">{{operation.ecriture.journal.code}} </td>
+          <td style="width: 15%">{{operation.ecriture.date}}</td>
+          <td style="width: 5%">{{operation.ecriture.numeroPiece}}</td>
+          <td  style="width: 15%">{{operation.compteTiers.codeCompte}}</td>
+          <td  style="width: 15%">{{operation.ecriture.numeroEcriture}}-{{operation.ecriture.libelle}} </td>
+          <td  style="width: 5%"> {{operation.lettreLettrage}} </td>
+          <td style="width:15%">{{operation.debit | transformeNumber }}</td>
+          <td style="width: 15%">{{operation.credit | transformeNumber  }}</td>
+
+         
+           
+        </tr>
+      </tbody>
+<!-- 
+        <tfoot style="background-color:cadetblue;">
+            <td  style="width: 25%"> TOTAUX : ({{plan.codeCompte}}) :{{plan.nameCompte}} - {{   getEtatCompte(j)}}</td>
+            <td></td>
+            <td></td>   
+            <td></td>
+            <td></td> 
+            <td>{{getTotolDebit(j)}}</td>     
+            <td>{{getTotolCredit(j)}}</td>
+            <td>{{  getCumule(j) }}</td>
+           
+        </tfoot> -->
+        
+    </table>
+    <!-- <div  *ngIf="!lettrage.length">
+      <div class="note note-info" >
+        <div class="note-title">Note</div>
+        <div class="note-body">
+           Data not found
+        </div>
+      </div>
+    </div> -->
+  
+  </div>  
+     
+</nb-card-body>
+
+
+</nb-card>

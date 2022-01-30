@@ -1,0 +1,17 @@
+:host /deep/ .statut {
+    color: white;
+    border-radius: 5px;
+    margin: 0;
+    }
+:host /deep/ .danger {
+    background:#dc3545;
+    }
+:host /deep/ .success {
+    background:#28a745;
+  }
+  .danger {
+    background:#dc3545;
+    }
+    .success {
+        background:#28a745;
+      }

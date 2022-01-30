@@ -1,0 +1,22 @@
+
+
+<div class="header-container">
+  <!-- <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+  (click)="t()">test</button> -->
+
+  <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+<div style=" display: flex;">
+  <ng-select (change)='changerEntreprise(current_entreprise)' [items]="entreprises" 
+  style="width: 300px;"
+  bindLabel="socialReason"  [clearable]="false"
+  placeholder="Choisir.." [(ngModel)]="current_entreprise">
+</ng-select> 
+
+<nb-actions size="medium" [class.right]="position === 'normal'" [class.left]="position === 'inverse'">
+<nb-action>
+  <nb-user [nbContextMenu]="userMenu" [name]="user?.name" [picture]="user?.picture"></nb-user>
+</nb-action>
+</nb-actions>
+</div>
+ 
+ </div>

@@ -1,0 +1,97 @@
+<div class="popup">
+ 
+  <nb-card>
+    <nb-card-header>
+      Produits
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label class="label">Référence: </label>
+          <input type=" text" [(ngModel)]="produit.reference" class="form-control" disabled />
+        </div> 
+        
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label class="label">Produit: </label>
+          <input type=" text" [(ngModel)]="produit.nameProduit" class="form-control" disabled />
+        </div>
+
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label class="label">N° lot :</label>
+          <input type=" text" [(ngModel)]="produit.lot" class="form-control" disabled />
+        </div>
+
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label class="label">Quantité :</label>
+          <input type=" text" [(ngModel)]="produit.quantity" class="form-control" disabled />
+        </div>
+
+      </div>
+    </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-header>
+      Magasin
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label class="label">Source: </label>
+          <input type=" text" [(ngModel)]="produit.nameMagasin" class="form-control" disabled />
+        </div>
+
+        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label class="label">Déstinasion:</label>
+          <ng-select [items]="magasins" bindLabel="nameMagasin" appendTo="body" 
+          placeholder="Déstinasion" [(ngModel)]="produit.magasin" fullWidth>
+          </ng-select>  
+        </div>
+
+      </div>
+
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card>
+    <nb-card-header>
+      Transfert
+    </nb-card-header>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label  class="label">Référence :</label>
+          <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="mvt.reference"/>
+        </div> 
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label  class="label">Désignation :</label>
+          <input type="number" placeholder="Désignation" class="form-control" [(ngModel)]="mvt.designation" />
+        </div> 
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Date transfert:</label>
+          <input placeholder="Date transfert" name="date4" #date4  [(ngModel)]="mvt.dateOperation" class="form-control" [nbDatepicker]="date4" />
+          <nb-datepicker #date4 ></nb-datepicker>       
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label  class="label">Contrôle Qualité :</label>
+          <ng-select name="condition " placeholder="Contrôle Qualité" [(ngModel)]="mvt.qualite">
+            <ng-option value="Réalisé">Réalisé</ng-option>
+            <ng-option value="Non réalisé">Non réalisé</ng-option>
+          </ng-select> 
+         </div>    
+        <div class="from-group col-md-12 col-lg-12 input-group-sm">
+          <label for="">Commentaire</label>
+          <textarea rows="2" placeholder="Commentaire" class="form-control"
+            [(ngModel)]="mvt.commentaire"></textarea>
+        </div> 
+      </div>
+    </nb-card-body>
+  </nb-card>
+     
+
+  <div style="text-align:right;">
+    <button nbButton status="success" (click)="update()" >Enregistrer</button>
+    <button nbButton status="danger" (click)="close()" style="margin-left: 2px;">Fermer</button>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-body>
+    <div style="display: flex;justify-content: space-between;">
+          <div> 
+              <button nbButton status="primary" (click)="openFichePaie()"><i class="fas fa-angle-double-left"></i> Fiche de paie</button>
+          </div>
+          <div>
+            <button nbButton status="primary" (click)="openJournalPaie()">Journal de paie <i class="fas fa-angle-double-right"></i></button>
+          </div>
+    </div> 
+
+    <nb-card style="margin-top: 0.5rem;">
+        <nb-card-header class="text-center"> Liste des soldes de tout compte au titre de l'année {{annee}}
+             <button (click)="openAddWindow()" class="btn btn-hero-success" nbButton style="background: #40dc7e; color: #ffffff; padding: 0.5rem 4rem; margin-left: 1%;" > + </button> 
+        </nb-card-header>
+          <nb-card-body>
+                <ng2-smart-table class="full-width text-center" 
+                   [settings]="settings"
+                   [source]="source"
+                   (deleteConfirm)="onDeleteConfirm($event)" 
+                   (custom)="onCustom($event)">
+                </ng2-smart-table>
+          </nb-card-body>
+      </nb-card>       
+   </nb-card-body>
+</nb-card>       
+

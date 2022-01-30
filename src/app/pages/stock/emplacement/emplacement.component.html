@@ -1,0 +1,42 @@
+<nb-card>    
+      <nb-card-header style="display: flex; align-items: center; justify-content: space-around;" >
+        <div>    Liste des emplacements &nbsp;    
+        <button  (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+        <i class="fa fa-plus" aria-hidden="true"></i></button>
+     </div>   
+     <div style="width:25%;">
+
+      <ng-select name="magasin"  
+      [clearable]="false" 
+      placeholder=" *** Tous les magasins ***"
+      (change)="onChargeMagasin($event)" 
+      style="width:100%"
+      [appendTo]="'body'" >
+      <ng-option selected value='all'> *** Tous les magasins ***</ng-option>
+      <ng-option *ngFor="let i of magasins" [value]="i">{{i.nameMagasin}}</ng-option>
+    </ng-select>
+
+<!-- 
+      <ng-select name="magasin" 
+      [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin"
+      placeholder="Magasin" 
+      [(ngModel)]="idMagasin" 
+      (change)="onChargeMagasin($event)"
+      [appendTo]="'body'" 
+      style="width:100%;">
+     </ng-select>  -->
+
+
+     </div>       
+      </nb-card-header>
+      <nb-card-body>       
+        <ng2-smart-table class="full-width text-center"
+            (custom)="onCustom($event)"
+            [settings]="settings"
+            [source]="source"
+            (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+        <input currencyMask [(ngModel)]="ref" [options]="{ prefix: '', thousands: ' ', decimal: ',',precision: 3, align:'left'}" class="form-control"/>
+
+      </nb-card-body>
+</nb-card>

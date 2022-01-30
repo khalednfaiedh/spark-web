@@ -1,0 +1,165 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-7 col-lg-7 searshStyle">
+        <!-- <ng-select
+        placeholder="Trimestre"
+        [items]="trimestre"
+        name="trimestre"
+        [appendTo]="'body'"  
+       [(ngModel)]="trimestreCourante" >
+      </ng-select>
+     <ng-select
+     placeholder="Année"
+     [items]="annee"
+     name="annee"
+     [appendTo]="'body'"  
+    [(ngModel)]="anneeCourante" >
+   </ng-select> -->
+        <!-- <input placeholder="code" style="width: 30%;" class="form-control" [(ngModel)]="codeExpl" /> -->
+        <div style="float: left; margin-right: 10%;">
+          <button nbButton status="primary" (click)="openJournalPaie()"><i class="fas fa-angle-double-left"></i> Journal
+            de paie </button>
+        </div>
+        <ng-select placeholder="Catégorie - code exploitation" style="width: 30%;" [(ngModel)]="codeExpl"
+          [items]="categorie" [appendTo]="'body'" [items]="categorie" bindLabel="description"
+          bindValue="codeExploitation" (change)=afficherDeclaration()>
+        </ng-select>
+
+
+        <!-- <button nbButton status="info" (click)="afficherDeclaration()" [disabled]="!(trimestreCourante && anneeCourante && codeExpl)" 
+   style="padding: 0.5rem 1rem;"><i class="fa fa-search" aria-hidden="true"></i> Afficher </button> -->
+
+      </div>
+      <div class="col-md-5">
+        <div class="imprimStyle">
+          <button status="success" (click)="openRecapCNSS()" nbButton>
+            <i class="fa fa-eye" aria-hidden="true"></i>&nbsp; Recap CNSS </button> &nbsp;
+          <button nbButton status="info" (click)="open()">
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+            &nbsp; txt </button> &nbsp;
+          <button nbButton (click)="exportDeclarationToExcel()" status="warning"><i class="fas fa-file-excel"></i>&nbsp;
+            Excel</button>
+          &nbsp;
+          <!-- <button nbButton (click)="declarationCnssToPDF()" 
+     status="info"><i class="fa fa-print" aria-hidden="true"></i>&nbsp; PDF</button> -->
+        </div>
+      </div>
+    </div>
+    <nb-card *ngFor="let  declaration  of declaration ;let i = index;let c1 = count;">
+      <!-- <nb-card-header class="headerStyle">
+      dec cnss :  {{trimestreCourante}}/{{anneeCourante}} 
+      </nb-card-header> -->
+      <nb-card-body id="contentToConvert">
+        <div class="row">
+          <div class="col-md-3" style="text-align: center;font-size: 9px;font-family: initial;">
+            <strong> REPUBLIQUE TUNISIENNE <br>
+              MINISTRE DES AFFAIRES SOCIALES </strong><br>
+            CAISSE NATIONAL DE SECURITE SOCIALE<br>
+            49. aAv.TAIB MHIRI -TUNIS-Tel:71 796 744
+          </div>
+
+          <div class="col-md-8" style="text-align: center;">
+            <strong style=" font-size: 20px; font-family: initial;">DECLARATION TRIMESTRIELLE DES SALARIES ET DES
+              SALAIRES</strong> <br>
+            <label style="font-family: initial;font-size: 12px;">doit etre remise a la caisse sous peine de pénalités
+              dans les 15 premiers jours qui suivent le trimestre</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4" style="display: flex;">
+            <table style="width: 57%;margin-top: 2rem;" class="table table-bordered">
+              <tr>
+                <td colspan="2">N° Employeur: {{entreprise.numCNSS}}</td>
+              </tr>
+              <tr>
+                <td>BR:</td>
+                <td>Trimestre: {{declaration.trimestre}}</td>
+
+              </tr>
+              <tr>
+                <td>Page N°:{{declaration.numPage + 1}}</td>
+                <td> Année:{{declaration.annee}} </td>
+              </tr>
+            </table>
+            <table style="width: 43%;margin-top: 2rem;  height: 8.5rem; margin-left: 2rem;"
+              class="table table-bordered">
+              <tr>
+                <td>Code d'exploitation: {{declaration.codeExploitation}}</td>
+              </tr>
+              <tr>
+                <td> Matriule fiscal: {{entreprise.taxRegistrationCode}} </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="col-md-8 ">
+            <p style="text-align: center;font-family: initial;margin-top: 1rem;">NOM ET ADRESSE DE L'EMPLOEUR</p>
+            <div class="description-employeur">
+              <p style="margin: 1rem 1rem;">
+                <strong> {{entreprise.socialReason}} </strong> <br>
+                {{entreprise.officeAddress}}
+              </p>
+
+            </div>
+          </div>
+        </div>
+        <table style="width: 60%; margin-left: 40%;" class="table table-bordered" *ngIf="!(i == '0')">
+          <tr>
+            <td style="width: 30;">Total reporter</td>
+            <td>{{ declaration.areporterPremierMoisInit | number : '0.3-3'}} </td>
+            <td>{{ declaration.areporterDeuxiemeMoisInit | number : '0.3-3'}}</td>
+            <td>{{ declaration.areporterTroisiemeMoisInit | number : '0.3-3'}}</td>
+            <td>{{ declaration.totaleAreporterInit | number : '0.3-3'}}</td>
+          </tr>
+        </table>
+        <table class="table table-bordered">
+
+          <tr>
+            <th rowspan="2" scope="col" class="td-style" style="width: 5%;">N° Ordre</th>
+            <th rowspan="2" style="width: 20%;" scope="col" class="td-style" style="width: 10%;">MATRICULE DE L'ASSURE
+            </th>
+            <th style=" width: 35%;" rowspan="2" scope="col" class="td-style">IDENTITE DU SALARIE </th>
+            <th rowspan="2" scope="col" class="td-style" style="width: 7%;">N° chez l'emp </th>
+            <th rowspan="2" scope="col" class="td-style">Categorie</th>
+            <th colspan="3" style="width: 40%;" scope="col" class="td-style">RENUMERATION MENSUELLE </th>
+
+            <th rowspan="2" scope="col" class="td-style">TOTAL GENERAL</th>
+          </tr>
+          <tr>
+            <th scope="col" class="td-style">1er mois</th>
+            <th scope="col" class="td-style">2éme mois</th>
+            <th scope="col" class="td-style">3éme mois</th>
+          </tr>
+
+
+          <tr *ngFor="let  item  of declaration.declarationCorsDto ;let index = index; let c = count;">
+            <td class="td-style">{{ index +1 }}</td>
+            <td class="td-style">{{item.matricule}}</td>
+            <td class="td-style">{{item.nom}} {{item.prenom}}</td>
+            <td class="td-style"> </td>
+            <td class="td-style"> </td>
+
+            <td class="td-style">{{item.brutPermierMois | number : '0.3-3'}}</td>
+            <td class="td-style">{{item.brutDeuxiemeMois | number : '0.3-3'}}</td>
+            <td class="td-style">{{item.brutTroisiemeMois | number : '0.3-3'}}</td>
+            <td class="td-style">{{item.brutTrimestre | number : '0.3-3'}}</td>
+
+          </tr>
+
+          <tr style="background-color:#ebeff5 ;">
+            <th colspan="5">Total a reporter</th>
+            <th>{{declaration.areporterPremierMoisEnd | number : '0.3-3'}}</th>
+            <th>{{declaration.areporterDeuxiemeMoisEnd | number : '0.3-3'}}</th>
+            <th>{{declaration.areporterTroisiemeMoisEnd | number : '0.3-3'}}</th>
+            <th>{{declaration.totaleAreporterEnd | number : '0.3-3'}}</th>
+          </tr>
+
+        </table>
+        <div class="footer-declaration">
+          <p> Fait à ........................... le ...........................</p>
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

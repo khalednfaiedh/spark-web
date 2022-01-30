@@ -1,0 +1,16 @@
+div.validation-error{
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 80%;
+  color: #DC3545;
+  font-style: italic;
+  font-weight: bold
+}
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+  border-radius: 8px;
+}
+.ng-select[required]:not(form)  {
+  border-left: 5px solid #DC3545; /* red */
+  border-radius: 8px;
+}

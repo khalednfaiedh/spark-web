@@ -1,0 +1,53 @@
+{
+    "bilan": {
+        "list": "Bilans list"
+    },
+    "datatable": {
+        "noDataMessage": "No data found"
+    },
+    "taxe": {
+        "list": "Taxes list"
+    },
+    "categoryM": {
+        "list": "List of machine category ",
+        "list2": "List of machine subcategories",
+        "nom1": "Name : ",
+        "nom2": "Category name ",
+        "mere1": "Parent:",
+        "mere2": "Parent category:",
+        "add": "Add category",
+        "edit": "Edit category",
+        "show": "Category show",
+        "delete": "Are you sure you want to remove this category?"
+    },
+    "machine":{
+        "list":"List of machines",
+        "cat":"Category",
+        "code":"Code",
+        "marque":"Brand",
+        "modele":"Model",
+        "sn":"Serial number",
+        "fn":"Function",
+        "date1":"Manufacture date",
+        "date2":"First circulation date",
+        "date3":"Purchase date",
+        "prix":"Price",
+        "unite":"Currency",
+        "etat":"Condition",
+        "dur":"Amortization period",
+        "dur1":"Amortization period",
+        "cout":"% Amortization cost",
+        "val":"Cadence value",
+        "cad":"Cadence unit",
+        "hor":"Unit Cadence Hourly",
+        "desc":"Description",
+        "util":"Usage cost",
+        "util1":"Price * %Amortization cost",
+        "cadence":"Cadence",
+        "add":"Add Machine",
+        "edit":"Edit Machine",
+        "show":"Machine show",
+        "delete":"Are you sure you want to remove this Machine?"
+
+    }
+}

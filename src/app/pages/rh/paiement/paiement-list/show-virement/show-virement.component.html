@@ -1,0 +1,63 @@
+<div style="margin-left: 48rem;">
+  <!-- <button nbButton  status="info" title="Exporter sous format excel" size="small" >
+    <a href={{url}} style="color: white;">   
+        Excel  &nbsp; <i class="fa fa-download" aria-hidden="true"></i>
+    </a> 
+  </button> -->
+
+      <button (click)="exportVirementToExcel()"  nbButton size="small" status="info" title="Exporter sous format excel">
+          <i class="fa fa-download" aria-hidden="true"></i>&nbsp; Excel
+      </button> 
+
+  <button nbButton status="warning" size="small" (click)="imprimer()" style="margin-left: 1rem;">
+    Imprimer &nbsp; <i class="fa fa-print" aria-hidden="true"></i>
+  </button>
+</div>
+  <nb-card style="margin-top: 0.5rem; height: 400px;" id="content" >
+    <nb-card-body style="margin-top: 2rem;">
+    <p>Société: {{RS}}</p> 
+    <p>Matricule fiscal: {{MF}} </p>
+    <p>Registre de commerce : {{RC}}</p>
+    <p>Banque: {{banque}}</p>
+    <p>RIB: {{rib}}</p>
+    <h4 *ngIf="m <= 12; else planB" style="text-align: center;">Ordre de virement N°: {{code}} du mois {{mois}}-{{annee}} </h4>
+     <ng-template #planB> <h4 style="text-align: center;">Ordre de virement N°: {{code}} du {{mois}} mois {{annee}} </h4> </ng-template> 
+
+    <table class="table table-bordered " style="margin-top: 2rem; width: 900px;" >
+      <thead>
+        <tr>
+          <th scope="col" class="td-style">Matricule</th>
+          <th scope="col" class="td-style">Nom </th>
+          <th scope="col" class="td-style">Prénom </th>
+          <th scope="col" class="td-style">RIB </th>
+          <th scope="col" class="td-style">Banque </th>
+          <th scope="col" class="td-style">Agence </th>
+          <th scope="col" class="td-style">Net à payer </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let  item  of virements;" >
+          <td class="td-style">{{item.matricule}}</td>
+          <td class="td-style">{{item.nom}} </td>
+          <td class="td-style">{{item.prenom}} </td>
+          <td class="td-style">{{item.rib}}</td>
+          <td class="td-style">{{item.banque}}</td>
+          <td class="td-style">{{item.agence}}</td>
+          <td class="td-style"><b>{{item.net| number : '0.3-3'}}</b> TND</td>
+        </tr>
+      </tbody>
+      <tr style="background-color:#ebeff5 ;">
+        <th  style="padding-left: 2.5rem;" colspan="6">Total</th>
+        <th class="td-style">{{total | number : '0.3-3'}} TND</th> 
+      </tr>
+    </table>  
+  </nb-card-body>
+</nb-card>
+
+<button nbButton status="danger" (click)="close()" style="margin-left: 48rem;">
+  Fermer&nbsp;<i class="fa fa-window-close" aria-hidden="true"></i>
+</button>
+<button nbButton status="success" (click)="payer()" style="margin-left: 0.5rem;" [disabled]="payed == 2"> 
+  Payer&nbsp;<i class="fa fa-check" aria-hidden="true"></i>
+</button> 
+

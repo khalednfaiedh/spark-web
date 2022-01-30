@@ -1,0 +1,85 @@
+
+<nb-accordion style="padding-bottom:1%">
+  <nb-accordion-item #item collapsed="false">
+      <nb-accordion-item-header>
+       Affaires en cours
+      </nb-accordion-item-header>
+      <nb-accordion-item-body>
+    <table style="width:97%;border-style:hidden; ">
+      <thead>
+        <th style="width:14.9%">
+          <h5>Désignation</h5>
+        </th>
+        <th style="width:10%">
+          <h5>Valeur</h5>
+        </th>
+        <th style="width:74%">
+          <h5>Progression </h5>
+        </th>
+      </thead>
+    </table>
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport" style="width:100%">
+      <nb-card>
+        <nb-card-body>
+      <ngx-deal-bar *ngFor="let item of items" [item]="item" class="example-item"></ngx-deal-bar>
+    </nb-card-body>
+    </nb-card>
+    </cdk-virtual-scroll-viewport>
+  
+</nb-accordion-item-body>
+</nb-accordion-item>
+</nb-accordion>
+
+
+<div class="row">
+  <div class="col-xxl-12">
+    <div class="row">
+      <div class="col-md-5" style="height:90%">
+          <nb-card >
+        <ngx-action-pie-chart></ngx-action-pie-chart>
+        </nb-card>
+      </div>
+      <div class="col-md-7">
+        <nb-card >
+            <ngx-lead-bar-chart></ngx-lead-bar-chart>
+        </nb-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nb-card>
+  <nb-card-body>
+<ngx-dash-calendar></ngx-dash-calendar>
+  </nb-card-body>
+</nb-card>
+
+
+
+<!-- <div>
+  <div class="col-xxl-5">
+    <div class="row">
+      <div class="col-md-6">
+        <ngx-profit-card></ngx-profit-card>
+      </div>
+      <div class="col-md-6">
+        <ngx-earning-card></ngx-earning-card>
+      </div>
+    </div>
+    <ngx-traffic-reveal-card></ngx-traffic-reveal-card>
+  </div>
+  </div> -->
+  
+<!--    <div class="kanban-board">
+        <nb-card-header>
+            <h1> Affaires Récentes</h1>
+        </nb-card-header>
+        <ngx-kanban ></ngx-kanban>
+   </div> -->
+
+
+<!--  <div class="recent-actions">
+  <nb-card-header><h1>Actions d'aujourd'hui</h1> </nb-card-header>
+<ng2-smart-table [settings]="settings" [source]="data" (deleteConfirm)="onDeleteConfirm($event)">
+</ng2-smart-table>
+</div>  -->

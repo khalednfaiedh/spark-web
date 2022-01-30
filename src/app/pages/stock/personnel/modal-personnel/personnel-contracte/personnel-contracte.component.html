@@ -1,0 +1,94 @@
+<div class="col-md-12 col-lg-12" style="width:900px; height: 450px">
+  <div class="row">
+    <div class="col-lg-12" style="width:700px; height: 350px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <div class="demo-radio col-sm-6">
+              <label _ngcontent-udb-c31="" class="label">État Social</label>
+              <table>
+                <tr>
+                  <td>
+                    <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" value="Célibataire" name="customRadio" checked
+                        [(ngModel)]="personnelContracte.etatsocP">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">Célibataire</span>
+                    </label>
+                  </td>
+                  <td>
+                    <label class="custom-control custom-radio">
+                      <input type="radio" class="custom-control-input" value="Marié" name="customRadio"
+                        [(ngModel)]="personnelContracte.etatsocP">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">Marié</span>
+                    </label>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Entreprise:</label>
+              <ng-select name="entreprise" [items]="entreprises" bindValue="enterpriseId" bindLabel="socialReason"
+                placeholder="Entreprise" [(ngModel)]="personnelContracte.idEntreprise" [appendTo]="'body'"
+                style="width:100%;">
+              </ng-select>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Num CIN :</label>
+              <input type="number" placeholder="Numéro CIN" class="form-control" [(ngModel)]="personnelContracte.cinP" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Nom Complet:</label>
+              <input type="text" placeholder="Nom Complet" class="form-control" [(ngModel)]="personnelContracte.nomP" />
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Num téléphone :</label>
+              <input type="number" placeholder="Numéro téléphone" class="form-control"
+                [(ngModel)]="personnelContracte.tlfP" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Email :</label>
+              <input type="email" placeholder="Email" class="form-control" [(ngModel)]="personnelContracte.emailP" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Banque :</label>
+              <input type="text" placeholder="Banque" class="form-control" [(ngModel)]="personnelContracte.banqueC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Num du compte :</label>
+              <input type="number" placeholder="Numéro du compte" class="form-control"
+                [(ngModel)]="personnelContracte.numcomptC" />
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date Recrutement :</label>
+              <input placeholder="Date recrutement.." name="dateRec" [(ngModel)]="personnelContracte.recrutdateP"
+                class="form-control" [nbDatepicker]="dateRec" required>
+              <nb-datepicker #dateRec></nb-datepicker>
+            </div>
+            <div class="form-group col-md-9 col-lg-9 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+              <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="personnelContracte.adresseP" />
+            </div>
+          </div>
+
+          <div style="text-align:right;">
+            <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="onAddRCM()">{{ARCM}}</button>
+            <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="onclose()">Fermer</button>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

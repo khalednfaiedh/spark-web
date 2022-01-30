@@ -1,0 +1,105 @@
+<nb-card class="col-md-12 col-lg-12" style="width:1250px; height: 650px">
+  <nb-card-body>
+    <div class="row">
+      <div class="col-lg-12" style="width:1250px; height: 300px">
+        <nb-card>
+          <nb-card-body><br>
+
+            <div ng-repeat="let documentGrp1 of documentGrps1" id="main-form-content1">
+              <form [formGroup]="documentGrp1">
+                <div class="row full-name-inputs">
+                  <div class="col-md-12 col-lg-12">
+                    <div class="pull-right" style="float: right;">
+                      <button type="button" class="btn btn-sm btn-success" style="width: 70px;" title="Add More"
+                        (click)="addItem()">+</button>
+                    </div><br><br>
+                  </div><br>
+                  <div class="col-md-12 col-lg-12">
+                    <div formArrayName="itemss">
+                      <div *ngFor="let item1 of itemss.controls; let j = index;">
+                        <div [formGroupName]="j">
+                          <div class="row full-name-inputs label">
+                            <div class="input-group col-md-6   input-group-sm">
+                              <label for="banque">Banque :</label>
+                            </div>
+
+                            <div class="input-group col-md-6   input-group-sm">
+                              <label for="agence">Agence :</label>
+                            </div>
+                          </div>
+
+                          <div class="row full-name-inputs">
+
+                            <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                              <ng-select name="banque" placeholder="Banque'" style="width:100%;" [items]="banques"
+                                bindLabel="nom" formControlName="banque" [appendTo]="'body'">
+
+                              </ng-select>
+                              <div class="help-block"></div>
+                            </div>
+
+                            <div class="input-group col-md-5 col-lg-5 input-group-sm">
+
+                              <input type="text" placeholder="Agence" name="agence" class="form-control"
+                                formControlName="agence" />
+                            </div>
+                          </div><br>
+                          <div class="row full-name-inputs label">
+                            <div class="input-group col-md-4 input-group-sm">
+                              <label for="rib">RIB :</label>
+                            </div>
+                            <div class="input-group col-md-4 input-group-sm">
+                              <label for="bic">BIC :</label>
+                            </div>
+                            <div class="input-group col-md-4 input-group-sm">
+                              <label for="iban">IBAN :</label>
+                            </div>
+                          </div>
+                          <div class="row full-name-inputs label">
+                            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                              <input type="text" placeholder="RIB" name="rib" class="form-control"
+                                formControlName="rib" />
+
+                            </div>
+                            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                              <input type="text" placeholder="BIC" name="bic" class="form-control"
+                                formControlName="bic" />
+
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                              <input type="text" placeholder="IBAN" name="iban" class="form-control"
+                                formControlName="iban" />
+
+                            </div>
+
+                            <div class="remove col-md-1 col-lg-1 " *ngIf=" j!=0 ">
+                              <button title="Remove" (click)="removeItem(j)" nbButton status="danger" size="xsmall"
+                                style="height: 2.25rem;padding: 0px 5px 0px 5px;margin-top: 0.125rem;"> <i
+                                  class="fas fa-trash-alt"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+
+          </nb-card-body>
+
+        </nb-card>
+
+      </div>
+
+    </div>
+  </nb-card-body>
+  <div style="text-align:right;">
+    <button status="success" size="xsmall" nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+      (click)="addCB(documentGrp1.value)">
+      {{ARCP}}</button>
+    <button (click)="onclose()" size="xsmall" nbButton status="danger"
+      style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+  </div>
+</nb-card>

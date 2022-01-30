@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+      <div style="margin: 0 auto;" style="text-align: center" >
+          Liste des familles des produits   &nbsp;
+         <button (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+           <i class="fa fa-plus" aria-hidden="true"></i>
+         </button>
+        </div>
+
+  </nb-card-header>
+  <nb-card-body>
+<!-- <div class="row">
+<div class="col-md-12 col-lg-12 col-xxxl-6">
+  <button [hidden]=add (click)="openWindow()" nbButton style="width: 100px">+</button>
+</div>
+</div> -->
+
+
+  <ng2-smart-table class="full-width text-center"
+  [settings]="settings"
+  [source]="source"
+  (deleteConfirm)="onDeleteConfirm($event)"
+  (custom)="onCustom($event)">
+  </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+

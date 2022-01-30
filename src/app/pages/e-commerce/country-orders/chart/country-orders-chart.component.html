@@ -1,0 +1,9 @@
+<div class="header">
+  <span class="title">Selected Country/Region</span>
+  <h2>{{countryName}}</h2>
+</div>
+<div echarts
+     [options]="option"
+     class="echart"
+     (chartInit)="onChartInit($event)">
+</div>

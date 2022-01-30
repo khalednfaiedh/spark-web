@@ -1,0 +1,60 @@
+<nb-card>
+  <nb-card-body>
+<ngx-titre-exercice></ngx-titre-exercice>
+</nb-card-body>
+</nb-card> 
+    <div class="row full-name-inputs">
+      <div class="input-group col-md-6 ">
+    
+ 
+<nb-card style="width: 100%; ">
+  <nb-card-header class="text-center">
+    Liste des Comptes parametrée<button (click)="addDossier()" class="btn btn-hero-success" nbButton style="padding: 0.4rem 1.5rem; margin-left: 1%;" > +
+      </button>
+    </nb-card-header>
+  
+<nb-card-body>
+    <ng2-smart-table #smartTable 
+    class="full-width" 
+    [settings]="settings" 
+    [source]="source" 
+    (deleteConfirm)="onDeleteConfirm($event)" 
+    (custom)="onCustom($event)">
+    </ng2-smart-table>
+</nb-card-body> 
+
+    </nb-card>
+    </div>
+    
+    
+    <div class="input-group col-md-6   input-group-sm">
+    <nb-card style="
+    width: 100%;
+    ">
+    <nb-card-header>
+      <label i18n="@@planC">  Paramétrage relation avec module de paie </label>   
+    </nb-card-header>
+    <nb-card-body>
+          
+          
+          
+        <div    class="card text-white bg-info mb-3" style="max-width: 100rem;">
+            <div class="card-header"> INFO</div>
+            <div class="card-body">
+              <h5 class="card-title">  <p>  SVP est ce qu'existe un module de paie  ?
+              </p></h5>
+              <p class="card-text"> Sinon voulez-vous importer un journal de paie pour chaque mois.</p>
+          
+              <div class="row">
+                  <div style="text-align:right; margin-top: 3%; margin-left: 70%;">
+                      <button nbButton hero status="success" (click)="choisireType(1)" > oui</button>
+                      <button nbButton hero status="danger" (click)="choisireType(2)" >non</button>
+                    </div>
+              </div>
+            </div>
+          </div>
+          
+    </nb-card-body>
+    </nb-card>
+    </div>
+    </div>

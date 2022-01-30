@@ -1,0 +1,68 @@
+<div class="col-md-12 col-lg-12" style="width:500px; height: 100px">
+  <div class="row">
+    
+         <div  *ngIf="C == 'BROUILLON'" >
+           <p>Êtes-vous sûr de <b>clôturer</b> la paie du 
+            <label *ngIf="mois == 13"> <b>13éme</b> </label> 
+            <label *ngIf="mois == 14"> <b>14éme</b> </label> 
+            <label *ngIf="mois == 15"> <b>15éme</b> </label> 
+            <label *ngIf="mois == 16"> <b>16éme</b> </label> 
+            mois 
+            <label *ngIf="mois == 1"> <b> Janvier &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 2"> <b> Février &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 3"> <b> Mars &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 4"> <b> Avril &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 5"> <b> Mai &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 6"> <b> Juin &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 7"> <b> Juillet &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 8"> <b> Aoùt &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 9"> <b> Septembre &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 10"> <b> Octobre &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 11"> <b> Novembre &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 12"> <b> Décembre &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 13"> <b>  &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 14"> <b>  &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 15"> <b>  &nbsp;{{annee}}</b> </label>
+            <label *ngIf="mois == 16"> <b>  &nbsp;{{annee}}</b> </label>
+          </p>
+         </div>
+         <div  *ngIf="C == 'CLOTURE'" >
+          <p>Êtes-vous sûr de <b>declôturer</b> la paie du
+            <label *ngIf="mois == 13"> <b>13éme</b> </label> 
+            <label *ngIf="mois == 14"> <b>14éme</b> </label> 
+            <label *ngIf="mois == 15"> <b>15éme</b> </label> 
+            <label *ngIf="mois == 16"> <b>16éme</b> </label> 
+            mois 
+           <label *ngIf="mois == 1"> <b> Janvier &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 2"> <b> Février &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 3"> <b> Mars &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 4"> <b> Avril &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 5"> <b> Mai &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 6"> <b> Juin &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 7"> <b> Juillet &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 8"> <b> Aoùt &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 9"> <b> Septembre &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 10"> <b> Octobre &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 11"> <b> Novembre &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 12"> <b> Décembre &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 13"> <b>  &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 14"> <b>  &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 15"> <b>  &nbsp;{{annee}}</b> </label>
+           <label *ngIf="mois == 16"> <b>  &nbsp;{{annee}}</b> </label>
+          </p>
+        </div>
+       
+            <div style="display: flex;margin-top: 1rem;margin-left: 50%;">
+  
+              <button *ngIf="C == 'BROUILLON'" nbButton status="success" style="cursor: pointer;align-content: center;"
+              (click)="cloturer()">Confirmer</button> 
+
+              <button *ngIf="C == 'CLOTURE'" nbButton status="success" style="cursor: pointer;align-content: center;"
+              (click)="decloturer()">Confirmer</button> 
+
+              <button nbButton status="danger" style="cursor: pointer;margin-left: 1%;align-content: center;"
+              (click)="onClose()">Annuler</button> 
+            </div> 
+       
+  </div>
+</div>

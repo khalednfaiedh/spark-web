@@ -1,0 +1,102 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height: 450px">
+  <div class="row">
+    <div class="col-lg-12" style="width:1000px; height: 250px">
+      <nb-card>
+        <nb-card-body><br>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+
+              <label _ngcontent-udb-c31="" class="label">Type d'écheancier :</label>
+
+
+              <input type="text" placeholder="Intitulé" class="form-control" [(ngModel)]="condition.typeEcheancier"
+                [ngModelOptions]="{standalone: true}" disabled />
+
+              <!--<div class="form-control-feedback"
+                 *ngIf="submitted && name.errors && (name.dirty || name.touched)">
+                <p *ngIf="name.errors.required">Name is required</p>
+               </div>-->
+            </div>
+
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Stratégie :</label>
+
+              <input type="text" placeholder="Intitulé" class="form-control" [(ngModel)]="condition.strategie"
+                [ngModelOptions]="{standalone: true}" disabled />
+            </div>
+
+          </div>
+
+          <div *ngIf="condition.strategie=='Fixation en jours'">
+            <div *ngFor="let list of condition.listcondiontDePaiements">
+
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Type d'écheance :</label>
+
+                  <input type="text" class="form-control" [(ngModel)]="list.typeEcheance"
+                    [ngModelOptions]="{standalone: true}" disabled />
+
+                </div>
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Pourcentage (%) :</label>
+                  <input class="form-control" [(ngModel)]="list.pourcentage" disabled />
+
+
+                </div>
+
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Nombre du jours :</label>
+                  <input class="form-control" [(ngModel)]="list.nombreDejour" disabled />
+
+
+                </div>
+
+                <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Délais :</label>
+                  <input class="form-control" [(ngModel)]=" list.option" disabled />
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="condition.strategie=='Fixation en pourcentage'">
+            <div *ngFor="let list of condition.listcondiontDePaiements">
+
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Type d'écheance :</label>
+
+                  <input type="text" class="form-control" [(ngModel)]="list.typeEcheance"
+                    [ngModelOptions]="{standalone: true}" disabled />
+
+                </div>
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Pourcentage (%) :</label>
+                  <input class="form-control" [(ngModel)]="list.pourcentage" disabled />
+
+
+                </div>
+
+
+
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Délais :</label>
+                  <input class="form-control" [(ngModel)]=" list.option" disabled />
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

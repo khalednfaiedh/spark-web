@@ -1,0 +1,29 @@
+
+<nb-card>
+  <nb-card-header>
+      <!-- <button (click)="openWindow()" class="button button2"> Gestion des congés</button> 
+      <label style="color:#ff3547; font-size: 14px;" *ngIf='nbrCongeEnAttente != "0"' > << Vous avez {{nbrCongeEnAttente}} congé en attente</label>
+      <label style="color: #4CAF50; font-size: 14px;" *ngIf='nbrCongeEnAttente == "0" '> Pas de congé en attente</label>
+        -->
+      
+      <!-- {{ nbrCongeEnAttente }}
+      [(ngModel)]="nbrCongeEnAttente" -->
+
+<div class="row justify-content-start">
+  <div class="col-4">
+    <!-- <h4>{{ entreprise.socialReason }}</h4> -->
+  </div>
+  <div class="col-4">
+    <button type="button" size="small" (click)="openWindow()" nbButton status="success" style="width: 300px;">
+      Gestion des congés <span class="badge badge-light" style="padding: 0.5rem 0.75rem;" > {{ nbrCongeEnAttente }}</span>
+    </button>
+  </div>
+</div>
+</nb-card-header>
+  <nb-card-body >
+    <ng2-smart-table class="full-width text-center"
+                     [settings]="settings"
+                     [source]="source" >
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,131 @@
+<div class="col-md-12 col-lg-12" style="width:1250px; height: 750">
+  <div class="row">
+    <div class="col-lg-12" style="width:1250px; height: 650px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Emise par :</label>
+              <input disabled type="text" placeholder="Emise par" class="form-control"
+                [(ngModel)]="demandePrix.emisepar" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Reférence client:</label>
+              <input disabled type="text" placeholder="reference" class="form-control" value="{{referenceclient}}" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Nom client:</label>
+              <input disabled type="text" placeholder="Nom" class="form-control" [(ngModel)]="client.nameC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Catégorie de client :</label>
+              <input disabled type="text" placeholder="Catégorie de client" class="form-control"
+                [(ngModel)]="typeClient" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Email :</label>
+              <input disabled type="email" placeholder="reference" class="form-control" [(ngModel)]="client.emailC" />
+            </div>
+
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+              <input disabled type="text" placeholder="Adresse" class="form-control" [(ngModel)]="client.adresseC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Téléphone :</label>
+              <input disabled type="number" placeholder="Téléphone" class="form-control" [(ngModel)]="client.tlfC" />
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Unité de transaction :</label>
+              <ng-select name="uniteTransaction" placeholder="Unité de transactiont" [appendTo]="'body'"
+                [items]="unitesTransaction" bindValue="idT" style="width:100%;" bindLabel="sigle"
+                [(ngModel)]="demandePrix.idUniteTransaction" disabled>
+              </ng-select>
+            </div>
+          </div>
+          <div class="row full-name-inputs">
+
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresses des livraisons {{adresses.length}}:</label>
+
+
+              <ng-select name="adressesC" placeholder="Adresses des livraisons" [items]="adressesC" [appendTo]="'body'"
+                style="width:100%;" [multiple]="true" [(ngModel)]="adresses" bindLabel="codePostal">
+
+
+              </ng-select>
+            </div>
+
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Mode de paiement :</label>
+              <ng-select name="modesPaiements" placeholder="Mode de paiement" [appendTo]="'body'" disabled
+                [items]="modesPaiements" style="width:100%;" bindLabel="typePaiement" [(ngModel)]="modesPaiement">
+              </ng-select>
+            </div>
+
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Type de paiements :</label>
+              <ng-select name="condition " placeholder="Type de paiement" [(ngModel)]="demandePrix.typePaiement"
+                disabled>
+                <ng-option value="Date fixe"> Date fix</ng-option>
+                <ng-option value="Par période">Par période</ng-option>
+              </ng-select>
+            </div>
+          </div>
+
+
+
+          <div *ngIf="demandePrix.typePaiement=='Date fixe'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                  <input name="datePaiement" placeholder="Date de paiement" class="form-control" disabled
+                    [(ngModel)]="demandePrix.datePaiement" [nbDatepicker]="datePaiement" />
+                  <nb-datepicker #datePaiement></nb-datepicker>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="demandePrix.typePaiement=='Par période'">
+            <div [hidden]="false">
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Startégie de paiement :</label>
+                  <ng-select name="typeMontant" placeholder="Startégie de paiement"
+                    [(ngModel)]="conditionPaiement.strategie">
+                    <ng-option value="Fixation en %">Fixation en %</ng-option>
+                    <ng-option value="Fixation en jours">Fixation en jours</ng-option>
+                  </ng-select>
+                </div>
+                <div class="form-group col-md-8 col-lg-8 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label"> Condition de paiement :</label>
+                  <ng-select name="conditionPaiements" placeholder="Condition de paiement" [appendTo]="'body'"
+                    style="width:100%;" [(ngModel)]="conditionPaiement" [items]="conditionPaiements"
+                    bindLabel="listCondition">
+                  </ng-select>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <nb-card>
+            <nb-card-body>
+              <ng2-smart-table [settings]="settings" [source]="source">
+              </ng2-smart-table>
+            </nb-card-body>
+          </nb-card>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+
+        <button (click)="onclose()" nbButton status="danger"
+          style="cursor: pointer;margin: 0.5rem;align-content: center;"> Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>

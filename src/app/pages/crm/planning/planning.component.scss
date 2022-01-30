@@ -1,0 +1,32 @@
+
+   :host /deep/ ng2-st-tbody-edit-delete {
+    display: inline-flex !important;
+    height: 0 !important;
+   }
+   :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline;
+    width: 30%;
+   padding-left:0px;
+    text-align: left;
+   }
+   
+   :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+    color: #5dcfe3;
+   }
+
+   :host /deep/ ng2-smart-table tbody > tr > td {
+      padding: 0.25rem 1.25rem;
+   }
+
+:host /deep/ .statut {
+  color: white;
+  border-radius: 5px;
+  margin: 0;
+  }
+
+:host /deep/ .danger {
+  background:#686868;
+  }
+  :host /deep/ .success {
+  background:#28a745;
+}

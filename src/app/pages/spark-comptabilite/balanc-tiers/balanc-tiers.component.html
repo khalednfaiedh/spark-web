@@ -1,0 +1,330 @@
+<!-- <nb-card [hidden]="!exerciceBoolean">
+  <nb-card-body>
+    <div class="note note-info"    >
+      <div class="note-title">Note</div>
+      <div class="note-body">
+        <ul>
+          <li>
+            Données non trouvées
+          </li>
+          <li>
+            acune   balance   tiers  à affichée .
+          </li>
+          <li>
+            s'il vous plaît ouvrire un exercice.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card  > -->
+<nb-card [hidden]="exerciceBoolean" >
+  <nb-card-header  i18n="@@listFolder"> 
+      <button nbButton  (click)="previousState()"  status="info"><span>&#x2190;</span></button>
+      <!-- <ng-select placeholder="Choisir..."
+    [items]="exercices" 
+    bindLabel="designation2" 
+    bindValue="id"
+    autofocus
+    [clearable] = false
+    style="  margin: 0% 0% 0% 80%;" 
+   (change)="getGrandLivre(id)"
+   [(ngModel)]="id"
+    >
+   </ng-select>   -->
+  <h4 class="text-center">
+      Exercice:   {{exercice.designation}}-{{exercice.annee}}
+  </h4>
+</nb-card-header>
+  <!-- </nb-card-body>
+  
+<nb-card  > -->
+<div>
+ 
+
+</div>
+
+  <!-- gfhfgjh -->
+  <nb-card-body  > 
+
+    <div class="row">
+      <div class="col-md-6" style="display: flex; height: 10%;padding-bottom: 2em;">
+    <div class="input-group input-group-sm"> 
+          <input nbInput class="form-control" [nbDatepicker]="date1" [(ngModel)]="balance.startDate" placeholder="   Date début"   name="date1" />
+          <nb-datepicker #date1></nb-datepicker> 
+       
+       </div>
+       <div class="input-group  input-group-sm">
+            <input nbInput class="form-control" [nbDatepicker]="date2"     [(ngModel)]="balance.endDate"  placeholder="Date Fin"   name="date2" />
+            <nb-datepicker #date2></nb-datepicker> 
+    </div>
+    <div class="input-group  input-group-sm"  style="width: 25%;">
+      <ng-select placeholder="class"
+      [items]="classes" 
+     
+     [(ngModel)]="balance.classe"
+      >
+     </ng-select>  
+  
+      </div>
+             <div class="input-group input-group-sm">
+           <button class="btn btn-warning btn-sm" type="button" (click)="filterByDate()" >
+              <i class="fa fa-search"></i>
+            </button>
+           
+    
+    </div>
+    
+
+  
+
+</div> 
+       
+
+<div class="col-md-1 offset-md-5">
+      
+    <button  (click)="exportToExcel()" nbButton shape="round" size="small" status="success"> <i size="3%" class="nb-arrow-thin-down"> XLSX</i></button>
+  
+  
+  </div>
+
+
+</div>
+      
+    
+   
+      <table class="table table-bordered" *ngIf="!dataNotFound()" >
+          <thead>
+            <tr>
+              <th scope="col">N° de Compte</th>
+              <th scope="col">Intitulé du compte</th>
+              <th scope="col">Solde initial</th>
+              <th scope="col">Cumul débit</th>
+              <th scope="col">Cumul crédit</th>
+              <th scope="col">Solde  débiteur</th>
+              <th scope="col">Solde  créditeur</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let   item  of class1; let i = index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte}} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale | transformeNumber}}  </td>
+              <td style="width: 10%">{{item.cumulDebit | transformeNumber}}</td>
+              <td  style="width: 10%">{{item.cumulCredit | transformeNumber }}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur | transformeNumber }}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class1.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 1</td>
+                <td>{{getTotalSoldIntial(class1) | transformeNumber }}</td>   
+                <td>{{getTotalCumulDebit(class1) | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class1) | transformeNumber}}</td> 
+                <td> {{getTotalsoldDebiteur(class1) | transformeNumber }}</td>     
+                <td>{{getTotalsoldCrediteur(class1) | transformeNumber}} </td>
+                
+               
+            </tr>
+
+            <tr *ngFor="let   item  of class2; let a = index; let c = count" >
+              <td style="width: 10%" >{{item.codeCompte}} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale | transformeNumber}}  </td>
+              <td style="width: 10%">{{item.cumulDebit | transformeNumber}}</td>
+              <td  style="width: 10%">{{item.cumulCredit | transformeNumber}}</td>
+              <td style="width: 10%"> {{item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur | transformeNumber}}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class2.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 2</td>
+                <td>{{getTotalSoldIntial(class2) | transformeNumber}}</td>   
+                <td>{{getTotalCumulDebit(class2) | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class2) | transformeNumber }}</td> 
+                <td> {{getTotalsoldDebiteur(class2) | transformeNumber }}</td>     
+                <td> {{getTotalsoldCrediteur(class2) | transformeNumber}}</td>
+               
+               
+            </tr>
+
+
+            <tr *ngFor="let   item  of class3; let b = index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte}} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale | transformeNumber }}  </td>
+              <td style="width: 10%">{{item.cumulDebit | transformeNumber}}</td>
+              <td  style="width: 10%">{{item.cumulCredit | transformeNumber}}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur | transformeNumber }}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class3.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 3</td>
+                <td>{{getTotalSoldIntial(class3) | transformeNumber }}</td>   
+                <td>{{getTotalCumulDebit(class3) | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class3) | transformeNumber}}</td> 
+                <td>{{getTotalsoldDebiteur(class3) | transformeNumber}}</td>     
+                <td> {{getTotalsoldCrediteur(class3) | transformeNumber}}</td>
+               
+               
+            </tr>
+
+            <tr *ngFor="let   item  of class4; let C = index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte}} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale | transformeNumber }}  </td>
+              <td style="width: 10%">{{item.cumulDebit | transformeNumber }}</td>
+              <td  style="width: 10%">{{item.cumulCredit | transformeNumber }}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur | transformeNumber }}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class4.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 4</td>
+                <td>{{getTotalSoldIntial(class4) | transformeNumber}}</td>   
+                <td>{{getTotalCumulDebit(class4) | transformeNumber}}</td>
+                <td>{{getTotalCumulCredit(class4) | transformeNumber}}</td> 
+                <td>{{getTotalsoldDebiteur(class4) | transformeNumber }}</td>     
+                <td> {{getTotalsoldCrediteur(class4) | transformeNumber}}</td>
+               
+               
+            </tr>
+
+            <tr *ngFor="let   item  of class5; let d = index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte}} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale  | transformeNumber }}  </td>
+              <td style="width: 10%">{{item.cumulDebit | transformeNumber}}</td>
+              <td  style="width: 10%">{{item.cumulCredit | transformeNumber }}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur | transformeNumber}}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class5.length!=0" >
+                <td  ></td>
+                <td>TOTAL CLASSE 5</td>
+                <td>{{getTotalSoldIntial(class5) | transformeNumber }}</td>   
+                <td>{{getTotalCumulDebit(class5) | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class5) | transformeNumber}}</td> 
+                <td>{{getTotalsoldDebiteur(class5) | transformeNumber }}</td>     
+                <td> {{getTotalsoldCrediteur(class5) | transformeNumber }}</td>
+               
+               
+            </tr>
+
+            <tr *ngFor="let   item  of class6; let f = index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte }} </td>
+              <td  style="width: 30%">{{item.nameCompte}} </td>
+              <td  style="width: 10%">{{item.soldIntiale   | transformeNumber }}  </td>
+              <td style="width: 10%">{{item.cumulDebit     | transformeNumber }}</td>
+              <td  style="width: 10%">{{item.cumulCredit   | transformeNumber }}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur  | transformeNumber }}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class6.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 6</td>
+                <td>{{getTotalSoldIntial(class6)    | transformeNumber }}</td>   
+                <td>{{getTotalCumulDebit(class6)    | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class6)   | transformeNumber }}</td> 
+                <td>{{getTotalsoldDebiteur(class6)  | transformeNumber }}</td>     
+                <td> {{getTotalsoldCrediteur(class6) | transformeNumber }}</td>
+               
+               
+            </tr>
+
+            <tr *ngFor="let   item  of class7; let g= index; let c = count" >
+              <td style="width: 10%" > {{item.codeCompte   }} </td>
+              <td  style="width: 30%">{{item.nameCompte   }} </td>
+              <td  style="width: 10%">{{item.soldIntiale   | transformeNumber }}  </td>
+              <td style="width: 10%">{{item.cumulDebit     | transformeNumber }}</td>
+              <td  style="width: 10%">{{item.cumulCredit   | transformeNumber}}</td>
+              <td style="width: 10%"> {{ item.soldDebiteur | transformeNumber }}</td>
+              <td style="width: 10%">{{item.soldCrediteur  | transformeNumber }}</td>
+              
+
+             
+               
+            </tr>
+        
+            <tr style="background-color:#dee2e6;" *ngIf="class7.length!=0">
+                <td  ></td>
+                <td>TOTAL CLASSE 7</td>
+                <td>{{getTotalSoldIntial(class7)     | transformeNumber }}</td>   
+                <td>{{getTotalCumulDebit(class7)     | transformeNumber }}</td>
+                <td>{{getTotalCumulCredit(class7)    | transformeNumber }}</td> 
+                <td>{{getTotalsoldDebiteur(class7)   | transformeNumber }}</td>     
+                <td> {{getTotalsoldCrediteur(class7) | transformeNumber }}</td>
+               
+               
+            </tr>
+            <tr    >
+              <td  ></td>
+              <td><h5>Totaux comptes de bilan</h5></td>
+              <td></td>   
+              <td>{{getTotalBalanceCumulDebit5(class1,class2,class3,class4,class5)   | transformeNumber }}</td>
+              <td>{{getTotalBalancecumulCredit5(class1,class2,class3,class4,class5)  | transformeNumber }}</td> 
+              <td>{{getTotalBalanceSoldDebiteur5(class1,class2,class3,class4,class5) | transformeNumber }}</td>     
+              <td>{{getTotalBalanceSoldCrediteur5(class1,class2,class3,class4,class5)| transformeNumber }}</td>
+             
+             
+          </tr>
+          <tr   >
+            <td  ></td>
+            <td><h5>Totaux comptes de gestion</h5></td>
+            <td></td>   
+            <td>{{ getTotalBalanceCumulDebit67(class6,class7)    | transformeNumber }}</td>
+            <td>{{getTotalBalancecumulCredit67(class6,class7)    | transformeNumber }}</td> 
+            <td>{{getTotalBalanceSoldDebiteur67(class6,class7)   | transformeNumber }}</td>     
+            <td>{{getTotalBalanceSoldCrediteur67(class6,class7)  | transformeNumber }}</td>
+           
+           
+        </tr>
+          </tbody>
+
+          <tfoot style="background-color:#D3D3D3;">
+            <td  ></td>
+            <td> <h5>  Totaux de la balance </h5></td>
+            <td> </td>   
+            <td>{{getTotalBalanceCumulDebit(class1,class2,class3,class4,class5,class6,class7)    | transformeNumber }} </td>
+            <td>{{getTotalBalancecumulCredit(class1,class2,class3,class4,class5,class6,class7)   | transformeNumber}} </td> 
+            <td>{{getTotalBalanceSoldDebiteur(class1,class2,class3,class4,class5,class6,class7)  | transformeNumber}}</td>     
+            <td>{{getTotalBalanceSoldCrediteur(class1,class2,class3,class4,class5,class6,class7) | transformeNumber}}</td>
+           
+        </tfoot>
+        </table>
+      
+</nb-card-body>
+</nb-card>

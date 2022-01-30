@@ -1,0 +1,315 @@
+<div class="col-md-12  " style="width:950px; height: 490x">
+  <nb-card>
+    <nb-card-body>
+      <form class="form-group" autocomplete="off" #monFormulaire1=ngForm>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-5   input-group-sm">
+            <label class="text-label" for="socialReason">Raison sociale</label>
+          </div>
+
+          <div class="input-group col-md-7   input-group-sm">
+            <label for="activity">Activité</label> </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-5   input-group-sm">
+            <input autofocus type="text" name="socialReason" #socialReason disabled [(ngModel)]="enterprise.socialReason"
+              maxlength="50" class="form-control" required i18n="@@socialReason">
+          </div>
+
+          <div class="input-group col-md-7   input-group-sm">
+            <input type="text" name="activity" #activity disabled [(ngModel)]="enterprise.activity" class="form-control"
+              i18n="@@activity">
+          </div>
+        </div>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Code d'immatriculation fiscale</label>
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="tradeCode">Registre de commerce</label>
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <label for="jurform" i18n="@@jurform">Forme juridique</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-3   input-group-sm">
+            <input disabled type="text" #matriCode="ngModel" name="matriCode" [(ngModel)]="enterprise.taxRegistrationCode"
+              class="form-control" required />
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <input disabled type="text" name="tradeCode" [(ngModel)]="enterprise.tradeRegister" class="form-control">
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <input type="text" name="jurform" #jurform [(ngModel)]="enterprise.formeJuridique.nom" class="form-control" i18n="@@jurform" disabled> 
+            </div>
+        </div>
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="nature" i18n="@@nature">Nature de la société</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="capital" i18n="@@capital">Capital</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="manager" i18n="@@manager">Premier responsable</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <ng-select  disabled name="nature"
+              [(ngModel)]="enterprise.nature">
+            </ng-select>
+ 
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="number" name="capital" #capital [(ngModel)]="enterprise.capital" class="form-control"
+              disabled />
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="text" name="manager" #manager [(ngModel)]="enterprise.manager" class="form-control"
+              i18n="@@manager" disabled>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="money" i18n="@@money">Choix Monnaie</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="mensualites" i18n="@@mensualites">Mensualités:*</label>
+          </div>
+          <div class="input-group col-md-5   input-group-sm">
+            <label for="cnss" >N° CNSS (8 chiffre)</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-3 input-group-sm">
+            <ng-select  name="money" disabled
+              [(ngModel)]="enterprise.money"    style="width:100%; "  >
+            </ng-select>
+          </div>
+          <div class="input-group col-md-4 col-lg-4 input-group-sm" >
+            <ng-select disabled
+             [items]="mensualitesList" 
+              placeholder="Mensualités par an"
+              [(ngModel)]="enterprise.mensualites"
+              name ="mensualites"
+              style="width:100%; " 
+              size="xsmall" 
+              required
+              >
+          </ng-select>
+          </div>
+          <div class="input-group col-md-5   input-group-sm">
+            <input disabled placeholder="Exemple : 00123456"type="text" name="numCNSS" required minlength="8" maxlength="8"  [(ngModel)]="enterprise.numCNSS" class="form-control" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+
+          <div class="input-group col-md-6   input-group-sm">
+            <label for="email" i18n="@@email">Email</label>
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <label for="tel" i18n="@@tel">Tel</label>
+          </div>
+        
+        </div>
+
+        <div class="row full-name-inputs">
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input disabled type="email" name="email" #email [(ngModel)]="enterprise.entEmail" class="form-control" />
+          </div>
+          <div class="input-group col-md-6   input-group-sm">
+            <input disabled type="number" name="tel" #tel [(ngModel)]="enterprise.telephone" class="form-control" />
+          </div>
+          
+        </div>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-6   input-group-sm">
+            <label for="address">Addresse du siège social</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="zipCode">Code postal</label>
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="zipCode">Pays</label>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-6   input-group-sm">
+            <input disabled type="text" name="address" #asddres [(ngModel)]="enterprise.officeAddress" class="form-control"
+              i18n="@@socialReason" />
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input  disabled type="number" name="zipCode" [(ngModel)]="enterprise.zipCode" class="form-control" />
+          </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input  disabled type="text" name="country" #country [(ngModel)]="enterprise.country" class="form-control"
+              i18n="Pays"/>
+          </div>
+        </div>
+      </form>
+    </nb-card-body>
+  </nb-card>
+</div>
+
+<!-- 
+
+<div class="col-md-12  " style="width:950px; height: 530px" >    
+  <nb-card >
+    <nb-card-body>
+        <form class="form-group" autocomplete="off" #monFormulaire = ngForm>
+                   
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-5   input-group-sm">
+         <label class="text-label" for="socialReason">Raison sociale</label> 
+          </div>
+      
+         <div class="input-group col-md-7   input-group-sm"> 
+         <label for="activity">Activité</label>   </div>
+        </div>      
+    <div class="row full-name-inputs">
+    <div class="input-group col-md-5   input-group-sm">
+        <input type="text" name="socialReason" #socialReason [(ngModel)]="enterprise.socialReason" maxlength="50" class="form-control"   i18n="@@socialReason" disabled>
+      </div>
+      
+      <div class="input-group col-md-7   input-group-sm">   
+        <input type="text" name="activity" #activity [(ngModel)]="enterprise.activity" class="form-control" i18n="@@activity" disabled>
+      </div>
+    </div>
+      <div class="row full-name-inputs label">
+      <div class="input-group col-md-3   input-group-sm">
+           <label for="matriCode">Code d'immatriculation fiscale</label> 
+            </div>
+            
+    <div class="input-group col-md-4   input-group-sm">
+         <label for="tradeCode">Registre de commerce</label> 
+    </div>
+    <div class="input-group col-md-5   input-group-sm">
+      <label for="jurform">Forme juridique</label>
+    </div>
+    </div>
+    <div class="row full-name-inputs">
+      <div class="input-group col-md-3   input-group-sm">
+        <input type="text" #matriCode="ngModel" name="matriCode" [(ngModel)]="enterprise.taxRegistrationCode" class="form-control"  disabled/>
+            </div>
+            
+    <div class="input-group col-md-4   input-group-sm">
+        <input type="text" name="tradeCode"   [(ngModel)]="enterprise.tradeRegister" class="form-control" disabled>
+    </div>
+    <div class="input-group col-md-5   input-group-sm">
+        <input type="text" name="jurform" #jurform [(ngModel)]="enterprise.formeJuridique.nom" class="form-control" i18n="@@jurform" disabled> 
+    </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-4   input-group-sm">
+          <label for="nature">Nature de la société</label>
+          </div>
+          <div class="input-group col-md-4  input-group-sm"> 
+               <label for="capital">Capital</label> 
+           </div>
+        <div class="input-group col-md-4   input-group-sm">
+             <label for="manager">Gérant</label> 
+        </div>
+    </div>
+    <div class="row full-name-inputs">
+        <div class="input-group col-md-4   input-group-sm">
+            <input type="text" #nature  name="nature" [(ngModel)]="enterprise.nature"  class="form-control" i18n="@@nature" disabled />
+          </div>
+          <div class="input-group col-md-4   input-group-sm"> 
+            <input type="number" name="capital" #capital   [(ngModel)]="enterprise.capital"  class="form-control" disabled />
+           </div>
+        <div class="input-group col-md-4   input-group-sm">
+            <input type="text" name="manager" #manager   [(ngModel)]="enterprise.manager" class="form-control" i18n="@@manager" disabled>
+        </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+      
+        <div class="input-group col-md-7   input-group-sm">
+             <label for="email">Email</label> 
+          </div>
+        <div class="input-group col-md-5   input-group-sm">
+             <label for="tel">Tel</label> 
+          </div>
+  </div>
+
+    <div class="row full-name-inputs">
+      
+          <div class="input-group col-md-7   input-group-sm">
+              <input type="email" name="email" #email   [(ngModel)]="enterprise.entEmail" class="form-control" disabled/>
+            </div>
+          <div class="input-group col-md-5   input-group-sm">
+              <input type="number" name="tel" #tel   [(ngModel)]="enterprise.telephone" class="form-control" disabled/>
+            </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-9   input-group-sm">
+             <label for="address">Addresse du siège</label> 
+        </div>
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="zipCode">Code postal</label> 
+       </div>
+      </div>
+
+              <div class="row full-name-inputs">
+      <div class="input-group col-md-9   input-group-sm">
+          <input type="text" name="address" #asddres   [(ngModel)]="enterprise.officeAddress" class="form-control" i18n="@@socialReason" disabled/>
+      </div>
+      <div class="input-group col-md-3   input-group-sm">
+        <input type="number" name="zipCode" [(ngModel)]="enterprise.zipCode" class="form-control" disabled/>
+      </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-4   input-group-sm">
+             <label for="country">Pays</label> 
+        </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+              <label >Monnaie utilisée</label> 
+           </div>
+
+           <div class="input-group col-md-4   input-group-sm">
+            <label >N° CNSS</label> 
+         </div>
+      </div>
+
+    <div class="row full-name-inputs">
+        <div class="input-group col-md-4   input-group-sm">
+            <input type="text" name="country" #country   [(ngModel)]="enterprise.country" class="form-control" i18n="Pays" disabled/>
+        </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="text" #money  name="money" [(ngModel)]="enterprise.money.sigle" i18n="@@money" class="form-control" disabled/>
+        </div>
+        <div class="input-group col-md-4   input-group-sm">
+          <input type="text" name="numCNSS" [(ngModel)]="enterprise.numCNSS" class="form-control" disabled />
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+      <div class="input-group col-md-4 col-lg-4 input-group-sm" >
+        <label>Mensualités:</label>
+        <ng-select  
+          placeholder="Mensualités par an"
+          [(ngModel)]="enterprise.mensualites"
+          [appendTo]="'body'"  
+          name ="mensualites"
+          style="width:100%; " 
+          size="xsmall" >
+      </ng-select>
+      </div>
+      </div>
+    </form>
+    </nb-card-body>
+  </nb-card> -->

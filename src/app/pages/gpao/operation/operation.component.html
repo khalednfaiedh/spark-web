@@ -1,0 +1,36 @@
+<nb-card>
+    <nb-card-header class="text-center">
+  
+      <div style="margin: 0 auto;">
+        Liste Des  Opérations &nbsp;
+        <button (click)="add()" nbButton size="xsmall" status="success" style="width: 100px">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="row">
+          <div class="col-md-3 offset-md-9">
+    
+          
+    
+            <ng-select 
+              name="name"
+              placeholder=" choisire  phase ....   " 
+              [appendTo]="'body'"
+              [items]="phases"
+              bindLabel="designation"
+              bindValue="id"
+              [(ngModel)]="idPhase"
+              (change)="getOperationByPhaseId(idPhase)">
+            </ng-select>
+          </div>
+        </div>
+    </nb-card-header>
+  
+  
+    <nb-card-body>
+      
+      <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+        (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>

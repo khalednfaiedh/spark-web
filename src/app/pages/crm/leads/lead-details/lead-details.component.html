@@ -1,0 +1,213 @@
+<nb-tabset fullWidth style="width:950px;height: 400px;"  > 
+  <nb-tab tabTitle="Details">  
+<div class="col-md-12  "  (onClose)="test()" >    
+ 
+        <form class="form-group" autocomplete="off" #monFormulaire = ngForm>
+                   
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-9   input-group-sm">
+         <label class="text-label" for="socialReason">Dénomination</label> 
+        </div>
+      
+         <div class="input-group col-md-3   input-group-sm"> 
+          <label for="activity">Chiffres d'affaires estimé</label>   
+        </div>
+     </div>      
+    <div class="row full-name-inputs">
+    <div class="input-group col-md-9   input-group-sm">
+        <input type="text" name="socialReason" #socialReason [(ngModel)]="lead.leadName" maxlength="50" class="form-control" required i18n="@@socialReason" disabled >
+      </div>
+      
+      <div class="input-group col-md-3  input-group-sm">   
+        <input type="text" name="activity" #activity [(ngModel)]="lead.leadValue" class="form-control" i18n="@@activity" disabled>
+      </div>
+    </div>
+  
+      <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+              <label for="tradeCode">Responable</label> 
+         </div>  
+            
+    <div class="input-group col-md-4   input-group-sm">
+         <label for="tradeCode">Prospect</label> 
+    </div>
+    <div class="input-group col-md-4   input-group-sm">
+        <label for="tradeCode">Etape</label> 
+   </div>
+    <!-- <div class="input-group col-md-5   input-group-sm" hidden>
+        <nb-select hero  placeholder="Forme juridique" name="jurform" status="info" > 
+            <nb-option  [value]="1" >1</nb-option>
+        </nb-select>
+    </div> -->
+    </div>
+    <div class="row full-name-inputs">
+        <div class="input-group col-md-4   input-group-sm">
+            <input type="text"   name="nature" [(ngModel)]="defaultUser.userName" status="info" style="width:280px;" class="form-control" disabled >
+  
+       
+         <!--    </nb-select>  -->
+          </div>
+      <div class="input-group col-md-4   input-group-sm">
+        <input type="text" list="x" #matriCode="ngModel" name="matriCode" [(ngModel)]="lead.prospect.prospectName" class="form-control" disabled />   
+      </div>
+            
+
+    <div class="input-group col-md-4  input-group-sm">
+        <input type="text" [(ngModel)]="lead.leadStatus" name="money"  status="info" style="width:280px;" class="form-control" disabled >
+   
+   <!--    </nb-select> -->
+    </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Date Debut</label> 
+       </div>
+          <div class="input-group col-md-3 offset-md-1  input-group-sm"> 
+               <label for="capital">Date Cloture estimé</label> 
+           </div>
+        <div class="input-group col-md-4 offset-md-1  input-group-sm">
+             <label for="manager2">Progrès</label> 
+        </div>
+    </div>
+    <div class="row full-name-inputs">
+        <div class="input-group col-md-4   input-group-sm">
+            <input name="startdate" #startdate   [(ngModel)]="lead.leadDateCreation" class="form-control" [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled >
+            <nb-datepicker #sdatepicker ></nb-datepicker>
+             
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <input name="enddate" #enddate   [(ngModel)]="lead.leadDateDeadline" class="form-control" [nbDatepicker]="edatepicker" i18n="@@enddate" disabled>
+            <nb-datepicker #edatepicker></nb-datepicker>
+          </div>
+        <div class="input-group col-md-4   input-group-sm">
+            <input  name="manager2" #manager2   [(ngModel)]="lead.leadScore" class="form-control" i18n="@@manager" disabled>
+        </div>
+
+    </div>
+
+    <div class="row full-name-inputs label">
+      
+        <div class="input-group col-md-7   input-group-sm">
+             <label for="email">Commentaire</label> 
+          </div>
+<!--         <div class="input-group col-md-5   input-group-sm">
+             <label for="tel">Produits</label> 
+          </div> -->
+  </div>
+
+    <div class="row full-name-inputs">
+
+          <div class="input-group col-md-12   input-group-sm">
+            <textarea class="form-control" name="startdate3" #startdate3 rows="1" [(ngModel)]="lead.leadComment" placeholder="Text Area" rows="5" shape="round" disabled ></textarea>
+            </div>
+      <!--     <div class="input-group col-md-5   input-group-sm" >
+            <ng-select [items]="lead.statuses"
+            disabled
+            [closeOnSelect]="false"
+            [multiple]="true"
+            bindLabel="productName"
+            name="leadStatuses"
+            [(ngModel)]="lead.statuses"
+            style="height:40px;width:100%">
+            </ng-select>
+             
+            </div> -->
+    </div>
+<!-- 
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-12   input-group-sm">
+             <label for="address">Addresse du siège</label> 
+        </div>
+      </div>
+
+              <div class="row full-name-inputs">
+      <div class="input-group col-md-12   input-group-sm">
+          <input type="text" name="address" #asddres   [(ngModel)]="placeholdervar" class="form-control" i18n="@@socialReason"/>
+      </div>
+    </div>
+
+    <div class="row full-name-inputs label">
+        <div class="input-group col-md-5   input-group-sm">
+             <label for="country">Pays</label> 
+        </div>
+        <div class="input-group col-md-3   input-group-sm">
+             <label for="zipCode">Code postal</label> 
+          </div>
+      </div>
+
+    <div class="row full-name-inputs">
+        <div class="input-group col-md-5   input-group-sm">
+            <input type="text" name="country" #country   [(ngModel)]="placeholdervar" class="form-control" i18n="Pays"/>
+        </div>
+        <div class="input-group col-md-3   input-group-sm">
+            <input type="number" name="zipCode"    [(ngModel)]="placeholdervar" class="form-control"/>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+         
+        </div>
+      </div>
+
+      <div [hidden]="x">
+      <div class="row full-name-inputs label">
+          <div class="input-group col-md-4   input-group-sm">
+               <label for="startdate">Début de l'exrcice</label> 
+               
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+                 <label for="enddate">Fin de l'exrcice</label> 
+               
+            </div>
+      </div>
+
+    <div class="row full-name-inputs">
+     
+          </div>
+    </div> -->
+
+    </form>
+
+
+<div style="text-align:right;">
+<!-- <button nbButton hero status="success" (click)="addLead()" >{{valider}}</button>
+<button nbButton hero status="warning" (click)="monFormulaire.reset()" style="margin-left: 30px;">Réinitialiser</button> -->
+<!-- <button hidden name="resetBtn" #resetBtn (click)="monFormulaire.reset()"></button> -->
+<!-- <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" [hidden]=true>Modifier</button>
+<button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="onAdd()" [hidden]="hiddenElementA">Ajouter</button>
+<button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button> -->
+</div>
+</div>
+<!-- bouton reset hidden avec view child  -->
+</nb-tab>
+<nb-tab tabTitle="Actions" >
+  <ng2-smart-table  
+    style="text-transform: capitalize;"
+     [settings]="actionSettings" 
+     [source]="actionData"  
+     >
+    <!-- (deleteConfirm)="onDeleteConfirm($event)"
+     (createConfirm)="addQuickAction($event)" -->
+  </ng2-smart-table>
+</nb-tab>
+
+<nb-tab tabTitle="Produits" >
+    <ng2-smart-table 
+    [settings]="productSettings" 
+    [source]="productSource"
+    (editConfirm)="onSaveConfirm($event)"
+    style="text-transform: capitalize;">
+    </ng2-smart-table>
+  </nb-tab>
+
+<nb-tab tabTitle="Argumentaires" >
+  <ng2-smart-table 
+  [settings]="noteSettings" 
+  [source]="noteSource"
+  (deleteConfirm)=" onDeleteConfirm($event)"
+  (editConfirm)="onSaveConfirm($event)"
+  (createConfirm)="onCreateConfirm($event)"
+  style="text-transform: capitalize;">
+  </ng2-smart-table>
+</nb-tab>
+
+</nb-tabset>

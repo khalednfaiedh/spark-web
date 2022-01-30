@@ -1,0 +1,102 @@
+<div class="col-md-12 col-lg-12" style="width: 50vw; height: 30vh">
+
+
+  <h1 [ngStyle]=" {'color':  'blue' }" >  khaled   </h1>
+
+
+  <form #monFormulaire1=ngForm>
+
+
+
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Réference :</label>
+        <input [disabled]="disabled" type="text" name="name" placeholder="Réference" class="form-control" required
+          [(ngModel)]="atelier.code" />
+
+      </div>
+
+
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Désignation :</label>
+        <input [disabled]="disabled" type="text" name="des" placeholder=" Désignation  " class="form-control" required
+          [(ngModel)]="atelier.designation" />
+      </div>
+
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Régime Horaire :</label>
+        <ng-select name="regime" placeholder="choisir un  regime  " [appendTo]="'body'" [clearable]="true" [items]="regimes"
+          bindLabel="designation" required [disabled]=disabled [(ngModel)]="regime" style="width:100%;">
+          </ng-select>
+      </div> 
+
+    </div>
+
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Date Création:</label>
+        <input placeholder="  Date Création  " nbInput class="form-control" [nbDatepicker]="dateDebut"
+          [(ngModel)]="atelier.dateCreation" name="date" [disabled]="disabled" />
+        <nb-datepicker #dateDebut></nb-datepicker>
+      </div>
+      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Nombre Du Poste :</label>
+
+        <ng-select name="poste" required placeholder="choisir..." [appendTo]="'body'" [disabled]="disabled"
+          style="width:100%;" [(ngModel)]="atelier.poste">
+          <ng-option value="1"> 1</ng-option>
+          <ng-option value="2"> 2</ng-option>
+          <ng-option value="3"> 3</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="form-group col-md-5 col-lg-5 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Site :</label>
+
+        <ng-select name="site" placeholder="choisir un site  " [appendTo]="'body'" [clearable]="true" [items]="sites"
+          bindLabel="designation" required [disabled]=disabled [(ngModel)]="atelier.site" style="width:100%;">
+        </ng-select>
+      </div>
+
+
+
+
+
+
+    </div>
+
+    <div class="row full-name-inputs">
+
+
+
+
+
+      <div class="form-group col-md-12 col-lg-12 input-group-sm">
+        <label _ngcontent-udb-c31="" class="label"> Chéf Atelier :</label>
+        <ng-select name="chef" placeholder="choisir ..  " [appendTo]="'body'" [clearable]="true" [items]="employees"
+          bindLabel="nom" [multiple]="true" required [disabled]=disabled [(ngModel)]="atelier.listEmployees"
+          style="width:100%;">
+        </ng-select>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div style="text-align:right;" [hidden]="disabled">
+      <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+        [disabled]=!monFormulaire1.valid (click)="add()"> {{message}}</button>
+      <button (click)="onclose()" nbButton status="danger"
+        style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+    </div>
+
+
+  </form>
+</div>

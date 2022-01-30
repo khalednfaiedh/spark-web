@@ -1,0 +1,124 @@
+
+<nb-card >
+  <nb-card-body>
+    <div style="text-align: right;">
+        <button nbButton status="info" size="xsmall" (click)="switchViews(1)" style="margin:5px;margin-left:60%"> Liste</button>
+        <button nbButton status="info" size="xsmall"  (click)="switchViews(2)" style="margin:5px"> Kanban</button>
+        <button nbButton status="info" size="xsmall" (click)="switchViews(3)" style="margin:5px"> Calendrier</button>   
+    </div>
+
+  </nb-card-body>
+</nb-card>
+
+<!-- <div *ngIf="hiddenadd" style="margin-top:3%">
+
+  <nb-card>
+    <nb-card-header>
+      Ajout Rapide
+    </nb-card-header>
+    <nb-card-body>
+        <div class="row full-name-inputs label">
+            <div class="input-group col-md-8   input-group-sm">
+              <label class="text-label" for="actionName">Dénomination</label>
+            </div>
+            <div class="input-group col-md-4  input-group-sm">
+              <label class="text-label" for="actionDeal">Type</label>
+            </div>
+          </div>
+    
+          <div class="row full-name-inputs">
+            <div class="input-group col-md-8   input-group-sm">
+              <input type="text" name="actionName" #socialReason [(ngModel)]="quickAction.actionName" maxlength="50"
+                class="form-control" required i18n="@@socialReason">
+            </div>
+            <div class="input-group col-md-4   input-group-sm">
+                <nb-select outline=true name="actionType" [(ngModel)]="quickAction.actionType"
+                placeholder="{{quickAction.actionType.typeName}}" style="width:280px;height:40px;" status="info" required>
+                <nb-option *ngFor="let type of types" [value]="type" i18n="nature">{{type.typeName}}</nb-option>
+    
+              </nb-select>
+
+            </div>
+          </div>
+          <div class="row full-name-inputs label">
+              <div class="input-group col-md-4   input-group-sm">
+                  <label for="time">Affaire</label>
+                </div>
+            <div class="input-group col-md-3   input-group-sm">
+              <label for="deadline">Deadline</label>
+            </div>
+            <div class="input-group col-md-2   input-group-sm">
+              <label for="time">Heure</label>
+            </div>
+       
+    
+          </div>
+          <div class="row full-name-inputs">
+            
+              <div class="input-group col-md-4 input-group-sm">
+                  <ng-select [items]="leads"
+                  bindLabel="leadName"
+                  bindValue="leadID"
+                  name="actionLead"
+                  [(ngModel)]="selectedLeadID"
+                  [appendTo]="'body'"
+                  style="width:100%; ">
+             </ng-select>
+    
+              </div>
+            <div class="input-group col-md-3   input-group-sm">
+              <input name="deadline" #deadline [(ngModel)]="quickAction.actionDateLimite" class="form-control"
+                [nbDatepicker]="edatepicker" i18n="@@startdate" required>
+              <nb-datepicker #edatepicker></nb-datepicker>
+            </div>
+    
+            <div class="input-group col-md-2 input-group-sm">
+    
+              <nb-select outline=true name="time" [(ngModel)]="startTime"
+                placeholder="{{startTime.hourZero}}{{startTime.hours}}:{{startTime.minutes}}{{startTime.minuteZero}}"
+                status="info" required>
+                <nb-option *ngFor="let time of times" [value]="{hours:time.hours,minutes:time.minutes}" i18n="money">
+                  {{time.hourZero}}{{time.hours}}:{{time.minutes}}{{time.minuteZero}}
+                </nb-option>
+              </nb-select>
+            </div>
+    
+
+          </div>
+     
+      <div style="text-align:right;">
+        <button nbButton hero status="success" (click)="addQuickAction($event)">Confirmer</button>
+        <button nbButton hero status="warning" (click)="openAddWindow($event)"style="margin-left: 20px;">Annuler</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>
+ -->
+<div *ngIf="viewTab">
+  <nb-card >
+    <nb-card-header class="text-center" >
+      Liste des actions 
+      <button  (click)="openAddWindow($event)" nbButton size="xsmall" status="success" style="width: 100px">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </nb-card-header>
+    <nb-card-body #target id="table">
+      <ngx-action-search (searchAction)="searchActions($event)"></ngx-action-search>
+      <ng2-smart-table class="full-width text-center" [settings]="actionSettings" [source]="source"
+       (delete)="confirmDelete($event)" (edit)="openEditWindow($event)"
+        (createConfirm)="addQuickAction($event)"
+        (onclick)="openDetailsWindow($event)" (custom)="onCustom($event)" >
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+</div>
+<div *ngIf="viewKan">
+
+  <ngx-action-kanban [divided_actions]="divided_actions" [connectedTo]=connectedTo></ngx-action-kanban>
+
+</div>
+<div *ngIf="viewCal">
+  <nb-card>
+    <ngx-action-calendar></ngx-action-calendar>
+  </nb-card>
+</div>

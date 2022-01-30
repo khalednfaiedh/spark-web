@@ -1,0 +1,140 @@
+<!-- <div  class="col-md-12 col-lg-12" style="width:950px; height: 450px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px; height: 300px">
+      <nb-card>
+        <nb-card-body >
+          <nb-tabset fullWidth>
+            <nb-tab  tabTitle="Demande Production" style="margin-bottom: 3%">
+              <nb-card-body>
+                <div class="row full-name-inputs">
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Reférence demande production :</label>
+                      <input disabled type="text" placeholder="Reférence" class="form-control"value="{{reference}}"/>
+                  </div>
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Reférence commande :</label>
+                    <input disabled type="text" placeholder="Reférence" class="form-control"value="{{referenceCmd}}"/>
+                  </div>
+                  <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                    <label _ngcontent-udb-c31="" class="label" >Date demande :</label>
+                    <input disabled placeholder="date Demande" name="dateDemande" #startdate [(ngModel)]="demandeProduction.date_dmd" class="form-control"
+                                 [nbDatepicker]="dateDemande" i18n="@@startdate" required>
+                    <nb-datepicker #dateDemande></nb-datepicker>
+                  </div>
+                </div>
+     
+              </nb-card-body>
+              <nb-card>
+                <nb-card-body>
+                  <ng2-smart-table  [settings]="settings" [source]="source"  >
+                  </ng2-smart-table>
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+
+
+
+            <nb-tab tabTitle="Commande">
+              <nb-card>
+                <nb-card-body>
+                 
+                      <div class="row full-name-inputs">
+                        <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                          <label _ngcontent-udb-c31="" class="label" for="exampleInputEmail1">Reférence Commande:</label>
+        
+                            <input disabled value="{{reference}}" type="text" placeholder="Reférence commande" class="form-control"/>
+                        </div>
+                       
+                        <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                          <label _ngcontent-udb-c31="" class="label" for="exampleInputEmail1">Reférence Client:</label>
+        
+                            <input  disabled value="{{referenceC}}" type="text" placeholder="Reférence client" class="form-control"/>
+                        </div>
+                      </div>
+      
+                      
+                      <div class="row full-name-inputs">
+                     
+                        <div class="form-group col-md-4 col-lg-4 input-group-sm" style="margin-bottom: 20px;">
+                          <label _ngcontent-udb-c31="" class="label" for="exampleInputEmail1">Validité de la commande: :</label>
+                          <input type="text" placeholder="validité" class="form-control"
+                          disabled [(ngModel)]="commande.validite"/>
+                        </div>
+                    </div>
+      
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-6 col-lg-6 input-group-sm" style="margin-bottom: 20px;">
+                        <label _ngcontent-udb-c31="" class="label" for="exampleInputEmail1">Date Commande :</label>
+                        <input placeholder="Date Commande" name="dateDemande" #startdate [(ngModel)]="commande.date_cmd" class="form-control"
+                        disabled [nbDatepicker]="dateDemande" i18n="@@startdate" required>
+                        <nb-datepicker #dateDemande></nb-datepicker>
+                      </div>
+      
+                      <div class="form-group col-md-6 col-lg-6 input-group-sm" style="margin-bottom: 20px;">
+                        <label _ngcontent-udb-c31="" class="label" for="exampleInputEmail1">Date Livraison :</label>
+                        <input placeholder="Date Livraison" name="dateLivraison" #startdate [(ngModel)]="commande.date_liv" class="form-control"
+                        disabled [nbDatepicker]="dateLivraison" i18n="@@startdate" required>
+                        <nb-datepicker #dateLivraison></nb-datepicker>
+                      </div>
+                </div>
+             
+                </nb-card-body>
+              </nb-card>
+            </nb-tab>
+            
+          </nb-tabset>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()" >Fermer</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="col-md-12 col-lg-12" style="width:21cm; height: 29,7 cm">
+    <div class="row">
+      <div class="col-lg-12" >
+        <div id="contentToConvert"> 
+          <header class="clearfix">
+              <div id="logo">
+              </div>
+          <h1>Demande production : DMD2019{{demandeProduction.idDemande}}</h1>
+          <div id="company" class="clearfix">
+            <div>Spark It </div>
+            <div>Riadh Andalus,<br /> Ariana, TN</div>
+            <div>73123456</div>  
+            <div>test@idea.com</div>
+          </div>
+          <div id="project">
+            <div><span>Commande</span> {{referenceCmd}}</div>
+            <div><span>Tunis Le</span>{{demandeProduction.date_dmd | date: 'dd/MM/yyyy'}}</div> 
+          </div>
+        </header>
+  
+        <main>
+          <table>
+            <thead>
+              <tr>
+                <th class="desc">Code</th>
+                <th class="desc">Quantité</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let c of dmp">
+                <td class="desc">{{c.codeProduct}}</td>
+                <td class="desc">{{c.quantity}}</td>
+              </tr>
+          
+            </tbody>
+          </table>    
+        </main>
+        <div style="text-align:right;">
+          <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="close()" >Fermer</button>
+          <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="captureScreen()" >Télécharger</button>
+        </div> 
+      </div>
+    </div>
+  </div>
+  

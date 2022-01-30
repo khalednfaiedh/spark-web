@@ -1,0 +1,87 @@
+<div class="col-md-12 col-lg-12" style="width:1050px; height: 500px">
+  
+  <div class="row">
+    <div class="col-lg-12" style="width:1000px; height: 450px">
+  
+          <div class="col-lg-12" style="height: 450px">
+
+            <nb-accordion style="margin-bottom: 15px;" [hidden]="!addAuthorities">
+              <nb-accordion-item>
+               <nb-accordion-item-header ><p class="add-style" style="text-align: center;">Ajouter charge CNSS</p></nb-accordion-item-header>
+               <nb-accordion-item-body>
+                <div class="row full-name-inputs">
+                  <div class="input-group col-md-5 col-lg-5 input-group-sm" style="display: flex;">
+                    <ng-select *ngIf="x==0"[(ngModel)]="chargeCNSS.designation" 
+                    placeholder="Designation"
+                    [items]="designations"
+                    bindLabel="designations"
+                    bindValue="designations"
+                     style="width: 95%">
+                    </ng-select> 
+                    <input type="string" placeholder="Designation" class="form-control" [(ngModel)]="chargeCNSS.designation" *ngIf="x==1"/>
+                    <button  size="xsmall" (click)="change()" class="addButton">
+                        +</button> 
+                  </div>
+                   <div class="input-group col-md-2 col-lg-2 input-group-sm">
+                        <input  type="string" placeholder="Pourcentage" class="form-control"[(ngModel)]="chargeCNSS.pourcentage"/>
+                  </div>
+
+                  <div class="input-group col-md-5 col-lg-5 input-group-sm">
+
+
+                    <ng-select
+                    bindLabel="leadName"
+                    name="actionLead"
+                    placeholder="Régime"
+                    [(ngModel)]="chargeCNSS.regime"
+                    [appendTo]="'body'"
+                    style="width:100%; " size="xsmall">
+                    <ng-option value="Securité Sociale">Sécurité Sociale</ng-option>
+                    <ng-option value="Accidents du Travail et Maladies Professionnelles">Accidents du Travail et Maladies Professionnelles</ng-option>
+                    </ng-select>
+                  </div>
+             
+            </div> 
+            <div style="text-align:right;">
+              <button size="xsmall" nbButton #Ajouter class="btn btn-hero-success" style="cursor: pointer;margin-top: 1.5rem;align-content: center;"
+                (click)="ajouterCharge()">Confirmer</button>
+              <!-- <button nbButton  (click)="close()" style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button> -->
+            </div>
+              </nb-accordion-item-body>
+              </nb-accordion-item>
+             </nb-accordion>
+
+          <div style="margin-top: 0.5 rem;">
+             <nb-card>
+              <nb-card-body>
+                <table class="table table-bordered table-striped table-hover" >
+                  <thead>
+                    <tr>
+                      <th style="width: 35%;" scope="col" class="td-style">Designation</th>
+                      <th style="width: 15%;" scope="col" class="td-style">Pourcentage</th>
+                      <th style="width: 40%;" scope="col" class="td-style">Régime</th>
+                      <th style="width: 10%;" scope="col" class="td-style" *ngIf='deleteAuthorities == true' >Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf='isEmpty'><td colspan="11"><div style="font-size: 15px; color: #5e5e5e;text-align: center;">Pas de charges cnss</div></td></tr>
+                      <tr *ngFor="let  item  of chargesCNSS;" >
+                        <td class="td-style">{{item.designation}}</td>
+                        <td class="td-style">{{item.pourcentage}} %</td>
+                        <td class="td-style">{{item.regime}}</td>
+                        <td class="td-style" *ngIf="deleteAuthorities == true" > <button class="small-button-danger" title="supprimer" (click)="supprimer(item)" ><i class="fas fa-trash-alt"></i></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                </table>
+          </nb-card-body>
+        </nb-card>
+
+          </div>
+
+          </div>
+
+    </div>
+  </div>
+ 
+</div>

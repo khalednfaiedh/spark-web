@@ -1,0 +1,95 @@
+<!-- <p>
+  hello it me {{lead2.name}}
+  <button (click)="test()">X</button>
+</p> -->
+<div class="col-xl-12">
+  <nb-card>
+    <nb-card-body>
+      <nb-tabset fullWidth > 
+        <nb-tab tabTitle="Details">  
+      
+   
+ <!--          <div class="row full-name-inputs">
+              <div class="col-sm-3 input-group  input-group-sm">
+                <input type="text" placeholder="Lead Name" class="form-control"
+                  style="text-transform: capitalize;" id="leadName" value={{lead2.name}}/>
+              </div>
+              <div class="col-sm-5 input-group  input-group-sm">
+                <input type="text" placeholder="Sta" class="form-control"
+                  style="text-transform: capitalize;"  value={{lead2.id}}/>
+              </div>
+              <div class="col-sm-4 input-group  input-group-sm">
+                <input type="text" placeholder="Tax Code Registers" class="form-control"
+                  style="text-transform: capitalize;"  />
+              </div>
+            </div>
+      
+            <div class="row full-name-inputs">
+              <div class="col-sm-4 input-group  input-group-sm">
+                <nb-select placeholder="Select Showcase" [(selected)]="lead2.status">
+                    <nb-option  style="text-transform: capitalize;"  *ngFor="let stato of statur"  [value]="stato">{{stato}}</nb-option>           
+                </nb-select>
+              </div>
+      
+              <div class="col-sm-4 input-group  input-group-sm">
+                <select class="form-control">
+                  <option disabled>Adress</option>
+                  <option>Minsk</option>
+                  <option>Gomel</option>
+                </select>
+                <span class="input-group-append">
+                  <button  class="btn btn-hero-info input-group-text"> + </button>
+                </span>
+              </div>
+              <div class="col-sm-4 input-group  input-group-sm">
+                <input type="tel" placeholder="Phone Number" class="form-control"
+                  style="text-transform: capitalize;" />
+              </div> 
+
+          <div class="col-sm-12 input-group  input-group-sm">
+                <input type="text" placeholder="e-mail" class="form-control" style="text-transform: capitalize;" value={{newStat}}/>
+              </div>
+            </div>
+            <div class="row full-name-inputs">
+              <div class="col-sm-12 input-group  input-group-sm">
+                <textarea rows="5" placeholder="Text Area" class="form-control"></textarea>
+              </div> 
+            </div> -->
+<!--              
+               <div class="row col-sm-12 container-btn">
+                <button type="reset" class="btn btn-hero-info btn-demo" style="right: 0;  margin-left:290px">Clear
+                </button>
+                <button type="submit" class="btn btn-hero-success btn-demo" (click)="onSubmit()"
+                  style="right: 0; margin-left:3px ; ">Submit</button>
+              </div> 
+-->
+
+      </nb-tab>
+
+        <nb-tab tabTitle="Actions" >
+            <ng2-smart-table  style="text-transform: capitalize;" [settings]="actionSettings" [source]="actiondata" (deleteConfirm)="onDeleteConfirm($event)">
+              </ng2-smart-table>
+        </nb-tab>
+
+        <nb-tab tabTitle="Notes" >
+            <ng2-smart-table 
+            [settings]="noteSettings" 
+            [source]="notedata" 
+            (editConfirm)="onSaveConfirm($event)"
+            (createConfirm)="onCreateConfirm($event)"
+            (deleteConfirm)="onDeleteConfirm($event)" 
+            style="text-transform: capitalize;">
+            </ng2-smart-table>
+        </nb-tab>
+
+        <nb-tab tabTitle="Produits" disabled>
+          <h1>Liste des produits</h1>
+          <button>
+          <i class="nb-checkmark"></i>
+          </button>
+        </nb-tab>
+
+      </nb-tabset>
+    </nb-card-body>
+  </nb-card>
+</div> 

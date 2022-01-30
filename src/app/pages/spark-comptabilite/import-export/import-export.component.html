@@ -1,0 +1,98 @@
+<div class="row full-name-inputs">
+    <div class="input-group col-md-6 ">
+  <nb-card style="
+  width: 100%;">
+ 
+  
+  <nb-card-header>
+    <label i18n="@@planC"> Plan Comptable Général</label> 
+    <div style="text-align: right"> 
+     <button type="button"   (click)="exportAsXLSXGeneral()" class="btn btn-primary btn-sm"   > Export</button>
+    </div>
+    </nb-card-header>
+  <nb-card-body>
+        <label   i18n="@@importC1">Choisir le fichier Excel contenant le plan comptable générale à importer</label>
+        <!-- <input type="file" (change)="onFileChange($event)" multiple="false" #fileInput style="display: none"  /> -->
+        <!-- <input  class="btn btn-primary" type="file"  (change)="onFileChange($event)" multiple="false" > -->
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Télécharger</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="onFileChange($event)"  aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choisir le fichier</label> 
+            
+              
+          </div>
+          <button class="btn btn-info btn-sm" type="button" (click)="refresh()"style="padding: 1%;background-color: tomato;" >
+            <i class="fas fa-sync"></i>
+        </button>
+        </div>
+        <table class="table table-striped">
+             
+          <tbody>
+            <tr *ngFor="let row of data">
+            <td *ngFor="let val of row">
+              {{val}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        
+
+       
+
+        
+        <button type="button" [disabled]="testEroor" (click)="submitForm()" class="btn btn-primary btn-sm">Enregistrer</button>
+</nb-card-body>
+</nb-card>
+</div>
+ 
+
+<div class="input-group col-md-6   input-group-sm">
+  <nb-card style="
+  width: 100%;
+">
+  <nb-card-header>
+    <label i18n="@@planC"> Plan Comptable  Tiers   </label>
+    <div style="text-align: right">
+      <button type="button"  (click)="exportAsXLSXTiers()"   class="btn btn-primary btn-sm"   > Export</button>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+        <label   i18n="@@importC1">Choisir le fichier excel contenant le plan comptable  Tiers à importer</label>
+        <!-- <input type="file" (change)="onFileChange($event)" multiple="false" #fileInput style="display: none"  /> -->
+        <!-- <input class="btn btn-primary"  type="file"  (change)="onFileChange2($event)" multiple="false" > -->
+        <div class="input-group mb-4">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroupFileAddon01">Télécharger</span>
+          </div>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="inputGroupFile01"  (change)="onFileChange2($event)"  aria-describedby="inputGroupFileAddon01">
+            <label class="custom-file-label" for="inputGroupFile01">Choisir le fichier</label>
+           
+          </div>
+          <button class="btn btn-info btn-sm" type="button" (click)="refresh()"style="padding: 1%;background-color: tomato;" >
+            <i class="fas fa-sync"></i>
+        </button>
+        </div>
+
+        <table class="table table-striped table-bordred">
+          <thead></thead>
+          <tbody>
+            <tr *ngFor="let row of data2 ">
+            <td *ngFor="let val of row">
+              {{val}}
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+       
+        <button type="button" [disabled]="testEroor2" (click)="submitForm2()" class="btn btn-primary btn-sm">Enregistrer</button>
+        
+</nb-card-body>
+</nb-card>
+</div>
+</div>

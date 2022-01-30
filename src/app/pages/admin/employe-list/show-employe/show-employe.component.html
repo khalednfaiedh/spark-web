@@ -1,0 +1,237 @@
+<div class="col-md-12 col-lg-12" style="width:980px; height: 500px">
+  <div class="row">
+    <div class="col-lg-7" style="width:400px; height: 100px">
+      <nb-card>
+        <nb-card-body>
+          <!-- <div class="demo-radio col-sm-4">
+            <table>
+              <tr>
+                <td>
+            <label>Civilité:</label>
+                </td>
+                <td>
+            <label class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" name="customRadio">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Homme</span>
+            </label>
+                </td>
+                <td>
+            <label class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" name="customRadio">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Femme</span>
+            </label>
+                </td>
+              </tr>
+            </table>
+          </div> -->
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label> Nom: </label>
+              <input type="text" placeholder="Nom" class="form-control" [(ngModel)]="employe.nom" disabled/>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label> Prénom: </label>
+              <input type="text" placeholder="Prénom" class="form-control" [(ngModel)]="employe.prenom" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label>Cin:</label>
+              <input type="number" placeholder="Cin" class="form-control" [(ngModel)]="employe.cin" disabled/>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label>Lieu :</label>
+              <ng-select  
+              bindLabel="leadName" 
+              placeholder="Lieu" 
+              name="lieu" 
+              [(ngModel)]="employe.lieuDelivrableCin" 
+              disabled>
+                <ng-option value="ariana">Ariana</ng-option>
+                <ng-option value="beja">Beja</ng-option>
+                <ng-option value="bizerte">Bizerte</ng-option>
+                <ng-option value="gabes">Gabes</ng-option>
+                <ng-option value="jendouba">Jendouba</ng-option>
+                <ng-option value="kairouan">Kairouan</ng-option>
+                <ng-option value="kbeli">Kbeli</ng-option>
+                <ng-option value="manouba">Manouba</ng-option>
+                <ng-option value="kef">Kef</ng-option>
+                <ng-option value="mahdia">Mahdia</ng-option>
+                <ng-option value="mednine">Mednine</ng-option>
+                <ng-option value="monastir">Monastir</ng-option>
+                <ng-option value="nabeul">Nabeul</ng-option>
+                <ng-option value="sfax">Sfax</ng-option>
+                <ng-option value="sidiBouzid">Sidi Bouzid</ng-option>
+                <ng-option value="siliana">Siliana</ng-option>
+                <ng-option value="sousse">Sousse</ng-option>
+                <ng-option value="tataouine">Tataouine</ng-option>
+                <ng-option value="tozeur">Tozeur</ng-option>
+                <ng-option value="tunis">Tunis</ng-option>
+                <ng-option value="zaghouan">Zaghouan</ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label>Délivrée le:</label>
+              <input nbInput placeholder="Date Delivrable" class="form-control"
+                     [nbDatepicker]="formpicker1" [(ngModel)]="employe.dateDelivranceCin" disabled/>
+              <nb-datepicker #formpicker1></nb-datepicker>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+
+
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label> Date de naissance:</label>
+              <input nbInput placeholder="Date de naissance" class="form-control"
+                     [nbDatepicker]="formpicker" [(ngModel)]="employe.dateNaissance" disabled/>
+              <nb-datepicker #formpicker></nb-datepicker>
+            </div>
+         
+          <div class="form-group col-md-6 col-lg-6">
+            <label> Situation Familiale:</label>
+            <ng-select  placeholder="Situation Familiale" name="situationFamiliale"
+                       [(ngModel)]="employe.situationFamiliale" disabled>
+              <ng-option value="celibataire">Célibataire</ng-option>
+              <ng-option value="marie">Marié(e)</ng-option>
+              <ng-option value="divorce">Divorcé(e)</ng-option>
+              <ng-option value="veuf">Veuf(ve)</ng-option>
+            </ng-select>
+          </div>
+        </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label>Adresse:</label>
+              <input type="text" placeholder="Adresse" class="form-control"
+                     [(ngModel)]="employe.adresse" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label>Ville:</label>
+              <ng-select 
+               bindLabel="leadName" 
+               placeholder="Ville" 
+               name="ville"
+               [(ngModel)]="employe.ville" 
+               disabled>
+                <ng-option value="ariana">Ariana</ng-option>
+                <ng-option value="beja">Beja</ng-option>
+                <ng-option value="bizerte">Bizerte</ng-option>
+                <ng-option value="gabes">Gabes</ng-option>
+                <ng-option value="jendouba">Jendouba</ng-option>
+                <ng-option value="kairouan">Kairouan</ng-option>
+                <ng-option value="kbeli">Kbeli</ng-option>
+                <ng-option value="manouba">Manouba</ng-option>
+                <ng-option value="kef">Kef</ng-option>
+                <ng-option value="mahdia">Mahdia</ng-option>
+                <ng-option value="mednine">Mednine</ng-option>
+                <ng-option value="monastir">Monastir</ng-option>
+                <ng-option value="nabeul">Nabeul</ng-option>
+                <ng-option value="sfax">Sfax</ng-option>
+                <ng-option value="sidiBouzid">Sidi Bouzid</ng-option>
+                <ng-option value="siliana">Siliana</ng-option>
+                <ng-option value="sousse">Sousse</ng-option>
+                <ng-option value="tataouine">Tataouine</ng-option>
+                <ng-option value="tozeur">Tozeur</ng-option>
+                <ng-option value="tunis">Tunis</ng-option>
+                <ng-option value="zaghouan">Zaghouan</ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label>Code Postal:</label>
+              <input type="number" placeholder="Code Postal" class="form-control"
+                     [(ngModel)]="employe.codePostal" disabled/>
+            </div>
+            <!-- <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label>Région:</label>
+              <input type="text" placeholder="Région" class="form-control"
+                     [(ngModel)]="employe.region" disabled/>
+            </div> -->
+          </div>
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+    <div class="col-lg-5">
+      <nb-card>
+        <nb-card-body>
+
+          
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label> N° CNSS:</label>
+              <input type="text" placeholder="N° CNSS" class="form-control" [(ngModel)]="employe.numCnss" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-7 col-lg-7 input-group-sm">
+              <label>Type Permis:</label>
+              <ng-select placeholder="Type Permis" name="typePermis" [(ngModel)]="employe.typePermis" disabled>
+                <ng-option value="permisA1">Permis A1 (Motocyclette légère)</ng-option>
+                <ng-option value="permisA">Permis A (Toutes motos)</ng-option>
+                <ng-option value="permisB">Permis B (Voitures particulières)</ng-option>
+                <ng-option value="permisBE">Permis B+E (Voitures particulières avec remorque > 750 kg)</ng-option>
+                <ng-option value="permisC">Permis C (Poids lourds de plus 3,5 tonnes)</ng-option>
+                <ng-option value="permisCE">Permis C+E (Poids lourds de plus de 3,5 tonnes avec remorque > 750 kg)</ng-option>
+                <ng-option value="permisD">Permis D (Autobus)</ng-option>
+                <ng-option value="permisDE">Permis D+E (Autobus articulés)</ng-option>
+                <ng-option value="permisD1">Permis D1 (Taxis et voitures de louage)</ng-option>
+                <ng-option value="permisH">Permis H (Véhicules et appareils agricoles)</ng-option>
+              </ng-select>
+            </div>
+
+            <div class="form-group col-md-5 col-lg-5 input-group-sm">
+              <label>N° Permis:</label>
+              <input type="text" placeholder="N° Permis" class="form-control" [(ngModel)]="employe.numPermis" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label>Rib:</label>
+              <input type="text" placeholder="Rib" class="form-control" [(ngModel)]="employe.rib" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label>Banque:</label>
+              <input type="text" placeholder="Banque" class="form-control" [(ngModel)]="employe.nomBanque" disabled/>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label>Agence:</label>
+              <input type="text" placeholder="Agence" class="form-control" [(ngModel)]="employe.agence" disabled/>
+            </div>
+          </div>
+
+          <div class="row full-name-inputs" style="margin-bottom:8px;">
+            <div class="form-group col-md-6 input-group-sm">
+              <label>Téléphone:</label>
+              <input type="number" placeholder="Téléphone" class="form-control" [(ngModel)]="employe.tel" disabled/>
+            </div>
+            <div class="form-group col-md-6 input-group-sm" >
+              <!-- <label>Fax:</label>
+              <input type="number" placeholder="Fax" class="form-control" [(ngModel)]="employe.fax" disabled/> -->
+              <label>E-Mail:</label>
+              <input type="email" placeholder="E-Mail" class="form-control" [(ngModel)]="employe.mail" disabled/>
+            </div>
+          </div>
+          <!-- <div class="row full-name-inputs">
+            <div class="form-group col-md-12 input-group-sm">
+              <label>E-Mail:</label>
+              <input type="email" placeholder="E-Mail" class="form-control" [(ngModel)]="employe.mail" disabled/>
+            </div>
+          </div> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

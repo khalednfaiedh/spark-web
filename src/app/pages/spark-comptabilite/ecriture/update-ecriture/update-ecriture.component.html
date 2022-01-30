@@ -1,0 +1,63 @@
+<div class="col-md-12  " style="width:950px; height: 320px">
+  <nb-card>
+    <nb-card-body>
+      <form class="form-group" autocomplete="off" #monFormulaire1=ngForm>
+
+        
+          
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Numéro Piéce:</label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input type=" number" name="numeroPiece"   [(ngModel)]="ecriture.numeroPiece" class="form-control" /> 
+          </div>
+           
+        </div>
+        
+
+           
+        <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode"> Date:</label>
+          </div>
+
+          <div    class="input-group col-md-6   input-group-sm">
+            <input nbInput class="form-control" [nbDatepicker]="date"   [(ngModel)]="ecriture.date"    name="date" />
+            <nb-datepicker #date></nb-datepicker> 
+          </div>
+           
+        </div>
+ 
+
+
+           
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">  Libélle:</label>
+          </div>
+
+          <div class="input-group col-md-6   input-group-sm">
+            <input type="text" name="libelle"   [(ngModel)]="ecriture.libelle" class="form-control" /> 
+          </div>
+           
+        </div>
+
+
+        
+       
+<br>
+  <div style="text-align:right;">
+      <button nbButton hero status="success" (click)="updateEcriture()"
+        [disabled]=!monFormulaire1.valid>Modifier</button>
+      <button nbButton hero status="warning" (click)="monFormulaire1.reset( );"
+        style="margin-left: 30px;">Réinitialiser</button>
+    </div>
+
+      </form>
+
+    </nb-card-body>
+  </nb-card>
+  
+</div>

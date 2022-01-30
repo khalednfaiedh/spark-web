@@ -1,0 +1,137 @@
+<div style="width:75vw;max-height: 85vh;">
+ 
+  <nb-card>
+    <nb-card-body>
+
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label for="ref">Référence</label> 
+          <input disabled type="text" placeholder="Référence" class="form-control" 
+            [(ngModel)]="contrat.reference" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label for="ref">Fonction</label> 
+            <input disabled type="text" placeholder="Fonction" class="form-control" 
+            [(ngModel)]="contrat.fonction" />
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label for="ref">Entreprise</label> 
+            <ng-select disabled 
+            [(ngModel)]="contrat.idEntreprise"
+             style="width:100%; "
+             size="xsmall"
+            placeholder="Entreprise"
+            [items]="entreprises"
+            bindLabel="socialReason"
+            bindValue="enterpriseId">
+            </ng-select> 
+          </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label>Catégorie employé</label> 
+          <input disabled type="text" placeholder="Catégorie employé" class="form-control" 
+          [(ngModel)]="contrat.categorieEmploye" />
+        </div>
+    </div>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-2 col-lg-2">
+          <label for="type">Type de Contrat</label>
+          <ng-select disabled placeholder="Type de Contrat" [appendTo]="'body'" style="width:100%; " size="xsmall"
+            [(ngModel)]="contrat.typeContrat">
+            <ng-option value="CIVP">CIVP</ng-option>
+            <ng-option value="KARAMA">KARAMA</ng-option>
+            <ng-option value="CDI">CDI</ng-option>
+            <ng-option value="CDD">CDD</ng-option>
+            <ng-option value="OCCASIONNEL">OCCASIONNEL</ng-option>
+            <ng-option value="APPRENTI">APPRENTI</ng-option>
+          </ng-select>
+        </div>
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label for="">Date de début du contrat</label>  
+          <input disabled nbInput placeholder="Date de début du contrat" class="form-control" [nbDatepicker]="dateDeDebut"
+              [(ngModel)]="contrat.dateDebut" />
+             <nb-datepicker #dateDeDebut></nb-datepicker> 
+          </div>
+          <!-- *ngIf="!(contrat.typeContrat == 'CDI')" -->
+          <div class="form-group col-md-4 col-lg-4 input-group-sm ">
+            <label for="">Date de fin du contrat</label>  
+            <input disabled nbInput placeholder="Date de fin du contrat" class="form-control" [nbDatepicker]="dateDeFin"
+              [(ngModel)]="contrat.dateFin" />
+            <nb-datepicker #dateDeFin ></nb-datepicker>
+          </div>
+          <div class="form-group col-md-2 col-lg-2">
+            <label for="">Actif</label>
+            <ng-select disabled placeholder="Actif" [appendTo]="'body'" style="width:100%; " size="xsmall"
+              [(ngModel)]="contrat.active">
+              <ng-option value="Oui">Oui</ng-option>
+              <ng-option value="Non">Non</ng-option>
+            </ng-select>
+          </div>
+      </div>
+        <div class="row full-name-inputs">
+
+        <div class="form-group col-md-3 col-lg-3">
+          <label for="">Régime horaire</label>
+              <ng-select 
+              [(ngModel)]="contrat.idRegime"
+               style="width:100%; "
+               size="xsmall"
+              placeholder="Régime horaire"
+              [items]="regimes"
+              bindLabel="designation"  
+              bindValue="idRegime"
+              disabled>
+              </ng-select> 
+            </div>
+            <div class="form-group col-md-2 col-lg-2 input-group-sm" *ngIf="!regime.regimeType">
+              <label for="Salaire">Salaire(TND)</label>
+               <input disabled  placeholder="Salaire" class="form-control"
+                 [(ngModel)]="contrat.salaireBase"  />
+             </div>
+             <div class="form-group col-md-2 col-lg-2 input-group-sm" *ngIf="regime.regimeType== 'Par heure'" >
+              <label for="">Heure de base(TND)</label>
+               <input disabled placeholder="Heure de base" class="form-control"
+                 [(ngModel)]="contrat.salaireBase" />
+             </div>
+             <div class="form-group col-md-2 col-lg-2 input-group-sm" *ngIf="regime.regimeType == 'Mensuelle'">
+             <label for="Salaire de base">Salaire de base(TND)</label>
+               <input disabled placeholder="Salaire de base" class="form-control"
+                 [(ngModel)]="contrat.salaireBase" />
+             </div>
+             <div class="form-group col-md-3 col-lg-3">
+             <label for="">Type de Paiement</label>
+               <ng-select disabled placeholder="Type de Paiement" [appendTo]="'body'" style="width:100%; " size="xsmall"
+                 [(ngModel)]="contrat.modePaie">
+                 <ng-option disabled>Type de Paiement</ng-option>
+                 <ng-option value="En espèces">En espèces</ng-option>
+                 <ng-option value="Par chèque">Par chèque</ng-option>
+                 <ng-option value="Par virement bancaire">Par Virement Bancaire</ng-option>
+               </ng-select>
+             </div>
+   
+             <div class="form-group col-md-4 col-lg-4 input-group-sm">
+             <label for="">Catégorie CNSS</label>
+               <ng-select disabled [(ngModel)]="contrat.idCategorie" style="width:100%; " size="xsmall"
+                 placeholder="Catégorie CNSS"
+                 [items]="categorie"
+                 bindLabel="description"
+                 bindValue="idCategorie">
+               </ng-select> 
+             </div>
+           </div>
+       
+           <div class="row full-name-inputs">
+             <div class="from-group col-md-12 col-lg-12 input-group-sm">
+              <label for="">Déscription  de la poste</label>
+              <textarea  disabled rows="5" placeholder="Déscription  de la poste" class="form-control"
+                 [(ngModel)]="contrat.descriptionPoste"></textarea>
+             </div>
+           </div>
+           
+         </nb-card-body>
+       </nb-card>
+       <div style="text-align:right;">
+         <button nbButton status='danger' (click)="onClose()"  style="cursor: pointer;align-content: center;">Annuler</button> 
+       </div>
+ </div>

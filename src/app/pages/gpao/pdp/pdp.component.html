@@ -1,0 +1,189 @@
+ <nb-card>
+<nb-card-header>
+<p  style="text-align: center">
+ Plan Directeur de Production
+</p>
+ 
+</nb-card-header>
+<nb-card-body>
+  <form #monFormulaire1=ngForm>
+
+  <div class="row full-name-inputs">
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">   Produit :</label>
+      <ng-select 
+       required
+       name="Produit" 
+       placeholder="Produit" 
+       [appendTo]="'body'"
+       [items]="produits"
+       style="width:100%;" 
+       bindLabel="designation"
+       bindValue="idProduct"
+       [(ngModel)]="pdp.idProduit"
+       
+       >
+       </ng-select>
+
+    </div>
+
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label"> Stock Initale:</label>
+      <input [disabled]="disabled" type="number" name="stockIntiale" placeholder="  Stock Initale  " class="form-control"  
+      [(ngModel)]="pdp.stockIntiale" required    />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock de sécurité:</label>
+      <input   [(ngModel)]="pdp.stockSecurite"
+      [disabled]="disabled" type="number" name="descu" placeholder="  Stock de sécurité  " class="form-control"  required    />
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">   Stratégie de production :</label>
+      <ng-select 
+      required
+       name="Strategie" 
+       placeholder=" Stratégie de production " 
+       [appendTo]="'body'"
+       [items]="strategies"
+       style="width:100%;" 
+       bindLabel="name"
+       bindValue="id"
+       [(ngModel)]="pdp.strategie"
+       
+       >
+       </ng-select>
+
+    </div>
+
+
+ 
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">   Taux rebut    :</label>
+      <input  [(ngModel)]="pdp.tauxRebut" [disabled]="disabled" type="number" name="rebut" placeholder="   Taux rebut    " class="form-control"  required    />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">   Nombre periodes     :</label>
+      <input  [(ngModel)]="pdp.nombrePeriode"  [disabled]="disabled" type="text" name="nombre" placeholder=" Nombre periodes   " class="form-control"  required    />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label"> Type periode    :</label>
+     
+      <ng-select 
+      required
+       name="typePeriode" 
+       placeholder="Type periode" 
+       [appendTo]="'body'"
+       [items]="types"
+       style="width:100%;" 
+       bindLabel="name"
+       bindValue="id"
+       [(ngModel)]="pdp.typePeriode"
+       >
+       </ng-select>
+    </div>
+    <!-- délai d'obtention -->
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">  Délai d'obtention  (jour)   :</label>
+      <input  [(ngModel)]="pdp.delaiObtention"   type="number" name="nombre" placeholder=" Délai d'obtention   " class="form-control"  required    />
+    </div>
+  </div>
+  <div class="row full-name-inputs">
+    
+
+
+    <div *ngIf="pdp.strategie =='1'" class="form-group col-md-3 col-lg- input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">  Lot de lancement   :</label>
+      <input  [(ngModel)]="pdp.lotLancement"  [disabled]="disabled" type="number" name="des" placeholder="  Lot de lancement   " class="form-control"  required    />
+    </div>
+   
+
+  </div>
+  </form>
+  <div style="text-align:right; " >
+    <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+    [disabled]=!monFormulaire1.valid   (click)="calculPdp()"> Calculer </button>
+    </div>
+    <hr>
+    <nb-alert   [hidden]="isValide2" status="danger">Danger.stock initial insuffisante!</nb-alert>
+<div  [hidden]="isValide" >
+    <table  class="table table-bordered"  >
+      
+        <tr style="background-color: #D3D5D6">
+          <th scope="col" style="width: 15%" > </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.ordre}}</td>
+           
+          
+        </tr>
+        <tr>
+          <th  scope="col"  style="width: 15% ; background-color: #D3D5D6" > prévision de vente  </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.quantityPrevision}}</td>
+         
+           
+
+        </tr>
+        <tr>
+          <th> Par Client  </th>
+          <td>   detail </td>
+
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > comandes fermes  </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.commandesFerme}}</td>
+           
+          
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Besoin Brut PF  </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.besoinBrut}}</td>
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Stock prévisionnel   </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.stockPrevisionelle}}</td>
+           
+          
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Besoin net  </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.besoinNet}}</td>
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Besoin net corrigé  </th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.besoinNetCorrige}}</td>
+           
+          
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Ordres proposés FIN</th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.ordreProposesFin}}</td>
+        </tr>
+        <tr>
+          <th scope="col" style="width: 15% ;  background-color: #D3D5D6" > Ordres proposés  Début</th>
+          <td *ngFor="let   item  of pdpSortie; let i = index; let c = count" >{{item.ordreProposesDebut}}</td>
+        </tr>
+
+      
+      
+         <!-- <tr *ngFor="let   item  of class1; let i = index; let c = count" >
+          <td style="width: 10%" > {{item.codeCompte}} </td>
+          <td  style="width: 30%">{{item.nameCompte}} </td>
+          <td  style="width: 10%">{{item.soldIntiale | number : '0.3-3'}}  </td>
+          <td style="width: 10%">{{item.cumulDebit | number : '0.3-3'}}</td>
+          <td  style="width: 10%">{{item.cumulCredit | number : '0.3-3' }}</td>
+          <td style="width: 10%"> {{ item.soldDebiteur | number : '0.3-3' }}</td>
+          <td style="width: 10%">{{item.soldCrediteur | number : '0.3-3' }}</td>
+           
+        </tr> --> 
+        
+        </table>
+
+    <h5>Autre information </h5>  
+     <h6> Date Fin de production: {{dateFin | date }} </h6>  
+     <h6> Délai d'obtention  (jour):{{pdp.delaiObtention}} </h6>  
+     <h6> Date d'arrivée : {{ dateDarivee | date}}</h6>
+    </div>
+</nb-card-body>
+
+ </nb-card>

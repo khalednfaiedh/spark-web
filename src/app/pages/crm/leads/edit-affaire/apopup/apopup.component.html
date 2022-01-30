@@ -1,0 +1,85 @@
+<div style="width:60vw;">
+  <form (ngSubmit)="addAction()" autocomplete="off" #addActionForm=ngForm>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 form-group-sm">
+        <label class="label" for="actionType">Type action</label>
+        <ng-select [items]="types" bindLabel="typeName" name="actionType" [appendTo]="'body'"
+          [(ngModel)]="action.actionType" style="width:100%" (change)="changeAction(action.actionType)"
+          [clearable]="false" [disabled]="disabled">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="cost">Coût (DT)</label>
+        <input type="number" name="cost" id="cost" [(ngModel)]="action.actioncost" class="form-control" [disabled]="disabled">
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="duration">Durée (Min)</label>
+        <input type="number" name="duration" id="duration" #duration [(ngModel)]="action.actionduration"
+          class="form-control" [disabled]="disabled">
+      </div>
+      <div class="form-group col-md-4 input-group-sm">
+        <label class="label" for="status">Statut</label>
+        <ng-select [items]="status" bindLabel="statusName" bindValue="statusID" name="status" [appendTo]="'body'"
+          [(ngModel)]="action.actionStatus.statusID" [disabled]="disabled" style="width:100%">
+        </ng-select>
+      </div>
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-3 input-group-sm">
+        <label class="label" for="user">Ajouter par:</label>
+        <input type="text" name="user" [(ngModel)]="action.responsable"  class="form-control" disabled>
+      </div>
+      <div class="form-group col-md-3 input-group-sm">
+          <label class="label" for="username">Prospecteur</label>
+          <ng-select [items]="intervenants" bindLabel="username" bindValue="username" name="username" [appendTo]="'body'"
+          [(ngModel)]="action.intervenant" style="width:100%"
+          [clearable]="false" [disabled]="disabled">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="startdate">Date de création</label>
+        <input name="startdate" #startdate [(ngModel)]="action.actionDateCreation" class="form-control"
+          [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled>
+        <nb-datepicker #sdatepicker></nb-datepicker>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="deadline">Date action</label>
+        <input name="deadline" #deadline [(ngModel)]="action.actionDateLimite" class="form-control"
+          [nbDatepicker]="edatepicker" i18n="@@startdate" [disabled]="disabled">
+        <nb-datepicker #edatepicker></nb-datepicker>
+      </div>
+
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="deadline">Heure action</label>
+        <div style="display: flex;">
+          <ng-select [items]="Hours" [appendTo]="'body'" name="actionTimeHour" [(ngModel)]="selectedHour"
+            [clearable]="false" style="width:49%"[disabled]="disabled">
+          </ng-select>
+          <h3>:</h3>
+          <ng-select [items]="minutes" [appendTo]="'body'" name="actionTimeMinute" [(ngModel)]="selectedMinute"
+            [clearable]="false" style="width:49%"[disabled]="disabled">
+          </ng-select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-12 form-group-sm">
+        <label for="actionComment" class="label">Commentaire</label>
+        <textarea class="form-control" name="actionComment"
+         #actionComment [(ngModel)]="action.actionComment"
+          placeholder="Commentaire" rows="2"[disabled]="disabled">
+      </textarea>
+      </div>
+    </div>
+
+  </form>
+
+  <div style="text-align:right;">
+    <button nbButton hero status="success" (click)="addAction()" [hidden]="disabled">{{btn}}</button>
+    <button nbButton hero status="warning" (click)="addActionForm.reset()"[hidden]="disabled"
+      style="margin-left: 3px;">Réinitialiser</button>
+  </div>
+</div>

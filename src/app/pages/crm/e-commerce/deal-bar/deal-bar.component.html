@@ -1,0 +1,23 @@
+
+<tr style="width:100%" class=row>
+<td style="width:15%">
+  <!--           <div class=.col-md-4> -->
+  <h4 (click)="openWindowType()"> {{item.leadName}}</h4>
+  <!--           </div> -->
+</td>
+<td style="width:10%">
+  <!--         <div class=.col-md-4> -->
+  <h4> {{item.leadValue}} </h4>
+  <!--         </div> -->
+</td>
+<td style="width:75%;flex:1.1">
+  <nb-progress-bar [value]=([item.leadProgress]) [status]="status" [displayValue]="true"> </nb-progress-bar>
+</td>
+<!--         </div> -->
+<!-- <td style="width:3%">
+  <nb-actions size="medium">
+    <nb-action icon="nb-arrow-down" (click)="setValue(([item.progress]) - 25)"></nb-action>
+    <nb-action icon="nb-arrow-up" (click)="setValue(([item.progress]) + 25)"></nb-action>
+  </nb-actions>
+</td> -->
+</tr>

@@ -1,0 +1,181 @@
+<nb-card>
+  <nb-tabset fullWidth>
+    <nb-tab tabTitle="Informations générales">
+      <div style="width:90vw; height: 80vh">
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="identifiant"> Référence :</label>
+            <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="fournisseur.identifiant" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label"> Raison Sociale :</label>
+            <input type="text" placeholder="Raison social" class="form-control"
+              [(ngModel)]="fournisseur.raisonSocial" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="identifiant"> Code à barres :</label>
+            <input type="text" placeholder="Code à barres" class="form-control" [(ngModel)]="fournisseur.codeAbarre" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="identifiant">Type :</label>
+            <ng-select placeholder="Type" [(ngModel)]="fournisseur.typeF" [appendTo]="'body'" style="width:100%; ">
+              <ng-option value="Local">Local</ng-option>
+              <ng-option value="Etranger">Etranger</ng-option>
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label"> Nom de premier responsable :</label>
+            <input type="text" placeholder="Nom" class="form-control" [(ngModel)]="fournisseur.nameF" />
+          </div>
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label"> Prénom de premier responsable :</label>
+            <input type="text" placeholder="Prénom" class="form-control" [(ngModel)]="fournisseur.lastNameF" />
+          </div>
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label">
+              Civilité :
+            </label>
+            <ng-select name="civilite" placeholder="civilite" [(ngModel)]="fournisseur.civilite" [appendTo]="'body'"
+              style="width:100%; ">
+              <ng-option value="Féminin">Féminin</ng-option>
+              <ng-option value="Masculin">Masculin</ng-option>
+            </ng-select>
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label">Forme Juridique :</label>
+            <ng-select name="formeJuridique" placeholder="Forme Juridique" [(ngModel)]="fournisseur.formeJuridique"
+              [appendTo]="'body'" [items]="formeJuridiques" bindLabel="nom" style="width:100%;">
+            </ng-select>
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label">Immatriculation fiscale:</label>
+            <input type="text" placeholder="Immatriculation fiscale" class="form-control"
+              [(ngModel)]="fournisseur.immFiscal" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label">Registre de commerce :</label>
+            <input type="text" placeholder="Registre de commerce" class="form-control"
+              [(ngModel)]="fournisseur.registreComm" />
+          </div>
+          <div class="form-group col-md-3 input-group-sm">
+            <label class="label">TVA: </label>
+            <ng-select [items]="TVA" placeholder="TVA" name="tva" [(ngModel)]="fournisseur.tva">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 input-group-sm">
+            <label class="label">Catégories :</label>
+            <ng-select placeholder="Catégories" [(ngModel)]="fournisseur.fourn_Catg" [appendTo]="'body'"
+              [items]="allCategories" bindLabel="name" multiple="true" [closeOnSelect]="false" style="width:100%;">
+            </ng-select>
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label">Activité principale :</label>
+            <input type="text" placeholder="Etat" class="form-control" [(ngModel)]="fournisseur.activite" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label">Capital :</label>
+            <input type="number" placeholder="capital" class="form-control" [(ngModel)]="fournisseur.capital" />
+          </div>
+          <div class="form-group col-md-2 input-group-sm">
+            <label class="label"> Statut: </label>
+            <ng-select [items]="status" placeholder="Status" name="status" [(ngModel)]="fournisseur.status">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label class="label">Adresse du siège social:</label>
+            <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="fournisseur.adresseF" />
+          </div>
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label class="label"> Ville : </label>
+            <input type="text" placeholder="Ville" class="form-control" [(ngModel)]="fournisseur.villeF" />
+          </div>
+          <div class="form-group col-md-2 col-lg-2 input-group-sm">
+            <label class="label"> Code postal : </label>
+            <input type="number" placeholder="Code postal" class="form-control"
+              [(ngModel)]="fournisseur.codepostaleF" />
+          </div>
+          <div class="form-group col-md-2 input-group-sm">
+            <label class="label"> Pays : </label>
+            <ng-select [items]="payes" placeholder="Pays" name="payes" [(ngModel)]="fournisseur.paysF">
+            </ng-select>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label">Telephone 1 :</label>
+            <input type="number" placeholder="Telephone 1" class="form-control" [(ngModel)]="fournisseur.tlf1F" />
+          </div>
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label">Telephone 2 :</label>
+            <input type="number" placeholder="Telephone 2" class="form-control" [(ngModel)]="fournisseur.tlf2F" />
+          </div>
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label class="label">Fax:</label>
+            <input type="number" placeholder="Fax" class="form-control" [(ngModel)]="fournisseur.faxF" />
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label class="label">Email:</label>
+            <input type="text" placeholder="Email" class="form-control" [(ngModel)]="fournisseur.emailF" />
+          </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label class="label">Site Web :</label>
+            <input type="text" placeholder="SiteWeb" class="form-control" [(ngModel)]="fournisseur.siteWeb" />
+          </div>
+          <div class="form-group col-md-2 input-group-sm">
+            <label class="label">Date création :</label>
+            <input disabled name="startdate" #startdate [(ngModel)]="fournisseur.dateCreation" class="form-control"
+              [nbDatepicker]="sdatepicker">
+            <nb-datepicker #sdatepicker></nb-datepicker>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+            <label class="text-label" for=" commenteurF">Description:</label>
+            <textarea rows="2" class="form-control" name=" commenteurF" id=" commenteurF"
+              [(ngModel)]="fournisseur.commentairF"></textarea>
+          </div>
+        </div>
+
+        <div style="text-align:right;">
+          <button nbButton size="xsmall" status='success' style="cursor: pointer;margin: 0.5rem;align-content: center;"
+            (click)="onAddRCM()">{{ARCM}}</button>
+          <button nbButton size="xsmall" status='danger' style="cursor: pointer;align-content: center;"
+            (click)="close()">Annuler</button>
+        </div>
+
+
+      </div>
+    </nb-tab>
+    <nb-tab tabTitle="Coordonnées bancaires">
+      <ngx-add-compte></ngx-add-compte>
+    </nb-tab>
+    <nb-tab tabTitle="Contacts">
+      <ngx-contact></ngx-contact>
+    </nb-tab>
+    <nb-tab tabTitle="Adresses de livraison">
+      <ngx-adresse-de-livraison></ngx-adresse-de-livraison>
+    </nb-tab>
+
+
+  </nb-tabset>
+</nb-card>

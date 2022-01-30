@@ -1,0 +1,79 @@
+<div class="col-md-12  " style="width:850px; height: 320px">
+
+ <form #monFormulaire1=ngForm>
+  <nb-card>
+    <nb-card-body>
+
+
+        <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label"> Societé :</label>
+              <input disabled type="text" name="societe" placeholder="Societé" class="form-control"  required  [(ngModel)]="societe" />
+  
+            </div>
+  
+  
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">   Désignation     :</label>
+              <input   type="text" name="des" placeholder=" Désignation  " class="form-control"  required  [(ngModel)]="excercie.designation " />
+            </div>
+  
+        </div>
+
+        <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label"> Editeur:</label>
+              <input disabled type="text" name="editeur" placeholder="Societé" class="form-control"  required  [(ngModel)]="excercie.editeur" />
+  
+            </div>
+  
+  
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">    Année :</label>
+              <ng-select   
+              (click)="focusOutFunction()"
+               placeholder="Choisir..."
+               [items]="annee"
+               name="annee"
+               required
+              [disabled]="update" 
+                style="width: 100%"
+               [(ngModel)]="excercie.annee"
+               class="anneeStyle">
+             </ng-select>    
+            </div>
+  
+        </div>
+
+        <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label"> Date Début </label>
+              <input nbInput  class="form-control"  value="bonjor" [nbDatepicker]="dateDebut"
+              [(ngModel)]="excercie.dateDebut"  name="dateDebutt"   />
+          <nb-datepicker #dateDebut   ></nb-datepicker>
+  
+            </div>
+  
+  
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date  Fin</label>
+              <input nbInput  class="form-control" [nbDatepicker]="dateFin"  
+                    [(ngModel)]="excercie.dateFin" name="dateFinn"   />
+                <nb-datepicker #dateFin  ></nb-datepicker>
+                
+            </div>
+  
+        </div>
+      
+
+    </nb-card-body>
+  </nb-card>
+  <div  style="margin-left: 66%;">
+      <button nbButton hero status="success" (click)="addExcercice()"
+        [disabled]=!monFormulaire1.valid>{{A}}</button>
+      <button nbButton hero status="danger" (click)="onclose()"
+        style="margin-left: 30px;">Fermer</button>
+    </div>
+
+  </form> 
+</div>

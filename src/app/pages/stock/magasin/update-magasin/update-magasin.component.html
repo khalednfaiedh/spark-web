@@ -1,0 +1,109 @@
+<div  style="width:80vw; max-height: 85vh">
+  <nb-card>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label   class="label">Type :</label>
+          <div class="demo-radio">
+            <table>
+              <tr>
+                <td>
+                  <label class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" value="Réel" name="customRadio" checked
+                      [(ngModel)]="magasin.typeMagasin">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Réel</span>
+                  </label>
+                </td>
+                <td>
+                  <label class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" value="Virtuel" name="customRadio"
+                      [(ngModel)]="magasin.typeMagasin">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Virtuel</span>
+                  </label>
+                </td>
+              </tr>
+            </table>
+          </div>
+ 
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label   class="label">Référence:</label>
+          <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="magasin.identifiantMagasin" />
+        </div>
+
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label   class="label">Nom du Magasin:</label>
+          <input type="text" placeholder="Nom du Magasin" class="form-control" [(ngModel)]="magasin.nameMagasin" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Responsable :</label>
+          <ng-select  [items]="employees"          
+            bindLabel="matriculeNomPrenom"
+            placeholder="Responsable" 
+            [(ngModel)]="emp" 
+            [appendTo]="'body'" 
+            style="width:100%;">
+          </ng-select>
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label   class="label">Adresse :</label>
+          <input type="text" placeholder="Adresse" class="form-control" [(ngModel)]="magasin.adresseMagasin" />
+        </div>
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label   class="label">Code postal :</label>
+          <input type="number" placeholder="Code postal" class="form-control" [(ngModel)]="magasin.codePostal" />
+        </div>
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label   class="label">Pays :</label>          
+          <ng-select name="pays" [items]="PAYS" placeholder="Pays" [(ngModel)]="magasin.pays" [appendTo]="'body'" style="width:100%;">
+        </ng-select>
+
+
+        </div>
+        <div class="form-group col-md-2 col-lg-2 input-group-sm">
+          <label   class="label">Ville :</label>
+          <input type="text" placeholder="Ville" class="form-control" [(ngModel)]="magasin.ville" />
+        </div>
+      </div>
+
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label   class="label">Type d'évaluation du stock :</label>
+          <ng-select [(ngModel)]="magasin.evaluation" placeholder="Type d'évaluation du stock" [appendTo]="'body'" >
+            <ng-option value="Sérialisé">Sérialisé</ng-option>
+            <ng-option value="CUMP">CUMP</ng-option>
+            <ng-option value="FIFO">FIFO</ng-option>
+            <ng-option value="LIFO">LIFO</ng-option>
+            <ng-option value="FEFO">FEFO</ng-option>
+          </ng-select>
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label   class="label">Longeur(m) :</label>
+          <input type="number" placeholder="Longeur" class="form-control" [(ngModel)]="magasin.longeurMagasin" />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label   class="label">Largeur(m) :</label>
+          <input type="number" placeholder="Largeur" class="form-control" [(ngModel)]="magasin.largeurMagasin" />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label   class="label">Hauteur(m) :</label>
+          <input type="number" placeholder="Hauteur" class="form-control" [(ngModel)]="magasin.hauteurMagasin" />
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+   
+      <div style="text-align:right;">
+        <button nbButton  status="success"
+          style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="update()">Modifier</button>
+        <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+          (click)="close()">Annuler</button>
+      </div>
+  
+</div>

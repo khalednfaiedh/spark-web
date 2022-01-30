@@ -1,0 +1,8 @@
+export class AuthoritiesSoldeToutCompte {
+    static SOLDE_TOUT_COMPTE_LIST_VALUE: string = "SOLDE_TOUT_COMPTE";
+    static SOLDE_TOUT_COMPTE_VALUE: string = "SOLDE_TOUT_COMPTE";
+    static SOLDE_TOUT_COMPTE_EXCEL_VALUE: string = "SOLDE_TOUT_COMPTE";
+    static SOLDE_TOUT_COMPTE_ADD_VALUE: string = "SOLDE_TOUT_COMPTE";
+    static SOLDE_TOUT_COMPTE_UPDATE_VALUE: string = "SOLDE_TOUT_COMPTE";
+    static SOLDE_TOUT_COMPTE_DELETE_VALUE: string = "SOLDE_TOUT_COMPTE";
+}

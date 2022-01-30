@@ -1,0 +1,71 @@
+<div class="col-md-12 col-lg-12" style="width:850px; height: 250px">
+  <div class="row">
+      <nb-card>
+        <nb-card-body>
+            <div class="col-lg-12" style="width:820px; margin-top: 3%;">
+             <div class="row full-name-inputs">    
+              <div class="from-group col-md-3 col-lg-3 input-group-sm">
+                <label>Déduction: </label>
+                <ng-select  placeholder="Choisir.." 
+                [(ngModel)]="deduction.designation"
+                [items]="D"
+                [appendTo]="'body'"  
+                style="width:100%; " >
+                </ng-select> 
+            </div>
+            <div class="from-group col-md-3 col-lg-3 input-group-sm">
+              <label>Montant: </label>
+              <input placeholder="Montant" class="form-control" [(ngModel)]="deduction.montant"  />
+            </div>    
+            <div class="form-group col-md-3 col-lg-3 input-group-sm" >
+              <label> Date début </label>
+              <div style="display : flex ;">
+            <ng-select
+                placeholder="Mois"
+                [items]="mois"
+                name="mois"
+                [appendTo]="'body'"  
+                style="width:40%; "
+                [(ngModel)]="deduction.moisDebut">
+            </ng-select>
+            <ng-select
+                placeholder="Année"
+                [items]="annee"
+                name="annee"
+                [appendTo]="'body'"  
+                style="width:59%; margin-left: 1%;"
+                [(ngModel)]="deduction.anneeDebut">
+              </ng-select>
+            </div>
+          </div>           
+          <div class="form-group col-md-3 col-lg-3 input-group-sm" >
+            <label> Date fin </label>
+            <div style="display : flex ;">
+          <ng-select
+              placeholder="Mois"
+              [items]="mois"
+              name="mois"
+              [appendTo]="'body'"  
+              style="width:40%; "
+              [(ngModel)]="deduction.moisFin">
+          </ng-select>
+          <ng-select
+              placeholder="Année"
+              [items]="annee"
+              name="annee"
+              [appendTo]="'body'"  
+              style="width:59%; margin-left: 1%;"
+              [(ngModel)]="deduction.anneeFin">
+            </ng-select>
+          </div>
+        </div>
+          </div>
+          </div>
+          <div style="margin: 2rem 0rem 2rem 50rem;">
+            <button nbButton status="success" style="cursor: pointer;align-content: center;"(click)="onAddA()">{{buttonValue}}</button>   
+        </div>
+        </nb-card-body>
+      </nb-card>
+  </div>
+</div> 
+

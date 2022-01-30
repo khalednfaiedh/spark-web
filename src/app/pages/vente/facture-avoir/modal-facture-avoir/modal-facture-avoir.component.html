@@ -1,0 +1,280 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height:700px">
+        <div class="row">
+          <div class="col-lg-12" style="width:1000px; height:650px">
+            <div id="contentToConvert">
+              <header class="clearfix">
+                <div id="logo">
+                </div>
+      
+                <h1>Facture d'avoirs : FCT{{facture.code_fac}}</h1>
+      
+              </header>
+              <div class="d-flex justify-content-between">
+                <nb-card style="width:400px; height:220px">
+                  <nb-card-header style="background-color:rgb(194, 190, 190)">Destinataire</nb-card-header>
+                  <nb-card-body>
+                    <div class="col-lg-12">
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <th>Client :</th>
+                            <td>{{client.nameC}}</td>
+                          </tr><br>
+                          <tr>
+                            <th>Addresse :</th>
+                            <td>{{client.adresseC}}</td>
+                          </tr><br>
+                          <tr>
+                            <th>Email :</th>
+                            <td>{{client.emailC}}</td>
+                          </tr><br>
+                          <tr>
+                            <th>Téléphone :</th>
+                            <td>{{client.tlfC}}</td>
+                          </tr>
+      
+                        </tbody>
+                      </table>
+      
+                    </div>
+                  </nb-card-body>
+                </nb-card>
+      
+      
+      
+                <nb-card-body>
+                  <div class="col-lg-12">
+                    <table cellpadding="0" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <th>Date de facture :</th>
+                          <td>{{facture.date_fac}}</td>
+                        </tr><br>
+                        <tr>
+                          <th>Adresse de livraison :</th>
+                          <td>
+                            <div *ngFor="let list of adresses">
+                              {{list.adresse}}-{{list.ville}}-{{list.codePostal}}-{{list.pays}}<br>
+                            </div>
+                          </td>
+                        </tr><br>
+                      </tbody>
+                    </table>
+      
+                  </div>
+      
+                </nb-card-body>
+      
+      
+      
+              </div>
+      
+              <nb-card>
+                <nb-card-header style="background-color:rgb(194, 190, 190)">Mode &amp; Echeance de paiement</nb-card-header>
+      
+                <div *ngIf="devis.typePaiement=='Date fixe'">
+                  <div [hidden]="false">
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                        <input disabled type="text" placeholder="Mode de paiement" class="form-control"
+                          [(ngModel)]="modePaiement.typePaiement" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                        <input disabled type="text" placeholder="Type de paiement" class="form-control"
+                          [(ngModel)]="devis.typePaiement" />
+                      </div>
+      
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Date de paiement :</label>
+                        <input name="datePaiement" placeholder="Date de paiement" class="form-control"
+                          [(ngModel)]="devis.datePaiement" type="date" />
+      
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
+                <div *ngIf="devis.typePaiement=='Par période'">
+                  <div [hidden]="false">
+                    <div class="row full-name-inputs">
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Mode de paiement:</label>
+                        <ng-select [items]="modes" type="text" placeholder="Mode de paiement"
+                          [(ngModel)]="modePaiement.typePaiement" bindLabel="typePaiement">
+                        </ng-select>
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Type de paiement:</label>
+                        <input type="text" placeholder="Type de paiement" class="form-control"
+                          [(ngModel)]="devis.typePaiement" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Echéance de paiement :</label>
+                        <ng-select [items]="conditions" bindLabel="designation" [(ngModel)]="conditionPaiement.designation">
+                        </ng-select>
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Délais de paiements
+                          :</label>
+                        <ng-select placeholder="Délais de paiement" [(ngModel)]="echeancePaiement.option">
+                          <ng-option value="A la date de facturation">A la date de facturation</ng-option>
+                          <ng-option value="A la date de commande">A la date de commande</ng-option>
+                          <ng-option value="A la date de livraison">A la date de livraison</ng-option>
+                        </ng-select>
+                      </div>
+      
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Période de paiement(Mois) :</label>
+                        <input type="text" [(ngModel)]="echeancePaiement.nbrmois" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nb-card>
+              <ng2-smart-table [settings]="settings" [source]="source" (editConfirm)="show($event)"
+                (deleteConfirm)="onDeleteConfirm($event)">
+              </ng2-smart-table><br>
+      
+              <section id="sums">
+      
+                <table cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <th>Prix HT:</th>
+                      <td> <input type="text" autofocus="autofocus" tabindex="1" placeholder="Prix Ht"
+                          [(ngModel)]="devis.sommeTotaleHt" (click)="calculeMontantHT()"></td>
+      
+                    </tr>
+                    <tr>
+                      <th>Remise(%):</th>
+                      <td> <input type="text" autofocus="autofocus" tabindex="1" placeholder="Remise"
+                          [(ngModel)]="devis.remise"></td>
+      
+                    </tr>
+                    <tr class="amount-total">
+                      <th>Prix net HT:</th>
+                      <td> <input type="text" autofocus="autofocus" tabindex="1" placeholder="Prix net Ht"
+                          [(ngModel)]="devis.sommeRemise" (click)="calculTotaleavecRemise()">
+      
+                      </td>
+                      <td>
+                        <span>{{devis.devise}}</span>
+                      </td>
+                    </tr>
+      
+                    <tr data-iterate="tax">
+                      <th>Taxe:</th>
+                      <td> <input type="text" autofocus="autofocus" tabindex="1" placeholder="Taxe"
+                          [(ngModel)]="devis.sommeTVA" (click)="CalculetotaleTVa()">
+                      </td>
+                    </tr>
+      
+                    <tr class="amount-total">
+                      <th>TTC:</th>
+                      <td><input type="text" autofocus="autofocus" tabindex="1" placeholder="TTC"
+                          [(ngModel)]="devis.sommeTotaleavecTVA" (click)="calculeTTC()">
+                      </td>
+                      <td>
+                        <span>{{devis.devise}}</span>
+                      </td>
+                    </tr>
+      
+                    <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
+                       For example Invoicebus doesn't need amount paid and amount due on quotes  -->
+                    <tr>
+                      <th>Frais de livraison:</th>
+                      <td>
+                        <input type="number" autofocus="autofocus" tabindex="1" placeholder="Frais"
+                          [(ngModel)]="devis.fraislivraison">
+      
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Autre frais:</th>
+                      <td>
+                        <input type="number" autofocus="autofocus" tabindex="1" placeholder="Autre frais"
+                          [(ngModel)]="devis.autrefrais">
+      
+                      </td>
+                    </tr>
+                    <tr class="amount-total">
+                      <th>Montant total:</th>
+                      <td>
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Montant total"
+                          [(ngModel)]="devis.sommeFinale" (click)="calculPrixTotal()">
+      
+                      </td>
+                      <td>
+                        <ng-select name="devise" placeholder="Monnaie" [appendTo]="'body'" [items]="devises"
+                          style="width:100%;" [(ngModel)]="devis.devise">
+                        </ng-select>
+                      </td>
+                    </tr>
+      
+                    <tr>
+                      <th>Avance:</th>
+                      <td>
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Avance"
+                          [(ngModel)]="commande.montantpayer">
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Montant reste:</th>
+                      <td>
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Montant reste"
+                          [(ngModel)]="commande.montantReste" (click)="MontantRest()">
+      
+                      </td>
+                      <td> <span>{{devis.devise}}</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <section id="sums" style="margin-left: 30%;">
+                <table cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <th>Montant rester en lettre:</th>
+                      <td style="width:50%;">
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Montant reste"
+                          [(ngModel)]="commande.montantResteLettre" (click)="NumberToLetter(commande.montantReste)">
+                      </td>
+                      <td style="width:10%;">
+                        <span>{{devis.devise}}</span>
+                      </td>
+                    </tr>
+      
+                  </tbody>
+                </table>
+              </section><br><br>
+      
+      
+              <div class="row full-name-inputs">
+                <div class="form-group col-md-12 col-lg-12 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Observation:</label>
+                  <textarea type="text" placeholder="Observation" class="form-control"
+                    [(ngModel)]="factureAvoir.observation"></textarea>
+                </div>
+              </div>
+      
+      
+              <div style="margin-left: 75%;">
+                <span style="font-style: oblique;  font-weight:bold">Signature :</span>
+              </div>
+      
+            </div>
+            <div style=" margin-top: 10px">
+              <div style="text-align:right;">
+                <button nbButton size="xsmall" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                status="succses"  (click)="onAddRCM()">Ajouter</button>
+                <button nbButton size="xsmall" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              status="danger"    (click)="close()">Fermer</button>
+      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      

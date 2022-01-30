@@ -1,0 +1,20 @@
+<nb-card>
+  <nb-card-body>
+<nb-card>
+  <nb-card-header class="text-center">
+    Liste des employés 
+    <button (click)="openWindow()" class="btn btn-hero-success" status="success" nbButton size="xsmall"
+     style="padding: 0.4rem 1.5rem; margin-left: 1%;" [hidden] =authoritiesAdd ><i class="fas fa-user-plus"></i>
+    </button>
+  </nb-card-header>
+  <nb-card-body >
+    <ng2-smart-table class="full-width text-center"
+                     [settings]="settings"
+                     [source]="source"
+                     (deleteConfirm)="onDeleteConfirm($event)"
+                     (custom)="onCustom($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+  </nb-card-body>
+</nb-card>

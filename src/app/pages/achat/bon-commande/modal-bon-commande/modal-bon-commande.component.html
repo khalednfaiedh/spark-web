@@ -1,0 +1,139 @@
+<div class="col-md-12 col-lg-12" style="width:1200px; height: 650px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Réference:</label>
+              <input placeholder="Référence" name="reference" [(ngModel)]="bonCommande.reference" class="form-control"
+                required>
+            </div>
+            <div class="form-group  col-md-3 col-lg-3  input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Designation :</label>
+              <input placeholder="Designation" name="designation" [(ngModel)]="bonCommande.designation"
+                class="form-control" required>
+              </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date Livraison:</label>
+              <input placeholder="Date Livraison" name="dateLivraison" #startdate
+                [(ngModel)]="bonCommande.dateLivraison" class="form-control" [nbDatepicker]="dateLivraison"
+                i18n="@@startdate" required>
+              <nb-datepicker (dateChange)="correctDate($event)" #dateLivraison></nb-datepicker>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Etape:</label>
+              <ng-select name="etapeCommande" [items]="etapeCommandes" bindLabel="nom"
+                placeholder="Etape de la Commande" [(ngModel)]="bonCommande.etapeCommande" [appendTo]="'body'"
+                style="width:100%;">
+              </ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label"> Fournisseur :</label>
+              <ng-select name="fournisseur" placeholder="Fournisseur" [items]="fournisseurs" bindValue="id" bindLabel="nameF" 
+              [(ngModel)]="this.bonCommande.idF">
+              </ng-select>
+            </div>
+            <div class="form-group col-md-5 col-lg-5 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Magasin:</label>
+              <ng-select name="magasin" [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin"
+                placeholder="Magasin" [(ngModel)]="bonCommande.idMagasin" (change)="onChargeAdresse($event)"
+                [appendTo]="'body'" style="width:100%;">
+              </ng-select>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse de livraison:</label>
+              <input placeholder="Date Livraison" name="dateLivraison" [(ngModel)]="bonCommande.lieuLivraison"
+                class="form-control" i18n="@@startdate" required>
+            </div>
+          </div>
+          
+          <h5 style="text-align: center;">Liste des produits</h5>
+          <div ng-repeat="let documentGrp of documentGrps" id="main-form-content">
+            <form [formGroup]="documentGrp">
+              <div class="row full-name-inputs pull-right" style="float: right;">
+                <button type="button" style="width: 100px;" class="btn" size="xsmall" nbButton status="success"
+                  title="Add More" (click)="addItem()">
+                  <i class="fa fa-plus" aria-hidden="true"></i></button>
+              </div>
+              <div formArrayName="itemss">
+                <div *ngFor="let item of itemss.controls; let i = index;">
+                  <div [formGroupName]="i">
+                    <div class="row full-name-inputs col-md-12 col-lg-12">
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm required">
+                        <label _ngcontent-udb-c31="" class="label">Produit:</label>
+                        <ng-select [items]="produits" bindLabel="code" name="produits"
+                          formControlName="codeProduit" placeholder="Produit" (change)="onChargeProduit(item)"  [appendTo]="'body'" style="width:100%; "
+                          size="xsmall">
+                        </ng-select>
+                        <div class="help-block"></div>
+                      </div>
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Quantité:</label>
+                        <input type="number" placeholder="Quantité" (change)="calculPrixTotale(item)" class="form-control" formControlName="quantityBC" />
+                      </div>
+                      <div class="form-group col-md-3 col-lg-3 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Prix unitaire:</label>
+                        <input type="number" placeholder="Prix unitaire" (change)="calculPrixTotale(item)" class="form-control"
+                          formControlName="prixBC" />
+                      </div>
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Remise(%):</label>
+                        <input type="number" placeholder="Remise" class="form-control" formControlName="remiseProduit" />
+                      </div>
+                      <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">TVA (%):</label>
+                        <input disabled type="number" placeholder="TVA" class="form-control" formControlName="taxeProduit" />
+                      </div>
+                      <div class="remove input-group col-md-1 col-lg-1">
+                        <button nbButton status="danger" size="xsmall" *ngIf=" i!=0 "
+                          style="height: 2.25rem;padding: 0px 5px 0px 5px; margin-top: 1.5rem;"
+                          title="Supprimer la ligne" (click)="removeItem(i)"> <i class="fas fa-trash-alt"></i></button>
+                      </div>
+                    </div>
+                    <div class="row full-name-inputs col-md-12 col-lg-12">
+                      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">Total HT:</label>
+                        <input disabled type="number" placeholder="" class="form-control" formControlName="prixTotale" />
+                      </div>
+                      <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                        <label _ngcontent-udb-c31="" class="label">TTC:</label>
+                        <input disabled type="number" placeholder="TTC" class="form-control" formControlName="prixTTC" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </nb-card-body>
+      </nb-card>
+      <div class="row" style="margin-left: 70%">
+        <div class="form-group  ">
+          <label _ngcontent-udb-c31="" class="label">Total Hors Taxe(HT) : </label>
+          <input disabled class="form-control" [(ngModel)]="prixtot" />
+        </div>
+      </div>
+      <div class="row" style="margin-left: 70%">
+        <div class="form-group">
+          <label _ngcontent-udb-c31="" class="label">Fraix de livraison :</label>
+          <input type="number" class="form-control" [(ngModel)]="bonCommande.fraisDeLivraison" (change)="onAddFrais()" />
+        </div>
+      </div>
+      <div class="row" style="margin-left: 70%">
+        <div class="form-group">
+          <label _ngcontent-udb-c31="" class="label">Toute Taxes Comprise(TTC) :</label>
+          <input disabled class="form-control" [(ngModel)]="prixTT" />
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="onAdd(documentGrp.value)">Ajouter</button>
+        <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="close()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

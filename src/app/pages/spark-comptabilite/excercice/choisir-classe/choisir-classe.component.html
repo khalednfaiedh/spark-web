@@ -1,0 +1,151 @@
+<div class="col-md-12  " style="width:950px; height: 400px">
+  <nb-card>
+    <nb-card-body>
+      <form class="form-group" autocomplete="off" #monFormulaire1=ngForm>
+
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-5   input-group-sm">
+            <label class="text-label" >Date Début Exercice</label>
+          </div>
+
+          <div class="input-group col-md-5   input-group-sm">
+            <label  >Date Fin Exercice</label> </div>
+
+            <div class="input-group col-md-2  input-group-sm">
+              <label  >  Désignation</label> </div>
+          
+        </div>
+
+       
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-5   input-group-sm">
+            <input nbInput  class="form-control"    [nbDatepicker]="dateDebut"  [(ngModel)]="report.dateDebut"  name="dateDebut"   />
+        <nb-datepicker #dateDebut   ></nb-datepicker>
+          </div>
+
+          <div class="input-group col-md-5   input-group-sm">
+            <input nbInput  class="form-control" [nbDatepicker]="dateFin"  [(ngModel)]="report.dateFin" name="dateFin"   />
+        <nb-datepicker #dateFin  ></nb-datepicker>
+          </div>
+          <div class="input-group col-md-2  input-group-sm">
+             <input type="text"  [(ngModel)]="report.designation"   name="designation" class="form-control"  required /> </div>
+
+        </div>
+        <div class="row full-name-inputs label" style="margin-top: 1%">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Code  Journal</label>
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="tradeCode"> Numéro de  Piéce</label>
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <label for="jurform" i18n="@@jurform">  Libélllé</label>
+          </div>
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-3   input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="journals" bindLabel="code" bindValue="code" required name="CodeJournal" style="width:100%" 
+            [(ngModel)]="report.codeJournal"  required >
+          </ng-select>
+          </div>
+
+          <div class="input-group col-md-4   input-group-sm">
+            <input type="number" name="tradeCode" [(ngModel)]="report.numeroPiece"    class="form-control" required >
+          </div>
+          <div class="input-group col-md-5 input-group-sm">
+            <input type="text" name="libille" [(ngModel)]="report.libille" class="form-control" required >
+
+          </div>
+        </div>
+
+
+        <div class="row full-name-inputs label" style="margin-top: 1%">
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="nature" i18n="@@nature"> Compte de   </label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="capital" i18n="@@capital"> à </label>
+          </div>
+          
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="comptes" bindLabel="nameCode" required name="compte1" style="width:100%" 
+              [(ngModel)]="report.compte1"  required >
+            </ng-select>
+            
+          </div>
+          <div class="input-group col-md-4   input-group-sm"  >
+            <ng-select placeholder="Choisir..." [items]="comptes" bindLabel="nameCode" required name="compte2"
+            [(ngModel)]="report.compte2" style="width:100%" required  >
+          </ng-select>
+          </div>
+          
+        </div>
+       
+      <div *ngIf=report.equilibreEcriture> 
+        <div class="note note-info" >
+          <div class="note-title">Note</div>
+          <div class="note-body">
+            <ul>
+              <li>
+                SVP sélectionner un compte pour équilibrer votre operation d'ecriture.
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+
+        <div class="row full-name-inputs label" style="margin-top: 1%">
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="nature" i18n="@@nature"> Compte d'equilibre  </label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="capital" i18n="@@capital"> Montant </label>
+          </div>
+          
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-4   input-group-sm">
+            <ng-select placeholder="Choisir..." [items]="comptes" bindLabel="nameCode" required name="compteEquilibre" style="width:100%" 
+              [(ngModel)]="report.compteEquilibre">
+            </ng-select>
+            
+          </div>
+          <div class="input-group col-md-4   input-group-sm" >
+           <input type="number" name="montant" class="form-control"    [(ngModel)]="report.equilibreEcriture" disabled />
+          </div>
+          
+        </div>
+       
+        <div style="text-align:right; margin-top: 1%;"   >
+          <button nbButton hero status="success" (click)="saveReportAnouveau()"  [disabled]=!report.compteEquilibre
+           >Enregistrer </button>
+          <button nbButton hero status="warning" (click)="monFormulaire1.reset( );"
+            style="margin-left: 30px;">Réinitialiser  </button>
+        </div>
+        
+    </div> 
+      
+
+      </form>
+
+    </nb-card-body>
+
+  </nb-card>
+
+
+  <div style="text-align:right; margin-top: 1%;"   [hidden]="report.equilibreEcriture" >
+    <button nbButton hero status="success" (click)="calculMontantEquilibreEcriture()"      [disabled]=!monFormulaire1.valid
+     >Enregistrer </button>
+    <button nbButton hero status="warning" (click)="monFormulaire1.reset( );"
+      style="margin-left: 30px;">Réinitialiser </button>
+  </div>
+  <!-- </nb-tab>
+</nb-tabset> -->
+  
+
+</div>

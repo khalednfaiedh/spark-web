@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-body>
+    <div class="addbtn" style="display: flex; justify-content:space-around; margin-right: 100rem;">
+      <button (click)="onBack()" class="arrow-back-outline" nbButton style="width: 100px">BACK</button>
+
+      <button (click)="addDossier()" class="btn btn-hero-success input-group-text" i18n="@@ajoutDossier">+</button>
+
+    </div>
+  </nb-card-body>
+</nb-card>
+<nb-card>
+  <nb-card-header class="text-center">
+    <h3>{{ 'contrat.listActive'  }}</h3>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+      (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCostum($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

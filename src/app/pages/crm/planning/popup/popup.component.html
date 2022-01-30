@@ -1,0 +1,155 @@
+<div class="popup">
+  <nb-card>
+    <nb-card-body>
+   
+      <div class="row">
+        <div class="col-md-4 col-lg-4 input-group-sm">
+         <label class="label">Date début prospection:</label>
+         <input name="date1" #date1  [(ngModel)]="planning.dateDebut" class="form-control" [nbDatepicker]="date1" [disabled] = "disabled"/>
+         <nb-datepicker #date1 ></nb-datepicker>       
+         </div>
+        <div class="col-md-4 col-lg-4 input-group-sm">
+         <label class="label">Date fin prospection:</label>
+         <input name="date2" #date2  [(ngModel)]="planning.dateFin" class="form-control" [nbDatepicker]="date2" [disabled] = "disabled"/>
+         <nb-datepicker #date2 ></nb-datepicker>       
+       </div>
+       <div class="form-group col-md-4 col-lg-4 input-group-sm">
+         <label class="label">Prospecteur :</label>
+         <ng-select [items]="prospecteurs" bindValue="id" bindLabel="username" appendTo="body" [disabled] = "disabled"
+         placeholder="Choisir.." [(ngModel)]="planning.idProspecteur" fullWidth>
+         </ng-select>
+       </div>
+ </div>
+
+    </nb-card-body>
+  </nb-card>
+
+  <nb-card>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Planning désignation: </label>
+          <input type=" text" [(ngModel)]="planning.designation" class="form-control" [disabled] = "disabled" />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Etat de la prospection :</label>
+          <ng-select [items]="etats" appendTo="body" [disabled] = "disabled"
+          placeholder="Choisir.." [(ngModel)]="planning.etat" fullWidth>
+          </ng-select>
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Type entreprises </label>
+          <ng-select [items]="types" placeholder="Choisir.." [(ngModel)]="planning.typeEntreprise" fullWidth
+          [disabled] = "disabled">
+          </ng-select>
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Régime entreprises </label>
+          <ng-select [items]="regimes" placeholder="Choisir.."
+           [(ngModel)]="planning.regime" [disabled] = "disabled" fullWidth>
+          </ng-select>
+        </div>
+      
+      </div>
+
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Dénomination: </label>
+          <input type=" text" [(ngModel)]="planning.denomination" class="form-control" [disabled] = "disabled" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Secteur: </label>
+          <input type=" text" [(ngModel)]="planning.secteur" class="form-control" [disabled] = "disabled" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Branches d'activités :</label>
+          <input type=" text" [(ngModel)]="planning.branche" class="form-control" [disabled] = "disabled" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Type produits :</label>
+          <input type=" text" [(ngModel)]="planning.typeProduit" class="form-control" [disabled] = "disabled" />
+        </div>
+      </div>
+
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Gouvernorat :</label>
+          <input type=" text" [(ngModel)]="planning.gouvernorat" class="form-control" [disabled] = "disabled" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Délégation :</label>
+          <input type=" text" [(ngModel)]="planning.delegation" class="form-control" [disabled] = "disabled" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Pays du Participant Etranger: </label>
+          <ng-select appendTo="body" [items]="pays" placeholder="Choisir.." 
+          [(ngModel)]="planning.paye" [disabled] = "disabled" fullWidth>
+          </ng-select>
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label class="label">Année d'entrée en production :</label>
+          <input type="number" [(ngModel)]="planning.annee" class="form-control" [disabled] = "disabled" />
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-lg-6">
+              <label class="label"> <strong>Capital Social en DT:</strong></label>
+              <div class="row">
+              <div class="form-group col-md-6 col-lg-6">
+               <div class="row">
+                 <div class="col-md-4 col-lg-4"> <p>Sup. ou égal à:</p></div>
+                   <div class="col-md-8 col-lg-8 input-group-sm">
+                    <input type="number" [(ngModel)]="planning.capitale1" class="form-control" [disabled] = "disabled" />
+                      </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-lg-6">
+               <div class="row">
+                 <div class="col-md-4 col-lg-4"> <p> Inf. ou égal à:</p></div>
+                   <div class="col-md-8 col-lg-8 input-group-sm">
+                    <input type="number" [(ngModel)]="planning.capitale2" class="form-control" [disabled] = "disabled" />
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+        <div class="form-group col-md-6 col-lg-6">
+              <label class="label"> <strong>Emploi:</strong></label>
+              <div class="row">
+              <div class="form-group col-md-6 col-lg-6">
+               <div class="row">
+                 <div class="col-md-4 col-lg-4"> <p>Sup. ou égal à:</p></div>
+                   <div class="col-md-8 col-lg-8 input-group-sm">
+                    <input type="number" [(ngModel)]="planning.emploi1" class="form-control" [disabled] = "disabled" />
+                      </div>
+                </div>
+              </div>
+              <div class="form-group col-md-6 col-lg-6">
+               <div class="row">
+                 <div class="col-md-4 col-lg-4"> <p> Inf. ou égal à:</p></div>
+                   <div class="col-md-8 col-lg-8 input-group-sm">
+                    <input type="number" [(ngModel)]="planning.emploi2" class="form-control" [disabled] = "disabled" />
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+     </div>
+        
+    </nb-card-body>
+  </nb-card>
+
+  <div style="text-align:right;">
+    <button nbButton status="success" (click)="add()" [hidden]='disabled' >{{ btn }}</button>
+    <button nbButton status="danger" (click)="close()" style="margin-left: 2px;">Fermer</button>
+  </div>
+</div>

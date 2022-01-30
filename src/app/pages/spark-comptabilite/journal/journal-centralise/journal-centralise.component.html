@@ -1,0 +1,136 @@
+<!-- <nb-card [hidden]="!exerciceBoolean">
+  <nb-card-body>
+    <div class="note note-info"    >
+      <div class="note-title">Note</div>
+      <div class="note-body">
+        <ul>
+          <li>
+            Données non trouvées
+          </li>
+          
+          <li>
+            s'il vous plaît ouvrire un exercice.
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nb-card-body>
+</nb-card> -->
+ 
+
+
+
+<div class="col-md-12  "    >
+ 
+  <nb-card>
+<nb-card-header>
+
+    <ngx-titre-exercice></ngx-titre-exercice>
+
+</nb-card-header>
+
+  <nb-card-body>
+    
+  <!--  init  div  for table-->
+   
+  <div *ngFor="let   journal of   sousJournals ;let j = index; let k = count"  style="margin-top: 1%" >
+    <!--  init  div  for  title-->
+  <div  class="p ">
+  <!-- <h1 class="journal"> <i>Journal</i></h1> -->
+  <div class="row">
+  <div  class= "col-md-4 ">
+  <div style="margin-left: 2%"> <h1>COD:{{journal.code}}</h1> </div>
+  </div>
+  
+   
+  
+    <div  class= "col-md-4 " >
+   <h1>Désignation:{{journal.designation}} </h1> 
+      </div>
+  
+  <div class= "col-md-4 ">
+  <h1 style="text-align: right"> Mois:{{journal.mois}}</h1>
+  </div>
+  </div>
+  
+  </div>
+  <!--div tabel-->
+  <div >
+       
+      <table class="table table-striped table-bordered ">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Jour</th>
+              <th scope="col">N° pièce</th>
+              <th scope="col">N° compte</th>
+              <th scope="col">N° tiers</th>
+              <th scope="col">Libellé écriture</th>
+              <th scope="col">Mvts débit</th>
+              <th scope="col"> Mvts Crédit</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let  operation of journal.listOperation; let i = index; let c = count" >
+              <td style="width: 5%" >{{operation.ecriture.date}}</td>
+              <td  style="width: 5%">{{operation.ecriture.numeroPiece}}</td>
+              <td  style="width: 15%">{{operation.compteGeneral.codeCompte}}</td>
+              <td style="width: 15%"> {{ getCodCompteTier(operation)}}</td>
+              <td  style="width: 20%">{{operation.ecriture.libelle}}</td>
+              <td style="width: 10%">{{operation.debit | transformeNumber }}</td>
+              <td style="width: 10%">{{operation.credit | transformeNumber}}</td>
+             
+  
+             
+               
+            </tr>
+
+            <tr >
+              <td  style="width: 25%"> Totaux comptes de bilan : </td>
+              <td></td>
+              <td></td>   
+              <td></td>
+              <td></td> 
+              <td>{{getTotalDebitCompteBilan(j) | transformeNumber}}</td>     
+              <td>{{getTotalCreditCompteBilan(j) | transformeNumber}}</td>
+          
+             
+            </tr>
+
+         
+          <tr >
+            <td  style="width: 25%"> Totaux comptes de gestion :  </td>
+            <td></td>
+            <td></td>   
+            <td></td>
+            <td></td> 
+            <td>{{getTotalDebitCompteGestion(j) | transformeNumber}} </td>     
+            <td> {{getTotalCreditCompteGestion(j) | transformeNumber}}</td>
+        
+           
+          </tr>
+
+          </tbody>
+  
+            <tfoot style="background-color:#D3D3D3;">
+                <td  style="width: 25%"> Totaux du journal centralisé :  </td>
+                <td></td>
+                <td></td>   
+                <td></td>
+                <td></td> 
+                <td> {{ getTotalDebitCompteGestion(j) + getTotalDebitCompteBilan(j) | transformeNumber}}</td>     
+                <td>{{getTotalCreditCompteGestion(j) + getTotalCreditCompteBilan(j) | transformeNumber }}</td>
+            
+               
+            </tfoot>
+            
+        </table>
+  
+        
+      </div>
+  </div>
+  </nb-card-body>
+  
+  </nb-card>
+  </div>
+   

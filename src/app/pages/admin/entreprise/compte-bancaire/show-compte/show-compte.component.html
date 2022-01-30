@@ -1,0 +1,31 @@
+<div class="col-md-12 col-lg-12" style="width:450px; height: 285px">        
+  <div class="row full-name-inputs">
+    <div class="input-group col-md-6 col-lg-6 input-group-sm">
+      <label>Banque: </label>
+      <input disabled [(ngModel)]="compte.banque.nom" type="text" name="Banque" style="width:100%;"  class="form-control" disabled>
+    </div>
+    <div class="input-group col-md-6 col-lg-6 input-group-sm">
+      <label>Agence: </label>
+      <input disabled autofocus type="text" name="Agence"  style="width:100%; "  class="form-control"[(ngModel)]="compte.agence"  >
+    </div>
+  </div>
+
+  <div class="row full-name-inputs" style="margin-top: 1rem;">
+    <div class="input-group col-md-12 col-lg-12 input-group-sm">
+      <label>RIB: </label>
+      <input disabled type="text" name="rib" style="width:100%;"  class="form-control" [(ngModel)]="compte.rib"  >
+    </div>
+  </div>
+  <div class="row full-name-inputs" style="margin-top: 1rem;">
+    <div class="input-group col-md-12 col-lg-12 input-group-sm">
+      <label>Code IBAN: </label>
+      <input disabled type="text" name="Code iban" style="width:100%;"  class="form-control" [(ngModel)]="compte.iban" >
+    </div>
+  </div>
+  <div class="row full-name-inputs" style="margin-top: 1rem;">
+    <div class="input-group col-md-12 col-lg-12 input-group-sm">
+      <label>Code BIC: </label>
+      <input disabled type="text" name="Code bic" style="width:100%;"  class="form-control"[(ngModel)]="compte.bic"  >
+    </div>
+  </div>
+</div>

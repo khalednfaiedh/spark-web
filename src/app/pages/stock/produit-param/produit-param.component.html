@@ -1,0 +1,15 @@
+<nb-card>    
+  <nb-card-header class="text-center">
+      Liste de tous les produits initialisé &nbsp;    
+    <button  (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+    <i class="fa fa-plus" aria-hidden="true"></i></button>     
+  </nb-card-header>
+  <nb-card-body>       
+    <ng2-smart-table class="full-width text-center"
+        (custom)="onCustom($event)"
+        [settings]="settings"
+        [source]="produits"
+        (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

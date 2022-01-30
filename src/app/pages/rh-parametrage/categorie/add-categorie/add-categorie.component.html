@@ -1,0 +1,17 @@
+<div class="col-md-12 col-lg-12" style="width:450px; height: 120px;margin-top: 0.5rem;"> 
+  <div class="row">  
+            <div class="input-group col-md-6 col-lg-6 input-group-sm">
+              <input  type="text" placeholder="Code d'exploitation" class="form-control" [(ngModel)]="categorie.codeExploitation" />
+            </div>
+           
+             <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                  <input  type="String" placeholder="Désignation" class="form-control" [(ngModel)]="categorie.nom" />
+            </div>
+    </div>
+ 
+  <div style="text-align:right; margin-top: 1.5rem;">
+    <button nbButton status="success" #Ajouter style="cursor: pointer;align-content: center;"
+      (click)="onAdd()">{{A}}</button>
+    <!-- <button nbButton status="danger" (click)="close()" style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button> -->
+  </div>
+</div>

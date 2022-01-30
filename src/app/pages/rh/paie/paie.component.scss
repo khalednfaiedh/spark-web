@@ -1,0 +1,30 @@
+:host nb-tab {
+    padding: 1.25rem;
+}
+
+    :host /deep/ ng2-st-tbody-edit-delete {
+        display: inline-block !important;
+        height: 0 !important;
+      }
+      
+      :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+        display: inline;
+        width: "30%";
+        text-align: center;
+      }
+      
+      :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+        color: #5dcfe3;
+      }
+
+.month-style {
+  display: flex;
+  margin-left: 70%;
+}
+.note {
+  padding: 0.8rem 3rem 0.1rem 1.25rem;
+  border-radius: .25rem;
+  margin-top: 1rem;
+background-color: #cce5ff;
+color: #004085;
+}

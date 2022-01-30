@@ -1,0 +1,25 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 col-xxxl-6">
+        <button (click)="onBack()" class="btn btn-hero-info" nbButton style="width: 100px">
+          < </button> &nbsp; <button (click)="openWindow()" class="btn btn-hero-success" nbButton style="width: 100px" [hidden]="!authoritiesAdd" >+
+        </button>
+      </div>
+    </div>
+    <nb-card>
+      <nb-card-header class="text-center">
+        Liste de primes
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table class="full-width text-center" 
+          [settings]="settings"
+           [source]="source"
+         (custom)="onCustom($event)"
+          (deleteConfirm)="onDeleteConfirm($event)" 
+          >
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

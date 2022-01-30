@@ -1,0 +1,160 @@
+<!-- <nb-card [hidden]="!exerciceBoolean">
+  <nb-card-body>
+    <div class="note note-info"    >
+      <div class="note-title">Note</div>
+      <div class="note-body">
+        <ul>
+          <li>
+            Données non trouvées
+          </li>
+          
+          <li>
+            s'il vous plaît ouvrire un exercice.
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nb-card-body>
+</nb-card> -->
+ 
+<div class="col-md-12  "     >
+    
+<nb-card>
+  <nb-card-header>
+      <ngx-titre-exercice></ngx-titre-exercice>
+
+  </nb-card-header>
+<nb-card-body>
+    <!-- <div class="col-md-8  "   >
+  <form class="form-group" (ngSubmit)="filterLivreJournal()" autocomplete="off" #monFormulairej = ngForm>
+        
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">Période de :  </label>
+        </div>
+
+        <div class="input-group col-md-6   input-group-sm">
+          <input nbInput  class="form-control"    [nbDatepicker]="dateDebut"  [(ngModel)]="livreJournal.dateDebut"  name="dateDebut"   />
+          <nb-datepicker #dateDebut   ></nb-datepicker>
+        </div>
+         
+      </div>
+      
+     
+         
+      <div   class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">  à:</label>
+        </div>
+
+        <div    class="input-group col-md-6   input-group-sm">
+          <input nbInput  class="form-control" [nbDatepicker]="dateFin"  [(ngModel)]="livreJournal.dateFin" name="dateFin"   />
+          <nb-datepicker #dateFin  ></nb-datepicker>
+           
+        </div>
+         
+      </div>
+
+
+
+         
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">   Code Journal:</label>
+        </div>
+
+        <div class="input-group col-md-6   input-group-sm">
+          <ng-select placeholder="Choisir..."
+
+          bindLabel="code"
+
+          bindValue="code"
+
+          [items]="journals" 
+           
+          autofocus
+          style="width: 150%"
+         [(ngModel)]="livreJournal.codeJournal"
+         name="type"
+         
+          >
+          <option> Tous</option>
+         </ng-select>  
+        </div>
+      </div>
+         
+
+<div style="text-align:center;"  class="nvForm"  >
+<button nbButton hero status="success"  type="submit"  [disabled]=!monFormulairej.valid >Envoyer</button>
+<button nbButton hero status="warning" (click)=" monFormulairej.reset();" style="margin-left: 30px;">Réinitialiser</button>
+</div>
+  </form>
+</div> -->
+<!--  init  div  for table-->
+ <!-- <div class="row " >
+    <div class="col-md-6" style="display: flex; height: 10%; padding-bottom: 2em; margin-left: 45%;">
+        <div class="input-group  input-group-sm"> 
+      <input nbInput  class="form-control"    [nbDatepicker]="dateDebut"  [(ngModel)]="livreJournal.dateDebut"  name="dateDebut" style="    width: 20%;"  />
+      <nb-datepicker #dateDebut   ></nb-datepicker>
+</div>
+
+
+
+<div class="input-group  input-group-sm">
+      <input nbInput  class="form-control" [nbDatepicker]="dateFin"  [(ngModel)]="livreJournal.dateFin" name="dateFin"  style="    width: 20%;"  />
+      <nb-datepicker #dateFin  ></nb-datepicker>
+    </div>
+    <div class="input-group  input-group-sm">
+      <ng-select placeholder="Choisir..."
+
+      bindLabel="code"
+      bindValue="code"
+      [items]="journals" 
+      autofocus
+      style="width: 100%"
+     [(ngModel)]="livreJournal.codeJournal"
+     name="type"
+     
+      >
+      
+     </ng-select>  
+     
+ </div>
+ <div class="input-group  input-group-sm" style=" width:0%;">
+    <button class="btn btn-warning btn-sm" type="button" (click)="filterLivreJournal()" >  <i class="fa fa-search"></i></button>
+      </div>
+</div>
+ </div> -->
+<div *ngFor="let   journal of   sousJournals ;let j = index; let k = count"  style="margin-top: 1%" >
+  <!--  init  div  for  title-->
+<div  class="p ">
+<!-- <h1 class="journal"> <i>Journal</i></h1> -->
+<div class="row">
+<div  class= "col-md-4 ">
+<div style="margin-left: 2%"> <h1>COD:{{journal.code}}</h1> </div>
+</div>
+
+ 
+
+  <div  class= "col-md-4 " >
+ <h1>Désignation:{{journal.designation}} </h1> 
+    </div>
+
+<div class= "col-md-4 ">
+<h1 style="text-align: right"> Mois:{{journal.mois}}</h1>
+</div>
+</div>
+
+</div>
+<!--div tabel-->
+<div >
+     
+  
+      
+    </div>
+</div>
+</nb-card-body>
+
+</nb-card>
+</div>
+ 

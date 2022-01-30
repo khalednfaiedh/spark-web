@@ -1,0 +1,54 @@
+<div class="col-md-12 col-lg-12" style="width:600px; height: 300px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px;">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Entreprise:</label>
+              <ng-select name="entreprise" [items]="entreprises" bindValue="enterpriseId" bindLabel="socialReason" placeholder="Entreprise"
+                [(ngModel)]="personneltemporaire.idEntreprise" [appendTo]="'body'" style="width:100%;">
+              </ng-select>
+            </div>
+
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Num CIN :</label>
+              <input type="number" placeholder="Numéro CIN" class="form-control" [(ngModel)]="personneltemporaire.cinP" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Nom Complet:</label>
+              <input type="text" placeholder="Nom Complet" class="form-control"
+                [(ngModel)]="personneltemporaire.nomP" />
+            </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Num téléphone :</label>
+              <input type="number" placeholder="Numéro téléphone" class="form-control"
+                [(ngModel)]="personneltemporaire.tlfP" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date de recrutement :</label>
+              <input placeholder="Date recrutement.." name="dateRec" [(ngModel)]="personneltemporaire.recrutdateP"
+                class="form-control" [nbDatepicker]="dateRec" required>
+              <nb-datepicker #dateRec></nb-datepicker>
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse :</label>
+              <input type="text" placeholder="Adresse" class="form-control"
+                [(ngModel)]="personneltemporaire.adresseP" />
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="onAddRCM()">{{ARCM}}</button>
+            <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="onclose()">Fermer</button>
+          </div>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

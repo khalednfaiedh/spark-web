@@ -1,0 +1,55 @@
+<nb-card>
+  <nb-card-body>
+    <nb-tabset fullwidth>
+
+
+
+      <nb-tab tabTitle="Liste de commande par devis">
+        <nb-card>
+          <nb-card-body>
+
+            <nb-card-header class="text-center">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xxxl-12">
+                  Liste des commandes &nbsp;
+
+                </div>
+              </div>
+            </nb-card-header>
+            <nb-card-body>
+              <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+                (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+              </ng2-smart-table>
+            </nb-card-body>
+
+          </nb-card-body>
+        </nb-card>
+
+      </nb-tab>
+
+
+      <nb-tab tabTitle="Liste de commande par contrat">
+        <nb-card>
+          <nb-card-body>
+
+            <nb-card-header class="text-center">
+              <div class="row">
+                <div class="col-md-12 col-lg-12 col-xxxl-12">
+                  Liste des commandes &nbsp;
+
+                </div>
+              </div>
+            </nb-card-header>
+            <nb-card-body>
+              <ng2-smart-table class="full-width text-center" [settings]="settings2" [source]="source2"
+                (custom)="onCustom($event)">
+              </ng2-smart-table>
+            </nb-card-body>
+
+          </nb-card-body>
+        </nb-card>
+
+      </nb-tab>
+    </nb-tabset>
+  </nb-card-body>
+</nb-card>

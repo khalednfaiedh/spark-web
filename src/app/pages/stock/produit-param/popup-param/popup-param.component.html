@@ -1,0 +1,120 @@
+<div class="popup">
+  <div class="row full-name-inputs">
+    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+        <label class="label">Produit:</label>
+        <ng-select  [items]="produits"          
+          bindLabel="item" 
+          bindValue="idProduct"
+          [(ngModel)]="produit.idProduct" 
+          (change) ="onChange(produit.idProduct)"
+          [clearable]="false"
+          [disabled]="e == 2 || e == 0"
+          placeholder="Produit" 
+          [appendTo]="'body'"
+          style="width:100%;">
+        </ng-select>
+    </div>
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+      <label class="label">Stock initial:</label>
+      <input [disabled]="e == 2" type="number" name="stockInitial" placeholder="Stock initial" class="form-control"
+       [(ngModel)]="produit.stockInitial" [ngModelOptions]="{standalone: true}"   />
+    </div>
+    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+      <label class="label">N° lot
+      <i class="fa fa-ban" aria-hidden="true" [hidden]="!disabelLot"></i>
+      </label>
+      <input type="text" name="lot" placeholder="N° lot" class="form-control"
+        [disabled]="disabelLot || e == 2" [(ngModel)]="produit.lot" [ngModelOptions]="{standalone: true}"   />
+    </div>
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+      <label class="label">Prix unitaire:</label>
+      <!-- <input  [disabled]="e == 2" type="number" name="Prix unitaire" placeholder="Prix unitaire" class="form-control"
+        [(ngModel)]="produit.prixUnit" [ngModelOptions]="{standalone: true}"   /> -->
+
+        <input currencyMask  [disabled]="e == 2" name="Prix unitaire" placeholder="Prix unitaire" class="form-control"
+        [(ngModel)]="produit.prixUnit"  [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: precision, align:'left'}" class="form-control"/>
+
+    </div>
+    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+<<<<<<< HEAD
+      <label class="label">Magasin:</label>
+      <ng-select [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin" appendTo="body" 
+      placeholder="Choisir.." [(ngModel)]="produit.idMagasin" fullWidth>
+      </ng-select>  
+    </div>
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+=======
+      <label class="label">Date entrée en stock:</label>
+      <input name="date4" #date4  [(ngModel)]="produit.dateOperation" class="form-control" [nbDatepicker]="date4" [disabled]="e == 2" />
+      <nb-datepicker #date4 ></nb-datepicker>       
+    </div>
+    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+      <label class="label">Date preemption:</label>
+      <input name="date1" #date1  [(ngModel)]="produit.datePreemption" class="form-control" [nbDatepicker]="date1"  [disabled]="e == 2"/>
+      <nb-datepicker #date1 ></nb-datepicker>       
+    </div>  
+    <div class="form-group col-md-4 col-lg-4 input-group-sm">
+      <label class="label">Magasin:</label>
+      <ng-select [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin" appendTo="body" 
+      [disabled]="e == 2"   placeholder="Choisir.." [(ngModel)]="produit.idMagasin" fullWidth>
+      </ng-select>  
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+>>>>>>> fb18bebcf8f46813803a75f01d3c646cc53342a7
+      <label class="label">Stock minimum:</label>
+      <input [disabled]="e == 2" type="number" name="stockMinimum" placeholder="Stock minimum" class="form-control"
+        [(ngModel)]="produit.stockMinimum" [ngModelOptions]="{standalone: true}"   />
+    </div>
+<<<<<<< HEAD
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+=======
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+>>>>>>> fb18bebcf8f46813803a75f01d3c646cc53342a7
+      <label class="label">Stock maximum:</label>
+      <input [disabled]="e == 2" type="number" name="stockMaximum" placeholder="Stock maximum" class="form-control"
+        [(ngModel)]="produit.stockMaximum" [ngModelOptions]="{standalone: true}"   />
+    </div>
+<<<<<<< HEAD
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+=======
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+>>>>>>> fb18bebcf8f46813803a75f01d3c646cc53342a7
+      <label class="label">Stock de sécurité:</label>
+      <input [disabled]="e == 2" type="number" name="stockSecurite" placeholder="Stock de sécurité" class="form-control"
+        [(ngModel)]="produit.stockSecurite" [ngModelOptions]="{standalone: true}"   />
+    </div>
+
+<<<<<<< HEAD
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+=======
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+>>>>>>> fb18bebcf8f46813803a75f01d3c646cc53342a7
+      <label class="label">Stock saisonnier:</label>
+      <input [disabled]="e == 2" type="number" name="stockSaisonnier" placeholder="Stock saisonnier" class="form-control"
+        [(ngModel)]="produit.stockSaisonnier" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <!-- <div class="form-group col-md-2 col-lg-2 input-group-sm">
+      <label class="label">Stock obsolète:</label>
+      <input [disabled]="e == 2" type="number" name="stockObsolete" placeholder="Stock obsolète" class="form-control"
+        [(ngModel)]="produit.stockObsolete" [ngModelOptions]="{standalone: true}"   />
+    </div>
+    <div class="form-group col-md-2 col-lg-2 input-group-sm">
+      <label class="label">Stock de transit:</label>
+      <input [disabled]="e == 2" type="number" name="stockTransit" placeholder="Stock de transit" class="form-control"
+        [(ngModel)]="produit.stockTransit" [ngModelOptions]="{standalone: true}"   />
+    </div> -->
+
+    <div class="form-group col-md-12 col-lg-12 input-group-sm">
+      <label class="label">Commentaire :</label>
+      <textarea  [disabled]="e == 2" type="text" placeholder="Commentaire..." class="form-control"
+        [(ngModel)]="produit.commentaire"></textarea>
+    </div>
+  </div>
+
+  <div style="text-align:right;">
+    <button nbButton status="success"(click)="save()"
+   [hidden]="e == 2"   style="cursor: pointer;align-content: center;">{{ btn }}</button> &nbsp;
+    <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+      (click)="close()">Annuler</button>
+  </div>
+</div>

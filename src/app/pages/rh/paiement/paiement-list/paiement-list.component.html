@@ -1,0 +1,74 @@
+ <nb-card>
+  <nb-card-body>
+    <div>
+      <button nbButton status="primary" (click)="back()"><i class="fas fa-angle-double-left"></i> Retour</button>
+    </div>
+<nb-card>
+  <nb-card-header style="text-align: center;">
+    Suivi de paiement {{moisI}}-{{annee}} 
+    <!-- <button (click)="open(item)" status = "success" nbButton style="padding: 0.5rem 1rem;"> 
+      <i class="fa fa-eye" aria-hidden="true">  </i> Ordres de virement</button> -->
+  </nb-card-header>
+  <nb-card-body>
+        <table class="table table-bordered table-striped" >
+          <thead>
+            <tr>
+              <th scope="col" class="td-style">Matricule</th>
+              <th scope="col" class="td-style">Nom </th>
+              <th scope="col" class="td-style">Prenom </th>
+              <th scope="col" class="td-style">Type paiement</th>
+              <th scope="col" class="td-style">Num</th>
+              <th scope="col" class="td-style">Banque</th>
+              <th scope="col" class="td-style">Agence</th>
+              <th scope="col" class="td-style">RIB</th>
+              <!-- <th scope="col"class="td-style">N°fiche</th> -->
+              <th scope="col"class="td-style">Net</th>
+              <th scope="col"class="td-style">Etat</th>
+              <th scope="col"class="td-style">Action</th>
+
+              <!-- <th scope="col" class="td-style">Date opération</th>
+              <th scope="col" class="td-style">Date Paiement</th> -->
+              <!-- <th scope="col" class="td-style">Afficher</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let  item  of paiementList;" >
+              <td class="td-style">{{item.matricule}}</td>
+              <td class="td-style">{{item.nom}} </td>
+              <td class="td-style">{{item.prenom}}  </td>
+              <td class="td-style">
+                <b class="td-warning" *ngIf="item.typeOp == 1">
+                  <a class="link-warning">Chéque</a>
+                  <!-- <a class="link-warning" (click)=open()>Chéque</a> -->
+                </b>
+                <b  class="td-primary" *ngIf="item.typeOp == 2"><a class="link-success" >Espéce</a></b>
+                <b class="td-info" *ngIf="item.typeOp == 3"><a class="link-info">Virement</a></b>
+              </td>
+              <td  *ngIf="item.typeOp == 3" class="td-style">
+                {{item.numPaiement}}
+              </td>
+              <td  *ngIf="item.typeOp != 3" class="td-style">
+               {{item.numPaiement}} 
+                </td>
+              <td class="td-style">{{item.banque}}</td>
+              <td class="td-style">{{item.agence}}</td>
+              <td class="td-style">{{item.rib}}</td>
+              <!-- <td class="td-style">{{item.idFiche}}</td> -->
+              <td class="td-style"><b>{{item.net | number : '0.3-3'}}</b> TND</td>
+              <!-- <td class="td-style">{{item.dateEnregistrement}}</td>
+              <td class="td-style">date paiement</td>  -->
+              <td class="td-style">{{item.ETAT}}</td> 
+               <td style="display: flex; justify-content: center;">
+                 <button (click)="payer(item)" status = "success" nbButton style="padding: 0rem 1.5rem;"
+                *ngIf="item.typeOp != 3" [disabled]="item.etat == 2">  <i class="fas fa-dollar-sign"></i> Payer</button>
+                <button (click)="open(item)" status = "success" nbButton style="padding: 0rem 0.5rem;" *ngIf="item.typeOp == 3">
+                 <i class="fa fa-eye" aria-hidden="true"> </i> Afficher </button> 
+                 <button class="small-button-danger" title="supprimer paiement" (click)="supprimer(item)"><i class="fas fa-trash-alt"></i></button> 
+              </td>
+            </tr>
+          </tbody>
+        </table>    
+  </nb-card-body>
+</nb-card>
+  </nb-card-body>
+</nb-card>  

@@ -1,0 +1,22 @@
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 ">
+        <button (click)="onBack()" class="btn btn-hero-info xsmall" nbButton style="width: 100px">
+          < </button> &nbsp; <button [hidden]="!authoritiesAdd" (click)="openWindow()"
+              class="btn btn-hero-success xsmall" nbButton style="width: 100px">+
+            </button>
+      </div>
+    </div>
+    <nb-card>
+      <nb-card-header class="text-center">
+        Déduction logement
+      </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+          (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+    </nb-card>
+  </nb-card-body>
+</nb-card>

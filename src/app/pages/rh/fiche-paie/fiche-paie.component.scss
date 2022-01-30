@@ -1,0 +1,52 @@
+:host /deep/ ng2-st-tbody-edit-delete {display: inline-block !important;
+    height: 0 !important;
+  }
+  
+  :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+    display: inline;
+    width: 20% ;
+    text-align: center;
+  }
+  
+  :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+    color: #5dcfe3;
+  }
+
+  // :host /deep/ ng2-smart-table table{
+  //   max-width: 20% !important;
+  //   max-block-size: 50% !important;
+  // }
+
+ //.searchStyle {
+ // margin-top: 20px;
+ //}
+
+
+// .has-search .form-control {
+//     padding-left: 2.375rem;
+// }
+
+// .has-search .form-control-feedback {
+//     position: absolute;
+//     z-index: 2;
+//     display: block;
+//     width: 2.375rem;
+//     height: 2.375rem;
+//     line-height: 2.375rem;
+//     text-align: center;
+//     pointer-events: none;
+//     color: #aaa;
+// }
+
+// .t{
+ 
+//     line-height: 1.5em;
+//     border-collapse: collapse;
+//     border-spacing: 0;
+//     display: table;
+//     width: 100%;
+//     max-width: 100%;
+//     overflow: auto;
+//     word-break: normal;
+//     word-break: keep-all;
+// }

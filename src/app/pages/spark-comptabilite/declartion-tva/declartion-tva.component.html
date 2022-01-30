@@ -1,0 +1,257 @@
+<nb-card [hidden]="!exerciceBoolean">
+  <nb-card-body>
+    <div class="note note-info"    >
+      <div class="note-title">Note</div>
+      <div class="note-body">
+        <ul>
+          <li>
+            Données non trouvées
+          </li>
+          
+          <li>
+            s'il vous plaît ouvrire un exercice.
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nb-card-body>
+</nb-card>
+<nb-card [hidden]="exerciceBoolean">
+  <nb-card-body>
+    <ngx-titre-exercice></ngx-titre-exercice>
+  </nb-card-body>
+</nb-card>
+
+<div class="row full-name-inputs" [hidden]="exerciceBoolean">
+  <div class="input-group col-md-6 ">
+    <nb-card style="
+width: 100%;">
+      <nb-card-header>
+        <label i18n="@@planC"> Récape Déclartion TVA</label> 
+      </nb-card-header>
+      <nb-card-body>
+
+        <div class="row full-name-inputs  ">
+          <div class="input-group col-md-3 ">
+
+            <input type="text" class="form-control" [(ngModel)]="tva1.mois" placeholder="mois" required name="mois" style="height: 77%" />
+
+          </div>
+          <div class="input-group col-md-3">
+            <input type="text" class="form-control" [(ngModel)]="tva1.annee"  placeholder="annee" required name="annee"
+              style="height: 77%" />
+          </div>
+
+
+
+          <div class="input-group col-md-2">
+            <button class="btn btn-warning btn-sm" type="button" (click)="declartionTva()" style="height: 77%">
+              <i class="fa fa-search"></i>
+            </button>
+
+
+          </div>
+
+          <div class="input-group col-md-3">
+            <button nbButton hero status="success" [hidden]="typeDeclartion.relationWithPaie=='oui'"
+              (click)="importJournalPaie()" style="height: 77%"> import journal de  Paie</button>
+
+          </div>
+
+        </div>
+       
+        <div class="note note-info"  *ngIf="boolean1"  >
+          <div class="note-title">Note</div>
+          <div class="note-body">
+            <ul>
+              <li>
+                Données non trouvées
+              </li>
+              <li>
+                acune récape déclaration     Mensuelle à affichée 
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div *ngIf=" !boolean1">
+        <h1 style="text-align: center">  Récape déclartion TVA </h1>  
+          <table class="table table-bordered" *ngIf=" !boolean1">
+             
+            <tbody>
+              <tr>
+                <td style="width: 10% ;background-color:rgb(255, 255, 255);"> TVA DEDUCTIBLE</td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.tvaDeductible | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> TVA COLLECTEE</td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.tvaCollectee | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <th style="width: 10% ;background-color:#D3D3D3;"> TOTAL A PAYER</th>
+                <td style="width: 30% ;background-color:#E6E6E6"> </td>
+                <td style="width: 30%;background-color:#E6E6E6">{{tva.totalPayee | transformeNumber}}</td>
+              </tr>
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> REPORT TVA</td>
+                <td style="width: 30%"> </td>
+                <td style="width: 30%">{{tva.reportTva | transformeNumber}}</td>
+              </tr>
+              <tr>
+                <th style="width: 10% ;background-color:#D3D3D3;">ETAT TVA </th>
+                <td style="width: 30%; background-color:#E6E6E6"></td>
+                <td style="width: 30%;; background-color:#E6E6E6">{{tva.etatTva | transformeNumber}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10%;  background-color:#D3D3D3;">C.A TTC Locale</td>
+                <td style="width: 30%">{{tva.ttcLocal | transformeNumber}}</td>
+                <td style="width: 30%"></td>
+              </tr>
+
+              <tr>
+                <td style="width: 10%;   background-color:#D3D3D3;">TCL 0,2%</td>
+                <td style="width: 30%">{{tva.tcl02 | transformeNumber}}</td>
+                <td style="width: 30%">{{ calaculTcl02(tva.tcl02) | transformeNumber}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10%; background-color:#D3D3D3;">SAL IMPOSABLE</td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.salaireImposable | transformeNumber}}</td>
+              </tr>
+
+
+              <tr>
+                <td style="width: 10%; ;background-color:#D3D3D3;"> IRPP</td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.irpp | transformeNumber }}</td>
+              </tr>
+
+
+              <tr>
+                <td style="width: 10%  ;background-color:#D3D3D3;"> RETENUE 5%</td>
+                <td style="width: 30% ; margin-left: 100%">{{tva.retunue5 | transformeNumber}}</td>
+                <td style="width: 30%">{{ calculRetunue5(tva.retunue5) | transformeNumber}}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> RETENUE 15%</td>
+                <td style="width: 30%; margin-left: 100%">{{tva.retunue15 | transformeNumber}}</td>
+                <td style="width: 30%">{{calculRetunue5(tva.retunue15) | transformeNumber}}</td>
+              </tr>
+
+              <tr>
+                <th style="width: 10% ;background-color:#D3D3D3;"> ETAT RETENUE </th>
+                <td style="width: 30%  ; background-color:#E6E6E6"></td>
+                <td style="width: 30%; background-color:#E6E6E6">{{tva.etatRetunue | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> SAL.BRUTE </td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.salaireBrute | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> TFP </td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.tfp | transformeNumber}}</td>
+              </tr>
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> Fropolos </td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.fropolos | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <td style="width: 10% ;background-color:#D3D3D3;"> Timbre </td>
+                <td style="width: 30%"></td>
+                <td style="width: 30%">{{tva.timbre | transformeNumber }}</td>
+              </tr>
+
+              <tr>
+                <th style="width: 10% ;background-color:#D3D3D3;"> TOTAL DECLARATION </th>
+                <td style="width: 30%  ; background-color:#E6E6E6"></td>
+                <td style="width: 30% ; background-color:#E6E6E6"> {{tva.total | transformeNumber}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+
+          <button nbButton hero status="success" (click)="saveDeclartion()" style="margin-left: 80%;">
+            Enregistrer</button>
+
+
+        </div>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+
+  <div class="input-group col-md-6   input-group-sm">
+    <nb-card style="
+width: 100%;
+">
+      <nb-card-header>
+        
+        <div style="text-align: right">
+            <button type="button" (click)="nagivateToParametreTva()"
+            class="btn btn-info btn-sm"  > Pramétrage</button>
+
+        </div>
+       
+      </nb-card-header>
+      <nb-card-body>
+
+        
+
+        <div class="note note-info"  *ngIf="boolean1"  style="margin-top: 30px;" >
+          <div class="note-title">Note</div>
+          <div class="note-body">
+            <ul>
+              <li>
+                Données non trouvées
+              </li>
+              <li>
+                acune récape déclaration     Mensuelle à affichée 
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+
+
+
+        <table  *ngIf="!boolean1" class="table table-bordered" style="margin-top: 14%">
+          <thead>
+            <tr style="background-color:#D3D3D3;">
+              <th scope="col"> Salaire Brut </th>
+              <th scope="col" style="margin-left: 50%;"> Salaire Impossable </th>
+              <th scope="col" style="margin-left: 50%;"> Irpp </th>
+              <th scope="col" style="margin-left: 50%;"> css 1% </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 30% ; "> {{total.totalBrut}}</td>
+              <td style="width: 30%"> {{total.totalslairImpossbale}}</td>
+              <td style="width: 30%"> {{total.totalIrpp}}</td>
+              <td style="width: 30%"> {{total.totalBrut}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header class="text-center">
+    Liste des catégories CNSS
+    <button (click)="openWindow()" nbButton status="success" size="xsmall" style="width: 100px;"><i
+        class="fas fa-plus"></i>
+    </button>
+  </nb-card-header>
+  <nb-card-body>
+    <ng2-smart-table class="full-width text-center" [settings]="settings" [source]="source"
+      (deleteConfirm)="onDeleteConfirm($event)" (custom)="onCustom($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

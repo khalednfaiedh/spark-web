@@ -1,0 +1,43 @@
+label{
+    margin-top: 10px;
+    }
+    .tabset-edit{
+        width: 75vw;
+        min-height: 50vh;
+        max-height: 75vh;
+    }
+    :host /deep/ ng2-st-tbody-edit-delete {display: inline-block !important;
+      height: 0 !important;
+    }
+    
+    :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom {
+      display: inline;
+      width: 30%;
+      text-align: center;
+    }
+    
+    :host /deep/ ng2-st-tbody-custom a.ng2-smart-action.ng2-smart-action-custom-custom:hover {
+      color: #5dcfe3;
+    }
+
+
+
+    .note {
+        padding: 0.8rem 3rem 0.1rem 1.25rem;
+        border-radius: .25rem;
+    }
+    .note-info {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+      }
+  
+  .note-title {
+    font-weight: 500;
+    text-transform: uppercase;
+
+  }
+  .note-body {
+    font-size: .875rem;
+    line-height: 1.5;
+  }

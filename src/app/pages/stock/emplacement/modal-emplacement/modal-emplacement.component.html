@@ -1,0 +1,57 @@
+<div style="width:60vw; max-height: 85vh">
+      <nb-card>
+        <nb-card-body>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Référence:</label>
+              <input [disabled]="show" type="text" placeholder="Référence" class="form-control" [(ngModel)]="emplacement.ref" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Libellé:</label>
+              <input [disabled]="show" type="text" placeholder="Libellé" class="form-control" [(ngModel)]="emplacement.nameEmplacement" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Magasin :</label>
+              <ng-select [disabled]="show" name="magasin" [items]="magasins" bindLabel="nameMagasin"
+              placeholder="Magasin" [(ngModel)]="emplacement.magasin" [appendTo]="'body'" style="width:100%;">
+            </ng-select>
+          </div>
+          </div>
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Largeur(m) :</label>
+              <input [disabled]="show" type="number" placeholder="Largeur" class="form-control"
+                [(ngModel)]="emplacement.largeurEmplacement" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Longeur(m) :</label>
+              <input [disabled]="show" type="number" placeholder="Longeur" class="form-control"
+                [(ngModel)]="emplacement.longeurEmplacement" />
+            </div>
+            <div class="form-group col-md-4 col-lg-4 input-group-sm">
+              <label class="label">Hauteur(m) :</label>
+              <input [disabled]="show" type="number" placeholder="Hauteur" class="form-control"
+                [(ngModel)]="emplacement.hauteurEmplacement" />
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+          <!-- <nb-card>
+            <nb-card-header>
+              Sous-emplacements
+            </nb-card-header>
+            <nb-card-body>
+              <ng2-smart-table class="full-width text-center" [settings]="settings"
+                (editConfirm)="addSousEmplacement($event)" [source]="source"
+                (createConfirm)="addSousEmplacement($event)" (deleteConfirm)="onDeleteConfirm($event)">
+              </ng2-smart-table>
+            </nb-card-body>
+          </nb-card> -->
+      
+      <div style="text-align:right;">
+        <button [hidden]="show" nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          status="success" (click)="save()">{{ btn }}</button>
+        <button nbButton style="cursor: pointer;align-content: center;" status="danger"
+          (click)="close()">Annuler</button>
+      </div>
+</div>

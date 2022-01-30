@@ -1,0 +1,79 @@
+<div class="container-fluid">
+
+  <section class="content">
+
+    <div ng-repeat="let documentGrp of documentGrps" id="main-form-content">
+      <form [formGroup]="documentGrp">
+
+        <div class="box box-solid box-primary">
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+
+              <div class="form-group col-md-4 col-lg-4">
+                <ng-select [items]="mouvements" bindLabel="idMouvement" bindValue="idMouvement" name="mouvements"
+                  formControlName="mouvement" placeholder="Mouvement" [appendTo]="'body'" style="width:500px;"
+                  size="xsmall" required>
+                </ng-select>
+              </div>
+
+              <div class="form-group col-md-8 col-lg-8">
+                <textarea formControlName="description" placeholder="Description"></textarea>
+              </div>
+              <div class="pull-right" style="float: right;">
+                <button type="button" class="btn btn-sm btn-success" title="Add More" (click)="addItem()">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="box-body" formArrayName="itemss">
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div *ngFor="let item of itemss.controls; let i = index;">
+                  <div [formGroupName]="i">
+                    <table>
+                      <tr class="active">
+                        <th>Critére Qualité {{i}}:</th>
+                        <th>Valeur:</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <ng-select [items]="critereQualites" bindLabel="nom" name="critereQualites"
+                            formControlName="critereQualite" placeholder="Critére Qualité" [appendTo]="'body'"
+                            style="width:500px; " size="xsmall" required>
+                          </ng-select>
+                          <div class="help-block"></div>
+
+                        </td>
+                        <td>
+                          <input type="text" class="form-control" name="valeur" placeholder="Valeur"
+                            formControlName="valeur" required="">
+                        </td>
+                        <td class="remove" *ngIf=" i!=0 ">
+                          <!-- <a title="Remove" (click)="removeItem(i)" class="fa fa-minus-square fa-lg text-red"></a> -->
+                          <a title="Remove" (click)="removeItem(i)" class="fa fa-minus-square fa-lg btn-info"></a>
+                          <!-- <button type="button" class="btn btn-sm btn-danger" title="Remove" (click)="removeItem(i)">-</button> -->
+
+                        </td>
+                      </tr>
+                    </table>
+
+                  </div>
+                </div>
+
+              </div>
+              <!--./col-->
+            </div>
+          </div>
+          <!--./box-body-->
+          <br>
+
+          <div class="box-footer" style="align-content: center">
+            <button (click)="OnSubmit(documentGrp.value)" class="btn btn-primary pull-right">{{Ar}}</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+  </section>
+</div>

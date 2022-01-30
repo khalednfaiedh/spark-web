@@ -1,0 +1,152 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height:600px">
+    <div class="row">
+        <div class="col-lg-12" style="width:1000px; height:1500px">
+            <div id="contentToConvert">
+                <header class="clearfix">
+                    <div id="logo">
+                    </div>
+                    <h1>Bon de livraison : LVR{{bonLivraison.id}}</h1>
+                    <div id="company" class="clearfix">
+
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Nom societé">
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Adresse">
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Email">
+                        <input type="text" autofocus="autofocus" tabindex="1" placeholder="Téléphone">
+
+                    </div>
+                </header>
+                <div class="d-flex justify-content-between">
+                    <nb-card style="width:400px; height:220px">
+                        <nb-card-header style="background-color:rgb(194, 190, 190)">Destinataire</nb-card-header>
+                        <nb-card-body>
+                            <div class="col-lg-12">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <th>Client :</th>
+                                            <td>{{client.nameC}}</td>
+                                        </tr><br>
+                                        <tr>
+                                            <th>Addresse :</th>
+                                            <td>{{client.adresseC}}</td>
+                                        </tr><br>
+                                        <tr>
+                                            <th>Email :</th>
+                                            <td>{{client.emailC}}</td>
+                                        </tr><br>
+                                        <tr>
+                                            <th>Téléphone :</th>
+                                            <td>{{client.tlfC}}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </nb-card-body>
+                    </nb-card>
+
+                    <nb-card style="width:500px; min-height:250px; ">
+                        <nb-card-header style="background-color:rgb(194, 190, 190)">Bon de livraiosn</nb-card-header>
+                        <nb-card-body>
+                            <div class="col-lg-12">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+
+                                        <span
+                                            style="margin-left: 60%;font-weight: bold;"><U>{{referencefacture}}/{{referencecommande}}</U></span><br><br>
+
+                                        <tr>
+
+                                            <th>Date de livaison :</th>
+                                            <td>{{bonLivraison.date_livraison| date: 'yyyy-MM-dd'}}</td>
+                                        </tr><br>
+                                        <tr>
+                                            <th>Adresse de livraison :</th>
+                                            <td>
+                                                <div *ngFor="let list of adresses">
+                                                    {{list.adresse}}-{{list.ville}}-{{list.codePostal}}-{{list.pays}}<br>
+                                                </div>
+                                            </td>
+                                        </tr><br>
+                                        <tr>
+
+                                            <th>Nom de contact :</th>
+                                            <td>{{contactClient.prenom}} {{contactClient.nom}}</td>
+                                        </tr><br>
+                                        <tr>
+
+                                            <th>Fonction de contact :</th>
+                                            <td>{{contactClient.fonction}}</td>
+                                        </tr><br>
+                                        <tr>
+
+                                            <th>Télephone 1 :</th>
+                                            <td>{{contactClient.tlf1}} </td>
+                                        </tr><br>
+                                        <tr>
+
+                                            <th>Téléphone 2 :</th>
+                                            <td>{{contactClient.tlf2}}</td>
+                                        </tr><br>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </nb-card-body>
+                    </nb-card>
+
+
+                </div>
+                <section id="items">
+
+                    <table cellpadding="0" cellspacing="0">
+
+                        <tbody>
+                            <tr>
+                                <th>Code Produit</th>
+
+                                <th>Désignation</th>
+                                <th>Quantité livré</th>
+                                <th>Quantité reste</th>
+
+                            </tr>
+
+                            <tr data-iterate="item" *ngFor="let c of quantityProductLivre">
+                                <td>{{c.code}}
+                                </td>
+                                <td><span>{{c.designation}}</span> </td>
+                                <td><span>{{c.quantiteLivre}}</span> </td>
+                                <td><span>{{c.quantiteReste}}</span> </td>
+
+
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </section>
+
+
+                <section id="terms">
+
+                    <span data-ibcl-id="terms_label" class=" ibcl_terms_label">Observations :</span>
+                    <br><br>
+                </section>
+                <div style="margin-left: 75%;">
+                    <span style="font-style: oblique;  font-weight:bold">Signature :</span>
+                </div>
+
+            </div>
+            <div style=" margin-top: 10px">
+                <div style="text-align:right;">
+
+                    <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                        (click)="captureScreen()">Télécharger</button>
+                    <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+                        (click)="close()">Fermer</button>
+                </div>
+            </div>
+        </div>

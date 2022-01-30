@@ -1,0 +1,70 @@
+<div style="width:75vw;">
+  <form autocomplete="off" #addActionForm=ngForm>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 form-group-sm">
+        <label class="label" for="actionType">Affaire</label>
+        <ng-select [items]="leads" bindLabel="leadName" name="lead" [appendTo]="'body'" [(ngModel)]="action.lead"
+          style="width:100%" [clearable]="false" [disabled]="disabled">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-4 form-group-sm">
+        <label class="label" for="actionType">Type action</label>
+        <ng-select [items]="types" bindLabel="typeName" name="actionType" [appendTo]="'body'"
+          [(ngModel)]="action.actionType" style="width:100%" [clearable]="false" [disabled]="disabled">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="cost">Cout(DT)</label>
+        <input type="number" name="cost" id="cost" [(ngModel)]="action.actioncost" class="form-control"
+          [disabled]="disabled">
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="duration">Durée(Min)</label>
+        <input type="number" name="duration" id="duration" #duration [(ngModel)]="action.actionduration"
+          class="form-control" [disabled]="disabled">
+      </div>
+
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-4 input-group-sm">
+        <label class="label" for="status">Status</label>
+        <ng-select [items]="status" bindLabel="statusName" name="status" [appendTo]="'body'"
+          [(ngModel)]="action.actionStatus" [disabled]="disabled" style="width:100%">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="user">Ajouter par:</label>
+        <input type="text" name="user" [(ngModel)]="action.responsable" class="form-control" disabled>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="username">Intervenant</label>
+        <ng-select [items]="intervenants" bindLabel="username" bindValue="username" name="username" [appendTo]="'body'"
+          [(ngModel)]="action.intervenant" style="width:100%" [clearable]="false" [disabled]="disabled">
+        </ng-select>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="startdate">Date Création</label>
+        <input name="startdate" #startdate [(ngModel)]="action.actionDateCreation" class="form-control"
+          [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled>
+        <nb-datepicker #sdatepicker></nb-datepicker>
+      </div>
+      <div class="form-group col-md-2 input-group-sm">
+        <label class="label" for="deadline">Date action</label>
+        <input name="deadline" [(ngModel)]="actionDateLimite" class="form-control" [disabled]="disabled">
+      </div>
+    </div>
+
+    <div class="row full-name-inputs">
+      <div class="form-group col-md-12 form-group-sm">
+        <label for="actionComment" class="label">Information supplémentaire</label>
+        <textarea class="form-control" name="actionComment" #actionComment [(ngModel)]="action.actionComment"
+        rows="2" [disabled]="disabled">
+      </textarea>
+      </div>
+    </div>
+
+  </form>
+
+</div>

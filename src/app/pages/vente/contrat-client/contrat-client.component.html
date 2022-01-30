@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-body>
+
+
+
+    <div class="text-center" style="margin: 0 auto;">
+      Liste des contrats &nbsp;
+      <button (click)="openWindow()" nbButton size="xsmall" status="success" style="width: 100px">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button>
+    </div><br>
+
+
+    <ng2-smart-table class="full-width text-center" [settings]="settings" (deleteConfirm)="onDeleteConfirm($event)"
+      (custom)="onCustom($event)" [source]="source">
+
+    </ng2-smart-table>
+
+
+  </nb-card-body>
+</nb-card>

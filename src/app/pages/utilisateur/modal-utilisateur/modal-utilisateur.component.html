@@ -1,0 +1,172 @@
+<div class="col-md-12 col-lg-12" style="width:750px; min-height: -350px">
+  <div class="row">
+    <div class="col-lg-12">
+      <form #userForm="ngForm" (ngSubmit)="onAdd(userForm)">
+        <nb-card>
+          <nb-card-body>
+             <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                <label class="label">Type </label>
+              <ng-select 
+                [items]="types"
+                placeholder="Choisir.."
+                [(ngModel)]="SelectedType"
+                [appendTo]="'body'"
+                fullWidth
+                (change) = changeForm()
+                [clearable] = "false"
+                [searchable]="false"
+                 name="typeCompte"
+                  required [ngModelOptions]="{standalone: true}" >                
+           </ng-select>
+          </div> 
+ 
+           <div *ngIf="SelectedType === 'Interne'" class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">Employés </label> 
+            <ng-select   
+                   required
+                   [ngModelOptions]="{standalone: true}"
+                    name="employe"
+                    placeholder="Choisir.."
+                    [items]="employes"
+                    [(ngModel)]="SelectedEmploye" 
+                    bindLabel="matriculeNomPrenom"
+                    [appendTo]="'body'"
+                    style="width:100%;"
+                    (change) = changeEmp()>
+              </ng-select>
+           </div>
+          </div>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Nom :</label>
+              <input [disabled]="SelectedType === 'Interne'"
+              type="text" placeholder="Nom" class="form-control"
+                    [(ngModel)]="utilisateur.lastName" 
+                    name="lastName" #lastName="ngModel" required nbInput
+                    [status]="(userForm.submitted || lastName.touched) ? (lastName.invalid  ? 'danger' : 'success') : ''"/>
+                  <div *ngIf="lastName.invalid && (userForm.submitted || lastName.touched)">
+                    <p *ngIf="lastName.errors.required">
+                      Le nom est requis.
+                    </p>
+                </div>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Prénom :</label>
+              <input [disabled]="SelectedType === 'Interne'"
+               nbInput type="text" placeholder="Prénom" class="form-control"
+                    [(ngModel)]="utilisateur.firstName"name="firstName" #firstName="ngModel" required
+                    [status]="(userForm.submitted || firstName.touched) ? (firstName.invalid  ? 'danger' : 'success') : ''"/>
+
+                  <div *ngIf="firstName.invalid && (userForm.submitted || firstName.touched)">
+                    <p *ngIf="firstName.errors.required">
+                      Le prénom est requis.
+                    </p>
+                </div>
+            </div>
+          </div>
+          
+          <div class="row full-name-inputs">
+                <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                    <label _ngcontent-udb-c31="" class="label">Gender :</label>
+                  <ng-select  [disabled]="SelectedType === 'Interne'"
+                    name="gender"     required [ngModelOptions]="{standalone: true}"
+                    placeholder="Gender"
+                    [(ngModel)]="utilisateur.gender"
+                    [appendTo]="'body'"
+                    style="width:100%; ">
+                    <ng-option value="Masculin">Masculin</ng-option>
+                    <ng-option value="Feminin">Feminin</ng-option>
+               </ng-select>
+                </div>
+
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                <label _ngcontent-udb-c31="" class="label">Rôle :</label>
+                <ng-select class="is-invalid"
+                [items]= "publicRoles"     required [ngModelOptions]="{standalone: true}"
+                placeholder="Choisir"
+                [(ngModel)]="utilisateur.roleId"
+                size="xsmall"
+               bindLabel="name"
+               bindValue="id"
+                name="role" #role="ngModel">
+           </ng-select>
+           <div *ngIf="role.invalid && (userForm.submitted || role.touched)">
+            <p *ngIf="role.errors.required">
+              Le rôle est requis.
+            </p>
+        </div>
+              </div>
+              </div>
+              <div class="row full-name-inputs">
+              <div class="form-group col-md-7 col-lg-7 input-group-sm">
+                <label _ngcontent-udb-c31="" class="label">Email :</label>
+                <input [disabled]="SelectedType === 'Interne'"
+                nbInput  type="email" email placeholder="E-mail" class="form-control"
+                      [(ngModel)]="utilisateur.email" name="email" #email="ngModel" required/>
+                  <div *ngIf="email.invalid && (userForm.submitted || email.touched)">
+                    <p *ngIf="email.errors.required">
+                      L'email est requis.
+                    </p>
+                    <p *ngIf="email.errors.email">
+                      Email non valide.
+                    </p>
+                </div>
+                <p *ngIf="email_exist">
+                  Email existe.
+                </p>
+               </div>
+               <div class="form-group col-md-5 col-lg-5 input-group-sm">
+                <label _ngcontent-udb-c31="" class="label">Tel :</label>
+                <input [disabled]="SelectedType === 'Interne'"
+                nbInput  type="number" placeholder="Tel" class="form-control"
+                      [(ngModel)]="utilisateur.tel" name="tel" #tel="ngModel" />
+              </div>     
+              </div> 
+
+            <div class="row full-name-inputs">
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                <label class="label">Nom d'utilisateur :</label>
+                <input type="text" placeholder="Nom d'utilisateur" class="form-control" 
+                [(ngModel)]="utilisateur.username" name="username" #username="ngModel" required />
+                  <div *ngIf="username.invalid && (userForm.submitted || username.touched)">
+                    <p *ngIf="username.errors.required">
+                      Le nom d'utilisateur est requis.
+                    </p>
+                </div>
+                <p *ngIf="username_exist">
+                  Le nom d'utilisateur existe.
+                </p>
+              </div>
+              <div class="form-group col-md-6 col-lg-6 input-group-sm">
+                <label class="label">Mot de passe :</label>
+                <input type="password" placeholder="Mot de passe" class="form-control" 
+                  [(ngModel)]="utilisateur.password" 
+                  name="password" #password="ngModel" required minlength="4"/>
+                  <div *ngIf="password.invalid && (userForm.submitted || password.touched)">
+                  <p *ngIf="password.errors.required">
+                   Le mot de passe est requis.
+                  </p>
+                  <p *ngIf="password.errors.minlength">
+                    Le mot de passe doit contenir au minimun 4 caractéres
+                  </p>
+                  </div>
+                </div>
+            </div>
+
+
+
+          </nb-card-body>
+        </nb-card>
+        <div style="text-align:right; margin-bottom: 10px;">
+          <button nbButton status="success" type="submit"
+            style="cursor: pointer;align-content: center;">{{add}}</button> &nbsp;
+          <button nbButton status="danger" style="cursor: pointer;align-content: center;"
+            (click)="close()">Annuler</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

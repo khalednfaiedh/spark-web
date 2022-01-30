@@ -1,0 +1,24 @@
+<nb-card>
+  <nb-card-body>
+   
+   <div class="addbtn">
+        <button (click)="addEtatFinancier()"  name="addEtat" class="btn btn-hero-info input-group-text">{{ 'etatfinancier.btn' | translate}} <i class="nb-compose"  height="40" width="40"></i>
+        </button>
+      </div>
+    </nb-card-body> 
+
+<nb-card>
+  <nb-card-header class="text-center"> 
+    <h4> {{ 'etatfinancier.list' | translate}}</h4>
+  </nb-card-header> 
+<nb-card-body>
+    <ng2-smart-table #smartTable
+    class="full-width" 
+    [settings]="settings" 
+    [source]="source"
+    (deleteConfirm)="onDeleteConfirm($event)" 
+    (custom)="onCustom($event)">
+    </ng2-smart-table>
+</nb-card-body>
+</nb-card>
+</nb-card>

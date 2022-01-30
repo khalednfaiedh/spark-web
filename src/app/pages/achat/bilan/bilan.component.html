@@ -1,0 +1,17 @@
+<nb-card>
+    <nb-card-body>
+      <nb-card>
+        <nb-card-header class="text-center">
+          {{ 'bilan.list' | translate}}
+        </nb-card-header>
+        <nb-card-body >
+          <ng2-smart-table class="full-width text-center"
+                           [settings]="settings"
+                           [source]="source"
+                           (custom)="onCustom($event)"
+                           (deleteConfirm)="onDeleteConfirm($event)">
+          </ng2-smart-table>
+        </nb-card-body>
+      </nb-card>
+    </nb-card-body>
+  </nb-card>

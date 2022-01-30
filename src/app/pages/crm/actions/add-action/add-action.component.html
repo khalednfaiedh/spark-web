@@ -1,0 +1,191 @@
+<!--
+    actionName      :string
+//    actionDateLimite :Date
+ //   actionDateCreation:Date
+    actionType      :ActionTypeCell;
+    user            :UserCell;
+    lead            :LeadCell;
+    actionStatus    :ActionStatus;
+//   actionComment   :String;
+-->
+<div class="col-md-12  " style="width:950px;">
+  <nb-card>
+    <nb-card-body>
+      <form class="form-group" (ngSubmit)="addAction()" autocomplete="off" #addActionForm=ngForm>
+          
+        <div class="row full-name-inputs label">
+              <div class="input-group col-md-8   input-group-sm">
+                <label class="text-label" for="actionName">Dénomination</label>
+              </div>
+              <div class="input-group col-md-4  input-group-sm">
+                  <label class="text-label" for="actionDeal">Affaire</label>
+                </div>
+          </div>
+
+          <div class="row full-name-inputs">
+              <div class="input-group col-md-8   input-group-sm"  >
+                <input type="text" name="actionName" #socialReason [(ngModel)]="action.actionName" maxlength="50"
+                  class="form-control" required i18n="@@socialReason">
+              </div>
+              <div class="input-group col-md-4   input-group-sm"  >
+                <ng-select [items]="leads"
+                bindLabel="leadName"
+                bindValue="leadID"
+                name="actionLead"
+                [(ngModel)]="action.lead.leadID"
+                style="width:100%">
+              </ng-select>
+                <!-- 
+                    <nb-select outline=true name="actionDeal" [(ngModel)]="action.lead"
+                    placeholder="{{action.lead.leadName}}"
+                    style="width:280px"
+                    status="info"  required>
+                    <nb-option *ngFor="let lead of leads" [value]="lead" i18n="nature">{{lead.leadName}}</nb-option>
+                  </nb-select> -->
+                  </div>
+        </div>
+
+        <div class="row full-name-inputs label">
+            <div class="input-group col-md-3   input-group-sm" >
+                <label for="matriCode">Date Creation</label>
+              </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="deadline">Deadline</label>
+          </div>
+          <div class="input-group col-md-2   input-group-sm" >
+            <label for="time">Heure</label>
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+
+            <div class="input-group col-md-3   input-group-sm">
+                <input name="startdate" #startdate [(ngModel)]="action.actionDateCreation" class="form-control" [nbDatepicker]="sdatepicker" i18n="@@startdate" disabled>
+                <nb-datepicker #sdatepicker></nb-datepicker>
+              </div>
+          <div class="input-group col-md-3   input-group-sm">
+            <input name="deadline" #deadline [(ngModel)]="action.actionDateLimite" class="form-control" [nbDatepicker]="edatepicker"
+              i18n="@@startdate" required>
+            <nb-datepicker #edatepicker></nb-datepicker>
+          </div>
+
+            <div class="input-group col-md-2 input-group-sm"  >
+              
+              <ng-select [items]="Hours"
+              bindLabel="hours"
+              bindValue="hours"
+              name="actionTimeHour"
+              [(ngModel)]="selectedHour"
+              [clearable]="false"
+              style="width:45%">
+             
+              </ng-select>
+              <h3>:</h3>
+              <ng-select [items]="minutes"
+              bindLabel="minutes"
+              bindValue="minutes"
+              name="actionTimeMinute"
+              [(ngModel)]="selectedMinute"
+              [clearable]="false"
+              style="width:45%">
+         </ng-select>
+<!--               <nb-select outline=true name="time" [(ngModel)]="startTime"
+                placeholder="{{startTime.hourZero}}{{startTime.hours}}:{{startTime.minutes}}{{startTime.minuteZero}}"
+                status="info"  required>
+                <nb-option *ngFor="let time of times" [value]="{hours:time.hours,minutes:time.minutes}" i18n="money">
+                  {{time.hourZero}}{{time.hours}}:{{time.minutes}}{{time.minuteZero}}
+                </nb-option>
+              </nb-select> 
+                      
+            -->
+            </div>
+          
+          
+                <!-- <nb-select outline=true name="actionType" [(ngModel)]="action.actionType"
+                placeholder="{{action.actionType.typeName}}"
+                style="width:280px;height:40px;"
+                status="info"  required>
+                <nb-option *ngFor="let type of types" [value]="type" i18n="nature">{{type.typeName}}</nb-option>
+        
+              </nb-select> -->
+              
+        </div>
+        <div class="row full-name-inputs label">
+            <div class="input-group col-md-4  input-group-sm" >
+                <label for="matriCode">Type</label>
+              </div>
+          <div class="input-group col-md-4   input-group-sm">
+            <label for="deadline">Cout</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm" >
+            <label for="time">Durée</label>
+          </div>
+
+        </div>
+        <div class="row full-name-inputs label">
+            <div class="input-group col-md-4 input-group-sm"  >
+                <ng-select [items]="types"
+                bindLabel="typeName"
+                bindValue="typeID"
+                name="actionType"
+                [(ngModel)]="action.actionType.typeID"
+                style="width:100%">
+                </ng-select>
+              </div>
+              <div class="input-group col-md-4 input-group-sm"  >
+              <input type="text" name="cost" #cost [(ngModel)]="action.actioncost" maxlength="50"
+              class="form-control" required i18n="@@cost" >
+              </div>
+              <div class="input-group col-md-4 input-group-sm"  >
+                  <input type="text" name="duration" #duration [(ngModel)]="action.actionduration" maxlength="50"
+                  class="form-control" required i18n="@@duration" >
+                </div>
+        </div>
+        <div class="row full-name-inputs label">
+
+          <div class="input-group col-md-8   input-group-sm">
+            <label for="email">Commentaire</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+              <label for="actionStatus">Status</label>
+
+            </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+
+          <div class="input-group col-md-8   input-group-sm">
+            <textarea class="form-control" name="actionComment" #actionComment rows="4" cols="60" [(ngModel)]="action.actionComment"
+              placeholder="Text Area" rows="5" shape="round">
+        </textarea>
+        
+      </div>
+      <div class="input-group col-md-4   input-group-sm"  >
+            <ng-select [items]="status"
+            bindLabel="statusName"
+            bindValue="statusID"
+            name="actionStatus"
+            [(ngModel)]="action.actionStatus.statusID"
+            
+            style="width:100%">
+            </ng-select>
+   <!--        <nb-select outline=true name="actionStatus" [(ngModel)]="action.actionStatus"
+          placeholder=" {{action.actionStatus.statusName}}"
+          style="width:400px;height:40px;"
+          status="info"  required>
+            <nb-option *ngFor="let stat of status" [value]="stat" i18n="nature">{{stat.statusName}}</nb-option>
+        </nb-select> -->
+        <input type="text" name="user" #socialReason [(ngModel)]="action.user.userName" maxlength="50"
+        class="form-control" required i18n="@@socialReason" disabled>
+        </div>
+        </div>
+      </form>
+      <div style="text-align:right;">
+        <button nbButton size="xsmall" status="success" (click)="addAction()">{{valider}}</button>
+        <button nbButton size="xsmall" status="danger" (click)="addActionForm.reset()"
+          style="margin-left: 30px;">Réinitialiser</button>
+      </div>
+    </nb-card-body>
+  </nb-card>
+</div>

@@ -1,0 +1,75 @@
+<div class="col-md-12 col-lg-12" style="width:1200px; height: 650px">
+  <div class="row">
+    <div class="col-lg-12" style="width:600px">
+      <nb-card>
+        <nb-card-body>
+          <div class="row">
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <!-- fournisseur: {{fournisseur.nameF}} -->
+              <label _ngcontent-udb-c31="" class="label"> Fournisseur :</label>
+              <ng-select name="fournisseur" placeholder="Fournisseur" [items]="fournisseurs" bindValue="idF"
+                bindLabel="nameF" [(ngModel)]="bonCommande.idF" disabled>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Date Livraison :</label>
+              <input placeholder="Date Livraison" name="dateLivraison" #startdate
+                [(ngModel)]="bonCommande.dateLivraison" class="form-control" [nbDatepicker]="dateLivraison"
+                i18n="@@startdate" disabled>
+              <nb-datepicker (dateChange)="correctDate($event)" #dateLivraison></nb-datepicker>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Magasin :</label>
+              <ng-select name="magasin" [items]="magasins" bindValue="idMagasin" bindLabel="nameMagasin"
+                placeholder="Magasin" [(ngModel)]="bonCommande.idMagasin" [appendTo]="'body'" style="width:100%;"
+                disabled>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-3 col-lg-3 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">Adresse de livraison:</label>
+              <input placeholder="Date Livraison" name="dateLivraison" [(ngModel)]="bonCommande.lieuLivraison"
+                class="form-control" i18n="@@startdate" disabled>
+            </div>
+          </div>
+
+          <nb-card>
+            <nb-card-body>
+              <ng2-smart-table [settings]="settings" [source]="source">
+              </ng2-smart-table>
+            </nb-card-body>
+
+          </nb-card>
+
+          <div class="row" style="margin-left: 70%">
+            <div class="form-group  ">
+              <label _ngcontent-udb-c31="" class="label">Prix totale HT : </label>
+              <input disabled class="form-control" [(ngModel)]="bonCommande.prixTot" />
+            </div>
+          </div>
+          <div class="row" style="margin-left: 70%">
+            <div class="form-group">
+              <label _ngcontent-udb-c31="" class="label">Fraix de livraison :</label>
+              <input type="number" class="form-control" [(ngModel)]="bonCommande.fraisDeLivraison"
+                (change)="onAddFrais()" />
+            </div>
+          </div>
+          <div class="row" style="margin-left: 70%">
+            <div class="form-group">
+              <label _ngcontent-udb-c31="" class="label">Prix totale TTA :</label>
+              <input disabled class="form-control" [(ngModel)]="bonCommande.prixTTC" />
+            </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+      <div style="text-align:right;">
+        <button nbButton size="xsmall" status="success" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="modifierStatus('confirmer')">Confirmer</button>
+        <button nbButton size="xsmall" status="warning" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="modifierStatus('refuser')">Refuser</button>
+        <button nbButton size="xsmall" status="danger" style="cursor: pointer;margin: 0.5rem;align-content: center;"
+          (click)="close()">Fermer</button>
+      </div>
+
+    </div>
+  </div>
+</div>

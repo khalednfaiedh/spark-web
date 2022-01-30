@@ -1,0 +1,10 @@
+<div style="width: 500px;">
+
+  <h6> Êtes-vous sur(e) de vouloir archiver le prospect : 
+  <strong> {{prospectToDelete.prospectName}}</strong> </h6>
+
+<div style="text-align: right; margin-top: 30px;">
+<button status="success" (click)="deleteConfirmed()" nbButton>Oui</button>
+<button status="danger" (click)="deleteDenied()" style="margin-left:2px" nbButton>Non</button>
+</div>
+</div>

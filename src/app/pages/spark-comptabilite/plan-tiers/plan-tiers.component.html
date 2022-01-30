@@ -1,0 +1,20 @@
+ 
+<nb-card>
+    
+        <nb-card-header class="text-center">
+            <div style=" text-align:   left;" >
+                <button nbButton  (click)="previousState()"  status="info"><span>&#x2190;</span></button>
+                </div>
+                Liste des  plans  comptable  Tiers <button (click)="addPlanTiers()" class="btn btn-hero-success" nbButton style="padding: 0.4rem 1.5rem; margin-left: 1%;" > +
+                   </button>
+                 </nb-card-header>
+
+  <nb-card-body>
+      <ng2-smart-table #smartTable class="full-width" 
+      [settings]="settings" 
+      [source]="source" 
+      (deleteConfirm)="onDeleteConfirm($event)"
+      (custom)="onCustom($event)">
+      </ng2-smart-table>
+  </nb-card-body>
+</nb-card>

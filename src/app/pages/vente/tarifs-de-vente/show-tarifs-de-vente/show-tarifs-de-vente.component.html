@@ -1,0 +1,146 @@
+<div style="width:85vw; max-height: 85vh;">
+  <nb-card>
+    <nb-card-body>
+      <br>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Référence :</label>
+          <input name="name" type="text" placeholder="Référence" class="form-control" [(ngModel)]="tarifs.code"
+            [ngModelOptions]="{standalone: true}" disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Grille de tarif :</label>
+          <ng-select placeholder="Grille de tarif" name="idGrilleTarifs" status="info" size="xsmall"
+            [items]="grilleTarifs" [(ngModel)]="grilleTarif" bindLabel="designation"
+            [ngModelOptions]="{standalone: true}" disabled>
+
+          </ng-select>
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Désignation :</label>
+          <input hero placeholder="Désignation" name="categorie" class="form-control" [(ngModel)]="tarifs.typedeprix"
+            [ngModelOptions]="{standalone: true}" disabled />
+
+        </div>
+
+
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Produit :</label>
+          <ng-select name="product" placeholder="Produit" [appendTo]="'body'" [items]="products" [clearable]="false"
+            bindLabel="designation" style="width:100%;" [(ngModel)]="product" disabled>
+          </ng-select>
+          <!-- (open)="listProduct()" -->
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Unité de mesure :</label>
+          <ng-select name="unite" placeholder="Unité de vente" [appendTo]="'body'" [items]="unities" bindLabel="unite"
+            style="width:100%;" [(ngModel)]="unitie" disabled>
+          </ng-select>
+        </div>
+
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Lot :</label>
+
+          <ng-select placeholder="Lot" [appendTo]="'body'">
+          </ng-select>
+        </div>
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Série :</label>
+
+          <ng-select placeholder="Série" [appendTo]="'body'">
+          </ng-select>
+        </div>
+
+      </div>
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Prix d'achat matière première :</label>
+          <input name="prixAchatMP" type="text" placeholder="Prix d'achat matiére primére " class="form-control"
+            [(ngModel)]="tarifs.prixAchatMP" currencyMask
+            [options]="{prefix:'',thousands:thousands,decimal:decimal,precision: preci, align:'left'}" disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Coût de production :</label>
+          <input name="coutProduction" type="text" placeholder="Coût de production" class="form-control"
+            [(ngModel)]="tarifs.coutProduction" currencyMask
+            [options]="{ prefix: '', thousands: thousands, decimal: decimal, precision: preci,align:'left'}" disabled />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Frais fixe :</label>
+          <input name="fraisFixe" type="text" placeholder="Frais fixe " class="form-control"
+            [(ngModel)]="tarifs.fraisFixe" currencyMask
+            [options]="{prefix:'',thousands:thousands,decimal:decimal,precision: preci, align:'left'}" disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Taux de marge béneficaire minimum(%):</label>
+          <input name="margeBenfecairemin" type="number" placeholder="Marge béneficaire minimum " class="form-control"
+            [(ngModel)]="product.margeBenfecaire" disabled />
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Taux de marge béneficaire proposé(%):</label>
+          <input name="margeBenfecaire" type="number" placeholder="Marge béneficaire proposé " class="form-control"
+            [(ngModel)]="tarifs.margeBenfecaire" disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Prix de vente HT :</label>
+          <input name="prixdeventeHt" type="text" placeholder="Prix de vente HT " class="form-control"
+            [(ngModel)]="tarifs.prixdeventeHt" currencyMask
+            [options]="{ prefix: '', thousands: thousands, decimal: decimal, precision: preci,align:'left'}" disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Remise :</label>
+          <input name="remise" type="number" placeholder="Remise" class="form-control" [(ngModel)]="tarifs.remise"
+            disabled />
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Prix de vente avec remise :</label>
+          <input name="prixventeremise" type="text" placeholder="Prixe de vente avec remise " class="form-control"
+            [(ngModel)]="tarifs.prixventeremise" currencyMask
+            [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: preci, align:'left'}" disabled />
+        </div>
+      </div>
+      <div class="row full-name-inputs">
+
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Prix de vente proposé :</label>
+          <input name="prixdeventePropose" type="text" placeholder="Prix de vente proposé " class="form-control"
+            [(ngModel)]="tarifs.prixdeventePropose" disabled currencyMask
+            [options]="{ prefix: '', thousands: thousands, decimal: decimal,precision: preci, align:'left'}" />
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Unité de transaction :</label>
+          <input name="devise" placeholder="Unité de transaction" class="form-control" style="width:100%;"
+            [(ngModel)]="uniteTransaction" disabled />
+
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Début de validité :</label>
+          <input name="debutValidite" type="date" placeholder="Début de validité " class="form-control"
+            [(ngModel)]="tarifs.debutValidite" />
+
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">Fin de validité :</label>
+          <input name="finValidite" type="date" placeholder="Fin de validité " class="form-control"
+            [(ngModel)]="tarifs.finValidite" disabled />
+
+        </div>
+      </div>
+    </nb-card-body>
+  </nb-card>
+  <div style="text-align:right;">
+
+    <button (click)="onclose()" nbButton status="danger" style="cursor: pointer;align-content: center;">Annuler</button>
+  </div>
+
+</div>

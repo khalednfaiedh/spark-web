@@ -1,0 +1,58 @@
+<div style="width:60vw;max-height: 85vh">
+  <nb-card>
+    <nb-card-body>
+      <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Référence:</label>
+          <input placeholder="Référence" [(ngModel)]="demandeAchat.reference" class="form-control">
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Désignation :</label>
+          <input placeholder="Désignation" [(ngModel)]="demandeAchat.designation" class="form-control">
+        </div>
+        <div class="form-group col-md-3 col-lg-3 input-group-sm" style="margin-bottom: 20px;">
+          <label class="label">Demandeur :</label>
+          <ng-select [items]="demandeur" placeholder="Choisir.." [(ngModel)]="demandeAchat.typeDemande" fullWidth>
+          </ng-select>
+        </div>
+
+        <div class="form-group col-md-3 col-lg-3 input-group-sm" style="margin-bottom: 20px;">
+          <label _ngcontent-udb-c31="" class="label">Date Livraison :</label>
+          <input placeholder="Date Livraison" name="dateLivraison" #startdate [(ngModel)]="demandeAchat.dateLivraison"
+            class="form-control" [nbDatepicker]="dateLivraison" i18n="@@startdate" required>
+          <nb-datepicker (dateChange)="test($event)" #dateLivraison></nb-datepicker>
+        </div>
+
+      </div>
+
+
+
+      <div class="row full-name-inputs">
+
+        <div class="form-group col-md-12 col-lg-12 input-group-sm" style="margin-bottom: 20px;">
+          <label _ngcontent-udb-c31="" class="label">Déscription :</label>
+
+          <textarea type="text" placeholder="Description" class="form-control"
+            [(ngModel)]="demandeAchat.description"></textarea>
+        </div>
+
+      </div>
+    </nb-card-body>
+  </nb-card>
+  <nb-card>
+    <nb-card-body>
+      <ng2-smart-table class="text-center"
+       [settings]="settings" 
+       [source]="source" 
+       (editConfirm)="addQuantityProduct($event)">
+      </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>
+
+
+  <div style="text-align:right;">
+    <button size="xsmall" *ngIf="quantityProductNotNull" nbButton status='success' style="cursor: pointer;margin: 0.5rem;align-content: center;"
+      (click)="onAddRCM()">Ajouter</button>
+    <button size="xsmall" nbButton style="cursor: pointer;align-content: center;" status='danger' (click)="close()">Annuler</button>
+  </div>
+</div>

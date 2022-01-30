@@ -1,0 +1,40 @@
+<div  style="width:50vw">  
+    <div class="row full-name-inputs">       
+          <div class="input-group col-md-6 input-group-sm">
+              <label> Employé </label>
+              <ng-select hero [items]="employes" 
+                 placeholder="Nom Prenom (matricule)"
+                bindLabel="matriculeNomPrenom" 
+                bindValue="matricule"
+                 [(ngModel)]="imputation.matricule"
+                 [appendTo]="'body'"  
+                 style="width:100%; " 
+                 size="xsmall">
+              </ng-select>
+            </div>
+            <div class="input-group col-md-6 col-lg-6 input-group-sm">
+              <label>Nombre d'heures de présence </label>
+              <input type="number" placeholder="heurs de travail" class="form-control"  style="width:100%;" [(ngModel)]="imputation.nombre"  />
+            </div>
+    </div>
+            <div class="row full-name-inputs">
+
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <label>Nombre Heures Supp (1ér taux de majoration) </label>
+                <input type="number" placeholder="Jours absent" style="width:100%; " class="form-control"
+                [(ngModel)]="imputation.nbrTaux1" />
+              </div>
+        
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <label>Nombre Heures Supp (2éme taux de majoration) </label>
+                <input type="number" placeholder="Jours absent" style="width:100%; " class="form-control"
+                  [(ngModel)]="imputation.nbrTaux2" />
+              </div>  
+            </div>
+            <div style="text-align:right;margin-top: 10px;">
+              <button status="success" nbButton
+                (click)="onAddM()">
+                {{ A }}&nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+            </div>
+</div>

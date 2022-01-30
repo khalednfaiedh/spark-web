@@ -1,0 +1,88 @@
+<div class="col-md-12 col-lg-12" style="width:750px; height: 350px">
+  <div class="row">
+      <nb-card>
+        <nb-card-body>
+            <div class="col-lg-12" style="width:710px; height: 285px; margin-top: 3%;">
+            <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                <label>Désignation:* </label>
+                <input  type="text" placeholder="Désignation" class="form-control" [(ngModel)]="regime.designation" style="width:100%; " />
+              </div>
+              <div class="input-group col-md-6 col-lg-6 input-group-sm" >
+                <label>Type:* </label>
+                   <ng-select  [items]="regimeH" 
+                      placeholder="Regime"
+                      [(ngModel)]="regime.regimeType"
+                      [appendTo]="'body'"  
+                      style="width:100%; " 
+                      size="xsmall" >
+                  </ng-select>
+              </div>
+            </div>
+             <br>
+             <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm" *ngIf='!regime.regimeType'>
+                <label>Nombre par mois:* </label>
+                <input placeholder="Nombre par mois" type="text" class="form-control" style="width:100%;" disabled/>
+              </div>
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm" *ngIf='regime.regimeType =="Mensuelle"'>
+                    <label>Nombre de jours par mois:* </label>
+                 <!-- <input  type="text" class="form-control" [(ngModel)]="regime.nbrJoursParMois" style="width:100%;"/> -->
+                    <ng-select  [items]="nbrJourParMois" 
+                    placeholder="Nombre de jours par mois"
+                    [(ngModel)]="regime.nbrJoursParMois" 
+                    [appendTo]="'body'"  
+                    style="width:100%; " 
+                    size="xsmall" >
+                    </ng-select>     
+                </div>
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm" *ngIf='regime.regimeType =="Par heure"'>
+                    <label>Nombre d'heures par mois:* </label>
+                    <input placeholder="Nombre d'heures par mois"  type="text" class="form-control" [(ngModel)]="regime.nbrHeursParMois" style="width:100%;" />
+                  </div>
+                  <div class="input-group col-md-6 col-lg-6 input-group-sm" >
+                    <label>Nombre d'heures par jour: </label>
+                    <input  placeholder="Nombre d'heures par jour" type="text" class="form-control" [(ngModel)]="regime.nbrHeursParJour" style="width:100%;" />
+                  </div>
+
+                  <!-- <div class="input-group col-md-4 col-lg-4 input-group-sm" >
+                    <label>Mensualités:*</label>
+                    <ng-select  [items]="mensualites" 
+                      placeholder="Mensualités par an"
+                      [(ngModel)]="regime.mensualites"
+                      [appendTo]="'body'"  
+                      style="width:100%; " 
+                      size="xsmall" >
+                  </ng-select>
+                  </div> -->
+             </div>
+             <br>
+             <div class="row full-name-inputs">
+                <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                  <label>1ér Taux de majoration: </label>
+                  <input placeholder="1ér Taux de majoration" type="text" class="form-control" [(ngModel)]="regime.premierTauxDeMajoration" style="width:100%;" />
+                </div>
+                <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                  <label>2éme Taux de majoration: </label>
+                  <input placeholder="2éme Taux de majoration" type="text" class="form-control" [(ngModel)]="regime.deuxiemeTauxDeMajoration" style="width:100%;" />
+                </div>
+                <div class="input-group col-md-4 col-lg-4 input-group-sm" *ngIf='regime.regimeType == "Mensuelle"' >
+                  <label>Droit de congé par mois:* </label>
+                  <input placeholder="Droit de congé par mois" type="text" class="form-control" [(ngModel)]="regime.droitCongeParMois" style="width:100%;"/>
+                </div>
+                <div class="input-group col-md-4 col-lg-4 input-group-sm" *ngIf='regime.regimeType == "Par heure" || !regime.regimeType ' >
+                  <label>Droit de congé par mois: </label>
+                  <input placeholder="Droit de congé par mois" type="text" class="form-control" disabled style="width:100%;"/>
+                </div>
+           </div>
+             <br>
+          <div style="text-align:right;">
+              <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;"
+              (click)="addRegime()" status="success">{{A}}</button>
+            <button nbButton (click)="onClose()" style="cursor: pointer;margin: 0.5rem;align-content: center;" status="danger">Annuler</button>
+          </div>
+          </div>
+        </nb-card-body>
+      </nb-card>
+  </div>
+</div>

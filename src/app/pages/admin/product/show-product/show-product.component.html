@@ -1,0 +1,217 @@
+<div style="width:85vw; max-height:85vh">
+  <div class="row full-name-inputs">
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Référence :</label>
+      <input type="text" placeholder="Référence" class="form-control" [(ngModel)]="product.code"
+        [ngModelOptions]="{standalone: true}" name="code" #code="ngModel" required disabled />
+
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm ">
+      <label _ngcontent-udb-c31="" class="label">Désignation :</label>
+      <input type="text" placeholder="Désignation" class="form-control" [(ngModel)]="product.designation"
+        [ngModelOptions]="{standalone: true}" name="designation" required #designation="ngModel" disabled />
+
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Type de produit :</label>
+      <ng-select name="typeProduit" placeholder="Type de produit" [appendTo]="'body'" [(ngModel)]="product.typeProduct"
+        style="width:100%;" disabled>
+        <ng-option value="MatierePremiere">Matiére Premiére</ng-option>
+        <ng-option value="En_cours_production">En-cours de production</ng-option>
+        <ng-option value="Fini">Fini</ng-option>
+      </ng-select>
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Nature de produit:</label>
+      <ng-select name="natureProduit" placeholder="Nature de produit " [appendTo]="'body'"
+        [(ngModel)]="product.natureProduct" style="width:100%;" disabled>
+        <ng-option value="Acheter">Acheter</ng-option>
+        <ng-option value="Vendu">Vendu</ng-option>
+      </ng-select>
+    </div>
+
+  <!-- <div class="row full-name-inputs">
+    <div *ngIf="product.natureProduct == 'Acheter'" class="form-group col-md-12 col-lg-12 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Type d'achat:</label>
+      <ng-select name="typeAchatVente" placeholder="Type d'achat" [appendTo]="'body'"
+        [(ngModel)]="product.typeAchatVente" style="width:100%;" disabled>
+        <ng-option value="Productif">Productif</ng-option>
+        <ng-option value="Improductif">Improductif</ng-option>
+        <ng-option value="Investissement">Investissement</ng-option>
+      </ng-select>
+    </div>
+
+    <div *ngIf="product.natureProduct == 'Vendu'" class="form-group col-md-12 col-lg-12 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Type de vente:</label>
+      <ng-select name="typeAchatVente" placeholder="Type de vente" [appendTo]="'body'"
+        [(ngModel)]="product.typeAchatVente" style="width:100%;" disabled>
+        <ng-option value="Productif">Productif</ng-option>
+        <ng-option value="Improductif">Improductif</ng-option>
+      </ng-select>
+    </div>
+  </div>-->
+
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Famille de produit :</label>
+
+      <ng-select name="familleDeProduit" placeholder="Famille de produit " #familleDeProduit="ngModel"
+        [appendTo]="'body'" [(ngModel)]="product.familleDeProduit" [items]="familleDeProduits" bindLabel="nom"
+        style="width:100%;" required disabled>
+      </ng-select>
+
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Pays d'origine :</label>
+      <ng-select [items]="payes" disabled placeholder="Pays d'origine" [(ngModel)]="product.paysOrigine"
+        [ngModelOptions]="{standalone: true}">
+      </ng-select>
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Taux de marge benéfecaire minimum (%):</label>
+      <input type="number" name="margeBenfecaire" placeholder="Taux de marge benéfecaire" class="form-control"
+        [(ngModel)]="product.margeBenfecaire" required [ngModelOptions]="{standalone: true}" #margeBenfecaire="ngModel"
+        disabled />
+
+    </div>
+
+    <!-- <div class="form-group col-md-4 col-lg-4 input-group-sm">
+                  <label _ngcontent-udb-c31="" class="label">Suivi de stock :</label>
+                  <ng-select name="suiviStocks" placeholder="Suivi de stock" [appendTo]="'body'"
+                    [(ngModel)]="product.suiviStocks" style="width:100%;">
+                    <ng-option value="Aucun">Aucun</ng-option>
+                    <ng-option value="Sérialisé">Sérialisé</ng-option>
+                    <ng-option value="CUMP">CUMP</ng-option>
+                    <ng-option value="LIFO">LIFO</ng-option>
+                    <ng-option value="FIFO">FIFO</ng-option>
+                    <ng-option value="FEFO">FEFO</ng-option>
+                  </ng-select>
+                </div> -->
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Durée mensuelle de garantie (mois) :</label>
+      <input type="number" placeholder="Garantie" class="form-control" [(ngModel)]="product.garantie"
+        [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Conditionnement :</label>
+      <ng-select name="conditonnementEmballages" placeholder="Conditionnement" [appendTo]="'body'" [multiple]="true"
+        [items]="conditionnements" [(ngModel)]="productConditionnementID" [closeOnSelect]="false"
+        bindLabel="typeConditionnement" style="width:100%;" disabled>
+        <ng-template ng-option-tmp let-item="item" let-index="index" let-item$="item$">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" [ngModel]="item$.selected" class="custom-control-input"
+              [ngModelOptions]="{standalone: true}" />
+            <label class="form-check-label ml-2 custom-control-label">{{item.typeConditionnement}}</label>
+          </div>
+        </ng-template>
+      </ng-select>
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Unité de mesure :</label>
+      <ng-select disabled [multiple]="true" [items]="unites" bindLabel="unite" [(ngModel)]="product.uniteMesures"
+        [closeOnSelect]="false" data-ng-selected="$first" autofocus [ngModelOptions]="{standalone: true}">
+        <ng-template ng-option-tmp let-item="item" let-index="index" let-item$="item$">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" [ngModel]="item$.selected" class="custom-control-input"
+              [ngModelOptions]="{standalone: true}" />
+            <label class="form-check-label ml-2 custom-control-label">{{item.unite}}</label>
+          </div>
+        </ng-template>
+      </ng-select>
+    </div>
+
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Type de taxe :</label>
+      <ng-select [items]="taxes" name="taxes" disabled placeholder="Taxe" [appendTo]="'body'" [(ngModel)]="product.taxe"
+        bindLabel="fullName" style="width:100%;">
+
+        <!-- <ng-option [value]="list" *ngFor="let list of taxes">
+            {{list.name}} = {{list.pourcentage}} {{list.devise}}
+          </ng-option>-->
+
+      </ng-select>
+    </div>
+
+ 
+
+
+  <!-- <div class="row full-name-inputs">
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock initial:</label>
+      <input type="number" name="stockInitial" placeholder="Stock initial" class="form-control"
+        [(ngModel)]="entreeArticle.stockInitial" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock minimum:</label>
+      <input type="number" name="stockMinimum" placeholder="Stock minimum" class="form-control"
+        [(ngModel)]="entreeArticle.stockMinimum" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock maximum:</label>
+      <input type="number" name="stockMaximum" placeholder="Stock maximum" class="form-control"
+        [(ngModel)]="entreeArticle.stockMaximum" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock de sécurité:</label>
+      <input type="number" name="stockSecurite" placeholder="Stock de sécurité" class="form-control"
+        [(ngModel)]="entreeArticle.stockSecurite" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+  </div>
+  <div class="row full-name-inputs">
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+
+      <label _ngcontent-udb-c31="" class="label">Suivi de stock :</label>
+      <ng-select name="suiviStocks" placeholder="Suivi de stock" [appendTo]="'body'" [(ngModel)]="product.suiviStocks"
+        style="width:100%;" disabled>
+        <ng-option value="Aucun">Aucun</ng-option>
+        <ng-option value="Sérialisé">Sérialisé</ng-option>
+        <ng-option value="CUMP">CUMP</ng-option>
+        <ng-option value="LIFO">LIFO</ng-option>
+        <ng-option value="FIFO">FIFO</ng-option>
+        <ng-option value="FEFO">FEFO</ng-option>
+      </ng-select>
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock saisonnier:</label>
+      <input type="number" name="stockSaisonnier" placeholder="Stock saisonnier" class="form-control"
+        [(ngModel)]="entreeArticle.stockSaisonnier" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock obsolète:</label>
+      <input type="number" name="stockObsolete" placeholder="Stock obsolète" class="form-control"
+        [(ngModel)]="entreeArticle.stockObsolete" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+    <div class="form-group col-md-3 col-lg-3 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Stock de transit:</label>
+      <input type="number" name="stockTransit" placeholder="Stock de transit" class="form-control"
+        [(ngModel)]="entreeArticle.stockTransit" [ngModelOptions]="{standalone: true}" disabled />
+    </div>
+  </div> -->
+  <div class="form-group col-md-3 col-lg-3 input-group-sm">
+    <label _ngcontent-udb-c31="" class="label">Gestion des lots:</label>
+    <ng-select name="lot" placeholder="Gestion des lots" [appendTo]="'body'"disabled
+      [(ngModel)]="product.lot" style="width:100%;" required>
+      <ng-option value="Oui">Oui</ng-option>
+      <ng-option value="Non">Non</ng-option>
+    </ng-select>
+  </div>
+    <div class="form-group col-md-12 col-lg-12 input-group-sm">
+      <label _ngcontent-udb-c31="" class="label">Commentaire :</label>
+      <textarea disabled type="text" placeholder="Commentaire ..." class="form-control"
+        [(ngModel)]="product.commentaire" [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+
+   </div>
+
+  <div style="text-align:right;">
+    <button nbButton (click)="onclose()" status="danger" style="cursor: pointer;align-content: center;">Annuler</button>
+  </div>
+
+</div>

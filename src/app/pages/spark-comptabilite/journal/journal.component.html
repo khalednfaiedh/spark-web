@@ -1,0 +1,18 @@
+ 
+<nb-card>
+  <nb-card-header >
+      <ngx-titre-exercice></ngx-titre-exercice>
+  </nb-card-header>
+ 
+    <nb-card-body>
+      <div class="text-center">    <strong> Liste des     journaux </strong>  <button (click)="addJournal()" class="btn btn-hero-success" nbButton style="padding: 0.4rem 1.5rem; margin-left: 1%;" > +
+          </button> </div> 
+        <ng2-smart-table #smartTable 
+        class="full-width" 
+        [settings]="settings" 
+        [source]="source" 
+        (deleteConfirm)="onDeleteConfirm($event)" 
+        (custom)="onCustom($event)">
+        </ng2-smart-table>
+    </nb-card-body>
+  </nb-card>

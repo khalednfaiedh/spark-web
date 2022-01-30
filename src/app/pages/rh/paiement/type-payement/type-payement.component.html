@@ -1,0 +1,35 @@
+<div class="row" style="margin-bottom: 2rem; width: 700px;" >
+              <div class="input-group col-md-4 col-lg-4 input-group-sm">   
+                <label class="label-control">Type de payement</label>    
+                  <ng-select hero [items]="typePayement" 
+                    placeholder="Type de payement"               
+                    [appendTo]="'body'"  
+                    style="width:100%; " 
+                    size="xsmall"
+                    [(ngModel)]="typePayementSelected"
+                    >
+                  </ng-select>
+              </div>
+
+              <div class="input-group col-md-8 col-lg-8 input-group-sm">   
+                <label class="label-control">Compte bancaire</label>    
+                  <ng-select hero [items]="comptes" 
+                    placeholder="Compte bancaire"               
+                    [appendTo]="'body'"  
+                    style="width:100%; " 
+                    size="xsmall"  
+                    bindLabel="compteAbv"
+                    [(ngModel)]="compte"
+                    >
+                  </ng-select>
+              </div>
+</div>
+<div style="text-align: right;" >
+ <button status = "danger" nbButton style="cursor: pointer;padding: 0.5rem 3rem;height: 3rem;margin-top: 1.75rem;align-content: center;"
+   (click)="close()" >Annuler</button>   
+ <button status = "success" nbButton style="margin-left: 2px; cursor: pointer;padding: 0.5rem 3rem;height: 3rem;margin-top: 1.75rem;align-content: center;"
+   (click)="confirmTypePayement()"[disabled]="!typePayementSelected">Continuer</button>   
+</div>
+
+  
+  

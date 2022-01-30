@@ -1,0 +1,160 @@
+<!-- <div class="col-md-12  " style="width:950px; height: 400px" >
+  <form class="form-group" (ngSubmit)="addJournal()" autocomplete="off" #monFormulairej = ngForm>
+<nb-card>
+<nb-card-body>
+      <div class="row full-name-inputs label">
+          <div class="input-group col-md-3   input-group-sm">
+           <label class="text-label" for="jcode" i18n="@@jcode">Code</label> 
+            </div>
+          <div class="input-group col-md-5   input-group-sm">
+              <label class="text-label" for="jname" i18n="@@jname">Désignation</label>
+          </div>
+          <div class="input-group col-md-4   input-group-sm">
+              <label class="text-label" i18n="@@jtype">type</label>
+          </div>
+          </div>
+
+          <div class="row full-name-inputs">
+              <div class="input-group col-md-3   input-group-sm">
+                  <input type="text" #jcode name="jcode" [(ngModel)]="journal.code" class="form-control" required i18n="@@jcode"disabled />
+                </div>
+              <div class="input-group col-md-5   input-group-sm">
+                  <input type="text" name="jname" #jname [(ngModel)]="journal.designation" class="form-control" required i18n="@@jname"  disabled/>
+              </div>
+              <div class="input-group col-md-4   input-group-sm">
+                <input type="text" name="jname" #jname [(ngModel)]="journal.type" class="form-control" required i18n="@@jname"  disabled/>
+              </div>
+              </div>
+             <div class="form-group">
+              <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                  <label> Compte</label>  
+           </div>
+           </div>
+
+       <div class="row full-name-inputs">
+              <div class="input-group col-md-6 col-lg-6 input-group-sm">
+                      
+                 <ng-select 
+                  placeholder="Choisir..."
+                  [items]="comptes"
+                  bindLabel="codeCompte"
+                  name = "Compte"
+                  #Compte
+                  [(ngModel)]="journal.plan"
+                  disabled
+                 >
+                </ng-select>
+              
+              </div>
+                      <div class="input-group col-md-6 input-group-sm"   *ngIf="journal.plan">
+                        nameCompte: {{journal.plan.nameCompte}} 
+                      </div>
+                   
+          </div>
+       
+       
+      </div>
+</nb-card-body>
+</nb-card>
+< 
+  </form>
+</div> -->
+
+<div class="col-md-12  " style="width:950px; height: 320px">
+  <nb-card>
+    <nb-card-body>
+     
+
+        
+          
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">Code:  </label>
+          </div>
+
+          <div class="input-group col-md-9   input-group-sm">
+            <input type=" number" name="code"   [(ngModel)]="journal.code" class="form-control"  disabled/> 
+          </div>
+           
+        </div>
+        
+
+           
+        <div   class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode"> Désignation:</label>
+          </div>
+
+          <div    class="input-group col-md-9   input-group-sm">
+            <input  type="text" class="form-control"     [(ngModel)]="journal.designation" disabled   name="designation" />
+             
+          </div>
+           
+        </div>
+ 
+
+
+           
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">   Type:</label>
+          </div>
+
+          <div class="input-group col-md-9   input-group-sm">
+            <input type="text" name="type" disabled  [(ngModel)]="journal.type" class="form-control" /> 
+          </div>
+           
+        </div>
+           
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">    Mois:</label>
+          </div>
+
+          <div class="input-group col-md-9   input-group-sm">
+            <input type="text" name="mois" disabled [(ngModel)]="journal.mois"   class="form-control" /> 
+          </div>
+           
+        </div>
+
+           
+        <div class="row full-name-inputs label nvForm">
+          <div class="input-group col-md-3   input-group-sm">
+            <label for="matriCode">    Année:</label>
+          </div>
+
+          <div class="input-group col-md-9   input-group-sm">
+            <input type="text" name="anne"  disabled   [(ngModel)]="annee" class="form-control" /> 
+          </div>
+           
+        </div>
+
+           
+      <div class="row full-name-inputs label nvForm">
+        <div class="input-group col-md-3   input-group-sm">
+          <label for="matriCode">     Compte:</label>
+        </div>
+
+        <div class="input-group col-md-9   input-group-sm">
+          <ng-select placeholder="Choisir..."
+          [items]="comptes" 
+          bindLabel="nameCode" 
+          autofocus
+          style="width: 150%"
+         [(ngModel)]="journal.plan"
+         name="plan"
+         disabled
+          >
+         </ng-select>  
+        </div>
+         
+      </div>
+
+
+
+
+    </nb-card-body>
+  </nb-card>
+  
+</div>

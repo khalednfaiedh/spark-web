@@ -1,0 +1,354 @@
+<div class="col-md-12 col-lg-12" style="width: 60vw; height: 50vh">
+  
+  <nb-card>
+
+
+    <nb-tabset>
+      <nb-tab tabTitle="Technique" style="margin-top: 1%;margin-right: 1%;  margin-left: 1%;">
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Réference :</label>
+            
+            <input [disabled]="disabled" type="text" name="name" placeholder="Réference" class="form-control"
+              [(ngModel)]="machine.reference"/>
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Désignation :</label>
+            <input [disabled]="disabled" type="text" name="designation" placeholder="Réference" class="form-control"
+              [(ngModel)]="machine.designation"   />
+
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Marque :</label>
+            <input disabled type="text" name="Marque" class="form-control" [(ngModel)]="machine.marque"   />
+
+
+
+          </div>
+
+
+
+
+
+        </div>
+
+
+        <div class="row full-name-inputs">
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Numéro Serie :</label>
+            <input  disabled type="text" name="numSerie" class="form-control" [(ngModel)]="machine.numSerie"   />
+
+          </div>
+
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Fonction :</label>
+            <input disabled  type="text" name="fonction" class="form-control" [(ngModel)]="machine.fonction"   />
+
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Modele :</label>
+            <input  disabled type="text" class="form-control" name="modele" [(ngModel)]="machine.modele"   />
+
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Catégorie Machine :</label>
+            <ng-select 
+            name="cat" 
+            placeholder=" Catégorie Machine  ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="categories" 
+            bindLabel="nom"  
+              
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="machine.categorieMachine"
+            style="width:100%;"
+            >
+          </ng-select>
+
+          </div>
+
+          
+
+
+
+
+        </div>
+
+
+        <div class="row full-name-inputs">
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date de fabrication :</label>
+            <input disabled  nbInput name="datefbarication" class="form-control" [nbDatepicker]="formpicker1"
+              [(ngModel)]="machine.dateFabrication"   />
+            <nb-datepicker #formpicker1></nb-datepicker>
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date première mise en circulation :</label>
+            <input  disabled name="date2" class="form-control" nbInput [nbDatepicker]="formpicker2" [(ngModel)]="machine.dateMEC"
+                />
+            <nb-datepicker #formpicker2></nb-datepicker>
+
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Date d'achat :</label>
+            <input disabled  name="date3" class="form-control" nbInput [nbDatepicker]="formpicker3"
+              [(ngModel)]="machine.dateAchat"   />
+            <nb-datepicker #formpicker3></nb-datepicker>
+
+          </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </nb-tab>
+      <nb-tab tabTitle="Financier" style="margin-top: 1%;margin-right: 1%;  margin-left: 1%;">
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Valeur D'Achat :</label>
+            <input [disabled]="disabled" type="text" name="Prix" placeholder="Prix D'Achat" class="form-control"
+              required [(ngModel)]="machine.valeurAchat" />
+
+          </div>
+
+
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Monnaie:</label>
+
+            <ng-select  disabled name="Monnaie" [(ngModel)]="machine.monnaie" [items]="unite"  >
+            </ng-select>
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Durée Amortissement (ans) :</label>
+            <input  disabled type="number" class="form-control" name="dureeAmortissement" [(ngModel)]="machine.dureeAmortissement"   />
+
+
+          </div>
+          <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Etat :</label>
+            <ng-select  disabled   [(ngModel)]="machine.etatMachine" [items]="etats" name="etat"  >
+            </ng-select>
+
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Capacitée Machine :</label>
+            <input [disabled]="disabled" type="number" name="capacite" placeholder="Capacitée Machine"
+              class="form-control" [(ngModel)]="machine.capaciteMachine"   />
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Unite de Production:</label>
+
+            <ng-select name="uniteProdution" [(ngModel)]="machine.uniteProduction"  [appendTo]="'body'"  [items]="uniteproductions"
+              bindLabel="nom" name="categories"  >
+            </ng-select>
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Unite de Mesure:</label>
+
+            <ng-select 
+            name="unite" 
+            placeholder="choisir ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="uniteMesure" 
+            bindLabel="unite"  
+              
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="machine.uniteMesure"
+            style="width:100%;"
+            >
+          </ng-select>
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais maintenance (Heure) :</label>
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais maintenance"
+            [(ngModel)]="machine.fraisMaitenence"  class="form-control"   />
+
+          </div>
+
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais Démmarage (Heure) :</label>
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais Démmarage"
+            [(ngModel)]="machine.fraisDemmarage"     class="form-control"   />
+          </div>
+
+          <div class="form-group col-md-4 col-lg-4 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Frais rébut (Heure):</label>
+
+            <input [disabled]="disabled" type="number" name="fraisMaintenance" placeholder=" Frais rébut"
+            [(ngModel)]="machine.fraisRebut"   name="FraisRebut"   class="form-control"   />
+          </div>
+
+        </div>
+
+
+
+      
+      </nb-tab>
+      <nb-tab tabTitle="Autre Information" style="margin-top: 1%;margin-right: 1%;  margin-left: 1%;">
+        
+        <div class="row full-name-inputs">
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                <p style="margin-top: 25%;"><strong>Atelier</strong></p>
+              </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Référence</label>
+            <input [disabled]="disabled" type="text" name="refAtelier" placeholder="Référence" class="form-control"
+              required    [(ngModel)]="infoMachine.referenceAtelier" />
+
+          </div>
+
+
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Désignation</label>
+
+            <input [disabled]="disabled" type="text" name="DesAtelier" placeholder="Désignation" class="form-control"
+              required   [(ngModel)]="infoMachine.designationAtelier"  />
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                <p style="margin-top: 25%;"><strong>ILot</strong></p>
+              </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Référence</label>
+            <input [disabled]="disabled" type="text" name="refIlot" placeholder="Référence" class="form-control"
+              required    [(ngModel)]="infoMachine.referenceIlot" />
+
+          </div>
+
+
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Désignation</label>
+
+            <input [disabled]="disabled" type="text" name="DesIlot" placeholder="Désignation" class="form-control"
+              required   [(ngModel)]="infoMachine.designationILot"  />
+          </div>
+
+        </div>
+
+        <div class="row full-name-inputs">
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                <p style="margin-top: 25%;"><strong>Ligne</strong></p>
+              </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Référence</label>
+            <input [disabled]="disabled" type="text" name="refAtelier" placeholder="Référence" class="form-control"
+              required    [(ngModel)]="infoMachine.referenceLigne" />
+
+          </div>
+
+
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Désignation</label>
+
+            <input [disabled]="disabled" type="text" name="DesAtelier" placeholder="Désignation" class="form-control"
+              required   [(ngModel)]="infoMachine.designationLigne"  />
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                <p style="margin-top: 25%;"><strong>Section</strong></p>
+              </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Référence</label>
+            <input [disabled]="disabled" type="text" name="refSection" placeholder="Référence" class="form-control"
+              required    [(ngModel)]="infoMachine.referenceSection" />
+
+          </div>
+
+
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Désignation</label>
+
+            <input [disabled]="disabled" type="text" name="DesSection" placeholder="Désignation" class="form-control"
+              required   [(ngModel)]="infoMachine.designationSection"  />
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+
+            <div class="form-group col-md-2 col-lg-2 input-group-sm">
+                <p style="margin-top: 25%;"><strong>Poste de Charge</strong></p>
+              </div>
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Référence</label>
+            <input [disabled]="disabled" type="text" name="refPoste" placeholder="Référence" class="form-control"
+              required    [(ngModel)]="infoMachine.referencePosteCharge" />
+
+          </div>
+
+
+          <div class="form-group col-md-5 col-lg-5 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Désignation</label>
+
+            <input [disabled]="disabled" type="text" name="DesPoste" placeholder="Désignation" class="form-control"
+              required   [(ngModel)]="infoMachine.designationPosteCharge"  />
+          </div>
+
+        </div>
+
+        </nb-tab>
+    </nb-tabset>
+     
+
+  </nb-card>
+
+ 
+</div>
+ 

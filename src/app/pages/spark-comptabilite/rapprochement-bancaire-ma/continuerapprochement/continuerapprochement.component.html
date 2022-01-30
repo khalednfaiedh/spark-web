@@ -1,0 +1,166 @@
+ 
+<nb-card>
+
+  <nb-card-header>
+      <ngx-titre-exercice></ngx-titre-exercice>
+  </nb-card-header> 
+  <nb-card-body   >
+  
+      <div  >
+     
+
+        <div class="row full-name-inputs">
+        <div class="form-group col-md-3 col-lg-3 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label"> Journal</label>
+      <ng-select 
+        name="journal" 
+        placeholder="choisir ..  "
+        [appendTo]="'body'" 
+        [clearable]="true"
+        [items]="journals" 
+        bindLabel="code"  
+        [multiple]="false"  
+        [(ngModel)]="journal"
+        (change)="findRapprochement()"
+        style="width:100%;"
+        >
+      </ng-select>
+        </div>
+
+
+        <div class="form-group col-md-2 col-lg-2 input-group-sm"  >
+          
+            <label _ngcontent-udb-c31="" class="label">   Pièce trésorerie</label>
+          <input type=" number" name="code"   [(ngModel)]="piece" class="form-control"  required  /> 
+        </div>
+
+        <div class=" form-group  input-group col-md-2 offset-md-5   input-group-sm"  >
+            <label _ngcontent-udb-c31="" class="label"> Recherche</label>
+            <ng-select placeholder="Choisir ..."
+            [items]="types" 
+            bindLabel="name" 
+            bindValue="id"
+            [(ngModel)]="id"
+            autofocus
+             style="width: 100%"
+           (change)="filtreOperations()"
+            name="ngSelect"
+            >
+           </ng-select>
+          </div>
+
+        </div>
+     
+          
+      
+         
+                  
+                   
+                
+        
+              
+               
+         
+        
+        </div>
+       
+
+        <!-- <nb-card  *ngIf="dataNotFound()" >
+          <nb-card-body>
+            <div class="note note-info"    >
+              <div class="note-title">Note</div>
+              <div class="note-body">
+                <ul>
+                  <li>
+                    Données non trouvées
+                  </li>
+                  
+                  <li>
+                    aucune  opération écriture  à affichée .
+                  </li>
+                </ul>
+              </div>
+            </div>
+            </nb-card-body>
+        </nb-card> -->
+  
+     <div  style="margin-top: 2%" > 
+      
+     
+       
+    <table class="table table-striped table-bordered ">
+        <thead  style="background-color: #D3D3D3;"  >
+          <tr>
+            <th ></th>
+            <th scope="col"> Cod JRL</th>
+            <th scope="col"> Date</th>
+            <th scope="col">N°Pièce</th>
+            <th scope="col">N° Compte  </th>
+            <th scope="col">N°écriture/libellé</th>
+            <th scope="col">Rapprochement</th>
+            <th scope="col">Piéce trésorerie</th>
+            
+            <th scope="col">Letttrage montant</th>
+            <th scope="col">Débit</th>
+            <th scope="col">Crédit</th>
+             
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let  operation of  rapprochement; let i = index; let c = count" >
+        <td>  
+          
+          
+              <input type="checkbox" [checked]="getSelection(operation)" (change)="changeHandler(operation,$event)">
+              
+            
+            
+        </td>
+            <td  style="width: 15%">{{operation.ecriture.journal.code}} </td>
+            <td style="width: 15%">{{operation.ecriture.date}}</td>
+            <td style="width: 5%">{{operation.ecriture.numeroPiece}}</td>
+            <td  style="width: 15%">{{operation.compteGeneral.codeCompte}}</td>
+            <td  style="width: 15%">{{operation.ecriture.numeroEcriture}}-{{operation.ecriture.libelle}} </td>
+            <td  style="width: 15%" >{{operation.rapprochement}}</td>
+            <td  style="width: 15%" >{{operation.pieceTresorerie}}</td>
+            <td  style="width: 5%"> {{operation.lettreLettrage}} </td>
+            <td style="width:15%">{{operation.debit  | transformeNumber }}</td>
+            <td style="width: 15%">{{operation.credit | transformeNumber }}</td>
+  
+           
+             
+          </tr>
+        </tbody>
+  <!-- 
+          <tfoot style="background-color:cadetblue;">
+              <td  style="width: 25%"> TOTAUX : ({{plan.codeCompte}}) :{{plan.nameCompte}} - {{   getEtatCompte(j)}}</td>
+              <td></td>
+              <td></td>   
+              <td></td>
+              <td></td> 
+              <td>{{getTotolDebit(j)}}</td>     
+              <td>{{getTotolCredit(j)}}</td>
+              <td>{{  getCumule(j) }}</td>
+             
+          </tfoot> -->
+          
+      </table>
+      <!-- <div  *ngIf="!lettrage.length">
+        <div class="note note-info" >
+          <div class="note-title">Note</div>
+          <div class="note-body">
+             Data not found
+          </div>
+        </div>
+      </div> -->
+
+    
+     
+     <div style="text-align: right;">
+    <button   (click)="rapprocher()" class="btn btn-hero-success input-group-text" i18n="@@ajoutDossier">Rapprochéer</button>
+  </div>
+  </div> 
+  </nb-card-body>
+  
+  
+  </nb-card>

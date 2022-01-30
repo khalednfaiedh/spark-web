@@ -1,0 +1,35 @@
+<div class="col-md-12 col-lg-12" style="width:400px; height: 100px">
+
+  <form class="form-group"   autocomplete="off" #gaForm=ngForm>
+    
+      
+
+
+        
+        <div class="row full-name-inputs label">
+          <div class="input-group col-md-8   input-group-sm">
+            <label class="text-label" i18n="@@CompteCode"> Modèle </label>
+          </div>
+
+        </div>
+        <div class="row full-name-inputs">
+          <div class="input-group col-md-8   input-group-sm">
+            <ng-select [items]="modeles"
+            [appendTo]="'body'"   bindLabel="intitule" name="modele" [(ngModel)]="modele" style="width:100%;"
+              required>
+            </ng-select>
+          </div>
+
+
+          <div  class="input-group col-md-4" style="text-align:right;">
+              <button nbButton hero status="success" (click)="ouvrirModele()" class="submit" [disabled]=!gaForm.valid>ouvrir</button>
+              
+            </div>
+
+        </div>
+
+ 
+
+
+</form>
+</div>

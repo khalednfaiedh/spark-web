@@ -1,0 +1,65 @@
+<nb-card>
+    <nb-card-header class="text-center">
+        <h5>Paramétrage</h5>
+      </nb-card-header>
+  <nb-card-body>
+      <nb-accordion>
+          <nb-accordion-item #item>
+            <nb-accordion-item-header>
+              Types des actions
+            </nb-accordion-item-header>
+            <nb-accordion-item-body>
+              <ng2-smart-table [settings]="typeSettings"
+                               [source]="typeSource" 
+                               (editConfirm)="onTypeSaveConfirm($event)"
+                               (createConfirm)="onTypeCreateConfirm($event)"
+                >
+              </ng2-smart-table>
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+        
+          <nb-accordion-item #item>
+              <nb-accordion-item-header>
+               Statut des actions
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                <ng2-smart-table [settings]="statusSettings"
+                                 [source]="statusSource" 
+                                 (editConfirm)="onStatusSaveConfirm($event)"
+                                 (createConfirm)="onStatusCreateConfirm($event)"
+                 >
+                </ng2-smart-table>
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+        
+            <nb-accordion-item #item collapsed="false">
+                <nb-accordion-item-header>
+                 Etapes des affaires
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                  <ng2-smart-table [settings]="stepSettings"
+                                   [source]="stepSource" 
+                                   (editConfirm)="onStepSaveConfirm($event)"
+                                   (createConfirm)="onStepCreateConfirm($event)"
+                   >
+                  </ng2-smart-table>
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+
+              <!-- <nb-accordion-item #item collapsed="false">
+                <nb-accordion-item-header>
+                Groupe de prospection
+                </nb-accordion-item-header>
+                <nb-accordion-item-body>
+                  <ng2-smart-table [settings]="stepSettings"
+                                   [source]="stepSource" 
+                                   (editConfirm)="onStepSaveConfirm($event)"
+                                   (createConfirm)="onStepCreateConfirm($event)"
+                    style="text-transform: capitalize;">
+                  </ng2-smart-table>
+                </nb-accordion-item-body>
+              </nb-accordion-item> -->
+        </nb-accordion>
+  </nb-card-body>
+</nb-card>
+

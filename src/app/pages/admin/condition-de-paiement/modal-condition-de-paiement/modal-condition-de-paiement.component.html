@@ -1,0 +1,202 @@
+<div class="col-md-12 col-lg-12" style="width:1000px; height: 400px">
+  <div class="row">
+    <div class="col-lg-12" style="width:750px; height: 400px">
+      <nb-card>
+        <nb-card-body><br>
+
+          <div class="row full-name-inputs">
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+
+              <label _ngcontent-udb-c31="" class="label">Type d'echeancier :</label>
+
+              <ng-select name="typeEcheancier" type="text" placeholder="Type d'echeancier"
+                [(ngModel)]="conditionPaiement.typeEcheancier">
+                <ng-option value="Client">Client </ng-option>
+                <ng-option value="Fournisseur">Fournisseur</ng-option>
+              </ng-select>
+            </div>
+            <div class="form-group col-md-6 col-lg-6 input-group-sm">
+
+              <label _ngcontent-udb-c31="" class="label">Stratégie :</label>
+
+              <ng-select name="strategie" type="text" placeholder="Intitulé" [(ngModel)]="conditionPaiement.strategie">
+                <ng-option value="Fixation en pourcentage">Fixation en pourcentage </ng-option>
+                <ng-option value="Fixation en jours">Fixation en jours </ng-option>
+              </ng-select>
+
+
+
+            </div>
+
+          </div>
+
+
+          <div *ngIf="conditionPaiement.strategie=='Fixation en pourcentage'">
+            <div [hidden]='false'>
+              <div ng-repeat="let documentGrp1 of documentGrps1" id="main-form-content1">
+                <form [formGroup]="documentGrp1">
+                  <div class="row full-name-inputs">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="pull-right" style="float: right;">
+                        <button type="button" class="btn btn-sm btn-success" style="width: 70px;" title="Add More"
+                          (click)="addItem()">+</button>
+                      </div><br><br>
+                    </div><br>
+                    <div class="col-md-12 col-lg-12">
+                      <div formArrayName="itemss">
+                        <div *ngFor="let item1 of itemss.controls; let j = index;">
+                          <div [formGroupName]="j">
+                            <div class="row full-name-inputs label">
+                              <div class="input-group col-md-4   input-group-sm">
+                                <label for="typeEcheance">Type d'écheance :</label>
+                              </div>
+
+                              <div class="input-group col-md-3   input-group-sm">
+                                <label for="pourcentage">Pourcentage (%) :</label>
+                              </div>
+
+                              <div class="input-group col-md-4 input-group-sm">
+                                <label for="option">Délais :</label>
+                              </div>
+
+                            </div>
+                            <div class="row full-name-inputs">
+
+                              <div class="input-group col-md-4 col-lg-4 input-group-sm">
+                                <ng-select name="typeEcheance" placeholder="Type d'écheance'" style="width:100%;"
+                                  (change)="calculeValueSolde($event)" formControlName="typeEcheance">
+                                  <ng-option value="Acompte">Acompte</ng-option>
+                                  <ng-option value="Echéance">Echéance</ng-option>
+                                  <ng-option value="Solde">Solde</ng-option>
+                                </ng-select>
+                                <div class="help-block"></div>
+                              </div>
+
+                              <div class="input-group col-md-3 col-lg-3 input-group-sm">
+
+                                <input type="number" placeholder="Pourcentage (%)" name="pourcentage"
+                                  class="form-control" formControlName="pourcentage" />
+                              </div>
+                              <div class="form-group col-md-4 col-lg-4 input-group-sm">
+
+                                <ng-select name="option" placeholder="Délais" formControlName="option"
+                                  style="width:100%;">
+                                  <ng-option value="A la date de livraison">A la date de livraison</ng-option>
+                                  <ng-option value="A la date de facture">A la date de facture</ng-option>
+                                  <ng-option value="A la date de commande">A la date de commande</ng-option>
+                                  <ng-option value="A une date ultérieure">A une date ultérieure</ng-option>
+                                </ng-select>
+                              </div>
+                              <div class="remove col-md-1 col-lg-1 " *ngIf=" j!=0 ">
+                                <button title="Remove" (click)="removeItem(j)" nbButton status="danger" size="xsmall"
+                                  style="height: 2.25rem;padding: 0px 5px 0px 5px;margin-top: 0.125rem;"> <i
+                                    class="fas fa-trash-alt"></i></button>
+                              </div>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+          <div *ngIf="conditionPaiement.strategie=='Fixation en jours'">
+            <div [hidden]='false'>
+              <div ng-repeat="let documentGrp1 of documentGrps1" id="main-form-content1">
+                <form [formGroup]="documentGrp1">
+                  <div class="row full-name-inputs">
+                    <div class="col-md-12 col-lg-12">
+                      <div class="pull-right" style="float: right;">
+                        <button type="button" class="btn btn-sm btn-success" style="width: 70px;" title="Add More"
+                          (click)="addItem()">+</button>
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                      <div formArrayName="itemss">
+                        <div *ngFor="let item1 of itemss.controls; let j = index;">
+                          <div [formGroupName]="j">
+                            <div class="row full-name-inputs label">
+                              <div class="input-group col-md-2   input-group-sm">
+                                <label for="typeEcheance">Type d'écheance :</label>
+                              </div>
+                              <div class="input-group col-md-3   input-group-sm">
+                                <label for="value">Pourcentage (%) :</label>
+                              </div>
+                              <div class="input-group col-md-3   input-group-sm">
+                                <label for="value">Nombre de jours :</label>
+                              </div>
+
+                              <div class="input-group col-md-3 input-group-sm">
+                                <label for="option">Délais :</label>
+                              </div>
+
+                            </div>
+                            <div class="row full-name-inputs">
+                              <div class="input-group col-md-2 col-lg-2 input-group-sm">
+
+                                <ng-select name="typeEcheance" placeholder="Type d'écheance'" style="width:100%;"
+                                  formControlName="typeEcheance" (change)="calculeValueSolde($event)">
+                                  <ng-option value="Echéance">Echéance</ng-option>
+                                  <ng-option value="Solde">Solde</ng-option>
+                                </ng-select>
+                                <div class="help-block"></div>
+                              </div>
+
+                              <div class="input-group col-md-3 col-lg-3 input-group-sm">
+
+                                <input type="number" placeholder="Pourcentage" name="pourcentage" class="form-control"
+                                  formControlName="pourcentage" />
+                              </div>
+                              <div class="input-group col-md-3 col-lg-3 input-group-sm">
+
+                                <input type="number" placeholder="Nombre de jours" name="nombreDejour"
+                                  class="form-control" formControlName="nombreDejour" />
+                              </div>
+                              <div class="form-group col-md-3 col-lg-3 input-group-sm">
+
+                                <ng-select name="option" placeholder="Délais" formControlName="option"
+                                  style="width:100%;">
+                                  <ng-option value="Après a la date de livraison">Après a la date de livraison
+                                  </ng-option>
+                                  <ng-option value="Après a la date de facture">Après a la date de facture</ng-option>
+                                  <ng-option value="Après a la date de commande">Après a la date de commande</ng-option>
+                                </ng-select>
+                              </div>
+
+                              <div class="remove col-md-1 col-lg-1 " *ngIf=" j!=0 ">
+                                <button title="Remove" (click)="removeItem(j)" nbButton status="danger" size="xsmall"
+                                  style="height: 2.25rem;padding: 0px 5px 0px 5px;margin-top: 0.125rem;"> <i
+                                    class="fas fa-trash-alt"></i></button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <button status="success" size="xsmall" nbButton
+              style="cursor: pointer;margin: 0.5rem;align-content: center;" (click)="addCP(documentGrp1.value)">
+              {{ARCP}}</button>
+            <button (click)="onclose()" size="xsmall" nbButton status="danger"
+              style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+          </div>
+
+
+
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+ <div class="col-md-12  " style="width:520px; height: 150px">
+  
+     
+
+  <div class="row ">
+
+     
+         
+        
+        <div class="form-group col-md-6 col-lg-6 input-group-sm  ">
+          
+            <ng-select placeholder="Choisir..."
+          
+            [items]="plans" 
+           bindLabel="nameCode" 
+          
+            
+           [(ngModel)]="equilibre.plan"
+            >
+           </ng-select>  
+        </div>
+
+
+        <div class="form-group col-md-6 col-lg-6 input-group-sm  ">
+          <input type="number" name="code"   [(ngModel)]="equilibre.montant" class="form-control "  required value ="15000"  />  
+      
+        </div> 
+
+
+    </div>
+
+    <button type="button"  (click)="choisirClasse()"   class="btn btn-primary btn-sm"  style="  margin: 7% 0% 0% 75%;" >  Envoyer</button>
+
+
+</div>
+
+
+
+
+ 

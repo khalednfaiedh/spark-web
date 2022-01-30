@@ -1,0 +1,22 @@
+
+<nb-card size="tiny" [nbSpinner]="loading"
+nbSpinnerStatus="success"
+nbSpinnerSize="large"
+nbSpinnerMessage="Patientez..":style="padding: 2rem;">
+<nb-card-body> 
+
+  <div class="col-sm-12" >
+    <div class="col-sm-12 form-group">
+         <label>Nom d'utilisateur</label>
+             <input class="form-control" type="text" [(ngModel)]="authentification.login" />
+    </div>
+    <div class="col-sm-12 form-group">
+        <label>Mot de passe</label>
+        <input class="form-control" type="password"  [(ngModel)]="authentification.password"/>
+    </div>
+    <div class="col-sm-12">
+        <button nbButton fullWidth status="success" (click)="login()" type="submit">Connecter</button>
+    </div>
+  </div>   
+ </nb-card-body>
+</nb-card>

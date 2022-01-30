@@ -1,0 +1,249 @@
+<div class="col-md-12 col-lg-12" style="width: 70vw; height: 60vh">
+
+
+  <form #monFormulaire1=ngForm>
+
+
+   
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Référence :</label>
+            <input [disabled]="disabled" type="text" name="ref" placeholder="Référence" class="form-control"  required  [(ngModel)]="poste.reference" />
+
+          </div>
+
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">   Désignation     :</label>
+            <input   [disabled]="disabled" type="text" name="des" placeholder=" Désignation  " class="form-control"  required  [(ngModel)]="poste.designation" />
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Nombre d'exemplaire:</label>
+            <input   [disabled]="disabled" type="text" name="cout" placeholder="   cout revient  " class="form-control"  required  [(ngModel)]="poste.nombreExemplaire" />
+          </div>
+
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label"> Poste de Charge  de  Remplacement:</label>
+           
+            <ng-select 
+            name="posteRemplacente" 
+            placeholder="choisir ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="postes" 
+            bindLabel="designation"  
+           
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="poste.posteRemplacent"
+            style="width:100%;"
+            >
+          </ng-select>
+          </div>
+ 
+        </div>
+
+
+        <div class="row full-name-inputs">
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Capacite théorique / (Poste ) :</label>
+            <input (change)="calculCapaciteReelle()" [disabled]="disabled" type="text" name="capaciteTheorique" placeholder=" Capacite théorique" class="form-control"  required  [(ngModel)]="poste.capaciteTheorique" />
+          </div>
+
+          <div class="form-group col-md-2 col-lg-2 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Cofficient capacité (%) :</label>
+            <input  (change)="calculCapaciteReelle()" [disabled]="disabled" type="text" name="coffficent" placeholder=" Cofficient capacité" class="form-control"  required  [(ngModel)]="poste.cofficientCapacite" />
+          </div>
+
+          <div class="form-group col-md-2 col-lg-2 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Capacite  réelle /( Poste)  :</label>
+            <input [disabled]="true" type="text" name="capacite relle" placeholder=" Capacite  réelle" class="form-control"  required  [(ngModel)]="poste.capaciteReelle" />
+          </div>
+
+          <div class="form-group col-md-3 col-lg-3 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">  Capacite   Total   :</label>
+            <input [disabled]="true" type="text" name="capaciteTotal" placeholder=" Capacite   Total" class="form-control"  required  [(ngModel)]="poste.capaciteTotale" />
+          </div>
+
+          <div class="form-group col-md-2 col-lg-2 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">    Unitée  :</label>
+            <ng-select 
+            name="unite" 
+            placeholder="choisir ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="unites" 
+            bindLabel="unite"  
+            required 
+            [multiple]="false"  
+            [disabled]=disabled
+            [(ngModel)]="poste.unite"
+            style="width:100%;"
+            >
+          </ng-select>
+          </div>
+           
+         
+
+         <!-- <div class="form-group col-md-6 col-lg-6 input-group-sm">
+            <label _ngcontent-udb-c31="" class="label">      Chéf  Illot      :</label>
+        <ng-select 
+          name="chef" 
+          placeholder="choisir ..  "
+           [appendTo]="'body'" 
+           [clearable]="true"
+          [items]="employees" 
+          bindLabel="nom"  
+         
+          [multiple]="false"  
+           
+          [disabled]=disabled
+          [(ngModel)]="ilot.chef"
+           style="width:100%;"
+          >
+        </ng-select>
+          </div>-->
+
+      
+
+        
+        </div>
+
+           
+
+
+       <!-- <div class="row full-name-inputs">
+       
+
+        <div class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">    Type  :</label>
+          <ng-select 
+          name="Type" 
+           placeholder="choisir ..  "
+           [appendTo]="'body'" 
+           [clearable]="true"
+           
+         
+          [multiple]="false"  
+           
+          [disabled]=disabled
+          [(ngModel)]="poste.type"
+           style="width:100%;"
+          >
+          <ng-option value="Par Heure">Par Heure</ng-option>
+          <ng-option value="Par Jour" >Par Jour</ng-option>
+        </ng-select>
+         
+        </div>
+        
+        <div  *ngIf="poste.type=='Par Heure'" class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="Par Jour" class="label">   Nombre Heurs     :</label>
+          <input [disabled]="disabled" type="text" name="heures" placeholder="Référence" class="form-control"  required  [(ngModel)]="poste.nombreHeure" />
+        </div>
+
+        <div   *ngIf="poste.type=='Par Jour'" class="form-group col-md-4 col-lg-4 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">      Nombre Jours     :</label>
+          <input [disabled]="disabled" type="text" name="nbjrs" placeholder="  Nombre Jours   " class="form-control"  required  [(ngModel)]="poste.nombreJour" />
+        </div>
+
+         
+
+      <div class="form-group col-md-6 col-lg-6 input-group-sm">
+          <label _ngcontent-udb-c31="" class="label">      Chéf  Illot      :</label>
+      <ng-select 
+        name="chef" 
+        placeholder="choisir ..  "
+         [appendTo]="'body'" 
+         [clearable]="true"
+        [items]="employees" 
+        bindLabel="nom"  
+       
+        [multiple]="false"  
+         
+        [disabled]=disabled
+        [(ngModel)]="ilot.chef"
+         style="width:100%;"
+        >
+      </ng-select>
+        </div>
+
+    
+
+      
+      </div> -->
+
+      <div class="row full-name-inputs">
+
+          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">     List Machine     :</label>
+          <ng-select 
+            name="machine" 
+            placeholder="choisir ..  "
+             [appendTo]="'body'" 
+             [clearable]="true"
+            [items]="machines" 
+            bindLabel="referenceDesignation"  
+           
+            [multiple]="true"  
+             
+            [disabled]=disabled
+            [(ngModel)]="poste.listeMachines"
+             style="width:100%;"
+            >
+          </ng-select>
+            </div>
+        
+
+
+      </div>
+
+      <div class="row full-name-inputs">
+
+          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">     List  Employee     :</label>
+          <ng-select 
+            name="employee" 
+            placeholder="choisir ..  "
+            [appendTo]="'body'" 
+            [clearable]="true"
+            [items]="employees" 
+            bindLabel="nom"  
+            [multiple]="true"  
+            [disabled]=disabled
+            [(ngModel)]="poste.listeEmployees"
+             style="width:100%;"
+            >
+          </ng-select>
+            </div>
+        
+
+
+      </div>
+
+      <div class="row full-name-inputs">  
+          <div class="form-group col-md-12 col-lg-12 input-group-sm">
+              <label _ngcontent-udb-c31="" class="label">      Commentaire        :</label>
+              <textarea nbInput fullWidth placeholder="Textarea" name="commentaire"   [(ngModel)]="poste.commentaire" ></textarea>
+            </div>
+    
+      </div>
+
+
+
+
+
+
+ 
+    <div style="text-align:right;" [hidden]="disabled" >
+      <button nbButton style="cursor: pointer;margin: 0.5rem;align-content: center;" status="success"
+        [disabled]=!monFormulaire1.valid (click)="add()"> {{message}}</button>
+      <button (click)="onclose()" nbButton status="danger"
+        style="cursor: pointer;margin: 0.5rem;align-content: center;">Annuler</button>
+    </div>
+
+
+  </form>
+</div>

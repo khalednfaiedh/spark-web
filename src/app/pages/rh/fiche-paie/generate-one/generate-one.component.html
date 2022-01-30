@@ -1,0 +1,22 @@
+<div class="col-md-12 col-lg-12" style="width:500px; height: 90px">
+    <div class="row full-name-inputs">
+         <div class="col-md-8 col-lg-8">
+                 <label>Sélectionner un employé </label>
+                    <ng-select hero [items]="employesMin" 
+                      placeholder="Employé"
+                      bindLabel="matriculeNomPrenom" 
+                      bindValue="matricule"
+                      [(ngModel)]="fiche.matricule"
+                      [appendTo]="'body'"                
+                      style="width:100%; " 
+                      size="xsmall">
+                    </ng-select>
+           </div>
+
+             <div class="col-md-4 col-lg-4">
+                    <button nbButton status="success" style="width: 100%; margin-top: 1.5rem;"(click)="onAddM()" >Générer</button> 
+             </div>
+       
+     </div>    
+ </div>
+ 

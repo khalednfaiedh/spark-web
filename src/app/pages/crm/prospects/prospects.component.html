@@ -1,0 +1,35 @@
+<nb-card>
+  <nb-card-body #target id="table">
+
+    <nb-tabset fullWidth>
+      <nb-tab tabTitle="Nouveaux prospects">
+        <nb-card>
+          <nb-card-header class="text-center">
+            Liste des nouveaux prospects
+            <button (click)="openAddWindow($event)" nbButton size="xsmall" status="success" style="width: 100px">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </nb-card-header>
+          <nb-card-body #target id="table">
+            <!-- <ngx-prospect-search (searchProspect)="searchProspects($event)">
+            </ngx-prospect-search> -->
+            <ng2-smart-table class="full-width text-center f" [settings]="prospectSettings" [source]="datasource"
+              (createConfirm)="addQuickProspect($event)" (onclick)="openDetailsWindow($event)"
+              (custom)="onCustom($event)">
+            </ng2-smart-table>
+          </nb-card-body>
+        </nb-card>
+      </nb-tab>
+      <nb-tab tabTitle="Prospects achivés">
+
+        <!-- <ngx-prospect-search (searchProspect)="searchProspects($event)">
+        </ngx-prospect-search> -->
+        <ng2-smart-table class="full-width text-center" [settings]="prospectSettings2" [source]="datasource2">
+        </ng2-smart-table>
+
+      </nb-tab>
+    </nb-tabset>
+
+
+  </nb-card-body>
+</nb-card>
